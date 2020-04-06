@@ -3,11 +3,16 @@ ul {
     padding: 0;
 }
 
+html{
+	display:flex;
+	justify-content:center;
+}
 
 body {
     display: flex;
     flex-direction: column;
     background-color: #fdfdfd;
+	  width:80vw;
 }
 
 #nav-menu>ul,
@@ -38,14 +43,69 @@ body {
     justify-content: center;
 }
 
-#wp {
-    flex-direction: column;
-}
+
 
 #frameCX66dD {
-    width: 100vw;
+    width: 100%;
 }
 
+
+
+/* 导航栏 */
+#nav-menu>ul{
+	width:100%;
+}
+.has-sub{
+	width:calc(100% / 9);
+}
+.has-sub>ul{
+	display:none;
+}
+.has-sub:hover>ul{
+	display:flex;
+	flex-direction:column;
+}
+
+/* 主内容框架 */
+#wp{
+	min-width:0!important;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+/* 栏目 */
 .index_subject {
     flex-direction: row;
+	width:calc(100% / 4)
+}
+.index_subject_row{
+	flex-direction:column;
+    justify-content: flex-start;
+}
+
+/* 汉化组 & 社区服务*/
+.index_middle_subject,.index_foot_subject{
+	flex-direction:row;
+}
+
+/* 汉化组 */
+.index_middle_subject{
+	width:60%;
+}
+.middle_subject_left,.middle_subject_mid,.middle_subject_right{
+	width:100%
+}
+
+/* 社区服务*/
+.index_foot_subject{
+	width:40%;
+}
+
+.foot_subject_left,.foot_subject_right{
+	display:flex;
+	flex-direction:row;
+}
+/* 子版块 */
+.subject_row_detail{
+	display:flex;
 }
