@@ -1,6 +1,21 @@
+/*
+white
+#f7f5f6
+
+gray
+#545651
+
+blue
+#60bdff
+
+deepblue
+#056396
+*/
+
 ul {
     margin: 0;
     padding: 0;
+	  list-style-type:none;
 }
 
 html{
@@ -14,7 +29,7 @@ body {
     background-color: #fdfdfd;
 	  width:80vw;
 }
-
+#nav-menu,
 #nav-menu>ul,
 .tb-container,
 .floatcontainer,
@@ -74,6 +89,9 @@ body {
 }
 
 /* 栏目 */
+.cl{
+	width:100%;
+}
 .index_subject {
     flex-direction: row;
 	width:calc(100% / 4)
@@ -81,6 +99,9 @@ body {
 .index_subject_row{
 	flex-direction:column;
     justify-content: flex-start;
+}
+.index_subject_title{
+	display:none;
 }
 
 /* 汉化组 & 社区服务*/
