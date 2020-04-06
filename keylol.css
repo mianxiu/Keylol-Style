@@ -1,0 +1,51 @@
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+
+body {
+    display: flex;
+    flex-direction: column;
+    background-color: #fdfdfd;
+}
+
+#nav-menu>ul,
+.tb-container,
+.floatcontainer,
+#frameCX66dD,
+#wp,
+.tb,
+.area,
+.index_subject,
+.index_subject_row,
+.index_middle_subject,
+.index_foot_subject,
+.bbs_daily_stats,
+.rnd_ai_f,
+.subforunm_foot {
+    display: flex;
+    justify-content: center;
+}
+
+.floatcontainer {
+    flex-direction: column-reverse;
+}
+
+.index_navi {
+    flex-direction: row;
+    display: flex;
+    justify-content: center;
+}
+
+#wp {
+    flex-direction: column;
+}
+
+#frameCX66dD {
+    width: 100vw;
+}
+
+.index_subject {
+    flex-direction: row;
+}
