@@ -6,3 +6,11 @@
 新浪
 
 leancloud
+
+## 资源请求
+
+https://www.tampermonkey.net/documentation.php#_resource
+
+## symbol引用
+
+iconfont

@@ -10,11 +10,25 @@
 
 (function () {
     'use strict';
-    document.querySelectorAll(`link[rel=stylesheet]`).forEach(e => {
-        e.remove()
-    })
 
-    // 移动用户栏&LOGO
+    // 配合tampermonkey设置加载前移除css
+    var clearCss = function () {
+        document.querySelectorAll(`link[rel=stylesheet]`).forEach(e => {
+            console.log(e)
+            e.remove()
+
+        })
+    }
+
+    var targetNode = document.documentElement
+    var observerOptions = {
+        childList: true,
+        subtree: true
+    }
+    var observer = new MutationObserver(clearCss);
+    observer.observe(targetNode, observerOptions);
+
+    // 移动 用户栏&LOGO
     const navMenuUl = document.querySelector('#nav-menu>ul ')
     navMenuUl.parentNode.insertBefore(document.querySelector('.tb-container'), null)
     navMenuUl.insertBefore(document.querySelector('#nav-logo'), navMenuUl.childNodes[0])
@@ -24,6 +38,10 @@
 
 `
 
+
+
+
+    // 添加css
     if (typeof GM_addStyle != "undefined") {
         GM_addStyle(css);
     } else if (typeof PRO_addStyle != "undefined") {
