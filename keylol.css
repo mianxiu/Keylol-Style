@@ -1,33 +1,43 @@
-/*
-white
-#f7f5f6
+/*hidden node*/
+#ajax_lang,
+#nav-menu > ul > li:nth-child(6),
+#nav-logo > span,
+.index_navi{
+	display:none!important
+}
 
-gray
-#545651
 
-blue
-#60bdff
-
-deepblue
-#056396
-*/
-
-ul {
+html,body,ul {
     margin: 0;
     padding: 0;
 	  list-style-type:none;
 }
+:root{
+	--font-size-14:14px;
+}
+:root{
+	--display-flex:flex;
+}
+:root{
+	--background-color:#fdfdfd;
+	
+}
 
 html{
-	display:flex;
+	font-size:var(--font-size-14);
+}
+
+
+html{
+	display:var(--display-flex);
 	justify-content:center;
 }
 
 body {
-    display: flex;
+    display:var(--display-flex);
     flex-direction: column;
-    background-color: #fdfdfd;
-	  width:80vw;
+    background-color: var(--background-color);
+	 width:100%;
 }
 #nav-menu,
 #nav-menu>ul,
@@ -44,7 +54,7 @@ body {
 .bbs_daily_stats,
 .rnd_ai_f,
 .subforunm_foot {
-    display: flex;
+    display:var(--display-flex);
     justify-content: center;
 }
 
@@ -53,33 +63,67 @@ body {
 }
 
 .index_navi {
+	 display:var(--display-flex);
     flex-direction: row;
-    display: flex;
     justify-content: center;
 }
 
 
-
-#frameCX66dD {
-    width: 100%;
-}
-
-
-
 /* 导航栏 */
-#nav-menu>ul{
+#nav-menu-parent{
 	width:100%;
+	display:var(--display-flex);
+	justify-content:center;
 }
+#nav-menu{
+	height:110px;
+	width:1200px;;
+	align-items:center;
+	justify-content: end;
+}
+#nav-menu>ul{
+	
+	width:640px;
+}
+/*菜单栏子项*/
 .has-sub{
+	display:var(--display-flex);
+	justify-content:center;
+	align-items: center;
 	width:calc(100% / 9);
+	height:30px;
 }
+
+
 .has-sub>ul{
 	display:none;
 }
 .has-sub:hover>ul{
-	display:flex;
+	display:var(--display-flex);
 	flex-direction:column;
 }
+
+/* 用户 搜索 */
+#nav-additional{
+	display:var(--display-flex);
+}
+
+/* 搜索 */
+#nav-search-bar{
+	width:240px
+}
+.dropdown{
+	display:none;
+}
+
+
+/* 热点 */
+#frameCX66dD {
+    width: 100%;
+	flex-direction: row-reverse;
+}
+
+
 
 /* 主内容框架 */
 #wp{
@@ -123,10 +167,15 @@ body {
 }
 
 .foot_subject_left,.foot_subject_right{
-	display:flex;
+	display:var(--display-flex);
 	flex-direction:row;
 }
 /* 子版块 */
 .subject_row_detail{
 	display:flex;
+}
+
+/* 底部 */
+.subforunm_foot_bg{
+	display:none;
 }
