@@ -59,13 +59,15 @@
         let logo = document.querySelector('body>.tb-container>#nav-logo')
         let navMenuParent = document.querySelector('body>#nav-menu-parent')
         let navMenu = document.querySelector('body>#nav-menu')
+        let tbContainer = document.querySelector('body>.tb-container')
 
         logo.innerHTML += symbol(`kelolsteam_panel_hot`)
         // 用户栏&LOGO
-
-        navMenu.insertBefore(document.querySelector('body>.tb-container'), null)
+        navMenu.insertBefore(tbContainer, null)
+        navMenu.insertBefore(document.querySelector('#nav-additional>#nav-user-action-bar'),null)
         navMenu.insertBefore(logo, navMenu.childNodes[0])
         navMenuParent.insertBefore(navMenu,null)
+
 
 
     }

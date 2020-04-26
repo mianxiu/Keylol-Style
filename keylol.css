@@ -35,9 +35,10 @@ html{
 
 body {
     display:var(--display-flex);
+	  align-items:center;
     flex-direction: column;
     background-color: var(--background-color);
-	 width:100%;
+	  width:100%;
 }
 #nav-menu,
 #nav-menu>ul,
@@ -82,7 +83,6 @@ body {
 	justify-content: end;
 }
 #nav-menu>ul{
-	
 	width:640px;
 }
 /*菜单栏子项*/
@@ -110,16 +110,42 @@ body {
 
 /* 搜索 */
 #nav-search-bar{
+	display:var(--display-flex);
+	align-items:center;
 	width:240px
 }
+
+#nav-user-action-bar{
+	display:var(--display-flex);
+	
+}
+
+/* 头像 */
 .dropdown{
+	
+}
+.dropdown >a>img{
+	height:30px;
+	width:30px
+}
+
+/* 头像下拉菜单 */
+.dropdown-menu {
 	display:none;
+}
+
+/* 用户信息 */
+.list-inline{
+	display:var(--display-flex);
+	align-content:center;
+	height:30px;
+	
 }
 
 
 /* 热点 */
 #frameCX66dD {
-    width: 100%;
+   width: 100%;
 	flex-direction: row-reverse;
 }
 
@@ -127,6 +153,7 @@ body {
 
 /* 主内容框架 */
 #wp{
+	width:1200px;
 	min-width:0!important;
 	flex-direction: row;
 	flex-wrap: wrap;
