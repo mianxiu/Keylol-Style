@@ -82,6 +82,19 @@
 
 
 
+    // fetch热门主题图片
+    let fetchHotImg = function(){
+          fetch(`https://keylol.com/t588509-1-1`).then(function(response) {
+              return response.text();
+          }).then(function(myJson) {
+              let imgurl = myJson.replace(/.*(https:\/\/blob\.keylol\.com\/forum.+\.jpg).+"description.*/s,`$1`)
+              console.log(imgurl);
+          });
+
+    }
+
+    window.onload = fetchHotImg
+
     var css = `
 body{
 background:green;
