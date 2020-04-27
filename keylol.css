@@ -19,12 +19,14 @@ html,body,ul,ol {
 :root{
 	--display-flex:flex;
 	--border-radius-10:10px;
+	--border-radius-200:200px;
 	--element-margin-bottom-18:18px;
 	--element-padding:10px 8px;
 }
 :root{
+	/* color */
 	--background-color: #EBEBEB;
-	
+	--font-color-light:#FAFAFA;
 }
 
 html{
@@ -219,25 +221,131 @@ body {
 	display:none;
 }
 
-/* 热门图片 */
+/* ----热门图片------- */
 #frameCX66dD_left,
 #portal_block_431,
 #portal_block_431_content,
 #portal_block_431_content>div.slidebox,
 .slideshow,
 .slideshow>li,
-.slideshow>li>a
+.slideshow>li>a,
+.slideshow>li>a>div
 {
 	width:314px!important;
 	height:447px!important;
 	border-radius:var(--border-radius-10);
+	
+	display:var(--display-flex);
+   justify-content: center;
+}
+
+/* 356px */
+#frameCX66dD_left,
+#portal_block_431,
+#portal_block_431_content{
+	width:356px!important;
+}
+
+.slideshow>li,
+.slideshow>li>a,
+.slideshow>li>a>div{
 	overflow:hidden;
 }
 
+/* img mask */
+.slideshow>li>a>div{
+	background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #1e1e1e 100%);
+	position:absolute;
+	top:0;
+}
+
+
 .slideshow>li>a>img{
-	margin-top:80px;
-	transform:scale(1.56);
+/*	margin-top:80px;
+	transform:scale(1.56);*/
+	height:100%;
 	
+}
+
+/* 标题 */
+.slideshow>li>.title{
+	color:var(--font-color-light);
+	width:160px;
+	position:absolute;
+	left:30px;
+	bottom:68px;
+	font-size:18px;
+	font-weight:bold;
+}
+
+.slideshow li{
+	z-index:0;
+	position:absolute;
+	top:40px;
+	display:flex!important;
+	opacity:.25;
+}
+
+
+
+.slideshow>li[style*="block"]{
+	z-index:3;
+	position:absolute;
+	margin-left:-40px;
+	top:0px;
+	opacity:1;
+	
+}
+
+
+.slideshow>li[style*="block"]+li{
+	z-index:2;
+	position:absolute;
+	margin-left:-20px;
+	top:20px;
+	display:flex!important;
+	opacity:.6;
+}
+
+.slideshow>li[style*="block"]+li+li{
+	z-index:1;
+	position:absolute;
+	top:40px;
+	display:flex!important;
+	opacity:.25;
+	
+}
+
+.slideTopShow{
+	
+}
+.slideMiddleShow{}
+.slideBottomShow{}
+
+
+/* 图片控制条 */
+.slidebar{
+
+}
+.slidebar > ul{
+	position:absolute;
+   top: 400px;
+	left:30px;
+	display:var(--display-flex);
+	width:200px;
+	justify-content:space-between;
+}
+.slidebar > ul >li{
+	height:6px;
+	width:6px;
+	border-radius:var(--border-radius-200);
+	background-color:var(--background-color);
+	opacity:.3;
+	
+}
+.slidebar > ul >li.on{
+	background-color:var(--background-color);
+	opacity:1;
 }
 
 .index_subject {

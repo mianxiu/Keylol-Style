@@ -30,7 +30,9 @@
     var observer = new MutationObserver(clearCss);
     observer.observe(targetNode, observerOptions);
 
-
+ window.addEventListener("loadstart", function(event) {
+    console.log("All resources finished loading!");
+  });
 
     // 通过更加详细的选择器来变相停止节点插入循环
     // symbol使用
@@ -81,19 +83,75 @@
 
 
 
-
     // fetch热门主题图片
-    let fetchHotImg = function(){
-          fetch(`https://keylol.com/t588509-1-1`).then(function(response) {
-              return response.text();
-          }).then(function(myJson) {
-              let imgurl = myJson.replace(/.*(https:\/\/blob\.keylol\.com\/forum.+\.jpg).+"description.*/s,`$1`)
-              console.log(imgurl);
-          });
+    let i = 1
+    function fetchHotImg(){
+
+        let imgRegx = /\"(https:\/\/blob\.keylol\.com\/forum.+?)\"/s
+
+        let hotImgPostUrls = document.querySelectorAll(`.slideshow>li>a`)
+
+        hotImgPostUrls.forEach(postUrl=>{
+
+            //console.log(postUrl.href)
+
+         fetch(postUrl.href).then(function(res){
+                return res.text();
+            }).then(bodyText=>{
+
+         let imgUrls = bodyText.match(imgRegx)
+         if(imgUrls.length > 1){
+
+             let imgNode = postUrl.children[0]
+             postUrl.insertBefore(document.createElement(`div`),imgNode)
+
+             // 去除默认尺寸
+             imgNode.removeAttribute("height")
+             imgNode.removeAttribute("width")
+             imgNode.src = bodyText.match(imgRegx)[0].replace(/"/g,``)
+
+             // 去除slidebar序号
+             document.querySelector(`.slidebar > ul >li:nth-child(${i})`).innerText = ``
+             i++
+         }
+         })
+        })
+    }
+
+    // 图片轮监听
+    function imgShow(){
+        let isShowNodeChilds,isShowNodeLength,isShowNode,isShowNodeIndex
+
+        function changeImgStyle(){
+           isShowNode = document.querySelector(`.slideshow>li[style*="block"]`)
+           isShowNodeChilds = isShowNode.parentNode.children
+           isShowNodeIndex = Array.prototype.indexOf.call(isShowNodeChilds,isShowNode)
+            console.log(isShowNodeIndex)
+           // 添加样式
+           // 后两个图片位于中、下
+
+           // isShowNode.className = `slideTopShow`
+
+        }
+
+        let imgObserverOptions ={
+
+            subtree: true,
+            attributes:true
+        }
+
+        var imgObserver = new MutationObserver(changeImgStyle);
+        imgObserver.observe(document.querySelector(`.slideshow`), imgObserverOptions);
+
 
     }
 
-    window.onload = fetchHotImg
+
+    let windowLoad = function(){
+        fetchHotImg()
+         //imgShow()
+    }
+    window.onload = windowLoad
 
     var css = `
 body{
@@ -121,5 +179,5 @@ background:green;
     setTimeout(() => {
         observer.disconnect()
         moveObserver.disconnect()
-    }, 500)
+    }, 300)
 })();
