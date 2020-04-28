@@ -377,8 +377,13 @@ justify-content: space-between;
 	border-radius:var(--border-radius-10);
 	justify-content:center;
 }
+
 #tabPAhn0P_title > ul > li.a{
 	background-color:var(--point);
+		
+}
+#tabPAhn0P_title > ul > li.a > a{
+	color:var(--font-color-light);
 }
 
 /* ---内容--- */
@@ -391,12 +396,13 @@ justify-content: space-between;
 }
 
 #tabPAhn0P_content > div > div > ol > li > a:last-child{
+	transition:0.2s all;
 	margin-bottom:8px;
 	display: inline-block;
-	box-shadow:var(--shadow-outline);
 	background-color:var(--element-background);
 	border-radius:var(--border-radius-10);
-  padding: var(--element-padding);
+   padding: var(--element-padding);
+	box-shadow:var(--shadow-outline);
 }
 
 #tabPAhn0P_content > div > div > ol > li:nth-child(1):before,
@@ -430,7 +436,12 @@ justify-content: space-between;
 	display:none;
 }
 
+/* hover */
 
+#tabPAhn0P_content > div > div > ol > li > a:hover{
+	
+	box-shadow:var(--shadow-hot);
+}
 
 /* ---------------热门图片------- */
 #frameCX66dD_left,
