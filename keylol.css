@@ -319,7 +319,10 @@ body {
   border-radius: var(--border-radius-200);
 }
 
-/* 头像下拉菜单 */
+/* 头像下拉菜单symbol */
+.dropdown>ul>li>span{
+	margin-right:8px;
+}
 
 /* 用户信息 */
 .list-inline {
@@ -378,6 +381,12 @@ justify-content: space-between;
 	border-radius:var(--border-radius-10);
    padding: var(--element-padding);
 	box-shadow:var(--shadow-outline);
+	
+	/*文本省略*/
+	white-space:nowrap;
+	text-overflow:ellipsis;
+	max-width:660px;
+	overflow:hidden;
 }
 
 
@@ -429,13 +438,14 @@ justify-content: space-between;
 
 /* ---------内容---------- */
 #tabPAhn0P_content{
-	--tabPAhn0P_content-height:516px;
+	--tabPAhn0P_content-height:558px;
 }
 
 #tabPAhn0P_content {
 	display:var(--display-flex);
 	width:680px;
  	padding-left:50px;
+	padding-right:10px;
    overflow-y: hidden;
 }
 #tabPAhn0P_content ol {
