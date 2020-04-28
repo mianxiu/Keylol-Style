@@ -24,6 +24,10 @@ html,body,ul,ol {
 	--element-padding:10px 8px;
 }
 :root{
+	--shadow-hot:0px 6px 10px rgba(0, 0, 0, 0.2);
+	--shadow-outline:0px 0px 1px rgba(0, 0, 0, 0.25);
+}
+:root{
 	/* color */
 	--background-color: #EBEBEB;
 	--font-color-light:#FAFAFA;
@@ -278,66 +282,94 @@ body {
 	font-weight:bold;
 }
 
-.slideshow li{
-	z-index:0;
+
+/* 底部占位 */
+.slideshow > li{
+	--slideshow-margin-left-top:-40px;
+	--slideshow-margin--left-middle:-20px;
+	--slideshow-margin-left-bottom:0px;
+	--slideshow-margin-left-bg:20px;
+}
+.slideshow > li{
+	transition:.2s all;
+	position:absolute;
+	margin-left:var(--slideshow-margin-left-bg);
+	top:60px;
+	opacity:0;
+	
+}
+
+/* 底部占位1 */
+.slideshow > li:nth-child(1){
+	position:absolute;
+	margin-left:var(--slideshow-margin--left-middle);
+	top:20px;
+	display:flex!important;
+	opacity:.6;
+}
+/* 底部占位2 */
+.slideshow > li:nth-child(2){
 	position:absolute;
 	top:40px;
+	margin-left:var(--slideshow-margin-left-bottom);
 	display:flex!important;
 	opacity:.25;
 }
 
 
 
+/* 轮播设置 */
+
 .slideshow>li[style*="block"]{
+	box-shadow:var(--shadow-hot);
 	z-index:3;
 	position:absolute;
-	margin-left:-40px;
+	margin-left:var(--slideshow-margin-left-top);
 	top:0px;
 	opacity:1;
 	
 }
 
-
 .slideshow>li[style*="block"]+li{
+	box-shadow:var(--shadow-hot);
 	z-index:2;
 	position:absolute;
-	margin-left:-20px;
+	margin-left:var(--slideshow-margin--left-middle);
 	top:20px;
 	display:flex!important;
 	opacity:.6;
 }
 
 .slideshow>li[style*="block"]+li+li{
+	box-shadow:var(--shadow-outline);
 	z-index:1;
 	position:absolute;
+	margin-left:var(--slideshow-margin-left-bottom);
 	top:40px;
 	display:flex!important;
 	opacity:.25;
 	
 }
 
-.slideTopShow{
-	
-}
-.slideMiddleShow{}
-.slideBottomShow{}
 
 
 /* 图片控制条 */
 .slidebar{
-
+	--slidebar-size:8px;
 }
+
 .slidebar > ul{
-	position:absolute;
-   top: 400px;
-	left:30px;
+	z-index:10;
+	position:absolute!important;
+   top: 400px!important;
+	left:30px!important;
 	display:var(--display-flex);
 	width:200px;
 	justify-content:space-between;
 }
 .slidebar > ul >li{
-	height:6px;
-	width:6px;
+	height:var(--slidebar-size);
+	width:var(--slidebar-size);
 	border-radius:var(--border-radius-200);
 	background-color:var(--background-color);
 	opacity:.3;
