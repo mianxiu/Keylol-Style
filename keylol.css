@@ -451,10 +451,11 @@ justify-content: space-between;
 	height:780px!important;
 }
 
+
 /* 更多按钮 */
 #tabPContentShow{
-	font-size:var(--font-size-12);
-	margin-top:var(--tabPAhn0P_content-height);
+	transition:.2s all;
+	font-size:var(--font-size-12);	
 	background-color:var(--element-background);
 	position:absolute;
 	display:var(--shadow-outline);
@@ -463,7 +464,20 @@ justify-content: space-between;
 	border-radius:var(--border-radius-10);
 	cursor:pointer;
 }
+#tabPContentShow:focus{
+	outline:none;
+}
 
+#tabPContentShow:hover{
+	box-shadow:var(--shadow-hot)
+}
+.tabPContentBtnHide{
+	margin-top:var(--tabPAhn0P_content-height);
+	
+}
+.tabPContentBtnShow{
+	margin-top:780px;
+}
 
 #tabPAhn0P_content li em ,#tabPAhn0P_content li >em+a:nth-last-of-type(2){
 	display:none;
