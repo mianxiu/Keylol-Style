@@ -31,6 +31,7 @@
   /* color */
   --background-color: #ebebeb;
   --element-background:#FAFAFA;
+	--menu-hover-background:#dedede;
   --point:#056396;
   --point-orange:#FD6C2D;
 	--point-yellow:#FDBB2D;
@@ -174,7 +175,7 @@ body {
   flex-direction: column;
 }
 .has-sub > ul > li:hover{
-	background-color:red;
+	background-color:var(--menu-hover-background);
 }
 
 /* -------------用户&搜索栏---------- */
@@ -301,13 +302,13 @@ body {
 .search-bar-form > .dropdown > .dropdown-menu > li.divider,
 #nav-user-action-bar > ul > .dropdown > ul > li.divider {
   height: var(--down-menu-divider-height);
-  background-color: red;
+  background-color:var(--menu-hover-background);
 }
 
 /* 下拉菜单hover效果*/
 .search-bar-form > .dropdown > .dropdown-menu > li:hover,
 #nav-user-action-bar > ul > .dropdown > ul > li:hover {
-  background-color: red;
+  background-color:var(--menu-hover-background);
 }
 
 /* 头像 */
