@@ -119,11 +119,13 @@
                 tabPContent.classList.add(`tabPContentShow`)
                 event.target.value = `show`
                 event.target.className = `tabPContentBtnShow`
+                event.target.innerText = `...`
 
             } else {
                 tabPContent.classList.remove(`tabPContentShow`)
                 event.target.value = `hide`
                 event.target.className = `tabPContentBtnHide`
+                event.target.innerText = `...+5`
             }
         }
 
