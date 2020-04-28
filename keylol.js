@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1764890_t0yv142u7m7.js
+// @require      https://at.alicdn.com/t/font_1764890_o7skms2tyh.js
 // ==/UserScript==
 
 (function () {
@@ -143,6 +143,19 @@
 
     }
 
+    // 添加深色模式
+     function darkMode(){
+     let ul = document.querySelector(`#nav-user-action-bar > ul > li.dropdown > ul`)
+     ul.insertBefore(document.createElement(`li`),ul.children[0])
+     ul.children[0].insertBefore(document.createElement(`a`),null)
+      ul.children[0].children[0].id = `darkmode`
+      let darkmodeNode = document.querySelector(`#darkmode`)
+      darkmodeNode.innerText = `深色模式`
+
+
+     }
+
+
 
     // symbol使用
     let symbol = function (id) {
@@ -155,6 +168,8 @@
         fetchHotImg()
         console.log(`add tabPAHn0P_content show more button`)
         hotPostShowMore()
+        console.log(`add darkmode`)
+        darkMode()
     }
 
     // DOM加载后
