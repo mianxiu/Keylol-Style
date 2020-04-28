@@ -6,17 +6,6 @@
   display: none !important;
 }
 
-html,
-body,
-ul,
-ol,
-button,
-p{
-  border: none;
-  margin: 0;
-  padding: 0;
-  list-style-type: none;
-}
 :root {
   --font-size-12: 12px;
   --font-size-14: 14px;
@@ -46,7 +35,31 @@ p{
 	--point-green:#67C8AE;
 	--point-blue:#6296E1;
   --font-color-light: #fafafa;
+	--font-nomal:#2C2C2C;
+	--font-second-title:#AEAEAE;
+	--font-second-aphal:rgba(0,0,0,.3);
+	--font-point:#C9D6E9;
+	--font-point-second-title:rgba(201,214,233,.5);
   --input-background: #dedede;
+}
+
+
+html,
+body,
+ul,
+ol,
+button,
+p,
+a{
+  border: none;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  text-decoration:none;
+  
+}
+a{
+	color:var(--font-nomal);
 }
 
 html {
