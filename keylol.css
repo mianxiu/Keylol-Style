@@ -425,8 +425,9 @@ justify-content: space-between;
 /* ---------内容---------- */
 #tabPAhn0P_content {
 	display:var(--display-flex);
+	width:680px;
  	padding-left:50px;
-	height: 520px;
+	height: 516px;
    overflow-y: hidden;
 }
 #tabPAhn0P_content ol {
