@@ -30,16 +30,11 @@
     var observer = new MutationObserver(clearCss);
     observer.observe(targetNode, observerOptions);
 
- window.addEventListener("loadstart", function(event) {
-    console.log("All resources finished loading!");
-  });
 
+
+    // 使用MutationObserver来消除节点`位移`，因为等dom加载后再操作会使元素`移位`
+    // 资源消耗大，谨慎使用
     // 通过更加详细的选择器来变相停止节点插入循环
-    // symbol使用
-    let symbol = function (id) {
-        return `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
-    }
-
 
     var createElement = function (){
 
@@ -48,12 +43,12 @@
      let navMenuParent = document.createElement(`nav`)
      navMenuParent.id = `nav-menu-parent`
 
-
     document.querySelector(`body`).insertBefore(navMenuParent,document.querySelector('#nav-menu'))
 
     }
 
     createElement()
+
 
     // 移动节点
     var moveElement = function () {
@@ -63,26 +58,23 @@
         let navMenu = document.querySelector('body>#nav-menu')
         let tbContainer = document.querySelector('body>.tb-container')
 
-        logo.innerHTML += symbol(`kelolsteam_panel_hot`)
         // 用户栏&LOGO
         navMenu.insertBefore(tbContainer, null)
         navMenu.insertBefore(document.querySelector('#nav-additional>#nav-user-action-bar'),null)
         navMenu.insertBefore(logo, navMenu.childNodes[0])
         navMenuParent.insertBefore(navMenu,null)
 
-
-
     }
 
     var listenElement = function(){
         moveElement()
     }
-    // 移动节点监听
+
     var moveObserver = new MutationObserver(listenElement);
     moveObserver.observe(targetNode, observerOptions);
 
 
-
+    // DOM加载完全后------------------------
     // fetch热门主题图片
     let i = 1
     function fetchHotImg(){
@@ -118,40 +110,28 @@
         })
     }
 
-    // 图片轮监听
-    function imgShow(){
-        let isShowNodeChilds,isShowNodeLength,isShowNode,isShowNodeIndex
-
-        function changeImgStyle(){
-           isShowNode = document.querySelector(`.slideshow>li[style*="block"]`)
-           isShowNodeChilds = isShowNode.parentNode.children
-           isShowNodeIndex = Array.prototype.indexOf.call(isShowNodeChilds,isShowNode)
-            console.log(isShowNodeIndex)
-           // 添加样式
-           // 后两个图片位于中、下
-
-           // isShowNode.className = `slideTopShow`
-
-        }
-
-        let imgObserverOptions ={
-
-            subtree: true,
-            attributes:true
-        }
-
-        var imgObserver = new MutationObserver(changeImgStyle);
-        imgObserver.observe(document.querySelector(`.slideshow`), imgObserverOptions);
 
 
+
+     // symbol使用
+    let symbol = function (id) {
+        return `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
     }
+
 
 
     let windowLoad = function(){
         fetchHotImg()
          //imgShow()
     }
-    window.onload = windowLoad
+
+    // DOM加载后
+    document.addEventListener("DOMContentLoaded", function(event) {
+       windowLoad()
+       document.querySelector('#nav-logo').innerHTML += symbol(`kelolsteam_panel_hot`)
+       console.log(`添加icons`)
+});
+
 
     var css = `
 body{
