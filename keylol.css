@@ -363,6 +363,7 @@ justify-content: space-between;
   height: 450px;
 }
 
+
 /* 版块列表-内容全局 */
 #tabPAhn0P_title > ul > li > a
 ,#tabPAhn0P_content > div > div > ol > li > a:last-child{
@@ -423,7 +424,10 @@ justify-content: space-between;
 
 /* ---------内容---------- */
 #tabPAhn0P_content {
- 	margin-left:50px;
+	display:var(--display-flex);
+ 	padding-left:50px;
+	height: 520px;
+   overflow-y: hidden;
 }
 #tabPAhn0P_content ol {
 
