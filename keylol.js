@@ -110,7 +110,35 @@
         })
     }
 
+    // 热门主题列表滚动监器
+    function hotPostShowMore(){
+        let tabPContent = document.querySelector(`#tabPAhn0P_content`)
 
+        let tabShow = function(event){
+if(tabPContentShow.value === `hide`){
+tabPContent.classList.add(`tabPContentShow`)
+    event.target.value = `show`
+
+}else{
+tabPContent.classList.remove(`tabPContentShow`)
+    event.target.value = `hide`
+}
+
+
+
+        }
+
+
+
+        let tabPContentShow = document.createElement(`button`)
+        tabPContentShow.id = `tabPContentShow`
+        tabPContentShow.innerText=`...+5`
+        tabPContentShow.value = `hide`
+
+        tabPContent.append(tabPContentShow)
+        tabPContentShow.addEventListener(`click`,tabShow)
+
+    }
 
 
      // symbol使用
@@ -119,17 +147,18 @@
     }
 
 
-
     let windowLoad = function(){
+        console.log(`add symbol icons`)
         fetchHotImg()
-         //imgShow()
+        console.log(`add tabPAHn0P_content show more button`)
+        hotPostShowMore()
     }
 
     // DOM加载后
     document.addEventListener("DOMContentLoaded", function(event) {
        windowLoad()
        document.querySelector('#nav-logo').innerHTML += symbol(`kelolsteam_panel_hot`)
-       console.log(`添加icons`)
+       
 });
 
 

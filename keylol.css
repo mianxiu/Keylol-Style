@@ -20,6 +20,8 @@
   --down-menu-height: 46px;
 	--down-menu-dual-line-height:92px;
   --down-menu-divider-height: 1px;
+	--margin-bottom-30:30px;
+	--margin-bottom-60:60px;
 }
 :root {
   --shadow-hot: 0px 6px 10px rgba(0, 0, 0, 0.25);
@@ -351,6 +353,7 @@ justify-content: space-between;
   width: 100%;
   flex-direction: row-reverse;
   justify-content: space-between;
+	margin-bottom:90px;
 }
 
 /* -----------tab---------------- */
@@ -422,12 +425,17 @@ justify-content: space-between;
 	background-color:var(--point-blue);
 }
 
+
+
 /* ---------内容---------- */
+#tabPAhn0P_content{
+	--tabPAhn0P_content-height:516px;
+}
+
 #tabPAhn0P_content {
 	display:var(--display-flex);
 	width:680px;
  	padding-left:50px;
-	height: 516px;
    overflow-y: hidden;
 }
 #tabPAhn0P_content ol {
@@ -435,6 +443,26 @@ justify-content: space-between;
   list-style-type: none;
 }
 
+#tabPAhn0P>div:nth-child(2){
+	transition:.2s all;
+	height: var(--tabPAhn0P_content-height);
+}
+.tabPContentShow{
+	height:780px!important;
+}
+
+/* 更多按钮 */
+#tabPContentShow{
+	font-size:var(--font-size-12);
+	margin-top:var(--tabPAhn0P_content-height);
+	background-color:var(--element-background);
+	position:absolute;
+	display:var(--shadow-outline);
+	padding: var(--element-padding);
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-10);
+	cursor:pointer;
+}
 
 
 #tabPAhn0P_content li em ,#tabPAhn0P_content li >em+a:nth-last-of-type(2){
