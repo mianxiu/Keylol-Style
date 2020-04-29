@@ -38,7 +38,23 @@
   --point-orange:#FD6C2D;
 	--point-yellow:#FDBB2D;
 	--point-green:#67C8AE;
-	--point-blue:#6296E1;
+  --point-blue:#6296E1;
+  /* subject */
+  --origni-bg:#1e262c;
+  --uplay-bg:#fafafa;
+  --gog-bg:#2c2c2c;
+  --window-store-bg:#ededed;
+  --epic-game-bg:#2a2a2a;
+  --sankwo-bg:#292e41;
+  --cube-bg:#1b344b;
+  --wegame-bg:#211f1e;
+  --console-bg:#2b2c31;
+  --mobile-bg:#fafafa;
+
+  /* game */
+  
+
+  /* font */
   --font-color-light: #fafafa;
 	--font-nomal:#2C2C2C;
 	--font-second-title:#AEAEAE;
