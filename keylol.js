@@ -6,8 +6,9 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1764890_nxmvjhv7obi.js
+// @require      https://at.alicdn.com/t/font_1764890_ujf36ulcyh.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
+
 // ==/UserScript==
 
 ; (function () {
