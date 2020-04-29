@@ -14,11 +14,11 @@
 ; (function () {
     "use strict"
 
-    function $(selector){
+    function $(selector) {
         return document.querySelector(selector)
     }
 
-    function $All(selector){
+    function $All(selector) {
         return document.querySelectorAll(selector)
     }
 
@@ -186,6 +186,7 @@
         // 合并两个游戏相关版块
         game.insertBefore(manufacturerNode, null)
         game.insertBefore(gameNode, null)
+        // 互助休闲
         forum.insertBefore(questionNode, null)
         forum.insertBefore(forumNode, null)
         translate.insertBefore(translateNode, null)
@@ -196,7 +197,6 @@
 
         // 广告
         let rowAds = $(`.row_ads`)
-        let forumNav = $(`.forum_nav`)
         // 社区服务
         let forumQuestion = $(`.forum_question`)
 
@@ -206,6 +206,29 @@
         forumQuestion.insertBefore(forumQuestionNode, null)
 
         // 关注重点
+        let forumNav = $(`.forum_nav`)
+        let navLeftNode = $(`.index_navi_left`)
+        let navRightNode = $(`.index_navi_right`)
+
+        let navHtml = navLeftNode.innerHTML + navRightNode.innerHTML
+
+        const linkRegx = navHtml.match(/<a.+\/a>/gm)
+        const forumNavTemplate = `
+            <div class="navItem-1">${linkRegx[14]}</div>
+            <div class="navItem-1">${linkRegx[7]}${linkRegx[0]}</div>
+            <div class="navItem-1">${linkRegx[4]}${linkRegx[8]}</div>
+            <div class="navItem-1">${linkRegx[1]}${linkRegx[9]}</div>
+            <div class="navItem-1">${linkRegx[5]}${linkRegx[12]}</div>
+            <div class="navItem-1">${linkRegx[10]}${linkRegx[2]}</div>
+            <div class="navItem-1">${linkRegx[13]}${linkRegx[6]}</div>
+            <div class="navItem-1">${linkRegx[3]}${linkRegx[11]}</div>
+        `
+
+        forumNav.innerHTML += forumNavTemplate
+        console.log()
+
+
+
 
         // 最后移动 index-subject-parent
         let wp = $(`#wp`)
@@ -387,7 +410,7 @@
         "kelolfree_panel_hardware",
         "kelolfree_panel_openbox"
     ]
-    function setFreeIcons(){
+    function setFreeIcons() {
         let freeNode = $All(
             `#index-subject-parent > div.index_subject_left > div.index_subject_forum > div:nth-child(2) > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
