@@ -1,4 +1,4 @@
-d// ==UserScript==
+// ==UserScript==
 // @name         keylol css
 // @namespace    http://tampermonkey.net/
 // @version      0.1
@@ -75,31 +75,6 @@ d// ==UserScript==
         navMenu.insertBefore(logo, navMenu.childNodes[0])
         navMenuParent.insertBefore(navMenu, null)
 
-        // 移动版块到index-subject-parent > index_subject_left
-        
-        let steam = document.querySelector(`#index-subject-parent`)
-        let game = document.querySelector(`#index-subject-parent`)
-        let forum = document.querySelector(`#index-subject-parent`)
-        let translateNode =  document.querySelector(`#index-subject-parent`)
-
-        let steamNode = document.querySelector(`#wp > div:nth-child(3)`)
-        let manufacturerNode =  document.querySelector(`#wp > div:nth-child(4)`)
-        let gameNode = document.querySelector(`#wp > div:nth-child(5)`)
-        let questionNode = document.querySelector(`#wp > div:nth-child(6)`)
-        let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
-        let translateNode =  document.querySelector(`#wp > div.index_middle_subject.clearfix`)
-
-        indexSubjectParentNode.insertBefore()
-
-        // 移动到index_subject_right
-        let rowAds = document.querySelector(`.index_navigation_mid rnd_ai_h`)
-        let forumNav = document.querySelector(`div.index_navi_left`)
-        let forumRight = document.querySelector(`.index_navi_right`)
-        let forumQuestion = document.querySelector(`.index_subject`)
-
-        let rowAdsNode = document.querySelector(`#index-subject-parent`)
-        let forumNavNode = document.querySelector(`#index-subject-parent`)
-        let forumQuestionNode = document.querySelector(`#index-subject-parent`)
 
     }
 
@@ -172,6 +147,52 @@ d// ==UserScript==
         tabPContentShow.addEventListener(`click`, tabShow)
     }
 
+    // 移动子版块
+    function moveChildForum(){
+                // 移动版块到index-subject-parent > index_subject_left
+                let steamNode = document.querySelector(`#wp > div:nth-child(3)`)
+                let manufacturerNode = document.querySelector(`#wp > div:nth-child(4)`)
+                let gameNode = document.querySelector(`#wp > div:nth-child(5)`)
+                let questionNode = document.querySelector(`#wp > div:nth-child(6)`)
+                let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
+                let translateNode =  document.querySelector(`#wp > div.index_middle_subject.clearfix`)
+        
+                
+                let steam = document.querySelector(`.index_subject_steam`)
+                let game = document.querySelector(`.index_subject_game`)
+                let forum = document.querySelector(`.index_subject_forum`)
+                let translate =  document.querySelector(`.index_subject_translate`)
+        
+                steam.insertBefore(steamNode,null)
+                game.insertBefore(manufacturerNode,null)
+                game.insertBefore(gameNode,null)
+                forum.insertBefore(questionNode,null)
+                forum.insertBefore(forumNode,null)
+                translate.insertBefore(translateNode,null)
+        
+                // 移动到index_subject_right
+                let rowAdsNode = document.querySelector(`.index_navigation_mid`)
+                let forumNavNode = document.querySelector(`div.index_navi_left`)
+                let forumRightNode = document.querySelector(`.index_navi_right`)
+                let forumQuestionNode = document.querySelector(`#wp > .index_subject`)
+        
+                let rowAds = document.querySelector(`.row_ads`)
+                let forumNav = document.querySelector(`.forum_nav`)
+                let forumQuestion = document.querySelector(`.forum_question`)
+        
+                rowAds.insertBefore(rowAdsNode,null)
+                forumNav.insertBefore(forumNavNode,null)
+                forumNav.insertBefore(forumRightNode,null)
+                forumQuestion.insertBefore(forumQuestionNode ,null)
+
+                // 最后移动 index-subject-parent 
+                let wp = document.querySelector(`#wp`)
+                wp.insertBefore(document.querySelector(`#index-subject-parent`),document.querySelector(`.bbs_daily_stats`))
+        
+    }
+
+
+
     // 添加深色模式
     function darkMode() {
         let ul = document.querySelector(`#nav-user-action-bar > ul > li.dropdown > ul`)
@@ -184,8 +205,6 @@ d// ==UserScript==
 
     // symbol使用
     // 数组的顺序对应元素
-    
- 
     let symbol = function (id) {
         let span = document.createElement(`span`)
         span.className = `symbol-icons`
@@ -238,6 +257,8 @@ d// ==UserScript==
         fetchHotImg()
         console.log(`add tabPAHn0P_content show more button`)
         hotPostShowMore()
+        console.log(`move child forum`)
+        moveChildForum()
         console.log(`add darkmode`)
         darkMode()
         console.log(`add down menu icons`)
