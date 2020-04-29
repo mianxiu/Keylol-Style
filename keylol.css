@@ -930,10 +930,45 @@ div.index_subject_game div.subject_row_detail_text_down{
 }
 .forum_nav > div{
 	margin-bottom:var(--marign-padding-18);
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
 }
 
 .forum_nav > div > a{
 	padding:8px 10px;
+}
+
+#index-subject-parent > div.index_subject_right > div.forum_nav > div.navItem-1 > a{}
+
+.forum_nav > .navItem-2 > a:nth-child(1),
+.forum_nav > .navItem-5 > a:nth-child(1),
+.forum_nav > .navItem-7 > a:nth-child(2){
+	background-color:var(--help-yellow);
+	color:var(--help-yellow-key);
+}
+
+.forum_nav > .navItem-3 > a:nth-child(1),
+.forum_nav > .navItem-5 > a:nth-child(2),
+.forum_nav > .navItem-7 > a:nth-child(1){
+	background-color:var(--help-blue);
+	color:var(--help-blue-key);
+}
+
+.forum_nav > .navItem-3 > a:nth-child(2),
+.forum_nav > .navItem-4 > a:nth-child(1),
+.forum_nav > .navItem-6 > a:nth-child(1),
+.forum_nav > .navItem-8 > a:nth-child(2){
+	background-color:var(--help-red);
+	color:var(--help-red-key);
+}
+
+
+.forum_nav > .navItem-2 > a:nth-child(2),
+.forum_nav > .navItem-4 > a:nth-child(2),
+.forum_nav > .navItem-6 > a:nth-child(2),
+.forum_nav > .navItem-8 > a:nth-child(1){
+	background-color:var(--help-green);
+	color:var(--help-green-key);
 }
 
 
