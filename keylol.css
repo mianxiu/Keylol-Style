@@ -178,11 +178,28 @@ body {
 	background-color:var(--menu-hover-background);
 }
 
+
+
 /* -------------用户&搜索栏---------- */
 #nav-additional {
   display: var(--display-flex);
 }
 
+
+/* 数量提示 */
+#nav-user-action-bar > ul > li > a{
+	display:var(--display-flex);
+	justify-content:center;
+}
+.badge{
+	display:var(--display-flex);
+	background-color:var(--point);
+	color:var(--font-color-light);
+	position:absolute;
+	padding:2px 6px;
+	border-radius:4px;
+	margin-top:30px;
+}
 /* -------搜索--------- */
 .tb-container {
   border-radius: var(--border-radius-200);
@@ -490,10 +507,8 @@ justify-content: space-between;
 	margin-top:780px;
 }
 
-#tabPAhn0P_content li em ,#tabPAhn0P_content li >em+a:nth-last-of-type(2),
-#tabPAhn0P_content li >a:nth-last-of-type(2),
-#tabPAhn0P_content li >a:nth-last-of-type(3),
-#tabPAhn0P_content li >a:nth-last-of-type(4){
+/* 隐藏用户 版块前缀*/
+#tabPAhn0P_content li em ,#tabPAhn0P_content li a{
 	display:none;
 }
 

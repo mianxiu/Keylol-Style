@@ -139,31 +139,54 @@
 
     // symbol使用
     // 数组的顺序对应元素
-    // 搜索栏和导航栏
-    let symbolNav = ['kelolmenu_iconsearch', 'kelolmenu_icon_mail', 'kelolmenu_icon_post_reply']
-    // 头像下拉菜单
-    let symbolDownMenu = ["kelolmenu_night_mode", "kelolmenu_setting", 'kelolmenu_connet_qq', 'kelolmenu_friend', 'kelolmenu_my_post', 'kelolmenu_collect', 'kelolmenu_icon_prop','kelolmenu_order']
+    
  
     let symbol = function (id) {
-        return `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
+        let span = document.createElement(`span`)
+        span.innerHTML += `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
+        return span
     }
 
-
+    // 下拉菜单icons添加
+     // 头像下拉菜单
+    const symbolDownMenu = ["kelolmenu_night_mode", "kelolmenu_setting", 'kelolmenu_connet_qq', 'kelolmenu_friend', 'kelolmenu_my_post', 'kelolmenu_collect', 'kelolmenu_icon_prop','kelolmenu_order']
     function setDownMenuIcons(){
         let downMenu = document.querySelectorAll(`#nav-user-action-bar > ul > li.dropdown > ul>li:not(.divider)`)
         let i=0
         downMenu.forEach(node=>{
             if(node.className == ``){
-                let span = document.createElement(`span`)
-                span.innerHTML += symbol(symbolDownMenu[i])
-                node.insertBefore(span,node.children[0])
+                node.insertBefore(symbol(symbolDownMenu[i]),node.children[0])
             }
             i++
         })
     }
 
+    // 搜索栏 消息 提醒
+    // 搜索栏和导航栏
+    const symbolNav = ['kelolmenu_iconsearch', 'kelolmenu_icon_mail', 'kelolmenu_icon_post_reply']
+    function setNavIcons(){
+
+        let navNodes = {
+            searchNode:document.querySelector(`.caret`),
+            actionNode:document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action`),
+            highLightNode:document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`)
+        }
+
+        let i= 0
+        for (const key in navNodes) {
+            let node = navNodes[key]
+
+            if(node.firstChild != null){
+                node.firstChild.nodeValue = ``
+            }
+            
+            navNodes[key].insertBefore(symbol(symbolNav[i]),node.children[0])
+            i++
+        }
+    }
+
     let windowLoad = function () {
-        console.log(`add symbol icons`)
+        console.log(`fetch hot img`)
         fetchHotImg()
         console.log(`add tabPAHn0P_content show more button`)
         hotPostShowMore()
@@ -171,12 +194,14 @@
         darkMode()
         console.log(`add down menu icons`)
         setDownMenuIcons()
+        console.log(`add nav menu icons`)
+        setNavIcons()
     }
 
     // DOM加载后
     document.addEventListener("DOMContentLoaded", function (event) {
         windowLoad()
-        document.querySelector("#nav-logo").innerHTML += symbol(`kelolsteam_panel_hot`)
+        //document.querySelector("#nav-logo").innerHTML += symbol(`kelolsteam_panel_hot`)
     })
 
     var css = `
