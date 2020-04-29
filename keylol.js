@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_nxmvjhv7obi.js
-// @require      https://at.alicdn.com/t/font_1791164_uuzp19ptvrf.js
+// @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // ==/UserScript==
 
 ; (function () {
@@ -75,8 +75,6 @@
         navMenu.insertBefore(document.querySelector("#nav-additional>#nav-user-action-bar"), null)
         navMenu.insertBefore(logo, navMenu.childNodes[0])
         navMenuParent.insertBefore(navMenu, null)
-
-
     }
 
     var listenElement = function () {
@@ -158,7 +156,6 @@
         let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
         let translateNode = document.querySelector(`#wp > div.index_middle_subject.clearfix`)
 
-
         let steam = document.querySelector(`.index_subject_steam`)
         let game = document.querySelector(`.index_subject_game`)
         let forum = document.querySelector(`.index_subject_forum`)
@@ -186,13 +183,10 @@
         forumNav.insertBefore(forumRightNode, null)
         forumQuestion.insertBefore(forumQuestionNode, null)
 
-        // 最后移动 index-subject-parent 
+        // 最后移动 index-subject-parent
         let wp = document.querySelector(`#wp`)
         wp.insertBefore(document.querySelector(`#index-subject-parent`), document.querySelector(`.bbs_daily_stats`))
-
     }
-
-
 
     // 添加深色模式
     function darkMode() {
@@ -215,11 +209,20 @@
 
     // 下拉菜单icons添加
     // 头像下拉菜单
-    const symbolDownMenu = ["kelolmenu_night_mode", "kelolmenu_setting", 'kelolmenu_connet_qq', 'kelolmenu_friend', 'kelolmenu_my_post', 'kelolmenu_collect', 'kelolmenu_icon_prop', 'kelolmenu_order']
+    const symbolDownMenu = [
+        "kelolmenu_night_mode",
+        "kelolmenu_setting",
+        "kelolmenu_connet_qq",
+        "kelolmenu_friend",
+        "kelolmenu_my_post",
+        "kelolmenu_collect",
+        "kelolmenu_icon_prop",
+        "kelolmenu_order",
+    ]
     function setDownMenuIcons() {
         let downMenu = document.querySelectorAll(`#nav-user-action-bar > ul > li.dropdown > ul>li:not(.divider)`)
         let i = 0
-        downMenu.forEach(node => {
+        downMenu.forEach((node) => {
             if (node.className == ``) {
                 node.insertBefore(symbol(symbolDownMenu[i]), node.children[0])
             }
@@ -229,13 +232,12 @@
 
     // 搜索栏 消息 提醒
     // 搜索栏和导航栏
-    const symbolNav = ['kelolmenu_iconsearch', 'kelolmenu_icon_mail', 'kelolmenu_icon_post_reply']
+    const symbolNav = ["kelolmenu_iconsearch", "kelolmenu_icon_mail", "kelolmenu_icon_post_reply"]
     function setNavIcons() {
-
         let navNodes = {
             searchNode: document.querySelector(`.search-bar-form > .dropdown `),
             actionNode: document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action`),
-            highLightNode: document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`)
+            highLightNode: document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`),
         }
 
         let i = 0
@@ -252,23 +254,84 @@
     }
 
     // steam平台工具
-    const symbolSteam = ['kelolsteam_panel_hot', 'kelolsteam_panel_code', 'kelolsteam_panel_translate', 'kelolsteam_panel_achivement', 'kelolsteam_panel_gamepeviews',
-        'kelolsteam_panel_gift', 'kelolsteam_panel_shopping', 'kelolsteam_panel_bundle', 'kelolsteam_panel_market', 'kelolsteam_panel_sharegame', 'kelolsteam_panel_resource']
+    const symbolSteam = [
+        "kelolsteam_panel_hot",
+        "kelolsteam_panel_code",
+        "kelolsteam_panel_translate",
+        "kelolsteam_panel_achivement",
+        "kelolsteam_panel_gamepeviews",
+        "kelolsteam_panel_gift",
+        "kelolsteam_panel_shopping",
+        "kelolsteam_panel_bundle",
+        "kelolsteam_panel_market",
+        "kelolsteam_panel_sharegame",
+        "kelolsteam_panel_resource",
+    ]
     function setSteamToolIcons() {
-        let steamNodes = document.querySelectorAll(`#index-subject-parent > div.index_subject_left > div.index_subject_steam > div > div.index_subject_row > div > div.subject_row_detail_pic > a`)
-        let i=0
-        steamNodes.forEach(node=>{
+        let steamNodes = document.querySelectorAll(
+            `#index-subject-parent > div.index_subject_left > div.index_subject_steam > div > div.index_subject_row > div > div.subject_row_detail_pic > a`
+        )
+        let i = 0
+        steamNodes.forEach((node) => {
             node.innerHTML = ``
-            node.insertBefore(symbol(symbolSteam[i]),null)
+            node.insertBefore(symbol(symbolSteam[i]), null)
             i++
         })
     }
 
     // 使用第二个引入链接
-    const symbolManufactrer = ['kelolmanufacturers_panel_origin','kelolmanufacturers_panel_uplay','kelolmanufacturers_panel_gog','kelolmanufacturers_panel_Windows_Store',
-'kelolmanufacturers_panel_epic_games','kelolmanufacturers_panel_other','kelolmanufacturers_panel_sonkwo','kelolmanufacturers_panel_cube','kelolmanufacturers_panel_wegame',
-'kelolmanufacturers_panel_console','kelolmanufacturers_panel_mobile']
-    
+    // 厂商logo
+    const symbolManufactrer = [
+        "kelolmanufacturers_panel_origin",
+        "kelolmanufacturers_panel_uplay",
+        "kelolmanufacturers_panel_gog",
+        "kelolmanufacturers_panel_Windows_Store",
+        "kelolmanufacturers_panel_epic_games",
+        "kelolmanufacturers_panel_other",
+        "kelolmanufacturers_panel_sonkwo",
+        "kelolmanufacturers_panel_cube",
+        "kelolmanufacturers_panel_wegame",
+        "kelolmanufacturers_panel_console",
+        "kelolmanufacturers_panel_mobile",
+    ]
+    function setManufactrerIcons() {
+        let manufactrerNode = document.querySelectorAll(
+            `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div > div.subject_row_detail_pic`
+        )
+        let i = 0
+        manufactrerNode.forEach((node) => {
+            node.innerHTML = ``
+            node.insertBefore(symbol(symbolManufactrer[i]), null)
+            i++
+        })
+    }
+
+    // 游戏logo
+    const symbolGameLogo = [
+        "kelolgame_panel_all_game",
+        "kelolgame_panel_ak",
+        "kelolgame_panel_dota_underlords",
+        "kelolgame_panel_dota2",
+        "kelolgame_panel_csgo",
+        "kelolgame_panel_survivel",
+        "kelolgame_panel_gtav",
+        "kelolgame_panel_valve",
+        "kelolgame_panel_ea",
+        "kelolgame_panel_uplay",
+        "kelolgame_panel_battle_net",
+        "kelolgame_panel_vr"
+    ]
+    function setGameIcons() {
+        let gameNode = document.querySelectorAll(
+            `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div > div.subject_row_detail_pic`
+        )
+        let i = 0
+        gameNode.forEach((node) => {
+            node.innerHTML = ``
+            node.insertBefore(symbol(symbolGameLogo[i]), null)
+            i++
+        })
+    }
 
     let windowLoad = function () {
         console.log(`fetch hot img`)
@@ -285,6 +348,9 @@
         setNavIcons()
         console.log(`add steamTool icons`)
         setSteamToolIcons()
+        console.log(`add steamTool icons`)
+        setManufactrerIcons()
+        setGameIcons()
     }
 
     // DOM加载后
