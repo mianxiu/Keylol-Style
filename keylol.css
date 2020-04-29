@@ -238,7 +238,12 @@ body {
 .search-bar-form > .dropdown {
   display: var(--display-flex);
 }
+
+/* 按钮 */
 .search-bar-form > .dropdown > button {
+  display:var(--display-flex);
+  align-items:center;
+  flex-direction:row-reverse;
   background-color: var(--input-background);
   margin-right: 14px;
   font: var(--font-size-12);
