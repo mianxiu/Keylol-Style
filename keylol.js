@@ -211,7 +211,7 @@
             <div class="navItem-4">${linkRegx[1]}${linkRegx[9]}</div>
             <div class="navItem-5">${linkRegx[5]}${linkRegx[12]}</div>
             <div class="navItem-6">${linkRegx[10]}${linkRegx[2]}</div>
-            <div class="navItem7">${linkRegx[13]}${linkRegx[6]}</div>
+            <div class="navItem-7">${linkRegx[13]}${linkRegx[6]}</div>
             <div class="navItem-8">${linkRegx[3]}${linkRegx[11]}</div>
         `
 

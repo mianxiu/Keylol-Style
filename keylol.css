@@ -910,6 +910,33 @@ div.index_subject_game div.subject_row_detail_text_down{
 }
 
 
+/*----------------right panle--------------------*/
+.row_ads{
+	height:159px;
+	margin-bottom:var(--margin-bottom-30);
+	box-shadow:var(--shadow-hot);
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+}
+
+#index-subject-parent > div.index_subject_right > div.row_ads > div > a > img{
+	height:159px!important;
+	width:356px!important;
+}
+
+/* 手册 */
+.forum_nav{
+	margin-bottom:var(--margin-bottom-30);
+}
+.forum_nav > div{
+	margin-bottom:var(--marign-padding-18);
+}
+
+.forum_nav > div > a{
+	padding:8px 10px;
+}
+
+
 
 
 /* 子版块图片*/
