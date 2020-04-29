@@ -143,6 +143,7 @@
  
     let symbol = function (id) {
         let span = document.createElement(`span`)
+        span.className = `symbol-icons`
         span.innerHTML += `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
         return span
     }
@@ -166,8 +167,10 @@
     const symbolNav = ['kelolmenu_iconsearch', 'kelolmenu_icon_mail', 'kelolmenu_icon_post_reply']
     function setNavIcons(){
 
+        //
+
         let navNodes = {
-            searchNode:document.querySelector(`.caret`),
+            searchNode:document.querySelector(`.search-bar-form > .dropdown `),
             actionNode:document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action`),
             highLightNode:document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`)
         }
