@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1764890_ujf36ulcyh.js
+// @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 
 // ==/UserScript==
@@ -409,6 +409,32 @@
         })
     }
 
+    // 社区指南
+    const symbolGuide = [
+        "kelolforum_help_start",
+        "kelolforum_help_announcement",
+        "kelolforum_help_feedback",
+        "kelolforum_help_activity",
+        "kelolforum_help_manage",
+        "kelolforum_help_null"
+    ]
+    function setGuideIcons() {
+        // kelo ads guide
+        $(`div.navItem-1`).insertBefore(symbol(symbolGuide[0]),$(`div.navItem-1`).children[0])
+
+
+        let guideNode = $All(
+            `#forum-question > div.index_subject_row > div > div.subject_row_detail_pic > a`
+        )
+        let i = 1
+        guideNode.forEach((node) => {
+            node.innerHTML = ``
+            node.insertBefore(symbol(symbolGuide[i]), null)
+            i++
+        })
+    }
+
+
     let windowLoad = function () {
         console.log(`fetch hot img`)
         fetchHotImg()
@@ -429,6 +455,7 @@
         setGameIcons()
         setHelpIcons()
         setFreeIcons()
+        setGuideIcons()
     }
 
     // DOM加载后
