@@ -799,7 +799,43 @@ justify-content: space-between;
 	background-color:var(--mobile-bg);
 }
 
-
+/* 子版块游戏 */
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(1){
+	background-color:var(--all-game-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(2){
+	background-color:var(--ak-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(3){
+	background-color:var(--dota-underlord-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(4){
+	background-color:var(--dota2-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(5){
+	background-color:var(--csgo-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(6){
+	background-color:var(--survivel-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7){
+	background-color:var(--gta-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(8){
+	background-color:var(--value-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9){
+	background-color:var(--ea-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(10){
+	background-color:var(--uplay-game-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(11){
+	background-color:var(--battle-net-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(12){
+	background-color:var(--vr-bg);
+}
 /* 子版块文字 */
 .subject_row_detail_text br{
 	display:none;
