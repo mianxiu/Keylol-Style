@@ -14,9 +14,17 @@
 ; (function () {
     "use strict"
 
+    function $(selector){
+        return document.querySelector(selector)
+    }
+
+    function $All(selector){
+        return document.querySelectorAll(selector)
+    }
+
     // 配合tampermonkey设置加载前移除css
     var clearCss = function () {
-        document.querySelectorAll(`link[rel=stylesheet]`).forEach((e) => {
+        $All(`link[rel=stylesheet]`).forEach((e) => {
             e.remove()
         })
     }
@@ -34,12 +42,12 @@
     // 通过更加详细的选择器来变相停止节点插入循环
 
     var createElement = function () {
-        let body = document.querySelector(`body`)
+        let body = $(`body`)
 
         // nav-menu添加新parent
         let navMenuParent = document.createElement(`nav`)
         navMenuParent.id = `nav-menu-parent`
-        document.querySelector(`body`).insertBefore(navMenuParent, document.querySelector("#nav-menu"))
+        $(`body`).insertBefore(navMenuParent, $("#nav-menu"))
 
         // 添加index_subject的父节点，分类
         const indexSubjectTemplate = `
@@ -51,7 +59,16 @@
         </div>
         <div class="index_subject_right">
             <div class="row_ads"></div>
-            <div class="forum_nav"></div>
+            <div class="forum_nav">
+                <div class="forum_nav_ads"></div>
+                <div class="forum_nav_1"></div>
+                <div class="forum_nav_2"></div>
+                <div class="forum_nav_3"></div>
+                <div class="forum_nav_4"></div>
+                <div class="forum_nav_5"></div>
+                <div class="forum_nav_6"></div>
+                <div class="forum_nav_7"></div>    
+            </div>
             <div class="forum_question"></div>
         </div>
         `
@@ -59,21 +76,21 @@
         indexSubjectParent.id = `index-subject-parent`
         indexSubjectParent.className = `index_subject_parent`
         indexSubjectParent.innerHTML += indexSubjectTemplate
-        document.querySelector("body").insertBefore(indexSubjectParent, null)
+        $("body").insertBefore(indexSubjectParent, null)
     }
 
     createElement()
 
     // 移动节点
     var moveElement = function () {
-        let logo = document.querySelector("body>.tb-container>#nav-logo")
-        let navMenuParent = document.querySelector("body>#nav-menu-parent")
-        let navMenu = document.querySelector("body>#nav-menu")
-        let tbContainer = document.querySelector("body>.tb-container")
+        let logo = $("body>.tb-container>#nav-logo")
+        let navMenuParent = $("body>#nav-menu-parent")
+        let navMenu = $("body>#nav-menu")
+        let tbContainer = $("body>.tb-container")
 
         // 用户栏&LOGO
         navMenu.insertBefore(tbContainer, null)
-        navMenu.insertBefore(document.querySelector("#nav-additional>#nav-user-action-bar"), null)
+        navMenu.insertBefore($("#nav-additional>#nav-user-action-bar"), null)
         navMenu.insertBefore(logo, navMenu.childNodes[0])
         navMenuParent.insertBefore(navMenu, null)
     }
@@ -91,7 +108,7 @@
     function fetchHotImg() {
         let imgRegx = /\"(https:\/\/blob\.keylol\.com\/forum.+?)\"/s
 
-        let hotImgPostUrls = document.querySelectorAll(`.slideshow>li>a`)
+        let hotImgPostUrls = $All(`.slideshow>li>a`)
 
         hotImgPostUrls.forEach((postUrl) => {
             //console.log(postUrl.href)
@@ -112,7 +129,7 @@
                         imgNode.src = bodyText.match(imgRegx)[0].replace(/"/g, ``)
 
                         // 去除slidebar序号
-                        document.querySelector(`.slidebar > ul >li:nth-child(${i})`).innerText = ``
+                        $(`.slidebar > ul >li:nth-child(${i})`).innerText = ``
                         i++
                     }
                 })
@@ -121,7 +138,7 @@
 
     // 热门主题列表滚动监器
     function hotPostShowMore() {
-        let tabPContent = document.querySelector(`#tabPAhn0P_content`)
+        let tabPContent = $(`#tabPAhn0P_content`)
         let moreText = `...+5`
         let tabShow = function (event) {
             if (tabPContentShow.value === `hide`) {
@@ -148,22 +165,22 @@
     }
 
     // 移动子版块
-    function moveChildForum() {
+    function moveIndexSubject() {
         // 移动版块到index-subject-parent > index_subject_left
-        let steamNode = document.querySelector(`#wp > div:nth-child(3)`)
-        let manufacturerNode = document.querySelector(`#wp > div:nth-child(4)`)
-        let gameNode = document.querySelector(`#wp > div:nth-child(5)`)
-        let questionNode = document.querySelector(`#wp > div:nth-child(6)`)
-        let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
-        let translateNode = document.querySelector(`#wp > div.index_middle_subject.clearfix`)
+        let steamNode = $(`#wp > div:nth-child(3)`)
+        let manufacturerNode = $(`#wp > div:nth-child(4)`)
+        let gameNode = $(`#wp > div:nth-child(5)`)
+        let questionNode = $(`#wp > div:nth-child(6)`)
+        let forumNode = $(`#wp > div:nth-child(7)`)
+        let translateNode = $(`#wp > div.index_middle_subject.clearfix`)
 
         manufacturerNode.id = `manufacturer`
         gameNode.id = `game`
 
-        let steam = document.querySelector(`.index_subject_steam`)
-        let game = document.querySelector(`.index_subject_game`)
-        let forum = document.querySelector(`.index_subject_forum`)
-        let translate = document.querySelector(`.index_subject_translate`)
+        let steam = $(`.index_subject_steam`)
+        let game = $(`.index_subject_game`)
+        let forum = $(`.index_subject_forum`)
+        let translate = $(`.index_subject_translate`)
 
         steam.insertBefore(steamNode, null)
         // 合并两个游戏相关版块
@@ -174,34 +191,34 @@
         translate.insertBefore(translateNode, null)
 
         // 移动到index_subject_right
-        let rowAdsNode = document.querySelector(`.index_navigation_mid`)
-        let forumNavNode = document.querySelector(`div.index_navi_left`)
-        let forumRightNode = document.querySelector(`.index_navi_right`)
-        let forumQuestionNode = document.querySelector(`#wp > .index_subject`)
+        let rowAdsNode = $(`.index_navigation_mid`)
+        let forumQuestionNode = $(`#wp >.index_subject`)
 
-        let rowAds = document.querySelector(`.row_ads`)
-        let forumNav = document.querySelector(`.forum_nav`)
-        let forumQuestion = document.querySelector(`.forum_question`)
+        // 广告
+        let rowAds = $(`.row_ads`)
+        let forumNav = $(`.forum_nav`)
+        // 社区服务
+        let forumQuestion = $(`.forum_question`)
 
         forumQuestionNode.id = `forum-question`
 
         rowAds.insertBefore(rowAdsNode, null)
-        forumNav.insertBefore(forumNavNode, null)
-        forumNav.insertBefore(forumRightNode, null)
         forumQuestion.insertBefore(forumQuestionNode, null)
 
+        // 关注重点
+
         // 最后移动 index-subject-parent
-        let wp = document.querySelector(`#wp`)
-        wp.insertBefore(document.querySelector(`#index-subject-parent`), document.querySelector(`.bbs_daily_stats`))
+        let wp = $(`#wp`)
+        wp.insertBefore($(`#index-subject-parent`), $(`.bbs_daily_stats`))
     }
 
     // 添加深色模式
     function darkMode() {
-        let ul = document.querySelector(`#nav-user-action-bar > ul > li.dropdown > ul`)
+        let ul = $(`#nav-user-action-bar > ul > li.dropdown > ul`)
         ul.insertBefore(document.createElement(`li`), ul.children[0])
         ul.children[0].insertBefore(document.createElement(`a`), null)
         ul.children[0].children[0].id = `darkmode`
-        let darkmodeNode = document.querySelector(`#darkmode`)
+        let darkmodeNode = $(`#darkmode`)
         darkmodeNode.innerText = `深色模式`
     }
 
@@ -227,7 +244,7 @@
         "kelolmenu_order",
     ]
     function setDownMenuIcons() {
-        let downMenu = document.querySelectorAll(`#nav-user-action-bar > ul > li.dropdown > ul>li:not(.divider)`)
+        let downMenu = $All(`#nav-user-action-bar > ul > li.dropdown > ul>li:not(.divider)`)
         let i = 0
         downMenu.forEach((node) => {
             if (node.className == ``) {
@@ -242,9 +259,9 @@
     const symbolNav = ["kelolmenu_iconsearch", "kelolmenu_icon_mail", "kelolmenu_icon_post_reply"]
     function setNavIcons() {
         let navNodes = {
-            searchNode: document.querySelector(`.search-bar-form > .dropdown `),
-            actionNode: document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action`),
-            highLightNode: document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`),
+            searchNode: $(`.search-bar-form > .dropdown `),
+            actionNode: $(`#nav-user-action-bar > ul > li > a.btn-user-action`),
+            highLightNode: $(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`),
         }
 
         let i = 0
@@ -275,7 +292,7 @@
         "kelolsteam_panel_resource",
     ]
     function setSteamToolIcons() {
-        let steamNodes = document.querySelectorAll(
+        let steamNodes = $All(
             `#index-subject-parent > div.index_subject_left > div.index_subject_steam > div > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
         let i = 0
@@ -302,7 +319,7 @@
         "kelolmanufacturers_panel_mobile",
     ]
     function setManufactrerIcons() {
-        let manufactrerNode = document.querySelectorAll(
+        let manufactrerNode = $All(
             `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
         let i = 0
@@ -329,7 +346,7 @@
         "kelolgame_panel_vr"
     ]
     function setGameIcons() {
-        let gameNode = document.querySelectorAll(
+        let gameNode = $All(
             `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
         let i = 0
@@ -351,7 +368,7 @@
         "kelolhelp_panel_magic"
     ]
     function setHelpIcons() {
-        let helpNode = document.querySelectorAll(
+        let helpNode = $All(
             `#index-subject-parent > div.index_subject_left > div.index_subject_forum > div:nth-child(1) > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
         let i = 0
@@ -371,7 +388,7 @@
         "kelolfree_panel_openbox"
     ]
     function setFreeIcons(){
-        let freeNode = document.querySelectorAll(
+        let freeNode = $All(
             `#index-subject-parent > div.index_subject_left > div.index_subject_forum > div:nth-child(2) > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
         let i = 0
@@ -388,7 +405,7 @@
         console.log(`add tabPAHn0P_content show more button`)
         hotPostShowMore()
         console.log(`move child forum`)
-        moveChildForum()
+        moveIndexSubject()
         console.log(`add darkmode`)
         darkMode()
         console.log(`add down menu icons`)
@@ -407,7 +424,7 @@
     // DOM加载后
     document.addEventListener("DOMContentLoaded", function (event) {
         windowLoad()
-        //document.querySelector("#nav-logo").innerHTML += symbol(`kelolsteam_panel_hot`)
+        //$("#nav-logo").innerHTML += symbol(`kelolsteam_panel_hot`)
     })
 
     var css = `
@@ -427,7 +444,7 @@ background:green;
     var node = document.createElement("style")
     node.type = "text/css"
     node.appendChild(document.createTextNode(css))
-    var html = document.querySelector("html")
+    var html = $("html")
     document.documentElement.appendChild(node)
 
     // Your code here...
