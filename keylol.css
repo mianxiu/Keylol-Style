@@ -70,6 +70,7 @@
   --font-color-light: #fafafa;
 	--font-nomal:#2C2C2C;
 	--font-second-title:#AEAEAE;
+	--font-second-light-aphal:rgba(255,255,255,.7);
 	--font-second-aphal:rgba(0,0,0,.3);
 	--font-point:#C9D6E9;
 	--font-point-second-title:rgba(201,214,233,.5);
@@ -756,93 +757,143 @@ justify-content: space-between;
 	box-shadow:var(--shadow-hot);
 }
 
+
+/* 子版块br */
+.subject_row_detail_text br{
+	display:none;
+}
+
+
+.subject_row_detail_text{
+	flex-direction:column;
+	color:var(--font-second-aphal);
+}
+
+
 /* 子版块颜色设置 */
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(1){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(1){
 	background-color:var(--origni-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2){
 	background-color:var(--uplay-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(3){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(3){
 	background-color:var(--gog-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4){
 	background-color:var(--window-store-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(5){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(5){
 	background-color:var(--epic-game-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6){
 	background-color:var(--gta-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(7){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(7){
 	background-color:var(--sankwo-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(8){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(8){
 	background-color:var(--cube-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(9){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(9){
 	background-color:var(--wegame-bg);
 }
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(10){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(10){
 	background-color:var(--console-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11){
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11){
 	background-color:var(--mobile-bg);
 }
 
 /* 子版块游戏 */
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(1){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(1){
 	background-color:var(--all-game-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(2){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(2){
 	background-color:var(--ak-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(3){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(3){
 	background-color:var(--dota-underlord-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(4){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(4){
 	background-color:var(--dota2-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(5){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(5){
 	background-color:var(--csgo-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(6){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(6){
 	background-color:var(--survivel-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7){
 	background-color:var(--gta-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(8){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(8){
 	background-color:var(--value-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9){
+ div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9){
 	background-color:var(--ea-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(10){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(10){
 	background-color:var(--uplay-game-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(11){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(11){
 	background-color:var(--battle-net-bg);
 }
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(12){
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(12){
 	background-color:var(--vr-bg);
 }
-/* 子版块文字 */
-.subject_row_detail_text br{
-	display:none;
+
+
+/* ------友商 游戏 全局标题 (黑底)------------ */
+div.index_subject_game div.subject_row_detail_text_up > a{
+	color:var(--font-color-light);
 }
-.subject_row_detail_text{
-	flex-direction:column;
+
+/* ------友商 游戏 全局二级标题 (黑底)------------ */
+div.index_subject_game div.subject_row_detail_text_down{
+	color:var(--font-second-light-aphal);
 }
+
+
+/* 友商二级字体 白底 */
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2) div.subject_row_detail_text_down,
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4) div.subject_row_detail_text_down,
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6) div.subject_row_detail_text_down,
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11) div.subject_row_detail_text_down{
+	color:var(--font-second-aphal);
+}
+
+/*标题 白底*/
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2) div.subject_row_detail_text_up > a,
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4) div.subject_row_detail_text_up > a,
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6) div.subject_row_detail_text_up > a,
+div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11) div.subject_row_detail_text_up > a{
+	color:var(--font-nomal);
+}
+
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7) > div.subject_row_detail_text > div.subject_row_detail_text_up > a,
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9) > div.subject_row_detail_text > div.subject_row_detail_text_up > a{
+	color:var(--font-nomal);
+}
+
+
+
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7) > div.subject_row_detail_text > div.subject_row_detail_text_down,
+div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9) > div.subject_row_detail_text > div.subject_row_detail_text_down{
+	color:var(--font-second-aphal);
+}
+
+
+
 
 /* 子版块图片*/
 .subject_row_detail_pic{
