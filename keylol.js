@@ -59,8 +59,11 @@
         </div>
         <div class="index_subject_right">
             <div class="row_ads"></div>
-            <div class="forum_nav"></div>
-            <div class="forum_question"></div>
+            <div class="forum_help">
+                <div class="forum_nav"></div>
+                <div class="forum_question"></div>
+            </div>
+
         </div>
         `
         let indexSubjectParent = document.createElement(`div`)
@@ -469,12 +472,7 @@ body{
 background:green;
 }
 
-    .icon {
-       width: 2em; height: 2em;
-       vertical-align: -0.15em;
-       fill: currentColor;
-       overflow: hidden;
-    }
+
 
 `
     // 添加css
