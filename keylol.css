@@ -52,7 +52,19 @@
   --mobile-bg:#fafafa;
 
   /* game */
-  
+  --all-game-bg:#056396;
+  --dota2-bg:#100f0f;
+  --battle-net-bg:#0b0d12;
+  --dota-underlord-bg:#342c4a;
+  --ea-bg:#fafafa;
+  --csgo-bg:#273548;
+  --vr-bg:#767676;
+  --gta-bg:#fafafa;
+  --survivel-bg:#f2a900;
+  --value-bg:#f74843;
+  --ak-bg:#2d2e31;
+  --uplay-game-bg:#398bf3;
+
 
   /* font */
   --font-color-light: #fafafa;
@@ -743,6 +755,50 @@ justify-content: space-between;
 .subject_row_detail:hover{
 	box-shadow:var(--shadow-hot);
 }
+
+/* 子版块颜色设置 */
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(1){
+	background-color:var(--origni-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2){
+	background-color:var(--uplay-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(3){
+	background-color:var(--gog-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4){
+	background-color:var(--window-store-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(5){
+	background-color:var(--epic-game-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6){
+	background-color:var(--gta-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(7){
+	background-color:var(--sankwo-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(8){
+	background-color:var(--cube-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(9){
+	background-color:var(--wegame-bg);
+}
+
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(10){
+	background-color:var(--console-bg);
+}
+#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11){
+	background-color:var(--mobile-bg);
+}
+
 
 /* 子版块文字 */
 .subject_row_detail_text br{
