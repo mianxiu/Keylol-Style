@@ -771,83 +771,83 @@ justify-content: space-between;
 
 
 /* 子版块颜色设置 */
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(1){
+#manufacturer > div.index_subject_row > div:nth-child(1){
 	background-color:var(--origni-bg);
 }
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2){
+#manufacturer > div.index_subject_row > div:nth-child(2){
 	background-color:var(--uplay-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(3){
+#manufacturer > div.index_subject_row > div:nth-child(3){
 	background-color:var(--gog-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4){
+#manufacturer > div.index_subject_row > div:nth-child(4){
 	background-color:var(--window-store-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(5){
+#manufacturer > div.index_subject_row > div:nth-child(5){
 	background-color:var(--epic-game-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6){
+#manufacturer > div.index_subject_row > div:nth-child(6){
 	background-color:var(--gta-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(7){
+#manufacturer > div.index_subject_row > div:nth-child(7){
 	background-color:var(--sankwo-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(8){
+#manufacturer > div.index_subject_row > div:nth-child(8){
 	background-color:var(--cube-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(9){
+#manufacturer > div.index_subject_row > div:nth-child(9){
 	background-color:var(--wegame-bg);
 }
 
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(10){
+#manufacturer > div.index_subject_row > div:nth-child(10){
 	background-color:var(--console-bg);
 }
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11){
+#manufacturer > div.index_subject_row > div:nth-child(11){
 	background-color:var(--mobile-bg);
 }
 
 /* 子版块游戏 */
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(1){
+#game > div.index_subject_row > div:nth-child(1){
 	background-color:var(--all-game-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(2){
+#game > div.index_subject_row > div:nth-child(2){
 	background-color:var(--ak-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(3){
+#game > div.index_subject_row > div:nth-child(3){
 	background-color:var(--dota-underlord-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(4){
+#game > div.index_subject_row > div:nth-child(4){
 	background-color:var(--dota2-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(5){
+#game > div.index_subject_row > div:nth-child(5){
 	background-color:var(--csgo-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(6){
+#game > div.index_subject_row > div:nth-child(6){
 	background-color:var(--survivel-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7){
+#game > div.index_subject_row > div:nth-child(7){
 	background-color:var(--gta-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(8){
+#game > div.index_subject_row > div:nth-child(8){
 	background-color:var(--value-bg);
 }
- div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9){
+ #game > div.index_subject_row > div:nth-child(9){
 	background-color:var(--ea-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(10){
+#game > div.index_subject_row > div:nth-child(10){
 	background-color:var(--uplay-game-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(11){
+#game > div.index_subject_row > div:nth-child(11){
 	background-color:var(--battle-net-bg);
 }
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(12){
+#game > div.index_subject_row > div:nth-child(12){
 	background-color:var(--vr-bg);
 }
 
@@ -864,31 +864,31 @@ div.index_subject_game div.subject_row_detail_text_down{
 
 
 /* 友商二级字体 白底 */
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2) div.subject_row_detail_text_down,
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4) div.subject_row_detail_text_down,
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6) div.subject_row_detail_text_down,
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11) div.subject_row_detail_text_down{
+#manufacturer > div.index_subject_row > div:nth-child(2) div.subject_row_detail_text_down,
+#manufacturer > div.index_subject_row > div:nth-child(4) div.subject_row_detail_text_down,
+#manufacturer > div.index_subject_row > div:nth-child(6) div.subject_row_detail_text_down,
+#manufacturer > div.index_subject_row > div:nth-child(11) div.subject_row_detail_text_down{
 	color:var(--font-second-aphal);
 }
 
 /*标题 白底*/
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(2) div.subject_row_detail_text_up > a,
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(4) div.subject_row_detail_text_up > a,
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(6) div.subject_row_detail_text_up > a,
-div.index_subject_game > div:nth-child(1) > div.index_subject_row > div:nth-child(11) div.subject_row_detail_text_up > a{
+#manufacturer > div.index_subject_row > div:nth-child(2) div.subject_row_detail_text_up > a,
+#manufacturer > div.index_subject_row > div:nth-child(4) div.subject_row_detail_text_up > a,
+#manufacturer > div.index_subject_row > div:nth-child(6) div.subject_row_detail_text_up > a,
+#manufacturer > div.index_subject_row > div:nth-child(11) div.subject_row_detail_text_up > a{
 	color:var(--font-nomal);
 }
 
 
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7) > div.subject_row_detail_text > div.subject_row_detail_text_up > a,
-#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9) > div.subject_row_detail_text > div.subject_row_detail_text_up > a{
+#index-subject-parent > div.index_subject_left > #game > div.index_subject_row > div:nth-child(7) > div.subject_row_detail_text > div.subject_row_detail_text_up > a,
+#index-subject-parent > div.index_subject_left > #game > div.index_subject_row > div:nth-child(9) > div.subject_row_detail_text > div.subject_row_detail_text_up > a{
 	color:var(--font-nomal);
 }
 
 
 
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(7) > div.subject_row_detail_text > div.subject_row_detail_text_down,
-div.index_subject_game > div:nth-child(2) > div.index_subject_row > div:nth-child(9) > div.subject_row_detail_text > div.subject_row_detail_text_down{
+#game > div.index_subject_row > div:nth-child(7) > div.subject_row_detail_text > div.subject_row_detail_text_down,
+#game > div.index_subject_row > div:nth-child(9) > div.subject_row_detail_text > div.subject_row_detail_text_down{
 	color:var(--font-second-aphal);
 }
 

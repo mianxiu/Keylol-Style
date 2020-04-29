@@ -157,12 +157,16 @@
         let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
         let translateNode = document.querySelector(`#wp > div.index_middle_subject.clearfix`)
 
+        manufacturerNode.id = `manufacturer`
+        gameNode.id = `game`
+
         let steam = document.querySelector(`.index_subject_steam`)
         let game = document.querySelector(`.index_subject_game`)
         let forum = document.querySelector(`.index_subject_forum`)
         let translate = document.querySelector(`.index_subject_translate`)
 
         steam.insertBefore(steamNode, null)
+        // 合并两个游戏相关版块
         game.insertBefore(manufacturerNode, null)
         game.insertBefore(gameNode, null)
         forum.insertBefore(questionNode, null)
@@ -178,6 +182,8 @@
         let rowAds = document.querySelector(`.row_ads`)
         let forumNav = document.querySelector(`.forum_nav`)
         let forumQuestion = document.querySelector(`.forum_question`)
+
+        forumQuestionNode.id = `forum-question`
 
         rowAds.insertBefore(rowAdsNode, null)
         forumNav.insertBefore(forumNavNode, null)
