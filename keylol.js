@@ -1,4 +1,4 @@
-// ==UserScript==
+d// ==UserScript==
 // @name         keylol css
 // @namespace    http://tampermonkey.net/
 // @version      0.1
@@ -15,13 +15,11 @@
     // 配合tampermonkey设置加载前移除css
     var clearCss = function () {
         document.querySelectorAll(`link[rel=stylesheet]`).forEach((e) => {
-            //console.log(e)
             e.remove()
         })
     }
 
     var targetNode = document.documentElement
-
     var observerOptions = {
         childList: true,
         subtree: true,
@@ -35,11 +33,31 @@
 
     var createElement = function () {
         let body = document.querySelector(`body`)
+
         // nav-menu添加新parent
         let navMenuParent = document.createElement(`nav`)
         navMenuParent.id = `nav-menu-parent`
-
         document.querySelector(`body`).insertBefore(navMenuParent, document.querySelector("#nav-menu"))
+
+        // 添加index_subject的父节点，分类
+        const indexSubjectTemplate = `
+        <div class="index_subject_left">
+            <div class="index_subject_steam"></div>
+            <div class="index_subject_game"></div>
+            <div class="index_subject_forum"></div>
+            <div class="index_subject_translate"></div>
+        </div>
+        <div class="index_subject_right">
+            <div class="row_ads"></div>
+            <div class="forum_nav"></div>
+            <div class="forum_question"></div>
+        </div>
+        `
+        let indexSubjectParent = document.createElement(`div`)
+        indexSubjectParent.id = `index-subject-parent`
+        indexSubjectParent.className = `index_subject_parent`
+        indexSubjectParent.innerHTML += indexSubjectTemplate
+        document.querySelector("body").insertBefore(indexSubjectParent,null )
     }
 
     createElement()
@@ -56,6 +74,33 @@
         navMenu.insertBefore(document.querySelector("#nav-additional>#nav-user-action-bar"), null)
         navMenu.insertBefore(logo, navMenu.childNodes[0])
         navMenuParent.insertBefore(navMenu, null)
+
+        // 移动版块到index-subject-parent > index_subject_left
+        
+        let steam = document.querySelector(`#index-subject-parent`)
+        let game = document.querySelector(`#index-subject-parent`)
+        let forum = document.querySelector(`#index-subject-parent`)
+        let translateNode =  document.querySelector(`#index-subject-parent`)
+
+        let steamNode = document.querySelector(`#wp > div:nth-child(3)`)
+        let manufacturerNode =  document.querySelector(`#wp > div:nth-child(4)`)
+        let gameNode = document.querySelector(`#wp > div:nth-child(5)`)
+        let questionNode = document.querySelector(`#wp > div:nth-child(6)`)
+        let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
+        let translateNode =  document.querySelector(`#wp > div.index_middle_subject.clearfix`)
+
+        indexSubjectParentNode.insertBefore()
+
+        // 移动到index_subject_right
+        let rowAds = document.querySelector(`.index_navigation_mid rnd_ai_h`)
+        let forumNav = document.querySelector(`div.index_navi_left`)
+        let forumRight = document.querySelector(`.index_navi_right`)
+        let forumQuestion = document.querySelector(`.index_subject`)
+
+        let rowAdsNode = document.querySelector(`#index-subject-parent`)
+        let forumNavNode = document.querySelector(`#index-subject-parent`)
+        let forumQuestionNode = document.querySelector(`#index-subject-parent`)
+
     }
 
     var listenElement = function () {
