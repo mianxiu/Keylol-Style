@@ -490,7 +490,10 @@ justify-content: space-between;
 	margin-top:780px;
 }
 
-#tabPAhn0P_content li em ,#tabPAhn0P_content li >em+a:nth-last-of-type(2){
+#tabPAhn0P_content li em ,#tabPAhn0P_content li >em+a:nth-last-of-type(2),
+#tabPAhn0P_content li >a:nth-last-of-type(2),
+#tabPAhn0P_content li >a:nth-last-of-type(3),
+#tabPAhn0P_content li >a:nth-last-of-type(4){
 	display:none;
 }
 

@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1764890_o7skms2tyh.js
+// @require      https://at.alicdn.com/t/font_1764890_l5i3ra69qt.js
 // ==/UserScript==
 
 ; (function () {
@@ -142,7 +142,7 @@
     // 搜索栏和导航栏
     let symbolNav = ['kelolmenu_iconsearch', 'kelolmenu_icon_mail', 'kelolmenu_icon_post_reply']
     // 头像下拉菜单
-    let symbolDownMenu = ["kelolmenu_night_mode", "kelolmenu_setting", 'kelolmenu_connet_qq', 'kelolmenu_friend', 'kelolmenu_my_post', 'kelolmenu_collect', 'kelolmenu_order']
+    let symbolDownMenu = ["kelolmenu_night_mode", "kelolmenu_setting", 'kelolmenu_connet_qq', 'kelolmenu_friend', 'kelolmenu_my_post', 'kelolmenu_collect', 'kelolmenu_icon_prop','kelolmenu_order']
  
     let symbol = function (id) {
         return `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
