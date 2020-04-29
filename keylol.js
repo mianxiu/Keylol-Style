@@ -57,7 +57,7 @@
         indexSubjectParent.id = `index-subject-parent`
         indexSubjectParent.className = `index_subject_parent`
         indexSubjectParent.innerHTML += indexSubjectTemplate
-        document.querySelector("body").insertBefore(indexSubjectParent,null )
+        document.querySelector("body").insertBefore(indexSubjectParent, null)
     }
 
     createElement()
@@ -148,47 +148,47 @@
     }
 
     // 移动子版块
-    function moveChildForum(){
-                // 移动版块到index-subject-parent > index_subject_left
-                let steamNode = document.querySelector(`#wp > div:nth-child(3)`)
-                let manufacturerNode = document.querySelector(`#wp > div:nth-child(4)`)
-                let gameNode = document.querySelector(`#wp > div:nth-child(5)`)
-                let questionNode = document.querySelector(`#wp > div:nth-child(6)`)
-                let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
-                let translateNode =  document.querySelector(`#wp > div.index_middle_subject.clearfix`)
-        
-                
-                let steam = document.querySelector(`.index_subject_steam`)
-                let game = document.querySelector(`.index_subject_game`)
-                let forum = document.querySelector(`.index_subject_forum`)
-                let translate =  document.querySelector(`.index_subject_translate`)
-        
-                steam.insertBefore(steamNode,null)
-                game.insertBefore(manufacturerNode,null)
-                game.insertBefore(gameNode,null)
-                forum.insertBefore(questionNode,null)
-                forum.insertBefore(forumNode,null)
-                translate.insertBefore(translateNode,null)
-        
-                // 移动到index_subject_right
-                let rowAdsNode = document.querySelector(`.index_navigation_mid`)
-                let forumNavNode = document.querySelector(`div.index_navi_left`)
-                let forumRightNode = document.querySelector(`.index_navi_right`)
-                let forumQuestionNode = document.querySelector(`#wp > .index_subject`)
-        
-                let rowAds = document.querySelector(`.row_ads`)
-                let forumNav = document.querySelector(`.forum_nav`)
-                let forumQuestion = document.querySelector(`.forum_question`)
-        
-                rowAds.insertBefore(rowAdsNode,null)
-                forumNav.insertBefore(forumNavNode,null)
-                forumNav.insertBefore(forumRightNode,null)
-                forumQuestion.insertBefore(forumQuestionNode ,null)
+    function moveChildForum() {
+        // 移动版块到index-subject-parent > index_subject_left
+        let steamNode = document.querySelector(`#wp > div:nth-child(3)`)
+        let manufacturerNode = document.querySelector(`#wp > div:nth-child(4)`)
+        let gameNode = document.querySelector(`#wp > div:nth-child(5)`)
+        let questionNode = document.querySelector(`#wp > div:nth-child(6)`)
+        let forumNode = document.querySelector(`#wp > div:nth-child(7)`)
+        let translateNode = document.querySelector(`#wp > div.index_middle_subject.clearfix`)
 
-                // 最后移动 index-subject-parent 
-                let wp = document.querySelector(`#wp`)
-                wp.insertBefore(document.querySelector(`#index-subject-parent`),document.querySelector(`.bbs_daily_stats`))
-        
+
+        let steam = document.querySelector(`.index_subject_steam`)
+        let game = document.querySelector(`.index_subject_game`)
+        let forum = document.querySelector(`.index_subject_forum`)
+        let translate = document.querySelector(`.index_subject_translate`)
+
+        steam.insertBefore(steamNode, null)
+        game.insertBefore(manufacturerNode, null)
+        game.insertBefore(gameNode, null)
+        forum.insertBefore(questionNode, null)
+        forum.insertBefore(forumNode, null)
+        translate.insertBefore(translateNode, null)
+
+        // 移动到index_subject_right
+        let rowAdsNode = document.querySelector(`.index_navigation_mid`)
+        let forumNavNode = document.querySelector(`div.index_navi_left`)
+        let forumRightNode = document.querySelector(`.index_navi_right`)
+        let forumQuestionNode = document.querySelector(`#wp > .index_subject`)
+
+        let rowAds = document.querySelector(`.row_ads`)
+        let forumNav = document.querySelector(`.forum_nav`)
+        let forumQuestion = document.querySelector(`.forum_question`)
+
+        rowAds.insertBefore(rowAdsNode, null)
+        forumNav.insertBefore(forumNavNode, null)
+        forumNav.insertBefore(forumRightNode, null)
+        forumQuestion.insertBefore(forumQuestionNode, null)
+
+        // 最后移动 index-subject-parent 
+        let wp = document.querySelector(`#wp`)
+        wp.insertBefore(document.querySelector(`#index-subject-parent`), document.querySelector(`.bbs_daily_stats`))
+
     }
 
 
@@ -213,14 +213,14 @@
     }
 
     // 下拉菜单icons添加
-     // 头像下拉菜单
-    const symbolDownMenu = ["kelolmenu_night_mode", "kelolmenu_setting", 'kelolmenu_connet_qq', 'kelolmenu_friend', 'kelolmenu_my_post', 'kelolmenu_collect', 'kelolmenu_icon_prop','kelolmenu_order']
-    function setDownMenuIcons(){
+    // 头像下拉菜单
+    const symbolDownMenu = ["kelolmenu_night_mode", "kelolmenu_setting", 'kelolmenu_connet_qq', 'kelolmenu_friend', 'kelolmenu_my_post', 'kelolmenu_collect', 'kelolmenu_icon_prop', 'kelolmenu_order']
+    function setDownMenuIcons() {
         let downMenu = document.querySelectorAll(`#nav-user-action-bar > ul > li.dropdown > ul>li:not(.divider)`)
-        let i=0
-        downMenu.forEach(node=>{
-            if(node.className == ``){
-                node.insertBefore(symbol(symbolDownMenu[i]),node.children[0])
+        let i = 0
+        downMenu.forEach(node => {
+            if (node.className == ``) {
+                node.insertBefore(symbol(symbolDownMenu[i]), node.children[0])
             }
             i++
         })
@@ -229,27 +229,32 @@
     // 搜索栏 消息 提醒
     // 搜索栏和导航栏
     const symbolNav = ['kelolmenu_iconsearch', 'kelolmenu_icon_mail', 'kelolmenu_icon_post_reply']
-    function setNavIcons(){
-
-        //
+    function setNavIcons() {
 
         let navNodes = {
-            searchNode:document.querySelector(`.search-bar-form > .dropdown `),
-            actionNode:document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action`),
-            highLightNode:document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`)
+            searchNode: document.querySelector(`.search-bar-form > .dropdown `),
+            actionNode: document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action`),
+            highLightNode: document.querySelector(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`)
         }
 
-        let i= 0
+        let i = 0
         for (const key in navNodes) {
             let node = navNodes[key]
 
-            if(node.firstChild != null){
+            if (node.firstChild != null) {
                 node.firstChild.nodeValue = ``
             }
-            
-            navNodes[key].insertBefore(symbol(symbolNav[i]),node.children[0])
+
+            navNodes[key].insertBefore(symbol(symbolNav[i]), node.children[0])
             i++
         }
+    }
+
+    // steam平台工具
+    const symbolSteam = ['kelolsteam_panel_hot', 'kelolsteam_panel_code', 'kelolsteam_panel_translate', 'kelolsteam_panel_achivement', 'kelolsteam_panel_gamepeviews',
+        'kelolsteam_panel_gift', 'kelolsteam_panel_shopping', 'kelolsteam_panel_bundle', 'kelolsteam_panel_market', 'kelolsteam_panel_sharegame', 'kelolsteam_panel_resource']
+    function setSteamToolIcons() {
+
     }
 
     let windowLoad = function () {
