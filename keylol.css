@@ -65,6 +65,16 @@
   --ak-bg:#2d2e31;
   --uplay-game-bg:#398bf3;
 
+  /* help */
+  --help-green:#8fd5c2;
+  --help-green-key:#125c49;
+  --help-yellow:#f2cc7b;
+  --help-yellow-key:#795812;
+  --help-red:#eda585;
+  --help-red-key:#783519;
+  --help-blue:#88b0e8;
+  --help-blue-key:#103a76;
+
 
   /* font */
   --font-color-light: #fafafa;
