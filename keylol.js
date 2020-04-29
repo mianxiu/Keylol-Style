@@ -6,7 +6,8 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1764890_l5i3ra69qt.js
+// @require      https://at.alicdn.com/t/font_1764890_nxmvjhv7obi.js
+// @require      https://at.alicdn.com/t/font_1791164_uuzp19ptvrf.js
 // ==/UserScript==
 
 ; (function () {
@@ -254,8 +255,20 @@
     const symbolSteam = ['kelolsteam_panel_hot', 'kelolsteam_panel_code', 'kelolsteam_panel_translate', 'kelolsteam_panel_achivement', 'kelolsteam_panel_gamepeviews',
         'kelolsteam_panel_gift', 'kelolsteam_panel_shopping', 'kelolsteam_panel_bundle', 'kelolsteam_panel_market', 'kelolsteam_panel_sharegame', 'kelolsteam_panel_resource']
     function setSteamToolIcons() {
-
+        let steamNodes = document.querySelectorAll(`#index-subject-parent > div.index_subject_left > div.index_subject_steam > div > div.index_subject_row > div > div.subject_row_detail_pic > a`)
+        let i=0
+        steamNodes.forEach(node=>{
+            node.innerHTML = ``
+            node.insertBefore(symbol(symbolSteam[i]),null)
+            i++
+        })
     }
+
+    // 使用第二个引入链接
+    const symbolManufactrer = ['kelolmanufacturers_panel_origin','kelolmanufacturers_panel_uplay','kelolmanufacturers_panel_gog','kelolmanufacturers_panel_Windows_Store',
+'kelolmanufacturers_panel_epic_games','kelolmanufacturers_panel_other','kelolmanufacturers_panel_sonkwo','kelolmanufacturers_panel_cube','kelolmanufacturers_panel_wegame',
+'kelolmanufacturers_panel_console','kelolmanufacturers_panel_mobile']
+    
 
     let windowLoad = function () {
         console.log(`fetch hot img`)
@@ -270,6 +283,8 @@
         setDownMenuIcons()
         console.log(`add nav menu icons`)
         setNavIcons()
+        console.log(`add steamTool icons`)
+        setSteamToolIcons()
     }
 
     // DOM加载后
