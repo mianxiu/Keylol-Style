@@ -296,7 +296,7 @@
     ]
     function setManufactrerIcons() {
         let manufactrerNode = document.querySelectorAll(
-            `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div > div.subject_row_detail_pic`
+            `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(1) > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
         let i = 0
         manufactrerNode.forEach((node) => {
@@ -323,12 +323,54 @@
     ]
     function setGameIcons() {
         let gameNode = document.querySelectorAll(
-            `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div > div.subject_row_detail_pic`
+            `#index-subject-parent > div.index_subject_left > div.index_subject_game > div:nth-child(2) > div.index_subject_row > div > div.subject_row_detail_pic > a`
         )
         let i = 0
         gameNode.forEach((node) => {
             node.innerHTML = ``
             node.insertBefore(symbol(symbolGameLogo[i]), null)
+            i++
+        })
+    }
+
+    // 问题互助
+    const symbolHelp = [
+        "kelolhelp_panel_tool_fail",
+        "kelolhelp_panel_trade_fail",
+        "kelolhelp_panel_forum_help",
+        "kelolhelp_panel_resource_help",
+        "kelolhelp_panel_game_crash",
+        "kelolhelp_panel_software",
+        "kelolhelp_panel_magic"
+    ]
+    function setHelpIcons() {
+        let helpNode = document.querySelectorAll(
+            `#index-subject-parent > div.index_subject_left > div.index_subject_forum > div:nth-child(1) > div.index_subject_row > div > div.subject_row_detail_pic > a`
+        )
+        let i = 0
+        helpNode.forEach((node) => {
+            node.innerHTML = ``
+            node.insertBefore(symbol(symbolHelp[i]), null)
+            i++
+        })
+    }
+
+    // 休闲杂谈
+    const symbolFree = [
+        "kelolfree_panel_water",
+        "kelolfree_panel_photo",
+        "kelolfree_panel_girl",
+        "kelolfree_panel_hardware",
+        "kelolfree_panel_openbox"
+    ]
+    function setFreeIcons(){
+        let freeNode = document.querySelectorAll(
+            `#index-subject-parent > div.index_subject_left > div.index_subject_forum > div:nth-child(2) > div.index_subject_row > div > div.subject_row_detail_pic > a`
+        )
+        let i = 0
+        freeNode.forEach((node) => {
+            node.innerHTML = ``
+            node.insertBefore(symbol(symbolFree[i]), null)
             i++
         })
     }
@@ -351,6 +393,8 @@
         console.log(`add steamTool icons`)
         setManufactrerIcons()
         setGameIcons()
+        setHelpIcons()
+        setFreeIcons()
     }
 
     // DOM加载后
