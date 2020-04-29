@@ -675,6 +675,7 @@ justify-content: space-between;
 
 /*------------------------版块内容--------------------------------*/
 #index-subject-parent div{
+	transition: .2s all;
 	display:var(--display-flex);
 	flex-wrap:wrap;
 	justify-content: end;
@@ -720,6 +721,11 @@ justify-content: space-between;
 	box-shadow:var(--shadow-outline);
 	border-radius:var(--border-radius-10);
 	background-color:var(--element-background);
+	align-items:center;
+}
+
+.subject_row_detail:hover{
+	box-shadow:var(--shadow-hot);
 }
 
 /* 子版块文字 */
@@ -728,6 +734,11 @@ justify-content: space-between;
 }
 .subject_row_detail_text{
 	flex-direction:column;
+}
+
+/* 子版块图片*/
+.subject_row_detail_pic{
+	margin-right:12px;
 }
 
 /* 汉化组 & 社区服务*/
