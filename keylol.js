@@ -59,16 +59,7 @@
         </div>
         <div class="index_subject_right">
             <div class="row_ads"></div>
-            <div class="forum_nav">
-                <div class="forum_nav_ads"></div>
-                <div class="forum_nav_1"></div>
-                <div class="forum_nav_2"></div>
-                <div class="forum_nav_3"></div>
-                <div class="forum_nav_4"></div>
-                <div class="forum_nav_5"></div>
-                <div class="forum_nav_6"></div>
-                <div class="forum_nav_7"></div>    
-            </div>
+            <div class="forum_nav"></div>
             <div class="forum_question"></div>
         </div>
         `
@@ -215,20 +206,16 @@
         const linkRegx = navHtml.match(/<a.+\/a>/gm)
         const forumNavTemplate = `
             <div class="navItem-1">${linkRegx[14]}</div>
-            <div class="navItem-1">${linkRegx[7]}${linkRegx[0]}</div>
-            <div class="navItem-1">${linkRegx[4]}${linkRegx[8]}</div>
-            <div class="navItem-1">${linkRegx[1]}${linkRegx[9]}</div>
-            <div class="navItem-1">${linkRegx[5]}${linkRegx[12]}</div>
-            <div class="navItem-1">${linkRegx[10]}${linkRegx[2]}</div>
-            <div class="navItem-1">${linkRegx[13]}${linkRegx[6]}</div>
-            <div class="navItem-1">${linkRegx[3]}${linkRegx[11]}</div>
+            <div class="navItem-2">${linkRegx[7]}${linkRegx[0]}</div>
+            <div class="navItem-3">${linkRegx[4]}${linkRegx[8]}</div>
+            <div class="navItem-4">${linkRegx[1]}${linkRegx[9]}</div>
+            <div class="navItem-5">${linkRegx[5]}${linkRegx[12]}</div>
+            <div class="navItem-6">${linkRegx[10]}${linkRegx[2]}</div>
+            <div class="navItem7">${linkRegx[13]}${linkRegx[6]}</div>
+            <div class="navItem-8">${linkRegx[3]}${linkRegx[11]}</div>
         `
 
         forumNav.innerHTML += forumNavTemplate
-        console.log()
-
-
-
 
         // 最后移动 index-subject-parent
         let wp = $(`#wp`)
