@@ -472,11 +472,12 @@
         console.log(`add down menu icons`)
         setDownMenuIcons()
 
-        console.log(`add tabPAHn0P_content show more button`)
-        hotPostShowMore()
         console.log(`fetch hot img`)
         fetchHotImg()
         
+        console.log(`add tabPAHn0P_content show more button`)
+        hotPostShowMore()
+
 
         console.log(`move child forum`)
         moveIndexSubject()
