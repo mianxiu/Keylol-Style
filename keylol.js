@@ -522,6 +522,7 @@
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
     const userRegx = /.*(<a href="suid.+?>)(.+?)(<\/a>).*/gms
+    const emRegx = /<em><span.+?<\/span><\/em>/gms
     const suidRegx = /.*suid-(\d+).*/gms
 
     // middle大小头像链接
@@ -541,17 +542,24 @@
       let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
       let divs = tHtml.match(divRegx)
 
-      let suid = divs[3].replace(suidRegx, '$1')
+      let suid = divs[3].replace(suidRegx, '$1') 
 
       let avatarUrl = avatar(suid)
 
       let user = tHtml.replace(
         userRegx,
         `
-               $1<span class="post-avatar"><img src="${avatarUrl}"></span>
+               $1
+               <span class="post-avatar">
+               <img src="${avatarUrl}">
+               </span>
                <span>$2</span>$3
           `
       )
+
+      let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
+
+      console.log(em)
 
       let trTemplate = `
                <div class="post-list-icn">${divs[0]}</div>
@@ -564,6 +572,7 @@
                         <div class="post-list-right-l">
                             <div class="post-list-by-member">${user}</div>
                             <div class="post-list-num">${divs[4]}</div>
+                            <div class="post-list-time">${em}</div>
                         </div>
                         <div class="post-list-right-r">
                         <!--时间-->            

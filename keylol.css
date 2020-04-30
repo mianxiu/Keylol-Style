@@ -1282,7 +1282,7 @@ display:none;
 	display:none;
 }
 #mn-nav-parent{
-	padding:22px;
+	padding:22px 0;
 	margin-bottom:var(--margin-bottom-30);
 }
 /*  类别分页 */
