@@ -256,10 +256,7 @@
         $(`.subforunm_foot_text`).innerText =  $(`.subforunm_foot_text`).innerText.replace(/\s+/gm,'')
 
         // 今日数量
-        let todayPostNodes =  $All(`.forum_today_post`)
-        todayPostNodes.forEach(node=>{
-            console.log(node.parentNode)
-        })
+
     }
 
     // 添加深色模式

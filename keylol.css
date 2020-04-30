@@ -698,12 +698,16 @@ body {
 }
 
 /*------------------------版块内容--------------------------------*/
-#index-subject-parent div {
+#index-subject-parent div{
   transition: 0.2s all;
   display: var(--display-flex);
   flex-wrap: wrap;
   justify-content: end;
 }
+#index-subject-parent div.row_ads{
+	display:none;
+}
+
 #index-subject-parent {
   display: var(--display-flex);
   flex-direction: row;
@@ -888,6 +892,7 @@ div.index_subject_game div.subject_row_detail_text_down {
   box-shadow: var(--shadow-hot);
   border-radius: var(--border-radius-10);
   overflow: hidden;
+  display:none;
 }
 .forum_nav > div:last-child {
   margin-bottom: 0px;
