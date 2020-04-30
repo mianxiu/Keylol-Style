@@ -1592,7 +1592,7 @@ body {
   background-color: var(--background-color);
 }
 .slideshow > li > a > div {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #1e1e1e 100%);
+  background:linear-gradient(180deg, rgba(255, 255, 255, 0) 30%, #1e1e1e 100%);
   position: absolute;
   top: 0;
 }
@@ -2012,7 +2012,7 @@ div.index_subject_game div.subject_row_detail_text_down {
 }
 .index_middle_subject div{
 	margin:0 0!important;
-	width:107px;
+	width:120px;
 	flex-direction:row;
 	flex-wrap:wrap!important;
 	
@@ -2047,16 +2047,6 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	display:none!important;
 }
 
-.middle_subject_left{
-	background: linear-gradient(180deg, rgba(172, 0, 0, 0) 10%, rgb(78, 0, 0) 76.55%), url(https://keylol.com/template/steamcn_metro/src/img/forum-icons-v3/pc/f280.png);
-	background-color:red;
-}
-.middle_subject_mid{
-	background-color:blue;
-}
-.middle_subject_right{
-	background-color:grey;
-}
 
 
 
@@ -2123,13 +2113,32 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 
 
 
+/* ------------------底部----------- */
+.subforunm_foot{
+	width:100%;
+	background-color:var(--point);
+	height:206px;
+}
+.subforunm_foot_bg {
+  display: none;
+}
+
+.qrcode > img{
+	display:none;
+}
+
+/* keylol copyright*/
+#nv_forum > div.subforunm_foot > div.subforunm_foot_banner > div.subforunm_foot_text_bottom > div > div:nth-child(1){
+	display:flex;
+}
+
 .foot_subject_left,
 .foot_subject_right {
   display: var(--display-flex);
   flex-direction: row;
 }
 
-/* 底部 */
-.subforunm_foot_bg {
-  display: none;
+
+.bbs_daily_stats{
+display:none;
 }

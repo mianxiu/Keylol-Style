@@ -62,8 +62,8 @@
             <div class="forum_help">
                 <div class="forum_nav"></div>
                 <div class="forum_question"></div>
-            </div>
-
+                <div class="forum_stats"></div>
+            </div>        
         </div>
         `
         let indexSubjectParent = document.createElement(`div`)
@@ -199,11 +199,36 @@
         rowAds.insertBefore(rowAdsNode, null)
         forumQuestion.insertBefore(forumQuestionNode, null)
 
+        // 每日在线人数&帖子信息
+        let statsNode = $(`.bbs_daily_stats`)
+        let clearStats = statsNode.innerHTML.split(`｜`)
+        let clearStatsMemberOnline = clearStats[5].split(`，`)
+        let statsTemplate = `
+        <div class="stats_member">
+            <span>${clearStats[0]}</span>
+            <span>${clearStats[1]}</span>
+            <span>${clearStatsMemberOnline[1]}</span>
+        </div>
+        <div class="stats_new_member">
+            <span>${clearStatsMemberOnline[4]}</span>
+        </div>
+        <div class="stats_total">
+            <span>${clearStats[2]}</span>
+            <span>${clearStats[3]}</span>
+        </div>
+        <div class="stats_hight">
+            <span>${clearStatsMemberOnline[2]}</span>
+        </div>
+        `
+
+        $(`.forum_stats`).innerHTML += statsTemplate
+        //console.log(clearStats)
+
+
         // 关注重点
         let forumNav = $(`.forum_nav`)
         let navLeftNode = $(`.index_navi_left`)
         let navRightNode = $(`.index_navi_right`)
-
         let navHtml = navLeftNode.innerHTML + navRightNode.innerHTML
 
         const linkRegx = navHtml.match(/<a.+\/a>/gm)
@@ -235,7 +260,7 @@
         darkmodeNode.innerText = `深色模式`
     }
 
-    // symbol使用
+    // symbol使用-------------------------------------
     // 数组的顺序对应元素
     let symbol = function (id) {
         let span = document.createElement(`span`)
@@ -284,7 +309,6 @@
             if (node.firstChild != null) {
                 node.firstChild.nodeValue = ``
             }
-
             navNodes[key].insertBefore(symbol(symbolNav[i]), node.children[0])
             i++
         }
@@ -439,6 +463,11 @@
 
 
     let windowLoad = function () {
+        console.log(`add nav menu icons`)
+        setNavIcons()
+        console.log(`add down menu icons`)
+        setDownMenuIcons()
+
         console.log(`fetch hot img`)
         fetchHotImg()
         console.log(`add tabPAHn0P_content show more button`)
@@ -447,10 +476,7 @@
         moveIndexSubject()
         console.log(`add darkmode`)
         darkMode()
-        console.log(`add down menu icons`)
-        setDownMenuIcons()
-        console.log(`add nav menu icons`)
-        setNavIcons()
+
         console.log(`add steamTool icons`)
         setSteamToolIcons()
         console.log(`add steamTool icons`)
