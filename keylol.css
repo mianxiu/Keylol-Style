@@ -20,6 +20,7 @@
 }
 :root {
   --display-flex: flex;
+	--border-radius-2:2px;
   --border-radius-10: 10px;
   --border-radius-200: 200px;
   --element-margin-bottom-18: 18px;
@@ -102,7 +103,8 @@ button,
 p,
 a,
 strong,
-label{
+label,
+input{
   border: none;
   margin: 0;
   padding: 0;
@@ -1274,10 +1276,10 @@ display:none;
 }
 
 /* --------------------------------hot post------------------------------------- */
-.z,.bm_h>h1,.subforum_left_title,.mn-nav-left > a > img{
+.z,.bm_h>h1,.subforum_left_title,.mn-nav-left > a > img,.th{
 	display:none;
 }
-
+/*  类别分页 */
 #mn-nav-parent a{
 	transition:.2s all;
 	line-height:var(--font-size-14);
@@ -1318,6 +1320,10 @@ display:none;
 	align-items:center;
 	padding:var(--element-padding);
 	background-color:var(--element-background);
+	
+}
+
+#thread_types > li > a{
 	box-shadow:var(--shadow-outline);
 }
 
@@ -1329,18 +1335,27 @@ display:none;
 	background-color:var(--element-background);
 }
 
-#thread_types:hover{
-	box-shadow:var(--shadow-hot);
-}
-#thread_types > li > a:hover{
+
+#thread_types > li > a:hover,
+.mn-nav-right >.pg > a:hover{
 	background-color:var(--menu-hover-background);
 }
 
-#thread_types > li.xw1.a > a{
+#thread_types > li.xw1.a > a,
+.mn-nav-right >.pg > strong{
 	background-color:var(--point);
 }
 
-#thread_types > li.xw1.a > a{
+#thread_types > li.xw1.a > a,
+.mn-nav-right >.pg > strong{
 	color:var(--font-color-light);
 }
-
+/* 输入 */
+.mn-nav-right >.pg > label > input{
+	padding:4px;
+	border-radius:var(--border-radius-2);
+	background-color:var(--input-background);
+	margin-right:10px;
+	
+}
+/* 列表 */
