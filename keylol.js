@@ -201,23 +201,25 @@
 
         // 每日在线人数&帖子信息
         let statsNode = $(`.bbs_daily_stats`)
-        let clearStats = statsNode.innerHTML.split(`｜`)
+        let clearStats = decodeURI(statsNode.innerHTML).split(`｜`)
         let clearStatsMemberOnline = clearStats[5].split(`，`)
+
+        console.log( clearStats[5].split(`，`))
         let statsTemplate = `
         <div class="stats_member">
             <span>${clearStats[0]}</span>
             <span>${clearStats[1]}</span>
-            <span>${clearStatsMemberOnline[1]}</span>
+            <span>${clearStatsMemberOnline[0]}</span>
         </div>
         <div class="stats_new_member">
-            <span>${clearStatsMemberOnline[4]}</span>
+            <span>${clearStats[4]}</span>
         </div>
         <div class="stats_total">
             <span>${clearStats[2]}</span>
             <span>${clearStats[3]}</span>
         </div>
         <div class="stats_hight">
-            <span>${clearStatsMemberOnline[2]}</span>
+            <span>${clearStatsMemberOnline[1]}</span>
         </div>
         `
 
