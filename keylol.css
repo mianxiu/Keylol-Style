@@ -1992,10 +1992,29 @@ div.index_subject_game div.subject_row_detail_text_down {
   margin-right: 12px;
 }
 
+#forum-question > .index_subject_row{
+	margin-bottom:var(--margin-bottom-0)
+}
+
 .forum_help {
   position: -webkit-sticky;
   position: sticky;
   top: 20px;
+}
+
+/* -------论坛信息-------- */
+.forum_stats{
+	font-size:var(--font-size-12);
+	color:var(--font-second-aphal);
+	flex-wrap:nowrap!important;
+	flex-direction:column!important;
+	margin-bottom:var(--margin-bottom-60);
+}
+.forum_stats span{
+	padding:10px;
+}
+.forum_stats em{
+	font-style:normal;
 }
 
 /* --------汉化组------------ */
@@ -2096,16 +2115,20 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	background-repeat:no-repeat;
 }
 
+
+/* 天邈 */
 .middle_subject_left{
 	background: linear-gradient(180deg, rgba(51, 43, 43, 0) 10%, #9b0202 66.35%),url(https://steamcdn-a.akamaihd.net/steamcommunity/public/images/avatars/83/83b16a956fa8ab857c791f832a85d8aaceb41418_full.jpg);
 	background-color:#282828;
 
 
 }
+/* 蒹葭 */
 .middle_subject_mid{
 	background: linear-gradient(180deg, rgba(224, 224, 224, 0) 0%, #1C1919 46.35%), url(https://tva3.sinaimg.cn/crop.0.0.180.180.180/73fdc439jw1e8qgp5bmzyj2050050aa8.jpg?KID=imgbed,tva&Expires=1588217198&ssig=heG1pLOcvd);
 	background-color:#c12d2a;
 }
+/* 起源 */
 .middle_subject_right{
 	background: linear-gradient(180deg, rgba(224, 224, 224, 0) 7.81%, #CF7A0A 42.19%), url(https://tva2.sinaimg.cn/crop.82.2.1140.1140.180/e9f4390djw1ein0bjh0jjj212c0vw41n.jpg?KID=imgbed,tva&Expires=1588220053&ssig=NHj9nZ6XcD);
 	background-color:#555;
@@ -2138,6 +2161,14 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
   flex-direction: row;
 }
 
+/* 底部广告 */
+.rnd_ai_f{
+	height:120px;
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+	margin: var(--margin-bottom-60) 0 ;
+}
 
 .bbs_daily_stats{
 display:none;
