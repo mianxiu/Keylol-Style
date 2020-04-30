@@ -100,7 +100,9 @@ ul,
 ol,
 button,
 p,
-a {
+a,
+strong,
+label{
   border: none;
   margin: 0;
   padding: 0;
@@ -1301,19 +1303,32 @@ display:none;
 	box-shadow:var(--shadow-hot);
 }
 
-#thread_types {
+/* 分类和分页 */
+#thread_types,.mn-nav-right >.pg{
+	display:flex;
 	transition:.2s all;
 	border-radius:var(--border-radius-10);
 	overflow:hidden;
 	box-shadow:var(--shadow-outline);
 }
-#thread_types > li > a{
+#thread_types > li > a,
+.mn-nav-right >.pg > a{
 	transition:.2s all;
 	display:flex;
+	align-items:center;
 	padding:var(--element-padding);
 	background-color:var(--element-background);
 	box-shadow:var(--shadow-outline);
 }
+
+.mn-nav-right >.pg > strong,
+.mn-nav-right >.pg > label{
+	display:flex;
+	align-items:center;
+	padding:0 10px;
+	background-color:var(--element-background);
+}
+
 #thread_types:hover{
 	box-shadow:var(--shadow-hot);
 }
@@ -1328,3 +1343,4 @@ display:none;
 #thread_types > li.xw1.a > a{
 	color:var(--font-color-light);
 }
+
