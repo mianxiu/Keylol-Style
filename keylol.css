@@ -1270,3 +1270,12 @@ display:none;
 	background-color:var(--point)!important;
 	box-shadow:var(--shadow-hot);
 }
+
+/* --------------------------------hot post------------------------------------- */
+.z,.y+h1{
+	display:none;
+}
+.subforum_left_title{
+	display:flex;
+	
+}
