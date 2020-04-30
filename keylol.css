@@ -1356,6 +1356,7 @@ display:none;
 }
 /* 输入 */
 .mn-nav-right >.pg > label > input{
+	width: 20px;
 	color:var(--font-nomal);
 	padding:4px;
 	border-radius:var(--border-radius-2);
@@ -1363,4 +1364,35 @@ display:none;
 	margin-right:10px;
 	
 }
-/* 列表 */
+/* --------列表------------ */
+.bm_c > table{
+	display: flex;
+   flex-direction: column;
+}
+
+.bm_c > table > tbody>tr,.post-list{
+	display: flex;
+	align-items:center;
+	justify-content:space-between;
+	width:100%;
+}
+.bm_c > table > tbody>tr div{
+	align-items:center;
+	display: flex;
+	
+}
+.bm_c > table > tbody>tr>div{
+	padding:var(--element-padding);
+}
+
+.post-list-by-member > a,.post-avatar{
+	align-items:center;
+	display:flex;
+	
+}
+.post-avatar > img{
+	width:18px;
+	height:18px;
+	border-radius:var(--border-radius-200);
+	
+}

@@ -11,7 +11,7 @@
 
 // ==/UserScript==
 
-;(function () {
+; (function () {
   "use strict"
 
   function $(selector) {
@@ -528,7 +528,7 @@
     function avatar(suid) {
       if (suid.length > 6) {
         return `//${document.domain}/uc_server/data/avatar/00${suid.charAt(0)}/${suid.charAt(1)}${suid.charAt(2)}/${suid.charAt(3)}${suid.charAt(4)}/${suid.charAt(5)}${suid.charAt(6)}_avatar_small.jpg`
-        
+
       } else {
         return `//${document.domain}/uc_server/data/avatar/000/${suid.charAt(0)}${suid.charAt(1)}/${suid.charAt(2)}${suid.charAt(3)}/${suid.charAt(4)}${suid.charAt(5)}_avatar_small.jpg`
 
@@ -541,7 +541,7 @@
       let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
       let divs = tHtml.match(divRegx)
 
-      let suid = divs[3].replace(suidRegx,'$1')
+      let suid = divs[3].replace(suidRegx, '$1')
 
       let avatarUrl = avatar(suid)
 
@@ -555,20 +555,22 @@
 
       let trTemplate = `
                <div class="post-list-icn">${divs[0]}</div>
-               <div class="post-list-left">
-                   <div class="post-list-common">${divs[1]}</div>
-               </div>
-               <div class="post-list-right">
-                   <!--会员-->
-                   <div class="post-list-right-l">
-                       <div class="post-list-by-member">${user}</div>
-                       <div class="post-list-num">${divs[4]}</div>
-                   </div>
-                   <div class="post-list-right-r">
-                   <!--时间-->            
-                       <div class="post-list-last-comment">${divs[5]}</div>
-                   </div>
-               </div>
+                <div class="post-list">
+                        <div class="post-list-left">
+                        <div class="post-list-common">${divs[1]}</div>
+                    </div>
+                    <div class="post-list-right">
+                        <!--会员-->
+                        <div class="post-list-right-l">
+                            <div class="post-list-by-member">${user}</div>
+                            <div class="post-list-num">${divs[4]}</div>
+                        </div>
+                        <div class="post-list-right-r">
+                        <!--时间-->            
+                            <div class="post-list-last-comment">${divs[5]}</div>
+                        </div>
+                    </div>
+                </div>
                <div class="post-list-tip">
                    <div class="post-list-by-forum">${divs[2]}</div>
                </div>  
