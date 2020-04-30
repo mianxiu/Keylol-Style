@@ -512,12 +512,14 @@
         let mnNavLeft = $(`.mn-nav-left`)
         let mnNavRight = $(`.mn-nav-right`)
         // new post btn
+        $(`#pgt>a`).innerText += `发新帖`
         mnNavLeft.insertBefore($(`#pgt>a`),null) 
         mnNavLeft.insertBefore($(`#thread_types`),null) 
 
         mnNavRight.insertBefore($(`#pgt>.pg`),null)
         mnNavRight.insertBefore($(`.y`),null)
 
+        
 
    }
 

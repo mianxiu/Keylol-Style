@@ -1272,10 +1272,59 @@ display:none;
 }
 
 /* --------------------------------hot post------------------------------------- */
-.z,.y+h1{
+.z,.bm_h>h1,.subforum_left_title,.mn-nav-left > a > img{
 	display:none;
 }
-.subforum_left_title{
+
+#mn-nav-parent a{
+	transition:.2s all;
+	line-height:var(--font-size-14);
+}
+#mn-nav-parent,#mn-nav-parent >div,#thread_types{
 	display:flex;
+	align-items:center;
+	justify-content: space-between;
 	
+}
+
+/* 发帖按钮 */
+.mn-nav-left > a{
+	padding:var(--element-padding);
+	background-color:var(--point);
+	margin-right:var(--marign-padding-18);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+	color:var(--font-color-light)
+}
+
+.mn-nav-left > a:hover{
+	box-shadow:var(--shadow-hot);
+}
+
+#thread_types {
+	transition:.2s all;
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+	box-shadow:var(--shadow-outline);
+}
+#thread_types > li > a{
+	transition:.2s all;
+	display:flex;
+	padding:var(--element-padding);
+	background-color:var(--element-background);
+	box-shadow:var(--shadow-outline);
+}
+#thread_types:hover{
+	box-shadow:var(--shadow-hot);
+}
+#thread_types > li > a:hover{
+	background-color:var(--menu-hover-background);
+}
+
+#thread_types > li.xw1.a > a{
+	background-color:var(--point);
+}
+
+#thread_types > li.xw1.a > a{
+	color:var(--font-color-light);
 }
