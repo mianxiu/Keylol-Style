@@ -521,7 +521,7 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-    const userRegx = /(<a href="suid.+?>)(.+?)(<\/a>)/gm
+    const userRegx = /.*(<a href="suid.+?>)(.+?)(<\/a>).*/gms
     const suidRegx = /.*suid-(\d+).*/gms
 
     // middle大小头像链接
