@@ -272,13 +272,17 @@
     darkmodeNode.innerText = `深色模式`
   }
 
-  // 首页symbol ---
+  // 首页symbol -----------------------------------------------------------------------
   // 数组的顺序对应元素
   let symbol = function (id) {
     let span = document.createElement(`span`)
     span.className = `symbol-icons`
     span.innerHTML += `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
     return span
+  }
+
+  let symbolHTML = function (id){
+      return `<span class="symbol-icons"><svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg></span>`
   }
 
   // 下拉菜单icons添加
@@ -596,7 +600,10 @@
                          <!--会员-->
                          <div class="post-list-right-l">
                              <div class="post-list-by-member">${user}</div>
-                             <div class="post-list-num">${divs[4]}</div>
+                             <div class="post-list-num">
+                             ${symbolHTML(hotPostInfoSymbol[2])}
+                             ${divs[4]}
+                             </div>
                              <div class="post-list-time">${em}</div>
                          </div>
                          <div class="post-list-right-r">
