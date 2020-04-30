@@ -20,7 +20,7 @@
 }
 :root {
   --display-flex: flex;
-	--border-radius-2:2px;
+	--border-radius-2:4px;
   --border-radius-10: 10px;
   --border-radius-200: 200px;
   --element-margin-bottom-18: 18px;
@@ -32,6 +32,8 @@
   --marign-padding-18: 18px;
   --margin-bottom-30: 30px;
   --margin-bottom-60: 60px;
+
+  --motion-2:.4s all;
 }
 :root {
   --shadow-hot: 0px 6px 10px rgba(0, 0, 0, 0.25);
@@ -1285,7 +1287,7 @@ display:none;
 }
 /*  类别分页 */
 #mn-nav-parent a{
-	transition:.2s all;
+	transition:var(--motion-2);
 	line-height:var(--font-size-14);
 }
 #mn-nav-parent,#mn-nav-parent >div,#thread_types{
@@ -1312,14 +1314,14 @@ display:none;
 /* 分类和分页 */
 #thread_types,.mn-nav-right >.pg{
 	display:flex;
-	transition:.2s all;
+	transition:var(--motion-2);
 	border-radius:var(--border-radius-10);
 	overflow:hidden;
 	box-shadow:var(--shadow-outline);
 }
 #thread_types > li > a,
 .mn-nav-right >.pg > a{
-	transition:.2s all;
+	transition:var(--motion-2);
 	display:flex;
 	align-items:center;
 	padding:var(--element-padding);
@@ -1370,6 +1372,21 @@ display:none;
    flex-direction: column;
 }
 
+.bm_c tbody{
+	margin-bottom:var(--marign-padding-18);
+}
+
+.bm_c tbody:hover .post-list{ 
+	transition:var(--motion-2);
+	box-shadow:var(--shadow-hot);
+}
+
+.bm_c > table > tbody>tr > div{
+	background-color:var(--element-background);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+}
+
 .bm_c > table > tbody>tr,.post-list{
 	display: flex;
 	align-items:center;
@@ -1394,5 +1411,18 @@ display:none;
 	width:18px;
 	height:18px;
 	border-radius:var(--border-radius-200);
+	
+}
+
+/* -- post tip---*/
+.post-list-tip a{
+	color:var(--font-second-light-aphal);
+}
+
+.post-list-tip{
+	display:none!important;
+	margin-top:34px;
+	position:absolute;
+	background-color:var(--tip-background)!important;
 	
 }
