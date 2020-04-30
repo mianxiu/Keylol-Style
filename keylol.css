@@ -2139,14 +2139,22 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 
 /* ------------------底部----------- */
 .subforunm_foot{
+	
 	--subforunm-left-width:783px;
+	color:var(--font-point);
 	font-size:var(--font-size-12);
 	width:100%;
 	background-color:var(--point);
-	height:158px;
+	height:128px;
+	align-items:flex-end;
 }
-.subforunm_foot_bg {
+.subforunm_foot_bg,.subforunm_foot br {
   display: none;
+}
+
+.subforunm_foot a{
+	padding-right:4px;
+	color:var(--font-point);
 }
 
 .subforunm_foot_banner{
@@ -2156,17 +2164,65 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	width:783px;
 }
 .subforunm_foot_intro{
+	display:flex;
+	flex-direction:column;
 	width:calc(var(--body-width) - var(--subforunm-left-width));
+}
+.subforunm_foot_intro_left{
+	display:none!important;
+}
+.subforunm_foot_intro_right{
+	display:flex;
+	flex-direction:column;
+	justify-content:right;
+}
+
+.subforunm_foot_intro_right > div{
+	 display: flex;
+    justify-content: flex-end;
 }
 
 /* 微信 */
-.qrcode > img{
+.qrcode{	
 	display:none;
+	position:absolute;
+	margin-top:-130px;
+	background-color:var(--tip-background);
+	padding:10px;
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+
+}
+.qrcode > img{
+	width:100px;
+	height:100px;
 }
 
-/* keylol copyright*/
+.wechat-hover-qrcode:hover>.qrcode{
+	display:flex;
+}
+
+.subforunm_foot_banner,.subforunm_foot_intro{
+	position:relative;
+	margin-bottom:34px;
+	justify-content:center;
+	
+}
+.subforunm_foot_text{
+	margin-bottom:10px;
+}
+
+
+
+/* ---------keylol copyrigh-------t*/
 #nv_forum > div.subforunm_foot > div.subforunm_foot_banner > div.subforunm_foot_text_bottom > div > div:nth-child(1){
 	display:flex;
+
+}
+
+#nv_forum > div.subforunm_foot > div.subforunm_foot_banner > div.subforunm_foot_text_bottom > div > div:nth-child(2),
+#nv_forum > div.subforunm_foot > div.subforunm_foot_intro.clearfix > div.subforunm_foot_intro_right > div:nth-child(2){
+	opacity:.5;
 }
 
 .foot_subject_left,

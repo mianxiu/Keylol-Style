@@ -250,6 +250,9 @@
         // 最后移动 index-subject-parent
         let wp = $(`#wp`)
         wp.insertBefore($(`#index-subject-parent`), $(`.bbs_daily_stats`))
+
+        // 去除footer多余空格
+        $(`.subforunm_foot_text`).innerText =  $(`.subforunm_foot_text`).innerText.replace(/\s+/gm,'')
     }
 
     // 添加深色模式
