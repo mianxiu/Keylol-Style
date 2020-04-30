@@ -459,8 +459,7 @@
     })
   }
 
-
-  // 首页symbol 
+  // 首页symbol
   // 导航栏的一系列函数
   function navFunction() {
     console.log(`add darkmode`)
@@ -493,41 +492,94 @@
     setGuideIcons()
   }
 
-
-   // 热门主题---------------------------------------------------------------------------------------
-   function moveHotPost(){
-        let mnNode = $(`.mn`)
-        // 创建父节点
-        let mnNavParentTemplate = `
+  // 热门主题---------------------------------------------------------------------------------------
+  function moveHotPost() {
+    let mnNode = $(`.mn`)
+    // 创建父节点
+    let mnNavParentTemplate = `
           <div class="mn-nav-left"></div>
           <div class="mn-nav-right"></div>
         `
-        let mnNavParent = document.createElement(`div`)
-        mnNavParent.id = `mn-nav-parent`
-        mnNavParent.innerHTML += mnNavParentTemplate
+    let mnNavParent = document.createElement(`div`)
+    mnNavParent.id = `mn-nav-parent`
+    mnNavParent.innerHTML += mnNavParentTemplate
 
+    mnNode.insertBefore(mnNavParent, mnNode.children[0])
+    // 移动子节点
+    let mnNavLeft = $(`.mn-nav-left`)
+    let mnNavRight = $(`.mn-nav-right`)
+    // new post btn
+    $(`#pgt>a`).innerText += `发新帖`
+    mnNavLeft.insertBefore($(`#pgt>a`), null)
+    mnNavLeft.insertBefore($(`#thread_types`), null)
 
-        mnNode.insertBefore(mnNavParent,mnNode.children[0])
-        // 移动子节点
-        let mnNavLeft = $(`.mn-nav-left`)
-        let mnNavRight = $(`.mn-nav-right`)
-        // new post btn
-        $(`#pgt>a`).innerText += `发新帖`
-        mnNavLeft.insertBefore($(`#pgt>a`),null) 
-        mnNavLeft.insertBefore($(`#thread_types`),null) 
+    mnNavRight.insertBefore($(`#pgt>.pg`), null)
+    mnNavRight.insertBefore($(`.y`), null)
 
-        mnNavRight.insertBefore($(`#pgt>.pg`),null)
-        mnNavRight.insertBefore($(`.y`),null)
+    // 列表
+    let trNode = $All(`tbody>tr`)
 
+    const tdRegx = /tr|td|th/gms
+    const divRegx = /<div.+?\/div>/gms
+    const userRegx = /(<a href="suid.+?>)(.+?)(<\/a>)/gm
+    const suidRegx = /.*suid-(\d+).*/gms
+
+    // middle大小头像链接
+    function avatar(suid) {
+      if (suid.length > 6) {
+        return `//${document.domain}/uc_server/data/avatar/00${suid.charAt(0)}/${suid.charAt(1)}${suid.charAt(2)}/${suid.charAt(3)}${suid.charAt(4)}/${suid.charAt(5)}${suid.charAt(6)}_avatar_small.jpg`
         
+      } else {
+        return `//${document.domain}/uc_server/data/avatar/000/${suid.charAt(0)}${suid.charAt(1)}/${suid.charAt(2)}${suid.charAt(3)}/${suid.charAt(4)}${suid.charAt(5)}_avatar_small.jpg`
 
-   }
+      }
+    }
 
+    for (let i = 1; i < trNode.length; i++) {
+      let tnode = trNode[i]
 
-  function hotPost(){
+      let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
+      let divs = tHtml.match(divRegx)
 
+      let suid = divs[3].replace(suidRegx,'$1')
+
+      let avatarUrl = avatar(suid)
+
+      let user = tHtml.replace(
+        userRegx,
+        `
+               $1<span class="post-avatar"><img src="${avatarUrl}"></span>
+               <span>$2</span>$3
+          `
+      )
+
+      let trTemplate = `
+               <div class="post-list-icn">${divs[0]}</div>
+               <div class="post-list-left">
+                   <div class="post-list-common">${divs[1]}</div>
+               </div>
+               <div class="post-list-right">
+                   <!--会员-->
+                   <div class="post-list-right-l">
+                       <div class="post-list-by-member">${user}</div>
+                       <div class="post-list-num">${divs[4]}</div>
+                   </div>
+                   <div class="post-list-right-r">
+                   <!--时间-->            
+                       <div class="post-list-last-comment">${divs[5]}</div>
+                   </div>
+               </div>
+               <div class="post-list-tip">
+                   <div class="post-list-by-forum">${divs[2]}</div>
+               </div>  
+          `
+
+      tnode.innerHTML = trTemplate
+    }
+  }
+
+  function hotPost() {
     moveHotPost()
-
   }
 
   // 判断页面来操作不同的节点
