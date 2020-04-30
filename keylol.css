@@ -995,6 +995,19 @@ div.index_subject_game div.subject_row_detail_text_down {
   top: 20px;
 }
 
+.forum_stats{
+	font-size:var(--font-size-12);
+	color:var(--font-second-title);
+	flex-wrap:nowrap!important;
+	flex-direction:column;
+}
+
+.forum_stats span{
+	padding:10px
+}
+.forum_stats em{
+	font-style:normal;
+}
 
 
 /* --------汉化组------------ */
