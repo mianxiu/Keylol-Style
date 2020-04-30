@@ -465,19 +465,21 @@
 
 
     let windowLoad = function () {
+        console.log(`add darkmode`)
+        darkMode()
         console.log(`add nav menu icons`)
         setNavIcons()
         console.log(`add down menu icons`)
         setDownMenuIcons()
 
-        console.log(`fetch hot img`)
-        fetchHotImg()
         console.log(`add tabPAHn0P_content show more button`)
         hotPostShowMore()
+        console.log(`fetch hot img`)
+        fetchHotImg()
+        
+
         console.log(`move child forum`)
         moveIndexSubject()
-        console.log(`add darkmode`)
-        darkMode()
 
         console.log(`add steamTool icons`)
         setSteamToolIcons()
