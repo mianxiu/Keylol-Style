@@ -8,6 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
+// @require      https://at.alicdn.com/t/font_1794025_2t0t8utx78c.js
 
 // ==/UserScript==
 
@@ -516,6 +517,31 @@
     mnNavRight.insertBefore($(`#pgt>.pg`), null)
     mnNavRight.insertBefore($(`.y`), null)
 
+  }
+
+  // 使用第三个symbol
+  // 列表替换
+  const hotPostStatsSymbol = [
+    "keylolreward",
+    "keylolclosepost",
+    "keylolvote",
+    "keyloltop",
+    "keylolglobaltop"
+  ]
+  const hotPostInfoSymbol = [
+    "keylolattach_img",
+    "keylolagree",
+    "keylolreply",
+    "keylolnewpost",
+    "keylolhidetop"
+  ]
+  const hotPostUserSymbol = [
+    "keyloladdfriend",
+    "keyloliconmail",
+    "keylolhi",
+    "keylolonline"
+  ]
+  function hotPostList() {
     // 列表
     let trNode = $All(`tbody>tr`)
 
@@ -542,48 +568,47 @@
       let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
       let divs = tHtml.match(divRegx)
 
-      let suid = divs[3].replace(suidRegx, '$1') 
+      let suid = divs[3].replace(suidRegx, '$1')
 
       let avatarUrl = avatar(suid)
 
       let user = tHtml.replace(
         userRegx,
         `
-               $1
-               <span class="post-avatar">
-               <img src="${avatarUrl}">
-               </span>
-               <span>$2</span>$3
-          `
+                $1
+                <span class="post-avatar">
+                <img src="${avatarUrl}">
+                </span>
+                <span>$2</span>$3
+           `
       )
 
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
 
-      console.log(em)
 
       let trTemplate = `
-               <div class="post-list-icn">${divs[0]}</div>
-                <div class="post-list">
-                        <div class="post-list-left">
-                        <div class="post-list-common">${divs[1]}</div>
-                    </div>
-                    <div class="post-list-right">
-                        <!--会员-->
-                        <div class="post-list-right-l">
-                            <div class="post-list-by-member">${user}</div>
-                            <div class="post-list-num">${divs[4]}</div>
-                            <div class="post-list-time">${em}</div>
-                        </div>
-                        <div class="post-list-right-r">
-                        <!--时间-->            
-                            <div class="post-list-last-comment">${divs[5]}</div>
-                        </div>
-                    </div>
-                </div>
-               <div class="post-list-tip">
-                   <div class="post-list-by-forum">${divs[2]}</div>
-               </div>  
-          `
+                <div class="post-list-icn">${divs[0]}</div>
+                 <div class="post-list">
+                         <div class="post-list-left">
+                         <div class="post-list-common">${divs[1]}</div>
+                     </div>
+                     <div class="post-list-right">
+                         <!--会员-->
+                         <div class="post-list-right-l">
+                             <div class="post-list-by-member">${user}</div>
+                             <div class="post-list-num">${divs[4]}</div>
+                             <div class="post-list-time">${em}</div>
+                         </div>
+                         <div class="post-list-right-r">
+                         <!--时间-->            
+                             <div class="post-list-last-comment">${divs[5]}</div>
+                         </div>
+                     </div>
+                 </div>
+                <div class="post-list-tip">
+                    <div class="post-list-by-forum">${divs[2]}</div>
+                </div>  
+           `
 
       tnode.innerHTML = trTemplate
     }
@@ -591,6 +616,7 @@
 
   function hotPost() {
     moveHotPost()
+    hotPostList()
   }
 
   // 判断页面来操作不同的节点
