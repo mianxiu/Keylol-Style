@@ -151,6 +151,10 @@ body {
   flex-direction: column-reverse;
 }
 
+.floatcontainer{
+  display: none;
+}
+
 .index_navi {
   display: var(--display-flex);
   flex-direction: row;
@@ -183,6 +187,7 @@ body {
 }
 
 .has-sub > ul {
+  z-index: 12;
   display: none;
   background-color: var(--background-color);
   box-shadow: var(--shadow-hot);
@@ -283,10 +288,17 @@ body {
 .search-bar-form > .dropdown > button {
   display: var(--display-flex);
   align-items: center;
+  justify-content: center;
   flex-direction: row-reverse;
   background-color: var(--input-background);
   margin-right: 14px;
   font: var(--font-size-12);
+}
+
+.search-bar-form > .dropdown > button > span:nth-child(1){
+    display: flex;
+    width: 100%;
+    min-width: 30px;
 }
 
 .search-bar-form > .dropdown > .dropdown-menu > li,
