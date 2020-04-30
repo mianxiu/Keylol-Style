@@ -73,8 +73,8 @@
   var moveObserver = new MutationObserver(listenElement)
   moveObserver.observe(targetNode, observerOptions)
 
-  // DOM加载完全后--------------------------------------------------------------
-
+  // DOM加载完全后
+  // 首页---------------------------------------------------------------------------------------
   // fetch热门主题图片
   let i = 1
   function fetchHotImg() {
@@ -271,7 +271,7 @@
     darkmodeNode.innerText = `深色模式`
   }
 
-  // symbol使用-------------------------------------
+  // 首页symbol ---
   // 数组的顺序对应元素
   let symbol = function (id) {
     let span = document.createElement(`span`)
@@ -459,6 +459,8 @@
     })
   }
 
+
+  // 首页symbol 
   // 导航栏的一系列函数
   function navFunction() {
     console.log(`add darkmode`)
@@ -491,6 +493,10 @@
     setGuideIcons()
   }
 
+
+   // 热门主题---------------------------------------------------------------------------------------
+
+  // 判断页面来操作不同的节点
   let pageDecide = function () {
     // https://keylol.com
     let keylolDomin = `.*${document.domain.replace(/\./gm, `\\.`)}`
