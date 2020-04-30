@@ -496,10 +496,37 @@
 
    // 热门主题---------------------------------------------------------------------------------------
    function moveHotPost(){
-        let mn = $(`.mn`)
+        let mnNode = $(`.mn`)
+        // 创建父节点
+        let mnNavParentTemplate = `
+          <div class="mn-nav-left"></div>
+          <div class="mn-nav-right"></div>
+        `
+        let mnNavParent = document.createElement(`div`)
+        mnNavParent.id = `mn-nav-parent`
+        mnNavParent.innerHTML += mnNavParentTemplate
+
+
+        mnNode.insertBefore(mnNavParent,mnNode.children[0])
+        // 移动子节点
+        let mnNavLeft = $(`.mn-nav-left`)
+        let mnNavRight = $(`.mn-nav-right`)
+        // new post btn
+        mnNavLeft.insertBefore($(`#pgt>a`),null) 
+        mnNavLeft.insertBefore($(`#thread_types`),null) 
+
+        mnNavRight.insertBefore($(`#pgt>.pg`),null)
+        mnNavRight.insertBefore($(`.y`),null)
 
 
    }
+
+
+  function hotPost(){
+
+    moveHotPost()
+
+  }
 
   // 判断页面来操作不同的节点
   let pageDecide = function () {
@@ -523,6 +550,7 @@
 
     if (isHotPost == true) {
       console.log(`i am hot post`)
+      hotPost()
     }
 
     if (isSubject == true) {
