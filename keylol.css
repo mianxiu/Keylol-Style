@@ -170,7 +170,6 @@ body {
   width: 100%;
   display: var(--display-flex);
   justify-content: center;
-  margin-bottom: 40px;
 }
 #nav-menu {
   height: 110px;
@@ -432,6 +431,7 @@ body {
   width: 100%;
   flex-direction: row-reverse;
   justify-content: space-between;
+  padding-top:var(--margin-bottom-30);
   margin-bottom: 90px;
 }
 
@@ -1279,6 +1279,10 @@ display:none;
 .z,.bm_h>h1,.subforum_left_title,.mn-nav-left > a > img,.th{
 	display:none;
 }
+#mn-nav-parent{
+	padding:22px;
+	margin-bottom:var(--margin-bottom-30);
+}
 /*  类别分页 */
 #mn-nav-parent a{
 	transition:.2s all;
@@ -1352,6 +1356,7 @@ display:none;
 }
 /* 输入 */
 .mn-nav-right >.pg > label > input{
+	color:var(--font-nomal);
 	padding:4px;
 	border-radius:var(--border-radius-2);
 	background-color:var(--input-background);
