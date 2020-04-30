@@ -205,7 +205,7 @@
         let clearStats = decodeURI(statsNode.innerHTML).split(`｜`)
         let clearStatsMemberOnline = clearStats[5].split(`，`)
 
-        console.log( clearStats[5].split(`，`))
+        console.log(clearStats[5].split(`，`))
         let statsTemplate = `
         <div class="stats_member">
             <span>${clearStats[0]}</span>
@@ -252,11 +252,13 @@
         let wp = $(`#wp`)
         wp.insertBefore($(`#index-subject-parent`), $(`.bbs_daily_stats`))
 
-        // 去除footer多余空格
-        $(`.subforunm_foot_text`).innerText =  $(`.subforunm_foot_text`).innerText.replace(/\s+/gm,'')
 
-        // 今日数量
+    }
 
+
+    // 去除footer多余空格
+    function footer(){   
+        $(`.subforunm_foot_text`).innerText = $(`.subforunm_foot_text`).innerText.replace(/\s+/gm, '')
     }
 
     // 添加深色模式
@@ -456,7 +458,7 @@
     ]
     function setGuideIcons() {
         // kelo ads guide
-        $(`div.navItem-1`).insertBefore(symbol(symbolGuide[0]),$(`div.navItem-1`).children[0])
+        $(`div.navItem-1`).insertBefore(symbol(symbolGuide[0]), $(`div.navItem-1`).children[0])
 
 
         let guideNode = $All(
@@ -470,8 +472,8 @@
         })
     }
 
-
-    let windowLoad = function () {
+    // 导航栏的一系列函数
+    function navFunction() {
         console.log(`add darkmode`)
         darkMode()
         console.log(`add nav menu icons`)
@@ -479,9 +481,14 @@
         console.log(`add down menu icons`)
         setDownMenuIcons()
 
+    }
+
+    // 首页样式函数
+    function home() {
+
         console.log(`fetch hot img`)
         fetchHotImg()
-        
+
         console.log(`add tabPAHn0P_content show more button`)
         hotPostShowMore()
 
@@ -499,9 +506,48 @@
         setGuideIcons()
     }
 
+    let pageDecide = function () {
+        // https://keylol.com
+        let keylolDomin = `.*${document.domain.replace(/\./gm, `\\.`)}`
+        let currentHref = window.location.href
+
+        // 首页 
+        let isHome = new RegExp(`(${keylolDomin}\/forum.php$)|(${keylolDomin}\/$)`, 'gm').test(currentHref)
+        // 热门主题列表
+        let isHotPost = new RegExp(`${keylolDomin}\/forum.php\\?mod=guide.*`).test(currentHref)
+        // 版块
+        let isSubject = new RegExp(`(${keylolDomin}\/forum.php\\?mod=forumdisplay.*)|${keylolDomin}\/f\\d{3}.*`).test(currentHref)
+        // 帖子
+        let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=viewthread.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
+
+
+        if (isHome == true) {
+            console.log(`i am home`)
+            home()
+        }
+
+        if (isHotPost == true) {
+            console.log(`i am hot post`)
+        }
+
+        if (isSubject == true) {
+            console.log(`i am subject`)
+        }
+
+        if (isPost == true) {
+            console.log(`i am post`)
+        }
+
+
+    }
+
     // DOM加载后
     document.addEventListener("DOMContentLoaded", function (event) {
-        windowLoad()
+
+
+        navFunction()
+        footer()
+        pageDecide()
         //$("#nav-logo").innerHTML += symbol(`kelolsteam_panel_hot`)
     })
 

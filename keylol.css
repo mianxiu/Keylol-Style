@@ -1154,6 +1154,10 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	color:var(--font-point);
 }
 
+.pipe{
+	padding-right:4px;
+}
+
 .subforunm_foot_banner{
 	display:flex;
 	flex-direction:column;
@@ -1211,6 +1215,8 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 
 
 
+
+
 /* ---------keylol copyrigh-------t*/
 #nv_forum > div.subforunm_foot > div.subforunm_foot_banner > div.subforunm_foot_text_bottom > div > div:nth-child(1){
 	display:flex;
@@ -1227,6 +1233,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
   display: var(--display-flex);
   flex-direction: row;
 }
+
 
 /* 底部广告 */
 .rnd_ai_f{
