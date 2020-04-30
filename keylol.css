@@ -969,6 +969,10 @@ div.index_subject_game div.subject_row_detail_text_down {
   display: none !important;
 }
 
+#forum-question > div.index_subject_row{
+	margin-bottom:0px;
+}
+
 #forum-question > div.index_subject_row > div {
   width: 314px;
   padding: 8px 10px;
@@ -1890,118 +1894,7 @@ div.index_subject_game div.subject_row_detail_text_down {
 }
 
 /*----------------right panle--------------------*/
-.row_ads {
-  height: 159px;
-  margin-bottom: var(--margin-bottom-30);
-  box-shadow: var(--shadow-hot);
-  border-radius: var(--border-radius-10);
-  overflow: hidden;
-}
-.forum_nav > div:last-child {
-  margin-bottom: 0px;
-}
 
-#index-subject-parent > div.index_subject_right > div.row_ads > div > a > img {
-  height: 159px !important;
-  width: 356px !important;
-}
-
-/* 手册 */
-.forum_nav {
-  margin-bottom: var(--margin-bottom-30);
-}
-.forum_nav > div {
-  margin-bottom: var(--marign-padding-18);
-  border-radius: var(--border-radius-10);
-  overflow: hidden;
-}
-
-.forum_nav > div > a {
-  padding: 8px 10px;
-}
-
-.navItem-1 {
-  padding: 8px 10px;
-  align-items: center;
-  background-color: var(--point);
-}
-
-.navItem-1 > a {
-  padding: 0 !important;
-  color: var(--font-point);
-}
-
-.navItem-2 > a:nth-child(1),
-.navItem-5 > a:nth-child(1),
-.navItem-7 > a:nth-child(2) {
-  background-color: var(--help-yellow);
-  color: var(--help-yellow-key);
-}
-
-.navItem-3 > a:nth-child(1),
-.navItem-5 > a:nth-child(2),
-.navItem-7 > a:nth-child(1) {
-  background-color: var(--help-blue);
-  color: var(--help-blue-key);
-}
-
-.navItem-3 > a:nth-child(2),
-.navItem-4 > a:nth-child(1),
-.navItem-6 > a:nth-child(1),
-.navItem-8 > a:nth-child(2) {
-  background-color: var(--help-red);
-  color: var(--help-red-key);
-}
-
-.navItem-2 > a:nth-child(2),
-.navItem-4 > a:nth-child(2),
-.navItem-6 > a:nth-child(2),
-.navItem-8 > a:nth-child(1) {
-  background-color: var(--help-green);
-  color: var(--help-green-key);
-}
-
-/* 子版块图片*/
-.navItem-1 > span,
-.subject_row_detail_pic {
-  margin-right: 12px;
-}
-.forum_help .icon {
-  width: 1.5em;
-  height: 1.5em;
-}
-
-/* 社区服务*/
-
-#forum-question .index_subject_title {
-  display: none !important;
-}
-
-#forum-question > div.index_subject_row > div {
-  width: 314px;
-  padding: 8px 10px;
-  background-color: var(--point);
-  flex-direction: row;
-}
-#forum-question > div.index_subject_row > div > div.subject_row_detail_text {
-  flex-direction: row;
-  color: var(--font-point-second-title);
-}
-
-#forum-question > div.index_subject_row > div > div.subject_row_detail_text > .subject_row_detail_text_up > a {
-  color: var(--font-point);
-  margin-right: 12px;
-}
-
-#forum-question > .index_subject_row{
-	margin-bottom:var(--margin-bottom-0)
-}
-
-.forum_help {
-  position: -webkit-sticky;
-  position: sticky;
-  top: 20px;
-}
 
 /* -------论坛信息-------- */
 .forum_stats{

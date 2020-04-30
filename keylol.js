@@ -189,13 +189,14 @@
         let rowAdsNode = $(`.index_navigation_mid`)
         let forumQuestionNode = $(`#wp >.index_subject`)
 
-        // 广告
+        // 小广告
         let rowAds = $(`.row_ads`)
         // 社区服务
         let forumQuestion = $(`.forum_question`)
 
         forumQuestionNode.id = `forum-question`
 
+        rowAds.style = "display:flex"
         rowAds.insertBefore(rowAdsNode, null)
         forumQuestion.insertBefore(forumQuestionNode, null)
 
@@ -253,6 +254,12 @@
 
         // 去除footer多余空格
         $(`.subforunm_foot_text`).innerText =  $(`.subforunm_foot_text`).innerText.replace(/\s+/gm,'')
+
+        // 今日数量
+        let todayPostNodes =  $All(`.forum_today_post`)
+        todayPostNodes.forEach(node=>{
+            console.log(node.parentNode)
+        })
     }
 
     // 添加深色模式
