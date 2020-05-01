@@ -471,7 +471,7 @@ body {
   display: inline-block;
   background-color: var(--element-background);
   border-radius: var(--border-radius-10);
-  padding: var(--element-padding);
+  padding: 10px 8px;
   box-shadow: var(--shadow-outline);
 
   /*文本省略*/
@@ -1401,6 +1401,7 @@ display:none;
 .bm_c img[alt*="digest"],
 .new .xi1,
 .common .xi1,
+.new>em:first-child,
 .lock > em:first-child,
 .common > em:first-child,
 .common > a[title*="只看已解决"],
@@ -1466,6 +1467,7 @@ tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 .post-list-icn{
 	height:var(--element-height-34);
 	margin-right:6px;
+	white-space:nowrap;
 	
 }
 .post-list-icn a{
