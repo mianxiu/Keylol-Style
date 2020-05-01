@@ -1367,6 +1367,10 @@ display:none;
 	
 }
 /* --------列表------------ */
+.bm_c > table .icon{
+	width:1.2em;
+	height:1.2em;
+}
 .bm_c > table{
 	display: flex;
    flex-direction: column;
@@ -1407,12 +1411,6 @@ display:none;
 	display:flex;
 	
 }
-.post-avatar > img{
-	width:18px;
-	height:18px;
-	border-radius:var(--border-radius-200);
-	
-}
 
 /* -- post tip---*/
 .post-list-tip a{
@@ -1426,3 +1424,31 @@ display:none;
 	background-color:var(--tip-background)!important;
 	
 }
+
+/* 头像 */
+.post-avatar{
+	margin-right:10px;
+}
+.post-avatar > img{
+	width:18px;
+	height:18px;
+	border-radius:var(--border-radius-200);
+	
+}
+
+.post-list-right-l > div{
+	margin-left:10px;
+}
+.post-list-right em{
+	font-style:normal;
+}
+
+/*总回复*/
+.post-list-num em{
+	display:none;
+}
+/*最后回复*/
+.post-list-last-comment{
+	display:none!important;
+}
+
