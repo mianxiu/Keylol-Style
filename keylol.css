@@ -1400,6 +1400,7 @@ display:none;
 .common .xi1,
 .lock > em:first-child,
 .common > em:first-child,
+.common > a[title*="只看已解决"],
 tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 	display:none;
 }

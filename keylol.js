@@ -567,7 +567,7 @@
 
 
     // new post btn
-    $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo[5])}<span>发新帖</span>`
+    $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
     mnNavLeft.insertBefore($(`#pgt>a`), null)
     mnNavLeft.insertBefore($(`#thread_types`), null)
 
@@ -695,7 +695,7 @@
 
       // 已完成
       let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx,      `
-        <span class="post-solve">$1${symbolHTML(symbolHotPostInfo[9])}$2</span>`
+        <span class="post-solve">$1${symbolHTML(symbolHotPostInfo.postsolve)}$2</span>`
         ): ''
 
 
