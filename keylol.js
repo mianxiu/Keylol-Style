@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_91lhb06tau.js
+// @require      https://at.alicdn.com/t/font_1794025_kpnshscbec.js
 
 // ==/UserScript==
 
@@ -584,12 +584,13 @@
     const divRegx = /<div.+?\/div>/gms
     const userRegx = /.*(<a href="suid.+?>)(.+?)(<\/a>).*/gms
     const emRegx = /<em><span.+?<\/span><\/em>/gms
-    const attacImgRegx = /<img.+?attach.+?>/gm
+    const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
     const tpsRegx = /<span class="tps">.+<\/span>/gm
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
+    const attachmentRegx = /<img.+?attachment.+?>/gms
     const suidRegx = /.*suid-(\d+).*/gms
 
 
@@ -659,6 +660,8 @@
       `
       : ''
 
+      let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo[8]) : ''
+
 
       let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/,`post-tps`) : ''
 
@@ -673,6 +676,7 @@
                           ${reward}
                           ${attachImg}
                           ${agree}
+                          ${attachment}
                           ${lock}
                           ${tps}
                          </div>
