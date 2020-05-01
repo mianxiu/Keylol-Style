@@ -1625,3 +1625,15 @@ display:none;
 	box-shadow:var(--shadow-hot);
 	padding:var(--element-padding);
 }
+.card_gender_0{
+	display:flex;
+	flex-direction:column;
+}
+.card_mn{
+	width:100%;
+	display:flex;
+}
+.avt{
+	border-radius:var(--border-radius-200);
+	overflow:hidden;
+}
