@@ -522,31 +522,31 @@
   // 热门主题---------------------------------------------------------------------------------------
     // 使用第三个symbol
   // 列表替换
-  const symbolHotPostStats = [
-    "keylolreward",
-    "keylolclosepost",
-    "keylolvote",
-    "keyloltop",
-    "keylolglobaltop"
-  ]
-  const symbolHotPostInfo = [
-    "keylolattach_img",
-    "keylolagree",
-    "keylolreply",
-    "keylolnewpost",
-    "keylolhidetop",
-    "keylolcreatenewpost",
-    "keylollock",
-    "keylolpostdigest",
-    "keylolpostattachment",
-    "keylolpostsolve"
-  ]
-  const symbolHotPostUser = [
-    "keyloladdfriend",
-    "keyloliconmail",
-    "keylolhi",
-    "keylolonline"
-  ]
+  const symbolHotPostStats = {
+    reward:"keylolreward",
+    closepost:"keylolclosepost",
+    vote:"keylolvote",
+    top:"keyloltop",
+    globaltop:"keylolglobaltop"
+}
+  const symbolHotPostInfo = {
+    attach_img:"keylolattach_img",
+    agree:"keylolagree",
+    reply:"keylolreply",
+    newpost:"keylolnewpost",
+    hidetop:"keylolhidetop",
+    createnewpost:"keylolcreatenewpost",
+    lock:"keylollock",
+    postdigest:"keylolpostdigest",
+    postattachment:"keylolpostattachment",
+    postsolve:"keylolpostsolve"
+  }
+  const symbolHotPostUser = {
+    addfriend:"keyloladdfriend",
+    iconmail:"keyloliconmail",
+    hi:"keylolhi",
+    online:"keylolonline"
+}
 
 
   function moveHotPost() {
@@ -586,6 +586,11 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
+    const icnFolderRegx = /folder_common/gm
+    const icnRewardRegx = /reward/gm
+    const icnLockRegx = /lock/gm
+    const icnGlobalRegx = /pin_2/gm
+    const icnTopRegx = /pin_1/gm
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
     const emRegx = /<em><span.+?<\/span><\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
@@ -638,6 +643,38 @@
            `
       ) : ''
 
+      // 判断帖子模式
+      let icn = ()=>{
+        let icnHtml = divs[0]
+
+        let icnTemplate = (symbolName)=>{
+          return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
+        }
+
+        // 默认新窗口
+        if(icnFolderRegx.test(icnHtml) == true){
+            return ''
+        }
+        // 悬赏
+        if(icnRewardRegx.test(icnHtml) == true){
+          return icnTemplate(symbolHotPostStats.reward)
+        }
+
+        if(icnLockRegx.test(icnHtml) == true){
+          return icnTemplate(symbolHotPostStats.closepost)
+        }
+
+        if(icnGlobalRegx.test(icnHtml) == true){
+          return icnTemplate(symbolHotPostStats.globaltop)
+        }
+        if(icnTopRegx.test(icnHtml) == true){
+          return icnTemplate(symbolHotPostStats.top)
+        }
+
+
+        return ''
+        
+      }
       // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
 
@@ -662,12 +699,12 @@
         ): ''
 
 
-      let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo[0]) : ''
-      let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo[1]) : ''
+      let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
+      let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
       let lock = tHtml.match(lockRegx) !== null ?
       `
           <span class="post-lock">
-                ${symbolHTML(symbolHotPostInfo[6])}
+                ${symbolHTML(symbolHotPostInfo.lock)}
                 <span>${tHtml.match(lockRegx)[0].replace(lockRegx,'$1')}</span>
                 <span class="post-lock-tip">阅读权限</span>
           </span>
@@ -701,21 +738,21 @@
       `
       : ''
 
-      let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo[8]) : ''
-      let digest = tHtml.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo[7]) : ''
+      let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
+      let digest = tHtml.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
       let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/,`post-tps`) : ''
 
       let newPost = tHtml.match(newPostRegx) !== null ? tHtml.match(newPostRegx)[0].replace(newPostRegx,
       `
       $1
-      ${symbolHTML(symbolHotPostInfo[3])}
+      ${symbolHTML(symbolHotPostInfo.newpost)}
       <span class="post-new-post-tip">新主题</span>
       $3
       `
       ): ''
 
       let trTemplate = `
-                <div class="post-list-icn">${divs[0]}</div>
+                ${icn()}
                 ${subject}
                 ${tag}
                  <div class="post-list">
@@ -742,7 +779,7 @@
                          <div class="post-list-right-l">
                              <div class="post-list-by-member">${user}</div>
                              <div class="post-list-num">
-                             ${symbolHTML(symbolHotPostInfo[2])}
+                             ${symbolHTML(symbolHotPostInfo.reply)}
                              ${divs[4]}
                              </div>
                              <div class="post-list-time">${em}</div>
