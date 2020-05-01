@@ -572,7 +572,10 @@
     const divRegx = /<div.+?\/div>/gms
     const userRegx = /.*(<a href="suid.+?>)(.+?)(<\/a>).*/gms
     const emRegx = /<em><span.+?<\/span><\/em>/gms
+    const attacImgRegx = /<img.+?attach.+?>/gm
+    const agreeRegx = /<img.+?agree.+?>/gm
     const suidRegx = /.*suid-(\d+).*/gms
+
 
     // middle大小头像链接
     function avatar(suid) {
@@ -595,6 +598,7 @@
 
       let avatarUrl = avatar(suid)
 
+      // 用户头像名称
       let user = tHtml.replace(
         userRegx,
         `
@@ -606,14 +610,23 @@
            `
       )
 
+      // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
 
+      let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo[0]) : ''
+      let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo[1]) : ''
 
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
                  <div class="post-list">
                          <div class="post-list-left">
-                         <div class="post-list-common">${divs[1]}</div>
+                         <div class="post-list-common">
+                         ${divs[1]}
+                         <div class="post-info">
+                          ${attachImg}
+                          ${agree}
+                         </div>
+                         </div>
                      </div>
                      <div class="post-list-right">
                          <!--会员-->
@@ -635,7 +648,6 @@
                     <div class="post-list-by-forum">${divs[2]}</div>
                 </div>  
            `
-
       tnode.innerHTML = trTemplate
     }
   }
