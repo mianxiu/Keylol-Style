@@ -607,6 +607,7 @@
     const subjectHotRegx = /<a title.+?\a>/gm
     const tagRegx = /<em>\[(<a href=.+?>).+?(<\/a>)\]<\/em>/gm
     const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
+    const solveHotRegx =/\[已解决\]/gm
 
     // middle大小头像链接
     function avatar(suid) {
@@ -694,10 +695,12 @@
 
 
       // 已完成
-      let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx,      `
+      let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx,`
         <span class="post-solve">$1${symbolHTML(symbolHotPostInfo.postsolve)}$2</span>`
         ): ''
-
+      let sovleHot = tHtml.match(solveHotRegx) !== null ? tHtml.match(solveHotRegx)[0].replace(solveHotRegx,`
+      <span class="post-solve">${symbolHTML(symbolHotPostInfo.postsolve)}</span>`
+      ): ''
 
       let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
       let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
@@ -763,6 +766,7 @@
                           ${join}
                           ${reward}
                           ${solve}
+                          ${sovleHot}
                           ${replyReward}
                           ${digest}
                           ${lock}
