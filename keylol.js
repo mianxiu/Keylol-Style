@@ -695,10 +695,10 @@
                           ${reward}
                           ${replyReward}
                           ${digest}
+                          ${lock}
                           ${attachImg}
                           ${agree}
                           ${attachment}
-                          ${lock}
                           ${newPost}
                           ${tps}
                          </div>

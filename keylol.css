@@ -1477,6 +1477,7 @@ tbody tr:hover .post-list-tip{
 .post-join,
 .post-reward,
 .post-reply-reward{
+	margin-right:6px;
 	font-size:var(--font-size-12);
 	padding:2px;
 	border-radius:var(--border-radius-2);
