@@ -1397,7 +1397,9 @@ display:none;
 .bm_c img[alt*="agree"],
 .bm_c img[alt*="digest"],
 .new .xi1,
-.common .xi1{
+.common .xi1,
+.lock > em:first-child,
+tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 	display:none;
 }
 .bm_c  table .icon{
