@@ -586,7 +586,6 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
     const emRegx = /<em><span.+?<\/span><\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
@@ -624,6 +623,7 @@
 
       // 判断帖子模式
       let icn = () => {
+
         let icnHtml = divs[0]
 
         const icnFolderRegx = /.*folder_common.*/gms
@@ -631,7 +631,7 @@
         const icnLockRegx = /lock/gms
         const icnGlobalRegx = /pin_2/gms
         const icnTopRegx = /pin_1/gms
- 
+
         let icnTemplate = (symbolName) => {
           return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
         }
@@ -740,8 +740,10 @@
       let replyReward = tHtml.match(replyReWardRegx) !== null ?
         `
           <span class="post-reply-reward">
-                <span>${tHtml.match(replyReWardRegx)[0].replace(replyReWardRegx, '$1')}</span>
-                <span class="post-reply-reward-tip">奖励蒸气(克)</span>
+                <span>${tHtml.match(replyReWardRegx)[0].replace(replyReWardRegx, '$1')}
+                    <span class="post-reply-reward-tip">奖励蒸气(克)</span>
+                </span>
+               
           </span>
       `
         : ''
@@ -753,7 +755,7 @@
       let newPost = tHtml.match(newPostRegx) !== null ? tHtml.match(newPostRegx)[0].replace(newPostRegx,
         `
       $1
-      ${symbolHTML(symbolHotPostInfo.newpost)}
+      <span class="post-new">${symbolHTML(symbolHotPostInfo.newpost)}</span>
       <span class="post-new-post-tip">新主题</span>
       $3
       `
