@@ -29,6 +29,8 @@ iconfont
 }
 </script>
 ```
+## 元素
+ajaxwaitid 是进度提示
 
 ## tip
 [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)

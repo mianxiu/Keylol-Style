@@ -115,6 +115,7 @@ input{
 }
 a {
   color: var(--font-nomal);
+	font-size:var(--font-size-14);
 }
 
 html {
@@ -1367,10 +1368,25 @@ display:none;
 	
 }
 /* --------列表------------ */
-.bm_c > table .icon{
-	width:1.2em;
-	height:1.2em;
+/*--隐藏原来的图标--*/
+.bm_c img[alt*="attach"],
+.bm_c img[alt*="agree"]{
+	display:none;
 }
+.bm_c > table .icon{
+	width:1.3em;
+	height:1.3em;
+}
+
+/*图标*/
+.post-info{
+	margin-left:10px;
+}
+.post-list-left .symbol-icons,.post-list-right-l .symbol-icons{
+	margin-right:2px;
+}
+
+/*列表布局*/
 .bm_c > table{
 	display: flex;
    flex-direction: column;
@@ -1423,6 +1439,11 @@ display:none;
 	position:absolute;
 	background-color:var(--tip-background)!important;
 	
+}
+
+/*隐藏不必要的字*/
+.post-list-common > .common{
+	font-size:0px;
 }
 
 /* 头像 */

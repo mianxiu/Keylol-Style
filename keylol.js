@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_2t0t8utx78c.js
+// @require      https://at.alicdn.com/t/font_1794025_l2ikrk1wi3.js
 
 // ==/UserScript==
 
@@ -556,7 +556,9 @@
     "keylolagree",
     "keylolreply",
     "keylolnewpost",
-    "keylolhidetop"
+    "keylolhidetop",
+    "keylolcreatenewpost",
+    "keylollock"
   ]
   const symbolHotPostUser = [
     "keyloladdfriend",
@@ -574,6 +576,7 @@
     const emRegx = /<em><span.+?<\/span><\/em>/gms
     const attacImgRegx = /<img.+?attach.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
+    const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
     const suidRegx = /.*suid-(\d+).*/gms
 
 
@@ -615,6 +618,15 @@
 
       let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo[0]) : ''
       let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo[1]) : ''
+      let lock = tHtml.match(lockRegx) !== null ?
+      `
+          <span class="post-lock">
+                ${symbolHTML(symbolHotPostInfo[6])}
+                <span>${tHtml.match(lockRegx)[0].replace(lockRegx,'$1')}</span>
+                <span class="post-lock-tip">阅读权限</span>
+          </span>
+      `
+      : ''
 
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
@@ -625,6 +637,7 @@
                          <div class="post-info">
                           ${attachImg}
                           ${agree}
+                          ${lock}
                          </div>
                          </div>
                      </div>
