@@ -1399,6 +1399,7 @@ display:none;
 .new .xi1,
 .common .xi1,
 .lock > em:first-child,
+.common > em:first-child,
 tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 	display:none;
 }
