@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_kpnshscbec.js
+// @require      https://at.alicdn.com/t/font_1794025_sra7yavsrh.js
 
 // ==/UserScript==
 
@@ -591,7 +591,8 @@
     const tpsRegx = /<span class="tps">.+<\/span>/gm
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
     const attachmentRegx = /<img.+?attachment.+?>/gms
-    const suidRegx = /.*suid-(\d+).*/gms
+    const digestRegx = /<img.+?digest.+?>/gms
+    const suidRegx = /suid-(\d+)/gm
 
 
     // middle大小头像链接
@@ -611,7 +612,7 @@
       let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
       let divs = tHtml.match(divRegx)
 
-      let suid = divs[3].replace(suidRegx, '$1')
+      let suid = tHtml.match(suidRegx) != null ? tHtml.match(suidRegx)[0].replace(suidRegx, '$1') : ''
 
       let avatarUrl = avatar(suid)
 
@@ -661,6 +662,7 @@
       : ''
 
       let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo[8]) : ''
+      let digest = tHtml.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo[7]) : ''
 
 
       let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/,`post-tps`) : ''
@@ -674,6 +676,7 @@
                          <div class="post-info">
                           ${join}
                           ${reward}
+                          ${digest}
                           ${attachImg}
                           ${agree}
                           ${attachment}
@@ -738,6 +741,7 @@
 
     if (isSubject == true) {
       console.log(`i am subject`)
+      hotPostList()
     }
 
     if (isPost == true) {

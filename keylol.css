@@ -1385,7 +1385,8 @@ display:none;
 /* --------列表------------ */
 /*--隐藏原来的图标--*/
 .bm_c img[alt*="attach"],
-.bm_c img[alt*="agree"]{
+.bm_c img[alt*="agree"],
+.bm_c img[alt*="digest"]{
 	display:none;
 }
 .bm_c > table .icon{
@@ -1402,7 +1403,7 @@ display:none;
 }
 
 /*列表布局*/
-.bm_c > table{
+.bm_c  table{
 	display: flex;
    flex-direction: column;
 }
@@ -1416,24 +1417,24 @@ display:none;
 	box-shadow:var(--shadow-hot);
 }
 
-.bm_c > table > tbody>tr > div{
+.bm_c  table > tbody>tr > div{
 	background-color:var(--element-background);
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 }
 
-.bm_c > table > tbody>tr,.post-list{
+.bm_c  table > tbody>tr,.post-list{
 	display: flex;
 	align-items:center;
 	justify-content:space-between;
 	width:100%;
 }
-.bm_c > table > tbody>tr div{
+.bm_c  table > tbody>tr div{
 	align-items:center;
 	display: flex;
 	
 }
-.bm_c > table > tbody>tr>div{
+.bm_c  table > tbody>tr>div{
 	padding:var(--element-padding);
 }
 
@@ -1443,6 +1444,9 @@ display:none;
 	
 }
 
+.post-list-icn{
+	margin-right:6px;
+}
 
 
 /*隐藏不必要的字*/
@@ -1524,6 +1528,9 @@ tbody tr:hover .post-list-tip{
 
 
 /*tps*/
+.common .tps{
+display:none;
+}
 .post-tps a{
 	margin-right:4px;
 
