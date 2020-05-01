@@ -1399,12 +1399,15 @@ display:none;
 .bm_c img[alt*="attach"],
 .bm_c img[alt*="agree"],
 .bm_c img[alt*="digest"],
+.lock .xi1,
 .new .xi1,
 .common .xi1,
 .new>em:first-child,
 .lock > em:first-child,
 .common > em:first-child,
 .common > a[title*="只看已解决"],
+.lock > a[title*="只看已解决"],
+.new > a[title*="只看已解决"],
 tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 	display:none;
 }
