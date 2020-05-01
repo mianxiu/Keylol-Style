@@ -1475,7 +1475,8 @@ tbody tr:hover .post-list-tip{
 /*阅读权限*/
 .post-lock,
 .post-join,
-.post-reward{
+.post-reward,
+.post-reply-reward{
 	font-size:var(--font-size-12);
 	padding:2px;
 	border-radius:var(--border-radius-2);
@@ -1485,7 +1486,7 @@ tbody tr:hover .post-list-tip{
 .post-lock >span:nth-child(2){
 	color:var(--font-point);
 }
-.post-join,.post-reward{
+.post-join,.post-reward,.post-reply-reward{
 	margin-right:6px;
 	background-color:var(--point-green);
 }
@@ -1493,10 +1494,15 @@ tbody tr:hover .post-list-tip{
 	background-color:var(--point-yellow);
 }
 
+.post-reply-reward{
+	background-color:var(--point-orange);
+}
+
 /*提示全局*/
 .post-lock-tip,
 .post-join-tip,
-.post-reward-tip{
+.post-reward-tip,
+.post-reply-reward-tip{
 	padding:6px;
 	background-color:var(--tip-background);
 	border-radius:var(--border-radius-2);
@@ -1524,6 +1530,14 @@ tbody tr:hover .post-list-tip{
 	display: flex;
 	
 }
+
+.post-reply-reward:hover .post-reply-reward-tip{
+	color:var(--font-nomal);
+	background-color:var(--point-orange);
+	display: flex;
+	
+}
+
 
 
 

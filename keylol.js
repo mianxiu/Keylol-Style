@@ -590,6 +590,7 @@
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
     const tpsRegx = /<span class="tps">.+<\/span>/gm
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
+    const replyReWardRegx = /<span class="xi1">\[回贴 <span class="xw1">(\d+?)<\/span> 奖励\]<\/span>/gm
     const attachmentRegx = /<img.+?attachment.+?>/gms
     const digestRegx = /<img.+?digest.+?>/gms
     const suidRegx = /suid-(\d+)/gm
@@ -661,6 +662,15 @@
       `
       : ''
 
+      let replyReward = tHtml.match(replyReWardRegx) !== null ?
+      `
+          <span class="post-reply-reward">
+                <span>${tHtml.match(replyReWardRegx)[0].replace(replyReWardRegx,'$1')}</span>
+                <span class="post-reply-reward-tip">奖励蒸气(克)</span>
+          </span>
+      `
+      : ''
+
       let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo[8]) : ''
       let digest = tHtml.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo[7]) : ''
 
@@ -676,6 +686,7 @@
                          <div class="post-info">
                           ${join}
                           ${reward}
+                          ${replyReward}
                           ${digest}
                           ${attachImg}
                           ${agree}
