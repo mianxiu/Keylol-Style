@@ -1398,7 +1398,7 @@ display:none;
 	margin-left:10px;
 }
 .post-list-left .symbol-icons,.post-list-right-l .symbol-icons{
-	margin-right:2px;
+	margin-right:6px;
 }
 
 /*列表布局*/
@@ -1443,12 +1443,20 @@ display:none;
 	
 }
 
+
+
+/*隐藏不必要的字*/
+.post-list-common > .common{
+	font-size:0px;
+}
+
 /* -- post tip---*/
 .post-list-tip a{
 	color:var(--font-second-light-aphal);
 }
 
-.post-list-tip{
+.post-list-tip,
+.post-join-tip{
 	display:none!important;
 	margin-top:34px;
 	position:absolute;
@@ -1456,12 +1464,10 @@ display:none;
 	
 }
 
-/*隐藏不必要的字*/
-.post-list-common > .common{
-	font-size:0px;
-}
+
 /*阅读权限*/
-.post-lock{
+.post-lock,
+.post-join{
 	font-size:var(--font-size-12);
 	padding:2px;
 	border-radius:var(--border-radius-2);
@@ -1471,10 +1477,15 @@ display:none;
 .post-lock >span:nth-child(2){
 	color:var(--font-point);
 }
+.post-join{
+	margin-right:6px;
+	background-color:var(--point-green);
+}
 
 /*提示全局*/
-.post-lock-tip{
-	padding:4px;
+.post-lock-tip,
+.post-join-tip{
+	padding:6px;
 	background-color:var(--tip-background);
 	border-radius:var(--border-radius-2);
 	margin-top:30px;

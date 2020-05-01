@@ -586,6 +586,7 @@
     const attacImgRegx = /<img.+?attach.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
+    const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
     const suidRegx = /.*suid-(\d+).*/gms
 
 
@@ -637,6 +638,15 @@
       `
       : ''
 
+      let join = tHtml.match(joinRegx) !== null ?
+      `
+          <span class="post-join">
+                <span>${tHtml.match(joinRegx)[0].replace(joinRegx,'$1')}</span>
+                <span class="post-join-tip">参与人数</span>
+          </span>
+      `
+      : ''
+
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
                  <div class="post-list">
@@ -644,6 +654,7 @@
                          <div class="post-list-common">
                          ${divs[1]}
                          <div class="post-info">
+                          ${join}
                           ${attachImg}
                           ${agree}
                           ${lock}
