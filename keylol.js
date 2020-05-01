@@ -520,33 +520,33 @@
   }
 
   // 热门主题---------------------------------------------------------------------------------------
-    // 使用第三个symbol
+  // 使用第三个symbol
   // 列表替换
   const symbolHotPostStats = {
-    reward:"keylolreward",
-    closepost:"keylolclosepost",
-    vote:"keylolvote",
-    top:"keyloltop",
-    globaltop:"keylolglobaltop"
-}
+    reward: "keylolreward",
+    closepost: "keylolclosepost",
+    vote: "keylolvote",
+    top: "keyloltop",
+    globaltop: "keylolglobaltop"
+  }
   const symbolHotPostInfo = {
-    attach_img:"keylolattach_img",
-    agree:"keylolagree",
-    reply:"keylolreply",
-    newpost:"keylolnewpost",
-    hidetop:"keylolhidetop",
-    createnewpost:"keylolcreatenewpost",
-    lock:"keylollock",
-    postdigest:"keylolpostdigest",
-    postattachment:"keylolpostattachment",
-    postsolve:"keylolpostsolve"
+    attach_img: "keylolattach_img",
+    agree: "keylolagree",
+    reply: "keylolreply",
+    newpost: "keylolnewpost",
+    hidetop: "keylolhidetop",
+    createnewpost: "keylolcreatenewpost",
+    lock: "keylollock",
+    postdigest: "keylolpostdigest",
+    postattachment: "keylolpostattachment",
+    postsolve: "keylolpostsolve"
   }
   const symbolHotPostUser = {
-    addfriend:"keyloladdfriend",
-    iconmail:"keyloliconmail",
-    hi:"keylolhi",
-    online:"keylolonline"
-}
+    addfriend: "keyloladdfriend",
+    iconmail: "keyloliconmail",
+    hi: "keylolhi",
+    online: "keylolonline"
+  }
 
 
   function moveHotPost() {
@@ -571,10 +571,10 @@
     mnNavLeft.insertBefore($(`#pgt>a`), null)
     mnNavLeft.insertBefore($(`#thread_types`), null)
 
-    if($(`#pgt>.pg`)!==null){
+    if ($(`#pgt>.pg`) !== null) {
       mnNavRight.insertBefore($(`#pgt>.pg`), null)
     }
-   
+
     mnNavRight.insertBefore($(`.y`), null)
 
   }
@@ -586,11 +586,7 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-    const icnFolderRegx = /folder_common/gm
-    const icnRewardRegx = /reward/gm
-    const icnLockRegx = /lock/gm
-    const icnGlobalRegx = /pin_2/gm
-    const icnTopRegx = /pin_1/gm
+
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
     const emRegx = /<em><span.+?<\/span><\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
@@ -607,7 +603,7 @@
     const subjectHotRegx = /<a title.+?\a>/gm
     const tagRegx = /<em>\[(<a href=.+?>).+?(<\/a>)\]<\/em>/gm
     const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
-    const solveHotRegx =/\[已解决\]/gm
+    const solveHotRegx = /\[已解决\]/gm
 
     // middle大小头像链接
     function avatar(suid) {
@@ -625,6 +621,46 @@
 
       let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
       let divs = tHtml.match(divRegx)
+
+      // 判断帖子模式
+      let icn = () => {
+        let icnHtml = divs[0]
+
+        const icnFolderRegx = /.*folder_common.*/gms
+        const icnRewardRegx = /reward/gm
+        const icnLockRegx = /lock/gms
+        const icnGlobalRegx = /pin_2/gms
+        const icnTopRegx = /pin_1/gms
+ 
+        let icnTemplate = (symbolName) => {
+          return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
+        }
+
+        // 默认新窗口
+        // 悬赏
+        if (icnRewardRegx.test(icnHtml) == true) {
+
+          return icnTemplate(symbolHotPostStats.reward)
+        }
+
+        if (icnLockRegx.test(icnHtml) == true) {
+          return icnTemplate(symbolHotPostStats.closepost)
+        }
+
+        if (icnGlobalRegx.test(icnHtml) == true) {
+          return icnTemplate(symbolHotPostStats.globaltop)
+        }
+        if (icnTopRegx.test(icnHtml) == true) {
+          return icnTemplate(symbolHotPostStats.top)
+        }
+
+        if (icnFolderRegx.test(icnHtml) == true) {
+          return ''
+        }
+
+        return ''
+
+      }
 
       let suid = tHtml.match(suidRegx) != null ? tHtml.match(suidRegx)[0].replace(suidRegx, '$1') : ''
 
@@ -644,115 +680,84 @@
            `
       ) : ''
 
-      // 判断帖子模式
-      let icn = ()=>{
-        let icnHtml = divs[0]
 
-        let icnTemplate = (symbolName)=>{
-          return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
-        }
-
-        // 默认新窗口
-        if(icnFolderRegx.test(icnHtml) == true){
-            return ''
-        }
-        // 悬赏
-        if(icnRewardRegx.test(icnHtml) == true){
-          return icnTemplate(symbolHotPostStats.reward)
-        }
-
-        if(icnLockRegx.test(icnHtml) == true){
-          return icnTemplate(symbolHotPostStats.closepost)
-        }
-
-        if(icnGlobalRegx.test(icnHtml) == true){
-          return icnTemplate(symbolHotPostStats.globaltop)
-        }
-        if(icnTopRegx.test(icnHtml) == true){
-          return icnTemplate(symbolHotPostStats.top)
-        }
-
-
-        return ''
-        
-      }
       // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
 
       // 热门 会根据版块不同变化为tag
-      let subject = tHtml.match(subjectHotRegx) !== null ? 
+      let subject = tHtml.match(subjectHotRegx) !== null ?
+        `
+      <div class="post-list-icn">${tHtml.match(subjectHotRegx)[0]}</div>
       `
-      <div class="post-list-subject">${tHtml.match(subjectHotRegx)[0]}</div>
-      `
-      : ''
+        : ''
 
       //tag
-      let tag = tHtml.match(tagRegx) !== null ? 
+      let tag = tHtml.match(tagRegx) !== null ?
+        `
+      <div class="post-list-icn">${tHtml.match(tagRegx)[0].replace(/\[|\]/gm, '')}</div>
       `
-      <div class="post-list-subject">${tHtml.match(tagRegx)[0].replace(/\[|\]/gm,'')}</div>
-      `
-      : ''
+        : ''
 
 
       // 已完成
-      let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx,`
+      let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx, `
         <span class="post-solve">$1${symbolHTML(symbolHotPostInfo.postsolve)}$2</span>`
-        ): ''
-      let sovleHot = tHtml.match(solveHotRegx) !== null ? tHtml.match(solveHotRegx)[0].replace(solveHotRegx,`
+      ) : ''
+      let sovleHot = tHtml.match(solveHotRegx) !== null ? tHtml.match(solveHotRegx)[0].replace(solveHotRegx, `
       <span class="post-solve">${symbolHTML(symbolHotPostInfo.postsolve)}</span>`
-      ): ''
+      ) : ''
 
       let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
       let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
       let lock = tHtml.match(lockRegx) !== null ?
-      `
+        `
           <span class="post-lock">
                 ${symbolHTML(symbolHotPostInfo.lock)}
-                <span>${tHtml.match(lockRegx)[0].replace(lockRegx,'$1')}</span>
+                <span>${tHtml.match(lockRegx)[0].replace(lockRegx, '$1')}</span>
                 <span class="post-lock-tip">阅读权限</span>
           </span>
       `
-      : ''
+        : ''
 
       let join = tHtml.match(joinRegx) !== null ?
-      `
+        `
           <span class="post-join">
-                <span>${tHtml.match(joinRegx)[0].replace(joinRegx,'$1')}</span>
+                <span>${tHtml.match(joinRegx)[0].replace(joinRegx, '$1')}</span>
                 <span class="post-join-tip">参与人数</span>
           </span>
       `
-      : ''
+        : ''
 
       let reward = tHtml.match(rewardRegx) !== null ?
-      `
+        `
           <span class="post-reward">
-                <span>${tHtml.match(rewardRegx)[0].replace(rewardRegx,'$1')}</span>
+                <span>${tHtml.match(rewardRegx)[0].replace(rewardRegx, '$1')}</span>
                 <span class="post-reward-tip">悬赏蒸气(克)</span>
           </span>
       `
-      : ''
+        : ''
 
       let replyReward = tHtml.match(replyReWardRegx) !== null ?
-      `
+        `
           <span class="post-reply-reward">
-                <span>${tHtml.match(replyReWardRegx)[0].replace(replyReWardRegx,'$1')}</span>
+                <span>${tHtml.match(replyReWardRegx)[0].replace(replyReWardRegx, '$1')}</span>
                 <span class="post-reply-reward-tip">奖励蒸气(克)</span>
           </span>
       `
-      : ''
+        : ''
 
       let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
       let digest = tHtml.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
-      let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/,`post-tps`) : ''
+      let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/, `post-tps`) : ''
 
       let newPost = tHtml.match(newPostRegx) !== null ? tHtml.match(newPostRegx)[0].replace(newPostRegx,
-      `
+        `
       $1
       ${symbolHTML(symbolHotPostInfo.newpost)}
       <span class="post-new-post-tip">新主题</span>
       $3
       `
-      ): ''
+      ) : ''
 
       let trTemplate = `
                 ${icn()}
@@ -847,7 +852,7 @@
     navFunction()
     footer()
     pageDecide()
-    
+
   })
 
   var css = `

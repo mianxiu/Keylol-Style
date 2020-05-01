@@ -1314,6 +1314,7 @@ display:none;
 
 /* 发帖按钮 */
 .mn-nav-left > a{
+	font-size:var(--font-size-12);
 	display:flex;
 	align-items:center;
 	padding:var(--element-padding);
