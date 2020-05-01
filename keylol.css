@@ -1389,7 +1389,7 @@ display:none;
 .bm_c img[alt*="digest"]{
 	display:none;
 }
-.bm_c > table .icon{
+.bm_c  table .icon{
 	width:1.3em;
 	height:1.3em;
 }
