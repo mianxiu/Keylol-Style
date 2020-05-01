@@ -1435,7 +1435,7 @@ display:none;
 	
 }
 .bm_c  table > tbody>tr>div{
-	padding:var(--element-padding);
+	padding:8px 16px;
 }
 
 .post-list-by-member > a,.post-avatar{
@@ -1556,6 +1556,7 @@ display:none;
 }
 
 /*总回复*/
+
 .post-list-num em{
 	display:none;
 }
@@ -1565,4 +1566,7 @@ display:none;
 }
 .post-list-time{
 	color:var(--font-second-aphal);
+}
+.post-list-time .xi1{
+	color:var(--font-nomal);
 }
