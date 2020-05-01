@@ -117,6 +117,9 @@ a {
   color: var(--font-nomal);
 	font-size:var(--font-size-14);
 }
+.symbol-icons{
+	display:flex;
+}
 
 html {
   font-family: -apple-system, BlinkMacSystemFont, Helvetica Neue, PingFang SC, Microsoft YaHei, Source Han Sans SC, Noto Sans CJK SC, WenQuanYi Micro Hei, sans-serif;
@@ -1445,7 +1448,17 @@ display:none;
 .post-list-common > .common{
 	font-size:0px;
 }
+/*阅读权限*/
+.post-lock{
+	display: flex;
+	background-color:var(--point);
+}
 
+/*提示*/
+.post-lock-tip{
+	display: flex;
+	position:absolute;
+}
 /* 头像 */
 .post-avatar{
 	margin-right:10px;
