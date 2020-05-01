@@ -1173,6 +1173,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 }
 
 .subforunm_foot a{
+	font-size:var(--font-size-12);
 	padding-right:4px;
 	color:var(--font-point);
 }
