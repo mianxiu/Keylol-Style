@@ -587,6 +587,7 @@
     const agreeRegx = /<img.+?agree.+?>/gm
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
+    const tpsRegx = /<span class="tps">.+<\/span>/gm
     const suidRegx = /.*suid-(\d+).*/gms
 
 
@@ -647,6 +648,8 @@
       `
       : ''
 
+      let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/,`post-tps`) : ''
+
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
                  <div class="post-list">
@@ -658,6 +661,7 @@
                           ${attachImg}
                           ${agree}
                           ${lock}
+                          ${tps}
                          </div>
                          </div>
                      </div>
