@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_tb8ks4srnhm.js
+// @require      https://at.alicdn.com/t/font_1794025_91lhb06tau.js
 
 // ==/UserScript==
 
@@ -534,7 +534,8 @@
     "keylolhidetop",
     "keylolcreatenewpost",
     "keylollock",
-    "keylolpostdigest"
+    "keylolpostdigest",
+    "keylolpostattachment"
   ]
   const symbolHotPostUser = [
     "keyloladdfriend",
@@ -588,6 +589,7 @@
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
     const tpsRegx = /<span class="tps">.+<\/span>/gm
+    const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
     const suidRegx = /.*suid-(\d+).*/gms
 
 
@@ -648,6 +650,16 @@
       `
       : ''
 
+      let reward = tHtml.match(rewardRegx) !== null ?
+      `
+          <span class="post-reward">
+                <span>${tHtml.match(rewardRegx)[0].replace(rewardRegx,'$1')}</span>
+                <span class="post-reward-tip">悬赏蒸气(克)</span>
+          </span>
+      `
+      : ''
+
+
       let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/,`post-tps`) : ''
 
       let trTemplate = `
@@ -658,6 +670,7 @@
                          ${divs[1]}
                          <div class="post-info">
                           ${join}
+                          ${reward}
                           ${attachImg}
                           ${agree}
                           ${lock}
