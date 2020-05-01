@@ -1477,12 +1477,14 @@ tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 }
 /**/
 .post-list-icn{
+	padding:0px 8px!important;
 	height:var(--element-height-34);
 	margin-right:6px;
 	white-space:nowrap;
 	
 }
 .post-list-icn a{
+	justify-content:center;
 	display:flex;
 }
 
