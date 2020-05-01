@@ -735,7 +735,7 @@ body {
   transition: 0.2s all;
   display: var(--display-flex);
   flex-wrap: wrap;
-	align-items:center;
+	
   justify-content: end;
 }
 #index-subject-parent div.row_ads{
@@ -1003,9 +1003,12 @@ div.index_subject_game div.subject_row_detail_text_down {
 }
 
 /* 社区服务*/
-
+#forum-question div{
+	align-items:center;
+}
 #forum-question .index_subject_title {
   display: none !important;
+	
 }
 
 #forum-question > div.index_subject_row{
