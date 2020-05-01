@@ -1552,10 +1552,9 @@ display:none;
 /*悬赏*/
 
 /* 头像 */
-.post-avatar{
-	margin-right:10px;
-}
+
 .post-avatar > img{
+	margin-right:10px;
 	width:18px;
 	height:18px;
 	border-radius:var(--border-radius-200);
