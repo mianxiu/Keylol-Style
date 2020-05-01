@@ -23,7 +23,7 @@
   --border-radius-10: 10px;
   --border-radius-200: 200px;
   --element-margin-bottom-18: 18px;
-  --element-padding: 10px 8px;
+  --element-padding: 8px 10px;
   --element-padding-left: 18px;
 	--element-height-34:34px;
   --down-menu-height: 46px;
@@ -1464,7 +1464,7 @@ tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 }
 /**/
 .post-list-icn{
-	
+	height:var(--element-height-34);
 	margin-right:6px;
 	
 }
@@ -1485,6 +1485,7 @@ tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 
 /*版块暂时隐藏*/
 .post-list-tip{
+	height:var(--element-height-34);
 	display:none!important;
 	margin-top:40px;
 	position:absolute;
@@ -1577,6 +1578,7 @@ div.post-info > a.xi1:hover >.post-new-post-tip{
 display:none;
 }
 .post-tps a{
+
 	margin-right:4px;
 
 }
@@ -1613,4 +1615,13 @@ display:none;
 }
 .post-list-time .xi1{
 	color:var(--font-nomal);
+}
+
+/*会员卡片*/
+.p_opt{
+	display:flex;
+	background-color:var(--background-color);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	padding:var(--element-padding);
 }
