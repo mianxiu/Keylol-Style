@@ -1618,8 +1618,11 @@ display:none;
 }
 
 /*会员卡片*/
-.p_opt{
+.p_opt div{
 	display:flex;
+}
+.p_opt{
+	
 	background-color:var(--background-color);
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-hot);
@@ -1633,7 +1636,27 @@ display:none;
 	width:100%;
 	display:flex;
 }
-.avt{
+.avt {
+	margin-right:10px;
+}
+.avt a img,.avt a{
+	height:48px;
+	width:48px;
 	border-radius:var(--border-radius-200);
 	overflow:hidden;
+}
+.avt a img:focus{
+	border:none;
+	outline:none;
+}
+.o.cl{
+	position:absolute;
+	margin-top:30px;
+}
+.pbn.cl{
+	display: flex;
+	flex-direction:row-reverse;
+}
+.pbn.cl span,.pbn.cl strong{
+	margin-right:10px;
 }
