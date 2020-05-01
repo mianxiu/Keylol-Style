@@ -582,7 +582,7 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-    const userRegx = /.*(<a href="suid.+?>)(.+?)(<\/a>).*/gms
+    const userRegx = /(<a.+suid.+>)(.+?)(<\/a>)/gm
     const emRegx = /<em><span.+?<\/span><\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
@@ -590,7 +590,7 @@
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
     const tpsRegx = /<span class="tps">.+<\/span>/gm
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
-    const replyReWardRegx = /<span class="xi1">\[回贴 <span class="xw1">(\d+?)<\/span> 奖励\]<\/span>/gm
+    const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
     const attachmentRegx = /<img.+?attachment.+?>/gms
     const digestRegx = /<img.+?digest.+?>/gms
     const suidRegx = /suid-(\d+)/gm
@@ -617,17 +617,18 @@
 
       let avatarUrl = avatar(suid)
 
-      // 用户头像名称
-      let user = tHtml.replace(
-        userRegx,
+      // 用户头像$名称
+      // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
+      let user = tHtml.match(userRegx) !== null ? tHtml.match(userRegx)[0].replace(userRegx,
         `
                 $1
                 <span class="post-avatar">
                 <img src="${avatarUrl}">
+                <span>$2</span>
                 </span>
-                <span>$2</span>$3
+                $3
            `
-      )
+      ) : ''
 
       // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
