@@ -114,6 +114,7 @@ input{
   text-decoration: none;
 }
 a {
+	line-height:var(--font-size-14);
   color: var(--font-nomal);
 	font-size:var(--font-size-14);
 }
@@ -1450,14 +1451,31 @@ display:none;
 }
 /*阅读权限*/
 .post-lock{
+	font-size:var(--font-size-12);
+	padding:2px;
+	border-radius:var(--border-radius-2);
 	display: flex;
 	background-color:var(--point);
 }
+.post-lock >span:nth-child(2){
+	color:var(--font-point);
+}
 
-/*提示*/
+/*提示全局*/
 .post-lock-tip{
-	display: flex;
+	padding:4px;
+	background-color:var(--tip-background);
+	border-radius:var(--border-radius-2);
+	margin-top:30px;
+	display:none;
 	position:absolute;
+	box-shadow:var(--shadow-hot);
+}
+
+.post-lock:hover .post-lock-tip{
+	color:var(--font-point);
+	background-color:var(--point);
+	display: flex;
 }
 /* 头像 */
 .post-avatar{
@@ -1485,4 +1503,6 @@ display:none;
 .post-list-last-comment{
 	display:none!important;
 }
-
+.post-list-time{
+	color:var(--font-second-aphal);
+}

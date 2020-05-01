@@ -537,7 +537,10 @@
     mnNavLeft.insertBefore($(`#pgt>a`), null)
     mnNavLeft.insertBefore($(`#thread_types`), null)
 
-    mnNavRight.insertBefore($(`#pgt>.pg`), null)
+    if($(`#pgt>.pg`)!==null){
+      mnNavRight.insertBefore($(`#pgt>.pg`), null)
+    }
+   
     mnNavRight.insertBefore($(`.y`), null)
 
   }
@@ -558,7 +561,8 @@
     "keylolnewpost",
     "keylolhidetop",
     "keylolcreatenewpost",
-    "keylollock"
+    "keylollock",
+    "keylolpostdigest"
   ]
   const symbolHotPostUser = [
     "keyloladdfriend",
