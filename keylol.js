@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
+// @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_sra7yavsrh.js
 
@@ -308,12 +308,13 @@
     })
   }
 
-  // 搜索栏 消息 提醒
+  // 搜索栏 消息 提醒 logo
   // 搜索栏和导航栏
   const symbolNav = [
     "kelolmenu_iconsearch",
     "kelolmenu_icon_mail",
-    "kelolmenu_icon_post_reply"
+    "kelolmenu_icon_post_reply",
+    "kelolkeylol_logo"
   ]
   function setNavIcons() {
     let navNodes = {
@@ -323,7 +324,6 @@
     }
 
     // 登录状态
-
     if (navNodes.highLightNode !== null) {
       let i = 0
       for (const key in navNodes) {
@@ -339,6 +339,9 @@
       // 未登录只插入搜索
       navNodes.searchNode.insertBefore(symbol(symbolNav[0]), navNodes.searchNode.children[0])
     }
+
+    // 设置logo
+    $("#nav-logo").innerHTML += symbolHTML(symbolNav[3])
 
 
   }
@@ -595,7 +598,7 @@
     const digestRegx = /<img.+?digest.+?>/gms
     const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
-
+    const subjectRegx = /<a title.+?\a>/gm
 
     // middle大小头像链接
     function avatar(suid) {
@@ -776,7 +779,7 @@
     navFunction()
     footer()
     pageDecide()
-    //$("#nav-logo").innerHTML += symbol(`kelolsteam_panel_hot`)
+    
   })
 
   var css = `

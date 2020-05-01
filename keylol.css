@@ -1,7 +1,6 @@
 /*hidden node*/
 #ajax_lang,
 #nav-menu > ul > li:nth-child(6),
-#nav-logo > span,
 .index_navi {
   display: none !important;
 }
@@ -173,6 +172,16 @@ body {
 }
 
 /* ----------------导航栏----------------- */
+/*logo*/
+#nav-logo > span:first-child{
+	display:none;
+}
+#nav-logo > span:last-child{
+	
+}
+
+
+
 #nav-menu-parent {
   width: 100%;
   display: var(--display-flex);
