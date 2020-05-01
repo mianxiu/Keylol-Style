@@ -680,7 +680,10 @@
 
       let newPost = tHtml.match(newPostRegx) !== null ? tHtml.match(newPostRegx)[0].replace(newPostRegx,
       `
-      $1${symbolHTML(symbolHotPostInfo[3])}$3
+      $1
+      ${symbolHTML(symbolHotPostInfo[3])}
+      <span class="post-new-post-tip">新主题</span>
+      $3
       `
       ): ''
 

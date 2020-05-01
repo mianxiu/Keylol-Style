@@ -1386,7 +1386,9 @@ display:none;
 /*--隐藏原来的图标--*/
 .bm_c img[alt*="attach"],
 .bm_c img[alt*="agree"],
-.bm_c img[alt*="digest"]{
+.bm_c img[alt*="digest"],
+.new .xi1,
+.common .xi1{
 	display:none;
 }
 .bm_c  table .icon{
@@ -1450,7 +1452,7 @@ display:none;
 
 
 /*隐藏不必要的字*/
-.post-list-common > .common{
+.post-list-common > div:nth-child(1){
 	font-size:0px;
 }
 
