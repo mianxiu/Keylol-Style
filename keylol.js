@@ -593,6 +593,7 @@
     const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
     const attachmentRegx = /<img.+?attachment.+?>/gms
     const digestRegx = /<img.+?digest.+?>/gms
+    const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
 
 
@@ -607,7 +608,7 @@
       }
     }
 
-    for (let i = 1; i < trNode.length; i++) {
+    for (let i = 0; i < trNode.length; i++) {
       let tnode = trNode[i]
 
       let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
@@ -675,9 +676,13 @@
 
       let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo[8]) : ''
       let digest = tHtml.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo[7]) : ''
-
-
       let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/,`post-tps`) : ''
+
+      let newPost = tHtml.match(newPostRegx) !== null ? tHtml.match(newPostRegx)[0].replace(newPostRegx,
+      `
+      $1${symbolHTML(symbolHotPostInfo[3])}$3
+      `
+      ): ''
 
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
@@ -694,6 +699,7 @@
                           ${agree}
                           ${attachment}
                           ${lock}
+                          ${newPost}
                           ${tps}
                          </div>
                          </div>
