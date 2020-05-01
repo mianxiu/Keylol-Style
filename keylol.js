@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_hw9pknr37a9.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_l2ikrk1wi3.js
+// @require      https://at.alicdn.com/t/font_1794025_tb8ks4srnhm.js
 
 // ==/UserScript==
 
@@ -517,35 +517,7 @@
   }
 
   // 热门主题---------------------------------------------------------------------------------------
-  function moveHotPost() {
-    let mnNode = $(`.mn`)
-    // 创建父节点
-    let mnNavParentTemplate = `
-          <div class="mn-nav-left"></div>
-          <div class="mn-nav-right"></div>
-        `
-    let mnNavParent = document.createElement(`div`)
-    mnNavParent.id = `mn-nav-parent`
-    mnNavParent.innerHTML += mnNavParentTemplate
-
-    mnNode.insertBefore(mnNavParent, mnNode.children[0])
-    // 移动子节点
-    let mnNavLeft = $(`.mn-nav-left`)
-    let mnNavRight = $(`.mn-nav-right`)
-    // new post btn
-    $(`#pgt>a`).innerText += `发新帖`
-    mnNavLeft.insertBefore($(`#pgt>a`), null)
-    mnNavLeft.insertBefore($(`#thread_types`), null)
-
-    if($(`#pgt>.pg`)!==null){
-      mnNavRight.insertBefore($(`#pgt>.pg`), null)
-    }
-   
-    mnNavRight.insertBefore($(`.y`), null)
-
-  }
-
-  // 使用第三个symbol
+    // 使用第三个symbol
   // 列表替换
   const symbolHotPostStats = [
     "keylolreward",
@@ -570,6 +542,39 @@
     "keylolhi",
     "keylolonline"
   ]
+
+
+  function moveHotPost() {
+    let mnNode = $(`.mn`)
+    // 创建父节点
+    let mnNavParentTemplate = `
+          <div class="mn-nav-left"></div>
+          <div class="mn-nav-right"></div>
+        `
+    let mnNavParent = document.createElement(`div`)
+    mnNavParent.id = `mn-nav-parent`
+    mnNavParent.innerHTML += mnNavParentTemplate
+
+    mnNode.insertBefore(mnNavParent, mnNode.children[0])
+    // 移动子节点
+    let mnNavLeft = $(`.mn-nav-left`)
+    let mnNavRight = $(`.mn-nav-right`)
+
+
+    // new post btn
+    $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo[5])}<span>发新帖</span>`
+    mnNavLeft.insertBefore($(`#pgt>a`), null)
+    mnNavLeft.insertBefore($(`#thread_types`), null)
+
+    if($(`#pgt>.pg`)!==null){
+      mnNavRight.insertBefore($(`#pgt>.pg`), null)
+    }
+   
+    mnNavRight.insertBefore($(`.y`), null)
+
+  }
+
+
   function hotPostList() {
     // 列表
     let trNode = $All(`tbody>tr`)

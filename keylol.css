@@ -1304,11 +1304,21 @@ display:none;
 
 /* 发帖按钮 */
 .mn-nav-left > a{
+	display:flex;
+	align-items:center;
 	padding:var(--element-padding);
 	background-color:var(--point);
 	margin-right:var(--marign-padding-18);
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
+	
+}
+.mn-nav-left > a .icon{
+	width:1.3em;
+	height:1.3em;
+	margin-right:2px;
+}
+.mn-nav-left > a > span:nth-child(2){
 	color:var(--font-color-light)
 }
 
