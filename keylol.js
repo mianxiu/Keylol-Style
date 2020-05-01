@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_sra7yavsrh.js
+// @require      https://at.alicdn.com/t/font_1794025_ozihtfe8l1m.js
 
 // ==/UserScript==
 
@@ -538,7 +538,8 @@
     "keylolcreatenewpost",
     "keylollock",
     "keylolpostdigest",
-    "keylolpostattachment"
+    "keylolpostattachment",
+    "keylolpostsolve"
   ]
   const symbolHotPostUser = [
     "keyloladdfriend",
@@ -599,6 +600,7 @@
     const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
     const subjectRegx = /<a title.+?\a>/gm
+    const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
 
     // middle大小头像链接
     function avatar(suid) {
@@ -637,6 +639,12 @@
 
       // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
+
+      let subject = tHtml.match(subjectRegx) !== null ? tHtml.match(subjectRegx)[0] : ''
+
+      let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx,      `
+        <span class="post-solve">$1${symbolHTML(symbolHotPostInfo[9])}$2</span>`
+        ): ''
 
       let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo[0]) : ''
       let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo[1]) : ''
@@ -692,6 +700,7 @@
 
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
+                <div class="post-list-subject">${subject}</div>
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
@@ -699,6 +708,7 @@
                          <div class="post-info">
                           ${join}
                           ${reward}
+                          ${solve}
                           ${replyReward}
                           ${digest}
                           ${lock}
