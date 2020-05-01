@@ -281,8 +281,8 @@
     return span
   }
 
-  let symbolHTML = function (id){
-      return `<span class="symbol-icons"><svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg></span>`
+  let symbolHTML = function (id) {
+    return `<span class="symbol-icons"><svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg></span>`
   }
 
   // 下拉菜单icons添加
@@ -310,7 +310,11 @@
 
   // 搜索栏 消息 提醒
   // 搜索栏和导航栏
-  const symbolNav = ["kelolmenu_iconsearch", "kelolmenu_icon_mail", "kelolmenu_icon_post_reply"]
+  const symbolNav = [
+    "kelolmenu_iconsearch",
+    "kelolmenu_icon_mail",
+    "kelolmenu_icon_post_reply"
+  ]
   function setNavIcons() {
     let navNodes = {
       searchNode: $(`.search-bar-form > .dropdown `),
@@ -318,16 +322,25 @@
       highLightNode: $(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`),
     }
 
-    let i = 0
-    for (const key in navNodes) {
-      let node = navNodes[key]
+    // 登录状态
 
-      if (node.firstChild != null) {
-        node.firstChild.nodeValue = ``
+    if (navNodes.highLightNode !== null) {
+      let i = 0
+      for (const key in navNodes) {
+        let node = navNodes[key]
+
+        if (node.firstChild != null) {
+          node.firstChild.nodeValue = ``
+        }
+        navNodes[key].insertBefore(symbol(symbolNav[i]), node.children[0])
+        i++
       }
-      navNodes[key].insertBefore(symbol(symbolNav[i]), node.children[0])
-      i++
+    } else {
+      // 未登录只插入搜索
+      navNodes.searchNode.insertBefore(symbol(symbolNav[0]), navNodes.searchNode.children[0])
     }
+
+
   }
 
   // steam平台工具
@@ -467,12 +480,18 @@
   // 首页symbol
   // 导航栏的一系列函数
   function navFunction() {
-    console.log(`add darkmode`)
-    darkMode()
+    // 检测 是否登录 
+
     console.log(`add nav menu icons`)
     setNavIcons()
-    console.log(`add down menu icons`)
-    setDownMenuIcons()
+
+    if (document.querySelector(`.dropdown > a`) !== null) {
+      console.log(`add darkmode`)
+      darkMode()
+      console.log(`add down menu icons`)
+      setDownMenuIcons()
+    }
+
   }
 
   // 首页样式函数
@@ -525,21 +544,21 @@
 
   // 使用第三个symbol
   // 列表替换
-  const hotPostStatsSymbol = [
+  const symbolHotPostStats = [
     "keylolreward",
     "keylolclosepost",
     "keylolvote",
     "keyloltop",
     "keylolglobaltop"
   ]
-  const hotPostInfoSymbol = [
+  const symbolHotPostInfo = [
     "keylolattach_img",
     "keylolagree",
     "keylolreply",
     "keylolnewpost",
     "keylolhidetop"
   ]
-  const hotPostUserSymbol = [
+  const symbolHotPostUser = [
     "keyloladdfriend",
     "keyloliconmail",
     "keylolhi",
@@ -601,7 +620,7 @@
                          <div class="post-list-right-l">
                              <div class="post-list-by-member">${user}</div>
                              <div class="post-list-num">
-                             ${symbolHTML(hotPostInfoSymbol[2])}
+                             ${symbolHTML(symbolHotPostInfo[2])}
                              ${divs[4]}
                              </div>
                              <div class="post-list-time">${em}</div>
