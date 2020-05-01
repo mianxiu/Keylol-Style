@@ -582,7 +582,7 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-    const userRegx = /(<a.+suid.+>)(.+?)(<\/a>)/gm
+    const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
     const emRegx = /<em><span.+?<\/span><\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
@@ -593,7 +593,7 @@
     const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
     const attachmentRegx = /<img.+?attachment.+?>/gms
     const digestRegx = /<img.+?digest.+?>/gms
-    const suidRegx = /suid-(\d+)/gm
+    const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
 
 
     // middle大小头像链接
@@ -619,6 +619,7 @@
 
       // 用户头像$名称
       // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
+      //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
       let user = tHtml.match(userRegx) !== null ? tHtml.match(userRegx)[0].replace(userRegx,
         `
                 $1
