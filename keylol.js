@@ -599,7 +599,8 @@
     const digestRegx = /<img.+?digest.+?>/gms
     const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
-    const subjectRegx = /<a title.+?\a>/gm
+    const subjectHotRegx = /<a title.+?\a>/gm
+    const tagRegx = /<em>\[(<a href=.+?>).+?(<\/a>)\]<\/em>/gm
     const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
 
     // middle大小头像链接
@@ -640,15 +641,26 @@
       // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
 
-      let subject = tHtml.match(subjectRegx) !== null ? 
+      // 热门 会根据版块不同变化为tag
+      let subject = tHtml.match(subjectHotRegx) !== null ? 
       `
-      <div class="post-list-subject">${tHtml.match(subjectRegx)[0]}</div>
+      <div class="post-list-subject">${tHtml.match(subjectHotRegx)[0]}</div>
       `
       : ''
 
+      //tag
+      let tag = tHtml.match(tagRegx) !== null ? 
+      `
+      <div class="post-list-subject">${tHtml.match(tagRegx)[0].replace(/\[|\]/gm,'')}</div>
+      `
+      : ''
+
+
+      // 已完成
       let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx,      `
         <span class="post-solve">$1${symbolHTML(symbolHotPostInfo[9])}$2</span>`
         ): ''
+
 
       let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo[0]) : ''
       let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo[1]) : ''
@@ -705,6 +717,7 @@
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
                 ${subject}
+                ${tag}
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
