@@ -1455,13 +1455,16 @@ display:none;
 	color:var(--font-second-light-aphal);
 }
 
-.post-list-tip,
-.post-join-tip{
+/*版块暂时隐藏*/
+.post-list-tip{
 	display:none!important;
-	margin-top:34px;
+	margin-top:40px;
 	position:absolute;
 	background-color:var(--tip-background)!important;
-	
+	box-shadow:var(--shadow-hot)!important;
+}
+tbody tr:hover .post-list-tip{
+	display:flex!important;
 }
 
 
@@ -1494,7 +1497,8 @@ display:none;
 	box-shadow:var(--shadow-hot);
 }
 
-.post-lock:hover .post-lock-tip{
+.post-lock:hover .post-lock-tip,
+.post-join:hover .post-join-tip{
 	color:var(--font-point);
 	background-color:var(--point);
 	display: flex;
