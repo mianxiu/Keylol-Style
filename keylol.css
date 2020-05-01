@@ -1043,6 +1043,9 @@ div.index_subject_game div.subject_row_detail_text_down {
 	flex-wrap:nowrap!important;
 	flex-direction:column;
 }
+.forum_stats a{
+	font-size:var(--font-size-12);
+}
 
 .forum_stats span{
 	padding:10px
