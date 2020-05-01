@@ -640,7 +640,11 @@
       // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
 
-      let subject = tHtml.match(subjectRegx) !== null ? tHtml.match(subjectRegx)[0] : ''
+      let subject = tHtml.match(subjectRegx) !== null ? 
+      `
+      <div class="post-list-subject">${tHtml.match(subjectRegx)[0]}</div>
+      `
+      : ''
 
       let solve = tHtml.match(solveRegx) !== null ? tHtml.match(solveRegx)[0].replace(solveRegx,      `
         <span class="post-solve">$1${symbolHTML(symbolHotPostInfo[9])}$2</span>`
@@ -700,7 +704,7 @@
 
       let trTemplate = `
                 <div class="post-list-icn">${divs[0]}</div>
-                <div class="post-list-subject">${subject}</div>
+                ${subject}
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
