@@ -942,13 +942,15 @@ div.index_subject_game div.subject_row_detail_text_down {
   margin-bottom: var(--margin-bottom-30);
 }
 .forum_nav > div {
+	
   margin-bottom: var(--marign-padding-18);
   border-radius: var(--border-radius-10);
+	align-items:center;
   overflow: hidden;
 }
 
 .forum_nav > div > a {
-  padding: 8px 10px;
+  padding: 10px 8px;
 }
 
 .navItem-1 {
