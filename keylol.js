@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_ozihtfe8l1m.js
+// @require      https://at.alicdn.com/t/font_1794025_8s99ve1dib.js
 
 // ==/UserScript==
 
@@ -656,14 +656,36 @@
 
     // 判断版块,替换版块tag图标
     const symbolSubTag = {
-
+      yundong:"keylolyundong",
+      guanshui:"keylolguanshui",
+      licai:"keylollicai",
+      lianji:"keylollianji",
+      shoucang:"keylolshoucang",
+      yurenjie:"keylolyurenjie",
+      haojia:"keylolhaojia",
+      qinggan:"keylolqinggan",
+      ouqi:"keylolouqi",
+      jiqiao:"keyloljiqiao",
+      yingyin:"keylolyingyin",
+      lingyi:"keylollingyi",
+    
     }
 
     function subTag(subTagHtml) {
 
       const tagSymbolRegx = {
-        w: [/le="灌/gms],
-
+        yundong:"keylolyundong",
+        guanshui:/tle="灌水/gms,
+        licai:"keylollicai",
+        lianji:"keylollianji",
+        shoucang:"keylolshoucang",
+        yurenjie:"keylolyurenjie",
+        haojia:"keylolhaojia",
+        qinggan:"keylolqinggan",
+        ouqi:"keylolouqi",
+        jiqiao:"keyloljiqiao",
+        yingyin:"keylolyingyin",
+        lingyi:"keylollingyi",
       }
 
       let tagIconMatch = () => {
