@@ -725,14 +725,13 @@
     // 回复---
     function replyNum(html) {
       // <td class="num"><a href="t590966-1-1" class="xi2">0</a><em>0</em></td>
-  
       const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
-      const replyByNodeRegx = /cite>(<a href=.+?>)(.+?)(<\/a>).+?<em>(<a href=.+?>)(<span.+?\/span>)(<\/a>)/gms
+      const replyByNodeRegx = /cite>(<a\s+href=.+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
       const replyNode = html.match(replyNodeRegx)
-      const replyBy = html.match(replyByNodeRegx)
+      const replyByNode = html.match(replyByNodeRegx)
 
-      if (replyNode !== null) {   
-        let replyByTemplate = replyBy[0].replace(replyByNodeRegx,`$1$2$3$4$5$6`)
+      if (replyNode !== null && replyByNode !== null ) {   
+        let replyByTemplate = replyByNode[0].replace(replyByNodeRegx,`$1$2$3$4`)
         let replyTemplate = replyNode[0].replace(replyNodeRegx,`
         <div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div><span class="post-reply-tip">${replyByTemplate}</span>`)
         return replyTemplate
@@ -747,7 +746,6 @@
 
       let tableHTML = tnode.innerHTML.replace(tdRegx, `div`)
       let divs = tableHTML.match(divRegx)
-
 
 
       let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, '$1') : ''
@@ -795,8 +793,10 @@
       let lock = tableHTML.match(lockRegx) !== null ?
         `
           <span class="post-lock">
+                <div>
                 ${symbolHTML(symbolHotPostInfo.lock)}
                 <span>${tableHTML.match(lockRegx)[0].replace(lockRegx, '$1')}</span>
+                </div>
                 <span class="post-lock-tip">阅读权限</span>
           </span>
       `
