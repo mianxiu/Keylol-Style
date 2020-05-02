@@ -615,52 +615,53 @@
       }
     }
 
+
+    // 判断帖子模式
+    function icn(icnHtml){
+
+      const icnFolderRegx = /.*folder_common.*/gms
+      const icnRewardRegx = /reward/gm
+      const icnLockRegx = /lock/gms
+      const icnGlobalRegx = /pin_2/gms
+      const icnTopRegx = /pin_1/gms
+
+      let icnTemplate = (symbolName) => {
+        return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
+      }
+
+      // 默认新窗口
+      // 悬赏
+      if (icnRewardRegx.test(icnHtml) == true) {
+
+        return icnTemplate(symbolHotPostStats.reward)
+      }
+
+      if (icnLockRegx.test(icnHtml) == true) {
+        return icnTemplate(symbolHotPostStats.closepost)
+      }
+
+      if (icnGlobalRegx.test(icnHtml) == true) {
+        return icnTemplate(symbolHotPostStats.globaltop)
+      }
+      if (icnTopRegx.test(icnHtml) == true) {
+        return icnTemplate(symbolHotPostStats.top)
+      }
+
+      if (icnFolderRegx.test(icnHtml) == true) {
+        return ''
+      }
+
+      return ''
+
+    }
+
     for (let i = 0; i < trNode.length; i++) {
       let tnode = trNode[i]
 
       let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
       let divs = tHtml.match(divRegx)
 
-      // 判断帖子模式
-      let icn = () => {
 
-        let icnHtml = divs[0]
-
-        const icnFolderRegx = /.*folder_common.*/gms
-        const icnRewardRegx = /reward/gm
-        const icnLockRegx = /lock/gms
-        const icnGlobalRegx = /pin_2/gms
-        const icnTopRegx = /pin_1/gms
-
-        let icnTemplate = (symbolName) => {
-          return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
-        }
-
-        // 默认新窗口
-        // 悬赏
-        if (icnRewardRegx.test(icnHtml) == true) {
-
-          return icnTemplate(symbolHotPostStats.reward)
-        }
-
-        if (icnLockRegx.test(icnHtml) == true) {
-          return icnTemplate(symbolHotPostStats.closepost)
-        }
-
-        if (icnGlobalRegx.test(icnHtml) == true) {
-          return icnTemplate(symbolHotPostStats.globaltop)
-        }
-        if (icnTopRegx.test(icnHtml) == true) {
-          return icnTemplate(symbolHotPostStats.top)
-        }
-
-        if (icnFolderRegx.test(icnHtml) == true) {
-          return ''
-        }
-
-        return ''
-
-      }
 
       let suid = tHtml.match(suidRegx) != null ? tHtml.match(suidRegx)[0].replace(suidRegx, '$1') : ''
 
@@ -680,7 +681,8 @@
            `
       ) : ''
 
-
+      // 帖子模式（悬赏等
+     
       // 发表时间
       let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
 
@@ -709,7 +711,7 @@
           return tHtml.match(solveHotRegx)[0].replace(solveHotRegx, `
           <span class="post-solve">${symbolHTML(symbolHotPostInfo.postsolve)}</span>`
           )
-        }else{
+        } else {
           return ''
         }
       }
@@ -770,7 +772,7 @@
       ) : ''
 
       let trTemplate = `
-                ${icn()}
+                ${icn(divs[0])}
                 ${subject}
                 ${tag}
                  <div class="post-list">
