@@ -731,6 +731,7 @@
       const replyByNode = html.match(replyByNodeRegx)
 
       if (replyNode !== null && replyByNode !== null ) {   
+        // 最新回复人和时间
         let replyByTemplate = replyByNode[0].replace(replyByNodeRegx,`$1$2$3$4`)
         let replyTemplate = replyNode[0].replace(replyNodeRegx,`
         <div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div><span class="post-reply-tip">${replyByTemplate}</span>`)

@@ -1525,6 +1525,7 @@ tbody tr:hover .post-list-tip{
 	border-radius:var(--border-radius-2);
 	display: flex;
 	background-color:var(--point);
+	justify-content:center;
 }
 .post-lock >span:nth-child(2){
 	color:var(--font-point);
@@ -1549,7 +1550,7 @@ tbody tr:hover .post-list-tip{
 .post-new-post-tip,
 .post-reply-tip{
 	z-index:11;
-	padding:6px;
+	padding:0 10px;
 	background-color:var(--tip-background);
 	border-radius:var(--border-radius-10);
 	margin-top:24px;
@@ -1558,6 +1559,7 @@ tbody tr:hover .post-list-tip{
 	position:absolute;
 	height:var(--element-height-34);
 	align-items:center;
+	justify-content:center;
 	box-shadow:var(--shadow-hot);
 }
 
@@ -1610,6 +1612,7 @@ div.post-info > a.xi1:hover >.post-new-post-tip{
 	flex-direction:row;
 }
 .post-list-num:hover .post-reply-tip{
+	z-index:303;
 	color:var(--font-second-light-aphal);
 	background-color:var(--tip-background);
 	display: flex;
