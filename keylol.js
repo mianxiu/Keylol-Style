@@ -599,8 +599,6 @@
     const digestRegx = /<img.+?digest.+?>/gms
     const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
-    const subjectHotRegx = /<a title.+?\a>/gm
-    const tagRegx = /<em>\[(<a href=.+?>).+?(<\/a>)\]<\/em>/gm
     const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
     const solveHotRegx = /\[已解决\]/gm
 
@@ -617,7 +615,7 @@
 
 
     // 判断帖子模式
-    function icn(icnHtml){
+    function icn(icnHtml) {
 
       const icnFolderRegx = /.*folder_common.*/gms
       const icnRewardRegx = /reward/gm
@@ -654,23 +652,76 @@
       return ''
 
     }
+    
 
+    // 判断版块,替换版块tag图标
+    let SymbolSubTag = {
+
+    }
+
+    function subTag(subTagHtml) {
+      const tagSymbolRegx = {
+        w:/le="灌/gms,
+        
+      }
+
+      let tagIconMatch = () => {
+
+        for (const key in tagRegx) {
+
+          if (subTagHtml.match(tagRegx[key]) !== null) {
+            return `<div class="post-list-icn">${subTagHtml.match(tagRegx[key])[0].replace(tagRegx[key], '$1')}</div>`
+          }
+        }
+
+
+      }
+
+      // 是否有图标的匹配规则不一样
+      const tagRegx = {
+        subjectIconRegx: /(<a title.+?>).+?(<\/a>)/gm,
+        subJectRegx: /<em>\[(<a href=.+?>.+?<\/a>)\]<\/em>/gm
+      }
+      // 有图标
+      if (subTagHtml.match(tagRegx.subjectIconRegx) !== null) {
+        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subjectIconRegx)[0].replace(tagRegx.subjectIconRegx,
+          `
+          $1${}$2
+        `
+        )}
+        </div>`
+      }
+
+      // 无图标
+      if (subTagHtml.match(tagRegx.subJectRegx) !== null) {
+        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subJectRegx)[0].replace(tagRegx.subJectRegx, '$1')}</div>`
+      }
+
+
+
+
+      return ''
+
+
+    }
+
+    // 遍历每个帖子
     for (let i = 0; i < trNode.length; i++) {
       let tnode = trNode[i]
 
-      let tHtml = tnode.innerHTML.replace(tdRegx, `div`)
-      let divs = tHtml.match(divRegx)
+      let tHTML = tnode.innerHTML.replace(tdRegx, `div`)
+      let divs = tHTML.match(divRegx)
 
 
 
-      let suid = tHtml.match(suidRegx) != null ? tHtml.match(suidRegx)[0].replace(suidRegx, '$1') : ''
+      let suid = tHTML.match(suidRegx) != null ? tHTML.match(suidRegx)[0].replace(suidRegx, '$1') : ''
 
       let avatarUrl = avatar(suid)
 
       // 用户头像$名称
       // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
       //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
-      let user = tHtml.match(userRegx) !== null ? tHtml.match(userRegx)[0].replace(userRegx,
+      let user = tHTML.match(userRegx) !== null ? tHTML.match(userRegx)[0].replace(userRegx,
         `
                 $1
                 <span class="post-avatar">
@@ -682,33 +733,21 @@
       ) : ''
 
       // 帖子模式（悬赏等
-     
+
       // 发表时间
-      let em = tHtml.match(emRegx) !== null ? tHtml.match(emRegx)[0] : ''
+      let em = tHTML.match(emRegx) !== null ? tHTML.match(emRegx)[0] : ''
 
       // 热门 会根据版块不同变化为tag
-      let subject = tHtml.match(subjectHotRegx) !== null ?
-        `
-      <div class="post-list-icn">${tHtml.match(subjectHotRegx)[0]}</div>
-      `
-        : ''
-
-      //tag
-      let tag = tHtml.match(tagRegx) !== null ?
-        `
-      <div class="post-list-icn">${tHtml.match(tagRegx)[0].replace(/\[|\]/gm, '')}</div>
-      `
-        : ''
 
 
       // 已完成
       let solve = () => {
-        if (tHtml.match(solveRegx) !== null) {
-          return tHtml.match(solveRegx)[0].replace(solveRegx, `
+        if (tHTML.match(solveRegx) !== null) {
+          return tHTML.match(solveRegx)[0].replace(solveRegx, `
             <span class="post-solve">$1${symbolHTML(symbolHotPostInfo.postsolve)}$2</span>`
           )
-        } else if (tHtml.match(solveHotRegx) !== null) {
-          return tHtml.match(solveHotRegx)[0].replace(solveHotRegx, `
+        } else if (tHTML.match(solveHotRegx) !== null) {
+          return tHTML.match(solveHotRegx)[0].replace(solveHotRegx, `
           <span class="post-solve">${symbolHTML(symbolHotPostInfo.postsolve)}</span>`
           )
         } else {
@@ -717,40 +756,40 @@
       }
 
 
-      let attachImg = tHtml.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
-      let agree = tHtml.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
-      let lock = tHtml.match(lockRegx) !== null ?
+      let attachImg = tHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
+      let agree = tHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
+      let lock = tHTML.match(lockRegx) !== null ?
         `
           <span class="post-lock">
                 ${symbolHTML(symbolHotPostInfo.lock)}
-                <span>${tHtml.match(lockRegx)[0].replace(lockRegx, '$1')}</span>
+                <span>${tHTML.match(lockRegx)[0].replace(lockRegx, '$1')}</span>
                 <span class="post-lock-tip">阅读权限</span>
           </span>
       `
         : ''
 
-      let join = tHtml.match(joinRegx) !== null ?
+      let join = tHTML.match(joinRegx) !== null ?
         `
           <span class="post-join">
-                <span>${tHtml.match(joinRegx)[0].replace(joinRegx, '$1')}</span>
+                <span>${tHTML.match(joinRegx)[0].replace(joinRegx, '$1')}</span>
                 <span class="post-join-tip">参与人数</span>
           </span>
       `
         : ''
 
-      let reward = tHtml.match(rewardRegx) !== null ?
+      let reward = tHTML.match(rewardRegx) !== null ?
         `
           <span class="post-reward">
-                <span>${tHtml.match(rewardRegx)[0].replace(rewardRegx, '$1')}</span>
+                <span>${tHTML.match(rewardRegx)[0].replace(rewardRegx, '$1')}</span>
                 <span class="post-reward-tip">悬赏蒸气(克)</span>
           </span>
       `
         : ''
 
-      let replyReward = tHtml.match(replyReWardRegx) !== null ?
+      let replyReward = tHTML.match(replyReWardRegx) !== null ?
         `
           <span class="post-reply-reward">
-                <span>${tHtml.match(replyReWardRegx)[0].replace(replyReWardRegx, '$1')}
+                <span>${tHTML.match(replyReWardRegx)[0].replace(replyReWardRegx, '$1')}
                     <span class="post-reply-reward-tip">奖励蒸气(克)</span>
                 </span>
                
@@ -758,11 +797,11 @@
       `
         : ''
 
-      let attachment = tHtml.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
-      let digest = tHtml.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
-      let tps = tHtml.match(tpsRegx) !== null ? tHtml.match(tpsRegx)[0].replace(/tps/, `post-tps`) : ''
+      let attachment = tHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
+      let digest = tHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
+      let tps = tHTML.match(tpsRegx) !== null ? tHTML.match(tpsRegx)[0].replace(/tps/, `post-tps`) : ''
 
-      let newPost = tHtml.match(newPostRegx) !== null ? tHtml.match(newPostRegx)[0].replace(newPostRegx,
+      let newPost = tHTML.match(newPostRegx) !== null ? tHTML.match(newPostRegx)[0].replace(newPostRegx,
         `
       $1
       <span class="post-new">${symbolHTML(symbolHotPostInfo.newpost)}</span>
@@ -773,8 +812,7 @@
 
       let trTemplate = `
                 ${icn(divs[0])}
-                ${subject}
-                ${tag}
+                ${subTag(tHTML)}
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
