@@ -652,25 +652,26 @@
       return ''
 
     }
-    
+
 
     // 判断版块,替换版块tag图标
-    let SymbolSubTag = {
+    const symbolSubTag = {
 
     }
 
     function subTag(subTagHtml) {
+
       const tagSymbolRegx = {
-        w:/le="灌/gms,
-        
+        w: [/le="灌/gms],
+
       }
 
       let tagIconMatch = () => {
 
-        for (const key in tagRegx) {
+        for (const key in tagSymbolRegx) {
 
-          if (subTagHtml.match(tagRegx[key]) !== null) {
-            return `<div class="post-list-icn">${subTagHtml.match(tagRegx[key])[0].replace(tagRegx[key], '$1')}</div>`
+          if (subTagHtml.match(tagSymbolRegx[key]) !== null) {
+            return symbolHTML()
           }
         }
 
