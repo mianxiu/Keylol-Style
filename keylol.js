@@ -671,6 +671,7 @@
 
     }
 
+    // 替换图标
     function subTag(subTagHtml) {
 
       const tagSymbolRegx = {
@@ -696,7 +697,7 @@
           }
         }
 
-        return ''
+        return html
       }
 
       // 是否有图标的匹配规则不一样
@@ -708,7 +709,7 @@
       if (subTagHtml.match(tagRegx.subjectIconRegx) !== null) {
         return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subjectIconRegx)[0].replace(tagRegx.subjectIconRegx,
           `
-          $1${tagIconMatch(subTagHtml)}$2
+          $1${tagIconMatch(subTagHtml.match(tagRegx.subjectIconRegx)[0])}$2
         `
         )}
         </div>`
