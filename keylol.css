@@ -1595,7 +1595,7 @@ div.post-info > a.xi1:hover >.post-new-post-tip{
 	display: flex;
 }
 
-.post-reply-tip a{
+.post-reply-tip a,.post-reply-tip > span{
 	margin-right:4px;
 	white-space:nowrap;
 	color:var(--font-color-light);
