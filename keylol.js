@@ -656,48 +656,47 @@
 
     // 判断版块,替换版块tag图标
     const symbolSubTag = {
-      yundong:"keylolyundong",
-      guanshui:"keylolguanshui",
-      licai:"keylollicai",
-      lianji:"keylollianji",
-      shoucang:"keylolshoucang",
-      yurenjie:"keylolyurenjie",
-      haojia:"keylolhaojia",
-      qinggan:"keylolqinggan",
-      ouqi:"keylolouqi",
-      jiqiao:"keyloljiqiao",
-      yingyin:"keylolyingyin",
-      lingyi:"keylollingyi",
-    
+      yundong: "keylolyundong",
+      guanshui: "keylolguanshui",
+      licai: "keylollicai",
+      lianji: "keylollianji",
+      shoucang: "keylolshoucang",
+      yurenjie: "keylolyurenjie",
+      haojia: "keylolhaojia",
+      qinggan: "keylolqinggan",
+      ouqi: "keylolouqi",
+      jiqiao: "keyloljiqiao",
+      yingyin: "keylolyingyin",
+      lingyi: "keylollingyi",
+
     }
 
     function subTag(subTagHtml) {
 
       const tagSymbolRegx = {
-        yundong:"keylolyundong",
-        guanshui:/tle="灌水/gms,
-        licai:"keylollicai",
-        lianji:"keylollianji",
-        shoucang:"keylolshoucang",
-        yurenjie:"keylolyurenjie",
-        haojia:"keylolhaojia",
-        qinggan:"keylolqinggan",
-        ouqi:"keylolouqi",
-        jiqiao:"keyloljiqiao",
-        yingyin:"keylolyingyin",
-        lingyi:"keylollingyi",
+        yundong: /tle="运动/gms,
+        guanshui: /tle="灌水/gms,
+        licai: /tle="收藏/gms,
+        lianji: /tle="交友/gms,
+        shoucang: /tle="收藏/gms,
+        yurenjie: /tle="愚人节/gms,
+        haojia: /tle="好价/gms,
+        qinggan: /tle="情感/gms,
+        ouqi: /tle="欧气/gms,
+        jiqiao: /tle="社区/gms,
+        yingyin: /tle="影音/gms,
+        lingyi: /tle="灵异/gms
       }
 
-      let tagIconMatch = () => {
+      let tagIconMatch = (html) => {
 
         for (const key in tagSymbolRegx) {
-
-          if (subTagHtml.match(tagSymbolRegx[key]) !== null) {
-            return symbolHTML()
+          if (html.match(tagSymbolRegx[key]) !== null) {
+            return symbolHTML(symbolSubTag[key])
           }
         }
 
-
+        return ''
       }
 
       // 是否有图标的匹配规则不一样
@@ -709,7 +708,7 @@
       if (subTagHtml.match(tagRegx.subjectIconRegx) !== null) {
         return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subjectIconRegx)[0].replace(tagRegx.subjectIconRegx,
           `
-          $1${}$2
+          $1${tagIconMatch(subTagHtml)}$2
         `
         )}
         </div>`
