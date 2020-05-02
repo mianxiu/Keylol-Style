@@ -1546,13 +1546,18 @@ tbody tr:hover .post-list-tip{
 .post-join-tip,
 .post-reward-tip,
 .post-reply-reward-tip,
-.post-new-post-tip{
+.post-new-post-tip,
+.post-reply-tip{
+	z-index:11;
 	padding:6px;
 	background-color:var(--tip-background);
-	border-radius:var(--border-radius-2);
+	border-radius:var(--border-radius-10);
 	margin-top:24px;
 	display:none;
+	flex-direction: row;
 	position:absolute;
+	height:var(--element-height-34);
+	align-items:center;
 	box-shadow:var(--shadow-hot);
 }
 
@@ -1588,6 +1593,27 @@ div.post-info > a.xi1:hover >.post-new-post-tip{
 	display: flex;
 }
 
+.post-reply-tip a{
+	margin-right:4px;
+	white-space:nowrap;
+	color:var(--font-color-light);
+	font-size:var(--font-size-12);
+}
+.post-reply-tip a:last-child{
+	color:var(--font-second-light-aphal);
+}
+
+.post-list-num{
+	justify-content:center;
+}
+.post-list-num span {
+	flex-direction:row;
+}
+.post-list-num:hover .post-reply-tip{
+	color:var(--font-second-light-aphal);
+	background-color:var(--tip-background);
+	display: flex;
+}
 
 /*tps*/
 .common .tps{
