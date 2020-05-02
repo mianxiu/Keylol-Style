@@ -32,5 +32,35 @@ iconfont
 ## 元素
 ajaxwaitid 是进度提示
 
+## 最后回复tip的匹配
+有两种格式
+
+子版块
+```html
+<td class="by">
+<cite class="threadlist-reply-username">
+<a class="threadlist-blue-text" href="home.php?mod=space&amp;username=%E5%A4%A9%E9%9B%B7%E6%97%A0%E5%A6%84" c="1" mid="card_2187">天雷无妄</a>
+</cite>
+<em><a href="forum.php?mod=redirect&amp;tid=588361&amp;goto=lastpost#lastpost">2020-5-4 12:11 回复</a></em>
+```
+热门主题，正则会匹配到两个
+```html
+<td class="by"><a href="f319-1" target="_blank">福利放送</a></td>
+<td class="by">
+<cite>
+<a href="suid-1082564" c="1" mid="card_821">xdb123</a></cite>
+<em><span><span title="2020-5-1">昨天&nbsp;18:36</span></span></em>
+</td>
+<td class="num"><a href="t590661-1-1" class="xi2">126</a><em>5146</em></td>
+<td class="by">
+<cite><a href="susername-aeonden121" c="1" mid="card_2261">aeonden121</a></cite>
+<em><a href="forum.php?mod=redirect&amp;tid=590661&amp;goto=lastpost#lastpost">2020-5-5 00:00</a></em>
+</td>
+```
+所以加入判断
+```js
+let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNodeRegx, `<span>最...
+```
+
 ## tip
 [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)

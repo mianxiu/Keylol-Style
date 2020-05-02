@@ -724,16 +724,19 @@
 
     // 回复---
     function replyNum(html) {
-      // <td class="num"><a href="t590966-1-1" class="xi2">0</a><em>0</em></td>
+
+      // 回复数
       const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
-      const replyByNodeRegx = /cite>(<a\s+href=.+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
+      const replyByNodeRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
       const replyNode = html.match(replyNodeRegx)
       const replyByNode = html.match(replyByNodeRegx)
 
-      if (replyNode !== null && replyByNode !== null ) {   
+      if (replyNode !== null && replyByNodeRegx !== null) {
         // 最新回复人和时间
-        let replyByTemplate = replyByNode[0].replace(replyByNodeRegx,`<span>最后发表</span>$1$2$3$4`)
-        let replyTemplate = replyNode[0].replace(replyNodeRegx,`
+        let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`) : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
+
+        let replyTemplate = replyNode[0].replace(replyNodeRegx, `
+
         <div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div><span class="post-reply-tip">${replyByTemplate}</span>`)
         return replyTemplate
       }
