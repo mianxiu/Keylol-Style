@@ -648,9 +648,6 @@
 
 
     // 子版块相关
-
-
-
     // 子版块创建规则，筛选父节点
     if ($(`.subforum`) !== null) {
 
@@ -681,7 +678,7 @@
       })
 
 
-      // 移动tag栏
+      // tag栏
       let detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
 
       if (detail2.length > 4) {
@@ -691,10 +688,18 @@
       }
 
 
-      // 移动规则栏
+      // 规则栏
       let ruleParent = $(`.ptn.xg2`)
       if (ruleParent !== null) {
-        $(`#mn-nav-rule-parent`).insertBefore(ruleParent, null)
+        let mnNavRuleParentNode = $(`#mn-nav-rule-parent`)
+        mnNavRuleParentNode.insertBefore(ruleParent, null)
+        
+        const lineRegx = /<\/a> \| <div/gm
+        ruleParent.innerHTML =  ruleParent.innerHTML.replace(lineRegx,`<\/a><div`)
+
+        mnNavRuleParentNode.insertBefore($(`#current-forum-rule`),null)
+
+
       }
 
 
