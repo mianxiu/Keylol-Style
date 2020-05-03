@@ -590,9 +590,12 @@
       mnNavLeft.insertBefore($(`.subforum`), null)
 
       // 子版信息symbol
-      $(`.subforum_right_title_left_up`).innerHTML = symbolHTML(symbolPostNav.todaynum)
-      $(`.subforum_right_title_mid_up`).innerHTML = symbolHTML(symbolPostNav.post)
-      $(`.subforum_right_title_right_up`).innerHTML = symbolHTML(symbolPostNav.comments)
+      let today = $(`.subforum_right_title_left_up`)
+      let post = $(`.subforum_right_title_mid_up`)
+      let comment = $(`.subforum_right_title_right_up`)
+      today.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostNav.todaynum)}<span class="subforum-info-tip">${today.innerHTML}</span></div>`
+      post.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostNav.post)}<span class="subforum-info-tip">${post.innerHTML}</span></div>`
+      comment.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostNav.comments)}<span class="subforum-info-tip">${comment.innerHTML}</span></div>`
     }
 
 
