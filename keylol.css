@@ -1555,15 +1555,14 @@ div.subforum_subject_detail_text_down > div:first-child a{
 	box-shadow:none;
 	overflow:visible;
 	border:none;
+	margin-top:22px!important;
 }
 
 #mn-nav-tag-parent .subforum_subject_detail_text_down{
 	max-width:1200px;
 	flex-wrap:wrap;
 }
-#mn-nav-tag-parent .subforum_subject_detail_text_down div{
-	
-}
+
  #mn-nav-tag-parent .subforum_subject_detail_text_down a{
 	 box-shadow:var(--shadow-outline);
 	 border-radius:var(--border-radius-10);
@@ -1574,9 +1573,47 @@ div.subforum_subject_detail_text_down > div:first-child a{
 	padding:var(--element-padding-0-10);
 	flex-wrap:wrap;
 	display:flex;
-	
+}
+
+#mn-nav-tag-parent .subforum_subject_detail_text_down div.active a .post-tag-num{
+	color:var(--element-background);
+}
+
+#mn-nav-tag-parent img{
+	display:none;
+}
+
+.tag-tip{
+	position:absolute;
+	padding:var(--element-padding-0-10);
+	height:var(--element-height-34);
+	background-color:var(--tip-background);
+	color:var(--font-color-light);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	align-items:center;
+	display:none;
+	margin-top:var(--tip-margin-top-30);
 	
 }
+#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a{
+	justify-content:center;
+}
+#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a>span:first-child{
+	display:flex;
+	align-items:center;
+}
+#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a:hover >.tag-tip{
+	display:flex;
+}
+#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a:hover{
+	background-color:var(--background-color);
+}
+
+#mn-nav-tag-parent .subforum_subject_detail_text_down div.active a{
+	background-color:var(--point)!important;
+}
+
 /* --------列表------------ */
 /*--隐藏原来的图标--*/
 .bm_c img[alt*="attach"],

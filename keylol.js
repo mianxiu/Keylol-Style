@@ -290,7 +290,7 @@
    * 输入icon id,生成symbol片段
    * 详情 https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8cf4382a&helptype=code
    * @param {string} id 
-   * @returns {string}
+   * @returns {string} span string
    */
   let symbolHTML = function (id) {
     return `<span class="symbol-icons"><svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg></span>`
@@ -532,6 +532,56 @@
 
   // 热门主题---------------------------------------------------------------------------------------
   // 使用第三个symbol
+
+
+  // 判断版块,替换版块tag图标
+  const symbolSubTag = {
+    yundong: "keylolyundong",
+    guanshui: "keylolguanshui",
+    licai: "keylollicai",
+    lianji: "keylollianji",
+    shoucang: "keylolshoucang",
+    yurenjie: "keylolyurenjie",
+    haojia: "keylolhaojia",
+    qinggan: "keylolqinggan",
+    ouqi: "keylolouqi",
+    jiqiao: "keyloljiqiao",
+    yingyin: "keylolyingyin",
+    lingyi: "keylollingyi",
+
+  }
+
+
+  /**
+   * 输入带关键字的html,匹配版块tag的图标
+   * @param {string} html 
+   * @returns {string} symbol片段
+   */
+  function tagIconMatch(html) {
+    const tagSymbolRegx = {
+      yundong: /运动/gms,
+      guanshui: /灌水/gms,
+      licai: /收藏/gms,
+      lianji: /交友/gms,
+      shoucang: /收藏/gms,
+      yurenjie: /愚人节/gms,
+      haojia: /好价/gms,
+      qinggan: /情感/gms,
+      ouqi: /欧气/gms,
+      jiqiao: /社区/gms,
+      yingyin: /影音/gms,
+      lingyi: /灵异/gms
+    }
+
+    for (const key in tagSymbolRegx) {
+      if (html.match(tagSymbolRegx[key]) !== null) {
+        return symbolHTML(symbolSubTag[key])
+      }
+    }
+
+    return html
+  }
+
   // 列表替换
   const symbolHotPostStats = {
     reward: "keylolreward",
@@ -643,8 +693,13 @@
         i++
       })
 
-      // tag图标替换
-      tagIconMatch()
+      // 版块tag图标替换
+      $All(`#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a`).forEach(node => {
+        console.log(node.innerHTML)
+        let postNumRegx = /\d+/gm
+        let postNum = node.innerText.match(postNumRegx) !== null ? `（${node.innerText.match(postNumRegx)[0]}）` : ''
+        node.innerHTML = `<span>${tagIconMatch(node.innerText)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
+      })
     }
 
 
@@ -767,54 +822,6 @@
 
     }
 
-
-    // 判断版块,替换版块tag图标
-    const symbolSubTag = {
-      yundong: "keylolyundong",
-      guanshui: "keylolguanshui",
-      licai: "keylollicai",
-      lianji: "keylollianji",
-      shoucang: "keylolshoucang",
-      yurenjie: "keylolyurenjie",
-      haojia: "keylolhaojia",
-      qinggan: "keylolqinggan",
-      ouqi: "keylolouqi",
-      jiqiao: "keyloljiqiao",
-      yingyin: "keylolyingyin",
-      lingyi: "keylollingyi",
-
-    }
-
-
-    /**
-     * 输入带关键字的html,匹配版块tag的图标
-     * @param {string} html 
-     * @returns {string} symbol片段
-     */
-    function tagIconMatch(html) {
-      const tagSymbolRegx = {
-        yundong: /tle="运动/gms,
-        guanshui: /tle="灌水/gms,
-        licai: /tle="收藏/gms,
-        lianji: /tle="交友/gms,
-        shoucang: /tle="收藏/gms,
-        yurenjie: /tle="愚人节/gms,
-        haojia: /tle="好价/gms,
-        qinggan: /tle="情感/gms,
-        ouqi: /tle="欧气/gms,
-        jiqiao: /tle="社区/gms,
-        yingyin: /tle="影音/gms,
-        lingyi: /tle="灵异/gms
-      }
-
-      for (const key in tagSymbolRegx) {
-        if (html.match(tagSymbolRegx[key]) !== null) {
-          return symbolHTML(symbolSubTag[key])
-        }
-      }
-
-      return html
-    }
 
     // 替换图标---
     function subTag(subTagHtml) {
