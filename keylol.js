@@ -534,22 +534,6 @@
   // 使用第三个symbol
 
 
-  // 判断版块,替换版块tag图标
-  const symbolSubTag = {
-    yundong: "keylolyundong",
-    guanshui: "keylolguanshui",
-    licai: "keylollicai",
-    lianji: "keylollianji",
-    shoucang: "keylolshoucang",
-    yurenjie: "keylolyurenjie",
-    haojia: "keylolhaojia",
-    qinggan: "keylolqinggan",
-    ouqi: "keylolouqi",
-    jiqiao: "keyloljiqiao",
-    yingyin: "keylolyingyin",
-    lingyi: "keylollingyi",
-
-  }
 
 
   /**
@@ -558,6 +542,24 @@
    * @returns {string} symbol片段
    */
   function tagIconMatch(html) {
+
+    // 判断版块,替换版块tag图标
+    const symbolSubTag = {
+      yundong: "keylolyundong",
+      guanshui: "keylolguanshui",
+      licai: "keylollicai",
+      lianji: "keylollianji",
+      shoucang: "keylolshoucang",
+      yurenjie: "keylolyurenjie",
+      haojia: "keylolhaojia",
+      qinggan: "keylolqinggan",
+      ouqi: "keylolouqi",
+      jiqiao: "keyloljiqiao",
+      yingyin: "keylolyingyin",
+      lingyi: "keylollingyi",
+
+    }
+
     const tagSymbolRegx = {
       yundong: /运动/gms,
       guanshui: /灌水/gms,
@@ -623,9 +625,10 @@
     "keyloltypesort",
     "keyloltimesort",
     "keylolstatussort"
-
-
   ]
+  /**
+   * 移动子版列表导航
+   */
   function movePostNav() {
     let mnNode = $(`.mn`)
     // 创建父节点
@@ -642,24 +645,35 @@
     let mnNavLeft = $(`.mn-nav-left`)
     let mnNavRight = $(`.mn-nav-right`)
 
+
+
+    // 子版块相关
+
+
+
+    // 子版块创建规则，筛选父节点
     if ($(`.subforum`) !== null) {
-      // 移动主题筛选
+
       let mnNavSortParent = document.createElement(`div`)
-      mnNavSortParent.id = `mn-nav-sort-parent`
+      let mnNavRuleParent = document.createElement(`div`)
       let mnNavTagParent = document.createElement(`div`)
+
+      mnNavSortParent.id = `mn-nav-sort-parent`
+      mnNavRuleParent.id = `mn-nav-rule-parent`
       mnNavTagParent.id = `mn-nav-tag-parent`
 
       mnNode.insertBefore(mnNavSortParent, $(`.bm.bml.pbn`))
+      mnNode.insertBefore(mnNavRuleParent, $(`.bm.bml.pbn`))
       mnNode.insertBefore(mnNavTagParent, $(`.bm.bml.pbn`))
 
 
-      // 清除｜
+
+      // 清除｜清除不名意义a tag
       $All('.subforum_subject_detail_text_down div').forEach(node => {
         if (node.innerText === '｜' || node.innerHTML == '') {
           node.remove()
         }
       })
-      // 清除不名意义a tag
       $All('.subforum_subject_detail_text_down a').forEach(node => {
         if (/^\s*$/.test(node.innerText)) {
           node.remove()
@@ -667,9 +681,8 @@
       })
 
 
-      // 移动tag
+      // 移动tag栏
       let detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
-
 
       if (detail2.length > 4) {
         console.log(2)
@@ -677,9 +690,17 @@
         mnNavTagNode.insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
       }
 
+
+      // 移动规则栏
+      let ruleParent = $(`.ptn.xg2`)
+      if (ruleParent !== null) {
+        $(`#mn-nav-rule-parent`).insertBefore(ruleParent, null)
+      }
+
+
+
       // 移动筛选栏
       detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
-
       detail2.forEach(node => {
         node.style = ''
         $(`#mn-nav-sort-parent`).insertBefore(node, null)
@@ -704,6 +725,9 @@
         let postNum = node.innerText.match(postNumRegx) !== null ? `（${node.innerText.match(postNumRegx)[0]}）` : ''
         node.innerHTML = `<span>${tagIconMatch(postTagName)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
       })
+
+
+
     }
 
 
