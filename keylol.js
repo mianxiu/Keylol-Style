@@ -605,7 +605,10 @@
       mnNavRight.insertBefore($(`#fd_page_top>.pg`), null)
 
       // 分页symbol
-      $(`.pg>.prev`).innerHTML = symbolHTML(symbolPostNav.prePage)
+      if ($(`.pg>.prev`) !== null) {
+        $(`.pg>.prev`).innerHTML = symbolHTML(symbolPostNav.prePage)
+      }
+
 
 
     }

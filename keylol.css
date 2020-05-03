@@ -25,6 +25,7 @@
   --element-margin-bottom-18: 18px;
   --element-padding: 8px 10px;
   --element-padding-left: 18px;
+	--element-padding-0-10:0 10px;
 	--element-height-34:34px;
   --down-menu-height: 46px;
   --down-menu-dual-line-height: 92px;
@@ -1328,7 +1329,7 @@ display:none;
 	font-size:var(--font-size-12);
 	display:flex;
 	align-items:center;
-	padding:0 10px;;
+	padding:var(--element-padding-0-10);
 	background-color:var(--point);
 	margin-right:var(--marign-padding-18);
 	border-radius:var(--border-radius-10);
@@ -1350,6 +1351,7 @@ display:none;
 
 /* 分类和分页 */
 #thread_types,.mn-nav-right >.pg{
+	height:var(--element-height-34);
 	display:flex;
 	transition:var(--motion-2);
 	border-radius:var(--border-radius-10);
@@ -1374,7 +1376,7 @@ display:none;
 .mn-nav-right >.pg > label{
 	display:flex;
 	align-items:center;
-	padding:0 10px;
+	padding:var(--element-padding-0-10);
 	background-color:var(--element-background);
 }
 
@@ -1427,6 +1429,27 @@ display:none;
 }
 #filter_special_menu ul li a:hover{
 	background-color:var(--background-color);
+}
+/*-----------------------------帖子nav----------------------*/
+#mn-nav-parent .icon{
+	width:1.3em;
+	height:1.3em;
+}
+.subforum{
+	margin:0!important;
+}
+#mn-nav-parent .subforum_right_title{
+	display:flex;
+	align-items:center;
+	height:var(--element-height-34);
+	background-color:var(--element-background);
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-10);
+	padding:var(--element-padding-0-10);
+}
+.subforum_right_title > div{
+	display:flex;
+	margin-right:8px;
 }
 /* --------列表------------ */
 /*--隐藏原来的图标--*/
@@ -1575,7 +1598,7 @@ tbody tr:hover .post-list-tip{
 .post-new-post-tip,
 .post-reply-tip{
 	z-index:11;
-	padding:0 10px;
+	padding:var(--element-padding-0-10);
 	background-color:var(--tip-background);
 	border-radius:var(--border-radius-10);
 	margin-top:24px;
