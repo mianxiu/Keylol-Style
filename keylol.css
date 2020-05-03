@@ -1546,7 +1546,9 @@ div.subforum_subject_detail_text_down > div:first-child a{
 	margin-right:8px;
 }
 /*-----版块tag------*/
-
+#mn-nav-tag-parent{
+	margin-bottom:40px;
+}
 #mn-nav-tag-parent div{
 	height:auto;
 }
@@ -1622,17 +1624,34 @@ div.subforum_subject_detail_text_down > div:first-child a{
 	display:flex;
 	flex-direction:column;
 }
-.ptn.xg2 div{
+#mn-nav-rule-switch{
 	display:flex;
 }
-.ptn.xg2{
+.ptn div,.ptn a{
+	display:flex;
+}
+.ptn{
 	display:flex;
 	border-radius:var(--border-radius-10) var(--border-radius-10) 0 0 ;
 	overflow:hidden;
+	box-shadow:var(--shadow-outline);
 }
-.ptn.xg2 a{ 
+.ptn a,#current-forum-rule{ 
 	padding:var(--element-padding);
 	background-color:var(--element-background);
+	
+}
+.ptn a:hover{
+	background-color:var(--background-color);
+}
+.ptn a.active{
+	background-color:var(--point);
+	color:var(--font-color-light);
+}
+#current-forum-rule{
+	border-radius:0 var(--border-radius-10) var(--border-radius-10) var(--border-radius-10);
+	margin-top:0px!important;
+	box-shadow:var(--shadow-outline);
 	
 }
 /* --------列表------------ */

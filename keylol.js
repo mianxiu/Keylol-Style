@@ -649,18 +649,19 @@
 
     // 子版块相关
     // 子版块创建规则，筛选父节点
+    // 存在子版元素
     if ($(`.subforum`) !== null) {
 
       let mnNavSortParent = document.createElement(`div`)
       let mnNavRuleParent = document.createElement(`div`)
       let mnNavTagParent = document.createElement(`div`)
 
-      mnNavSortParent.id = `mn-nav-sort-parent`
       mnNavRuleParent.id = `mn-nav-rule-parent`
+      mnNavSortParent.id = `mn-nav-sort-parent`
       mnNavTagParent.id = `mn-nav-tag-parent`
 
-      mnNode.insertBefore(mnNavSortParent, $(`.bm.bml.pbn`))
       mnNode.insertBefore(mnNavRuleParent, $(`.bm.bml.pbn`))
+      mnNode.insertBefore(mnNavSortParent, $(`.bm.bml.pbn`))
       mnNode.insertBefore(mnNavTagParent, $(`.bm.bml.pbn`))
 
 
@@ -692,13 +693,28 @@
       let ruleParent = $(`.ptn.xg2`)
       if (ruleParent !== null) {
         let mnNavRuleParentNode = $(`#mn-nav-rule-parent`)
+        mnNavRuleParentNode.innerHTML = `<div id="mn-nav-rule-switch"></div>`
         mnNavRuleParentNode.insertBefore(ruleParent, null)
-        
+
         const lineRegx = /<\/a> \| <div/gm
-        ruleParent.innerHTML =  ruleParent.innerHTML.replace(lineRegx,`<\/a><div`)
+        ruleParent.innerHTML = ruleParent.innerHTML.replace(lineRegx, `<\/a><div`)
 
-        mnNavRuleParentNode.insertBefore($(`#current-forum-rule`),null)
+        $(`#mn-nav-rule-switch`).insertBefore($(`.ptn.xg2`), null)
+        mnNavRuleParentNode.insertBefore($(`#current-forum-rule`), null)
 
+
+        // 添加切换按钮
+        let switchRule = function () {
+
+          let num = event.target.id.match(/\d+/gm)[0]
+          $(`#current-forum-rule`).innerHTML = $(`#forum-rule-${num}`).innerHTML
+          console.log(num)
+        }
+
+        $All(`.ptn.xg2 > a`).forEach(node => {
+          node.removeEventListener('click', switchRule)
+          node.addEventListener('click', switchRule)
+        })
 
       }
 
@@ -721,7 +737,7 @@
 
       // 版块tag图标替换
       $All(`#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a`).forEach(node => {
-        console.log(node.innerHTML)
+      
         let postTagNameRegx = /(.*)（.*/gm
         let postTagName = node.innerText.match(postTagNameRegx) !== null ?
           node.innerText.replace(postTagNameRegx, `$1`)
