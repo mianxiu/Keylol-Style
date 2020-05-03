@@ -697,7 +697,9 @@
       $All(`#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a`).forEach(node => {
         console.log(node.innerHTML)
         let postTagNameRegx = /(.*)（.*/gm
-        let postTagName = node.innerText.match(postTagNameRegx) !==null ? node.innerText.replace(postTagNameRegx,`$1`) : ''
+        let postTagName = node.innerText.match(postTagNameRegx) !== null ?
+          node.innerText.replace(postTagNameRegx, `$1`)
+          : `<span class="post-tag-name">${node.innerText}</span>`
         let postNumRegx = /\d+/gm
         let postNum = node.innerText.match(postNumRegx) !== null ? `（${node.innerText.match(postNumRegx)[0]}）` : ''
         node.innerHTML = `<span>${tagIconMatch(postTagName)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
