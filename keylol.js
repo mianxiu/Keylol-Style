@@ -576,6 +576,20 @@
     let mnNavLeft = $(`.mn-nav-left`)
     let mnNavRight = $(`.mn-nav-right`)
 
+    if ($(`.subforum`) !== null) {
+      // 移动主题筛选
+      let mnNavPostSortParentTemplate = `
+
+    `
+      let mnNavSortParent = document.createElement(`div`)
+      mnNavSortParent.id = `mn-nav-sort-parent`
+      let mnNavTagParent = document.createElement(`div`)
+      mnNavTagParent.id = `mn-nav-tag-parent`
+
+      mnNode.insertBefore(mnNavSortParent,$(`.bm.bml.pbn`))
+      mnNode.insertBefore(mnNavTagParent,$(`.bm.bml.pbn`))
+    }
+
 
     // new post btn
     $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
