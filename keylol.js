@@ -586,8 +586,16 @@
       let mnNavTagParent = document.createElement(`div`)
       mnNavTagParent.id = `mn-nav-tag-parent`
 
-      mnNode.insertBefore(mnNavSortParent,$(`.bm.bml.pbn`))
-      mnNode.insertBefore(mnNavTagParent,$(`.bm.bml.pbn`))
+      mnNode.insertBefore(mnNavSortParent, $(`.bm.bml.pbn`))
+      mnNode.insertBefore(mnNavTagParent, $(`.bm.bml.pbn`))
+
+      // 移动tag
+      $(`#mn-nav-tag-parent`).insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
+      // 移动筛选
+      $All(`.subforum_subject2 > div.subforum_subject_detail2`).forEach(node => {
+        $(`#mn-nav-sort-parent`).insertBefore(node,$(`#mn-nav-sort-parent`).children[0])
+      })
+
     }
 
 
