@@ -1473,6 +1473,10 @@ display:none;
 	background-color:var(--element-background);
 	
 }
+
+#mn-nav-sort-parent .icon{
+	padding:var(--element-padding-0-10);
+}
 #mn-nav-sort-parent div{
 	align-items: center;
 	height:var(--element-height-34);
