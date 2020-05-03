@@ -1310,7 +1310,7 @@ display:none;
 }
 #mn-nav-parent{
 	padding:22px 0;
-	margin-bottom:var(--margin-bottom-30);
+	
 }
 /*  类别分页 */
 #mn-nav-parent a{
@@ -1483,8 +1483,7 @@ display:none;
 
 }
 
-#mn-nav-sort-parent a,
-.subforum_subject_detail_text_down div a span:last-child{
+#mn-nav-sort-parent a{
 	line-height:var(--element-height-34);
 	padding:var(--element-padding-0-10);
 	
