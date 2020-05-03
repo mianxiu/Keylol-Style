@@ -1595,7 +1595,7 @@ tbody tr:hover .post-list-tip{
 	background-color:var(--point);
 	justify-content:center;
 }
-.post-lock >span:nth-child(2){
+.post-lock span.symbol-icons + span{
 	color:var(--font-point);
 }
 .post-join,.post-reward,.post-reply-reward{
