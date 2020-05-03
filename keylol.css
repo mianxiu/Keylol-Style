@@ -1409,6 +1409,7 @@ display:none;
 	background-color:var(--element-background);
 	box-shadow:var(--shadow-hot);
 	border-radius:var(--border-radius-10);
+	overflow:hidden;
 }
 #filter_special_menu:hover{
 	

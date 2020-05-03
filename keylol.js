@@ -549,7 +549,8 @@
   }
 
 
-  function moveHotPost() {
+  // 移动列表导航
+  function movePostNav() {
     let mnNode = $(`.mn`)
     // 创建父节点
     let mnNavParentTemplate = `
@@ -569,10 +570,23 @@
     // new post btn
     $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
     mnNavLeft.insertBefore($(`#pgt>a`), null)
-    mnNavLeft.insertBefore($(`#thread_types`), null)
+    // 热门和子版导航不一样
+    if ($('#thread_types') !== null) {
+      // 热门导航
+      mnNavLeft.insertBefore($(`#thread_types`), null)
+    } else {
+      // 子版信息
+      mnNavLeft.insertBefore($(`.subforum`), null)
+    }
 
+
+    // 分页栏
     if ($(`#pgt>.pg`) !== null) {
+      // 热门分页
       mnNavRight.insertBefore($(`#pgt>.pg`), null)
+    }else{
+      // 子版分页
+      mnNavRight.insertBefore($(`#fd_page_top>.pg`), null)
     }
 
     mnNavRight.insertBefore($(`.y`), null)
@@ -895,7 +909,7 @@
   }
 
   function hotPost() {
-    moveHotPost()
+    movePostNav()
     hotPostList()
   }
 
@@ -926,6 +940,7 @@
 
     if (isSubject == true) {
       console.log(`i am subject`)
+      movePostNav()
       hotPostList()
     }
 
