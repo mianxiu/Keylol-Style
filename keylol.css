@@ -116,8 +116,9 @@ input{
 }
 a {
 	line-height:var(--font-size-14);
-  color: var(--font-nomal);
+   color: var(--font-nomal);
 	font-size:var(--font-size-14);
+	outline:none;
 }
 .symbol-icons{
 	display:flex;
