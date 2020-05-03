@@ -1474,20 +1474,17 @@ display:none;
 	
 }
 
-#mn-nav-sort-parent .icon{
-	padding:var(--element-padding-0-10);
-}
+
 #mn-nav-sort-parent div{
 	align-items: center;
 	height:var(--element-height-34);
 	display:flex;
-	
 	flex-direction:row;
 
 }
 
-
-#mn-nav-sort-parent a{
+#mn-nav-sort-parent a,
+.subforum_subject_detail_text_down div a span:last-child{
 	line-height:var(--element-height-34);
 	padding:var(--element-padding-0-10);
 	
@@ -1499,6 +1496,12 @@ display:none;
 #mn-nav-sort-parent .active a{
 	color:var(--font-color-light);
 	background-color:var(--point);
+
+}
+
+div.subforum_subject_detail_text_down > div:first-child a{
+	display:flex;
+	align-items:center;
 }
 
 .subforum{

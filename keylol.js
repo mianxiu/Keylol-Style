@@ -616,21 +616,21 @@
         mnNavTagNode.insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
       }
 
-      // 移动筛选
-
+      // 移动筛选栏
       detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
 
-      let i = 0
-
       detail2.forEach(node => {
-
         node.style = ''
-        node.insertBefore(symbol(symbolPostSort[i]), node.children[0])
         $(`#mn-nav-sort-parent`).insertBefore(node, null)
-
-        i++
+    
       })
 
+      // 筛选栏symbol
+      let i =0
+      $All(`#mn-nav-sort-parent .subforum_subject_detail_text_down > div:first-Child > a:first-Child`).forEach(node=>{
+            node.innerHTML = `${symbolHTML(symbolPostSort[i])}<span>${node.innerText}</span>`
+            i++
+      })
     }
 
 
