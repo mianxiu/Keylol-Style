@@ -274,13 +274,24 @@
 
   // 首页symbol -----------------------------------------------------------------------
   // 数组的顺序对应元素
-  let symbol = function (id) {
+  /**
+   * 输入icon id,生成symbol 节点
+   * @param {string}} id 
+   * @returns {HTMLSpanElement}
+   */
+  let symbolHTMLNode = function (id) {
     let span = document.createElement(`span`)
     span.className = `symbol-icons`
     span.innerHTML += `<svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg>`
     return span
   }
 
+  /**
+   * 输入icon id,生成symbol片段
+   * 详情 https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8cf4382a&helptype=code
+   * @param {string} id 
+   * @returns {string}
+   */
   let symbolHTML = function (id) {
     return `<span class="symbol-icons"><svg class="icon" aria-hidden="true"><use xlink:href="#${id}"></use></svg></span>`
   }
@@ -302,7 +313,7 @@
     let i = 0
     downMenu.forEach((node) => {
       if (node.className == ``) {
-        node.insertBefore(symbol(symbolDownMenu[i]), node.children[0])
+        node.insertBefore(symbolHTMLNode(symbolDownMenu[i]), node.children[0])
       }
       i++
     })
@@ -332,12 +343,12 @@
         if (node.firstChild != null) {
           node.firstChild.nodeValue = ``
         }
-        navNodes[key].insertBefore(symbol(symbolNav[i]), node.children[0])
+        navNodes[key].insertBefore(symbolHTMLNode(symbolNav[i]), node.children[0])
         i++
       }
     } else {
       // 未登录只插入搜索
-      navNodes.searchNode.insertBefore(symbol(symbolNav[0]), navNodes.searchNode.children[0])
+      navNodes.searchNode.insertBefore(symbolHTMLNode(symbolNav[0]), navNodes.searchNode.children[0])
     }
 
     // 设置logo
@@ -365,7 +376,7 @@
     let i = 0
     steamNodes.forEach((node) => {
       node.innerHTML = ``
-      node.insertBefore(symbol(symbolSteam[i]), null)
+      node.insertBefore(symbolHTMLNode(symbolSteam[i]), null)
       i++
     })
   }
@@ -392,7 +403,7 @@
     let i = 0
     manufactrerNode.forEach((node) => {
       node.innerHTML = ``
-      node.insertBefore(symbol(symbolManufactrer[i]), null)
+      node.insertBefore(symbolHTMLNode(symbolManufactrer[i]), null)
       i++
     })
   }
@@ -417,7 +428,7 @@
     let i = 0
     gameNode.forEach((node) => {
       node.innerHTML = ``
-      node.insertBefore(symbol(symbolGameLogo[i]), null)
+      node.insertBefore(symbolHTMLNode(symbolGameLogo[i]), null)
       i++
     })
   }
@@ -439,7 +450,7 @@
     let i = 0
     helpNode.forEach((node) => {
       node.innerHTML = ``
-      node.insertBefore(symbol(symbolHelp[i]), null)
+      node.insertBefore(symbolHTMLNode(symbolHelp[i]), null)
       i++
     })
   }
@@ -453,7 +464,7 @@
     let i = 0
     freeNode.forEach((node) => {
       node.innerHTML = ``
-      node.insertBefore(symbol(symbolFree[i]), null)
+      node.insertBefore(symbolHTMLNode(symbolFree[i]), null)
       i++
     })
   }
@@ -469,13 +480,13 @@
   ]
   function setGuideIcons() {
     // kelo ads guide
-    $(`div.navItem-1`).insertBefore(symbol(symbolGuide[0]), $(`div.navItem-1`).children[0])
+    $(`div.navItem-1`).insertBefore(symbolHTMLNode(symbolGuide[0]), $(`div.navItem-1`).children[0])
 
     let guideNode = $All(`#forum-question > div.index_subject_row > div > div.subject_row_detail_pic > a`)
     let i = 1
     guideNode.forEach((node) => {
       node.innerHTML = ``
-      node.insertBefore(symbol(symbolGuide[i]), null)
+      node.insertBefore(symbolHTMLNode(symbolGuide[i]), null)
       i++
     })
   }
@@ -559,11 +570,11 @@
   // 按tag排序图标
   const symbolPostSort = [
     "keylolviewsort",
-    "keyloltypesort",  
+    "keyloltypesort",
     "keyloltimesort",
     "keylolstatussort"
-    
-    
+
+
   ]
   function movePostNav() {
     let mnNode = $(`.mn`)
@@ -593,19 +604,19 @@
 
 
       // 清除｜
-      $All('.subforum_subject_detail_text_down div').forEach(node=>{
-        if(node.innerText === '｜' || node.innerHTML == ''){
-            node.remove()
+      $All('.subforum_subject_detail_text_down div').forEach(node => {
+        if (node.innerText === '｜' || node.innerHTML == '') {
+          node.remove()
         }
       })
       // 清除不名意义a tag
-      $All('.subforum_subject_detail_text_down a').forEach(node=>{
-        if(/^\s*$/.test(node.innerText)){
-            node.remove()
+      $All('.subforum_subject_detail_text_down a').forEach(node => {
+        if (/^\s*$/.test(node.innerText)) {
+          node.remove()
         }
       })
 
-    
+
       // 移动tag
       let detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
 
@@ -622,15 +633,18 @@
       detail2.forEach(node => {
         node.style = ''
         $(`#mn-nav-sort-parent`).insertBefore(node, null)
-    
+
       })
 
       // 筛选栏symbol
-      let i =0
-      $All(`#mn-nav-sort-parent .subforum_subject_detail_text_down > div:first-Child > a:first-Child`).forEach(node=>{
-            node.innerHTML = `${symbolHTML(symbolPostSort[i])}<span>${node.innerText}</span>`
-            i++
+      let i = 0
+      $All(`#mn-nav-sort-parent .subforum_subject_detail_text_down > div:first-Child > a:first-Child`).forEach(node => {
+        node.innerHTML = `${symbolHTML(symbolPostSort[i])}<span>${node.innerText}</span>`
+        i++
       })
+
+      // tag图标替换
+      tagIconMatch()
     }
 
 
@@ -771,9 +785,13 @@
 
     }
 
-    // 替换图标---
-    function subTag(subTagHtml) {
 
+    /**
+     * 输入带关键字的html,匹配版块tag的图标
+     * @param {string} html 
+     * @returns {string} symbol片段
+     */
+    function tagIconMatch(html) {
       const tagSymbolRegx = {
         yundong: /tle="运动/gms,
         guanshui: /tle="灌水/gms,
@@ -789,15 +807,18 @@
         lingyi: /tle="灵异/gms
       }
 
-      let tagIconMatch = (html) => {
-        for (const key in tagSymbolRegx) {
-          if (html.match(tagSymbolRegx[key]) !== null) {
-            return symbolHTML(symbolSubTag[key])
-          }
+      for (const key in tagSymbolRegx) {
+        if (html.match(tagSymbolRegx[key]) !== null) {
+          return symbolHTML(symbolSubTag[key])
         }
-
-        return html
       }
+
+      return html
+    }
+
+    // 替换图标---
+    function subTag(subTagHtml) {
+
 
       // 是否有图标的匹配规则不一样
       const tagRegx = {
