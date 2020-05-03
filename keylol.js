@@ -552,14 +552,19 @@
   // 移动列表导航
   const symbolPostNav = {
     prePage: "keylolpre-page",
-    typesort: "keyloltypesort",
-    viewsort: "keylolviewsort",
-    statussort: "keylolstatussort",
-    timesort: "keyloltimesort",
     todaynum: "keyloltodaynum",
     post: "keylolpost",
     comments: "keylolcomments"
   }
+  // 按tag排序图标
+  const symbolPostSort = [
+    "keylolviewsort",
+    "keyloltypesort",  
+    "keyloltimesort",
+    "keylolstatussort"
+    
+    
+  ]
   function movePostNav() {
     let mnNode = $(`.mn`)
     // 创建父节点
@@ -578,9 +583,6 @@
 
     if ($(`.subforum`) !== null) {
       // 移动主题筛选
-      let mnNavPostSortParentTemplate = `
-
-    `
       let mnNavSortParent = document.createElement(`div`)
       mnNavSortParent.id = `mn-nav-sort-parent`
       let mnNavTagParent = document.createElement(`div`)
@@ -589,11 +591,44 @@
       mnNode.insertBefore(mnNavSortParent, $(`.bm.bml.pbn`))
       mnNode.insertBefore(mnNavTagParent, $(`.bm.bml.pbn`))
 
+
+      // 清除｜
+      $All('.subforum_subject_detail_text_down div').forEach(node=>{
+        if(node.innerText === '｜' || node.innerHTML == ''){
+            node.remove()
+        }
+      })
+      // 清除不名意义a tag
+      $All('.subforum_subject_detail_text_down a').forEach(node=>{
+        if(/^\s*$/.test(node.innerText)){
+            node.remove()
+        }
+      })
+
+    
       // 移动tag
-      $(`#mn-nav-tag-parent`).insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
+      let detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
+
+
+      if (detail2.length > 4) {
+        console.log(2)
+        let mnNavTagNode = $(`#mn-nav-tag-parent`)
+        mnNavTagNode.insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
+      }
+
       // 移动筛选
-      $All(`.subforum_subject2 > div.subforum_subject_detail2`).forEach(node => {
-        $(`#mn-nav-sort-parent`).insertBefore(node,$(`#mn-nav-sort-parent`).children[0])
+
+      detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
+
+      let i = 0
+
+      detail2.forEach(node => {
+
+        node.style = ''
+        node.insertBefore(symbol(symbolPostSort[i]), node.children[0])
+        $(`#mn-nav-sort-parent`).insertBefore(node, null)
+
+        i++
       })
 
     }

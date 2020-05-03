@@ -1432,14 +1432,80 @@ display:none;
 	background-color:var(--background-color);
 }
 /*-----------------------------帖子nav----------------------*/
-#mn-nav-parent .icon{
+/*帖子类型*/
+#newspecial_menu{
+	display:flex;
+	flex-direction:column;
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	background-color:var(--point);
+	overflow:hidden;
+}
+#newspecial_menu a{
+	color:var(--font-second-light-aphal);
+	font-size:var(--font-size-12);
+	padding:var(--element-padding);
+	display:flex;
+}
+#newspecial_menu a:hover{
+	color:var(--font-color-light);
+}
+#mn-nav-parent .icon,
+#mn-nav-sort-parent .icon,
+#mn-nav-tag-parent .icon{
 	width:1.3em;
 	height:1.3em;
 	margin-right:2px;
 }
+/*排序*/
+.subforum_subject_detail_text_up{
+	display:none!important;
+}
+#mn-nav-sort-parent{
+
+	display:flex;
+	justify-content:space-between;
+}
+.subforum_subject_detail2{
+	overflow:hidden;
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-10);
+	background-color:var(--element-background);
+	
+}
+#mn-nav-sort-parent div{
+	align-items: center;
+	height:var(--element-height-34);
+	display:flex;
+	
+	flex-direction:row;
+
+}
+
+
+#mn-nav-sort-parent a{
+	line-height:var(--element-height-34);
+	padding:var(--element-padding-0-10);
+	
+}
+#mn-nav-sort-parent a:hover{
+	background-color:var(--background-color);
+}
+
+#mn-nav-sort-parent .active a{
+	color:var(--font-color-light);
+	background-color:var(--point);
+}
+
 .subforum{
 	margin:0!important;
+	display:flex;
 }
+
+.subforum_subject2{
+	display:flex;
+}
+
 .suforum-symbol{
 	display:flex;
 	justify-content:center;
