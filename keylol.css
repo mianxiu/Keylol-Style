@@ -1475,7 +1475,8 @@ display:none;
 }
 
 
-#mn-nav-sort-parent div{
+#mn-nav-sort-parent div,
+#mn-nav-tag-parent div{
 	align-items: center;
 	height:var(--element-height-34);
 	display:flex;
@@ -1544,6 +1545,38 @@ div.subforum_subject_detail_text_down > div:first-child a{
 	display:flex;
 	margin-right:8px;
 }
+/*-----版块tag------*/
+
+#mn-nav-tag-parent div{
+	height:auto;
+}
+#mn-nav-tag-parent .subforum_subject_detail2{
+	background:none;
+	box-shadow:none;
+	overflow:visible;
+	border:none;
+}
+
+#mn-nav-tag-parent .subforum_subject_detail_text_down{
+	max-width:1200px;
+	flex-wrap:wrap;
+}
+#mn-nav-tag-parent .subforum_subject_detail_text_down div{
+	
+}
+ #mn-nav-tag-parent .subforum_subject_detail_text_down a{
+	 box-shadow:var(--shadow-outline);
+	 border-radius:var(--border-radius-10);
+	background-color:var(--element-background);
+	 margin:0 10px 10px 0;
+	height:var(--element-height-34);
+	align-content:center;
+	padding:var(--element-padding-0-10);
+	flex-wrap:wrap;
+	display:flex;
+	
+	
+}
 /* --------列表------------ */
 /*--隐藏原来的图标--*/
 .bm_c img[alt*="attach"],
@@ -1558,6 +1591,7 @@ div.subforum_subject_detail_text_down > div:first-child a{
 .common > a[title*="只看已解决"],
 .lock > a[title*="只看已解决"],
 .new > a[title*="只看已解决"],
+.fromg,
 tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3){
 	display:none;
 }
