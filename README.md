@@ -16,7 +16,7 @@ https://www.tampermonkey.net/documentation.php#_resource
 iconfont
 
 ## SEO
-```
+```json
 <script type="application/ld+json">
 {
     "@context": "https://ziyuan.baidu.com/contexts/cambrian.jsonld",

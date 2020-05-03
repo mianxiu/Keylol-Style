@@ -1403,6 +1403,30 @@ display:none;
 	margin-right:10px;
 	
 }
+
+/*我的帖子下拉*/
+#filter_special_menu{
+	background-color:var(--element-background);
+	box-shadow:var(--shadow-hot);
+	border-radius:var(--border-radius-10);
+}
+#filter_special_menu:hover{
+	
+}
+#filter_special_menu ul{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+	
+}
+#filter_special_menu ul li a{
+	padding:var(--element-padding);
+	display:flex;
+	justify-content:center;
+}
+#filter_special_menu ul li a:hover{
+	background-color:var(--background-color);
+}
 /* --------列表------------ */
 /*--隐藏原来的图标--*/
 .bm_c img[alt*="attach"],
