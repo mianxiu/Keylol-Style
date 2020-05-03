@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_8s99ve1dib.js
+// @require      https://at.alicdn.com/t/font_1794025_mv05fv1o0h.js
 
 // ==/UserScript==
 
@@ -550,6 +550,16 @@
 
 
   // 移动列表导航
+  const symbolPostNav = {
+    prePage:"keylolpre-page",
+    typesort:"keyloltypesort",
+    viewsort:"keylolviewsort",
+    statussort:"keylolstatussort",
+    timesort:"keyloltimesort",
+    todaynum:"keyloltodaynum",
+    post:"keylolpost",
+    comments:"keylolcomments"
+  }
   function movePostNav() {
     let mnNode = $(`.mn`)
     // 创建父节点
@@ -576,6 +586,7 @@
       mnNavLeft.insertBefore($(`#thread_types`), null)
     } else {
       // 子版信息
+      mnNavLeft.insertBefore($(`.subforum_left_title_left_down>div`),null)
       mnNavLeft.insertBefore($(`.subforum`), null)
     }
 
@@ -588,6 +599,9 @@
       // 子版分页
       mnNavRight.insertBefore($(`#fd_page_top>.pg`), null)
     }
+
+    // 子版信息symbol
+
 
     mnNavRight.insertBefore($(`.y`), null)
 
