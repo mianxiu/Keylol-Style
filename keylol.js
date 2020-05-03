@@ -551,14 +551,14 @@
 
   // 移动列表导航
   const symbolPostNav = {
-    prePage:"keylolpre-page",
-    typesort:"keyloltypesort",
-    viewsort:"keylolviewsort",
-    statussort:"keylolstatussort",
-    timesort:"keyloltimesort",
-    todaynum:"keyloltodaynum",
-    post:"keylolpost",
-    comments:"keylolcomments"
+    prePage: "keylolpre-page",
+    typesort: "keyloltypesort",
+    viewsort: "keylolviewsort",
+    statussort: "keylolstatussort",
+    timesort: "keyloltimesort",
+    todaynum: "keyloltodaynum",
+    post: "keylolpost",
+    comments: "keylolcomments"
   }
   function movePostNav() {
     let mnNode = $(`.mn`)
@@ -586,8 +586,13 @@
       mnNavLeft.insertBefore($(`#thread_types`), null)
     } else {
       // 子版信息
-      mnNavLeft.insertBefore($(`.subforum_left_title_left_down>div`),null)
+      $(`.subforum_right_title`).insertBefore($(`.subforum_left_title_left_down>div`), $(`.subforum_right_title`).children[0])
       mnNavLeft.insertBefore($(`.subforum`), null)
+
+      // 子版信息symbol
+      $(`.subforum_right_title_left_up`).innerHTML = symbolHTML(symbolPostNav.todaynum)
+      $(`.subforum_right_title_mid_up`).innerHTML = symbolHTML(symbolPostNav.post)
+      $(`.subforum_right_title_right_up`).innerHTML = symbolHTML(symbolPostNav.comments)
     }
 
 
@@ -595,12 +600,16 @@
     if ($(`#pgt>.pg`) !== null) {
       // 热门分页
       mnNavRight.insertBefore($(`#pgt>.pg`), null)
-    }else{
+    } else {
       // 子版分页
       mnNavRight.insertBefore($(`#fd_page_top>.pg`), null)
+
+      // 分页symbol
+      $(`.pg>.prev`).innerHTML = symbolHTML(symbolPostNav.prePage)
+
+
     }
 
-    // 子版信息symbol
 
 
     mnNavRight.insertBefore($(`.y`), null)
