@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_mv05fv1o0h.js
+// @require      https://at.alicdn.com/t/font_1794025_s86f5thksw.js
 
 // ==/UserScript==
 
@@ -696,9 +696,11 @@
       // 版块tag图标替换
       $All(`#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a`).forEach(node => {
         console.log(node.innerHTML)
+        let postTagNameRegx = /(.*)（.*/gm
+        let postTagName = node.innerText.match(postTagNameRegx) !==null ? node.innerText.replace(postTagNameRegx,`$1`) : ''
         let postNumRegx = /\d+/gm
         let postNum = node.innerText.match(postNumRegx) !== null ? `（${node.innerText.match(postNumRegx)[0]}）` : ''
-        node.innerHTML = `<span>${tagIconMatch(node.innerText)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
+        node.innerHTML = `<span>${tagIconMatch(postTagName)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
       })
     }
 
