@@ -816,7 +816,7 @@
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
-    const emRegx = /<em><span.+?<\/span><\/em>/gms
+    const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>)/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
@@ -965,7 +965,7 @@
 
 
       // 发表时间
-      let em = tableHTML.match(emRegx) !== null ? tableHTML.match(emRegx)[0] : ''
+      let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx,`$1`): ''
 
 
       // 已完成
