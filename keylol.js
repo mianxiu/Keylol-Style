@@ -631,6 +631,8 @@
     "keyloltimesort",
     "keylolstatussort"
   ]
+
+
   /**
    * 移动子版列表导航
    */
@@ -809,6 +811,9 @@
   }
 
 
+  /**
+   * 热门列表匹配
+   */
   function hotPostList() {
     // 列表
     let trNode = $All(`tbody>tr`)
@@ -816,7 +821,7 @@
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
-    const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>)/gms
+    const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
@@ -889,8 +894,6 @@
 
     // 替换图标---
     function subTag(subTagHtml) {
-
-
       // 是否有图标的匹配规则不一样
       const tagRegx = {
         subjectIconRegx: /(<a title.+?>).+?(<\/a>)/gm,
@@ -965,7 +968,8 @@
 
 
       // 发表时间
-      let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx,`$1`): ''
+      let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx,`$1`)
+      : tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm) !== null ? tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm)[0] : ''
 
 
       // 已完成
