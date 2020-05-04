@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_s86f5thksw.js
+// @require      https://at.alicdn.com/t/font_1794025_wksfe647p3a.js
 
 // ==/UserScript==
 
@@ -594,7 +594,8 @@
     closepost: "keylolclosepost",
     vote: "keylolvote",
     top: "keyloltop",
-    globaltop: "keylolglobaltop"
+    globaltop: "keylolglobaltop",
+    vs:"keylolvs"
   }
   const symbolHotPostInfo = {
     attach_img: "keylolattach_img",
@@ -842,7 +843,7 @@
     }
 
 
-    // 判断帖子模式---
+    // 判断帖子模式图标---
     function icn(icnHtml) {
 
       const icnFolderRegx = /.*folder_common.*/gms
@@ -850,6 +851,7 @@
       const icnLockRegx = /lock/gms
       const icnGlobalRegx = /pin_2/gms
       const icnTopRegx = /pin_1/gms
+      const icnVsRegx = /debate/gms
 
       let icnTemplate = (symbolName) => {
         return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
@@ -873,6 +875,9 @@
         return icnTemplate(symbolHotPostStats.top)
       }
 
+      if(icnVsRegx.test(icnHtml) == true){
+        return icnTemplate(symbolHotPostStats.vs)
+      }
       if (icnFolderRegx.test(icnHtml) == true) {
         return ''
       }
