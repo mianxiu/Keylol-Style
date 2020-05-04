@@ -1545,7 +1545,9 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-hot);
 	color:var(--font-color-light);
+	align-items:center;
 	display:none;
+	
 }
 .mn-nav-right-control-panel a:hover .control-panel-tip{
 	display:flex;
