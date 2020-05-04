@@ -1524,6 +1524,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 	height:2.4em!important;
 }
 .mn-nav-right-control-panel{
+	margin-left:10px;
 	display:flex;
 	flex-direction:row-reverse;
 }
