@@ -1826,7 +1826,7 @@ div.subforum_subject_detail_text_down>div:first-child a {
 #separatorline{
 	overflow:hidden;
 	height:0px;
-	margin-bottom:30px;
+	margin-bottom:calc(30px - var(--marign-padding-18));
 }
 /*--隐藏原来的图标--*/
 
