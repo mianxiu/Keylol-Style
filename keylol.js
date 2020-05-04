@@ -47,7 +47,6 @@
   // 使用MutationObserver来消除节点`位移`，因为等dom加载后再操作会使元素`移位`
   // 资源消耗大，谨慎使用
   // 通过更加详细的选择器来变相停止节点插入循环
-
   var createElement = function () {
     let body = $(`body`)
 
@@ -82,8 +81,10 @@
 
   // DOM加载完全后
   // 首页---------------------------------------------------------------------------------------
-  // fetch热门主题图片
   let i = 1
+  /**
+   * fetch热门主题图片
+   */
   function fetchHotImg() {
     let imgRegx = /\"(https:\/\/blob\.keylol\.com\/forum.+?)\"/s
 
@@ -115,7 +116,9 @@
     })
   }
 
-  // 热门主题列表滚动监器
+  /**
+   * 热门主题列表滚动监器
+   */
   function hotPostShowMore() {
     let tabPContent = $(`#tabPAhn0P_content`)
     let moreText = `...+5`
@@ -143,7 +146,9 @@
     tabPContentShow.addEventListener(`click`, tabShow)
   }
 
-  // 移动版块节点
+  /**
+   * 移动版块节点
+   */
   function createIndexSubjectParent() {
     // 添加index_subject的父节点，分类
     const indexSubjectTemplate = `
@@ -169,7 +174,9 @@
     $("body").insertBefore(indexSubjectParent, null)
   }
 
-  // 移动子版块
+  /**
+   * 移动子版块
+   */
   function moveIndexSubject() {
     // 移动版块到index-subject-parent > index_subject_left
     let steamNode = $(`#wp > div:nth-child(3)`)
@@ -216,7 +223,6 @@
     let clearStats = decodeURI(statsNode.innerHTML).split(`｜`)
     let clearStatsMemberOnline = clearStats[5].split(`，`)
 
-    console.log(clearStats[5].split(`，`))
     let statsTemplate = `
         <div class="stats_member">
             <span>${clearStats[0]}</span>
@@ -236,7 +242,7 @@
         `
 
     $(`.forum_stats`).innerHTML += statsTemplate
-    //console.log(clearStats)
+
 
     // 关注重点
     let forumNav = $(`.forum_nav`)
@@ -263,12 +269,16 @@
     wp.insertBefore($(`#index-subject-parent`), $(`.bbs_daily_stats`))
   }
 
-  // 去除footer多余空格
+  /**
+   * footer
+   */
   function footer() {
     $(`.subforunm_foot_text`).innerText = $(`.subforunm_foot_text`).innerText.replace(/\s+/gm, "")
   }
 
-  // 添加深色模式
+  /**
+   * 深色模式
+   */
   function darkMode() {
     let ul = $(`#nav-user-action-bar > ul > li.dropdown > ul`)
     ul.insertBefore(document.createElement(`li`), ul.children[0])
@@ -972,7 +982,7 @@
       : tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm) !== null ? tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm)[0] : ''
 
 
-      // 已完成
+      // 已完成节点
       let solve = () => {
         if (tableHTML.match(solveRegx) !== null) {
           return tableHTML.match(solveRegx)[0].replace(solveRegx, `
@@ -1090,12 +1100,17 @@
     }
   }
 
+  /**
+   * 列表函数组合
+   */
   function hotPost() {
     movePostNav()
     hotPostList()
   }
 
-  // 判断页面来操作不同的节点
+  /**
+   * 判断页面来操作不同的节点
+   */
   let pageDecide = function () {
     // https://keylol.com
     let keylolDomin = `.*${document.domain.replace(/\./gm, `\\.`)}`
