@@ -1552,7 +1552,13 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 .mn-nav-right-control-panel a:hover .control-panel-tip{
 	display:flex;
 }
+
+/*返回按钮*/
+#pgt{
+	display:none;
+}
 /*-----------------------------帖子nav----------------------*/
+
 /*帖子类型*/
 #newspecial_menu {
   display: flex;
@@ -1817,7 +1823,13 @@ div.subforum_subject_detail_text_down>div:first-child a {
 }
 
 /* --------列表------------ */
+#separatorline{
+	overflow:hidden;
+	height:0px;
+	margin-bottom:30px;
+}
 /*--隐藏原来的图标--*/
+
 .bm_c img[alt*="attach"],
 .bm_c img[alt*="agree"],
 .bm_c img[alt*="digest"],
@@ -1855,6 +1867,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   display: flex;
   flex-direction: column;
 }
+/*子列表布局*/
 
 .bm_c tbody {
   margin-bottom: var(--marign-padding-18);
