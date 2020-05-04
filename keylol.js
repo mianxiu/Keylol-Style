@@ -12,6 +12,12 @@
 
 // ==/UserScript==
 
+/**
+ * @require keylol home icons link
+ * @require game & manufactor logo link
+ * @require keylol post icons link
+ * 
+ */
 ; (function () {
   "use strict"
 
@@ -533,13 +539,11 @@
   // 热门主题---------------------------------------------------------------------------------------
   // 使用第三个symbol
 
-
-
-
   /**
    * 输入带关键字的html,匹配版块tag的图标
    * @param {string} html 
    * @returns {string} symbol片段
+   * @returns {string} 无匹配时返回 html
    */
   function tagIconMatch(html) {
 
@@ -563,7 +567,7 @@
     const tagSymbolRegx = {
       yundong: /运动/gms,
       guanshui: /灌水/gms,
-      licai: /收藏/gms,
+      licai: /理财/gms,
       lianji: /交友/gms,
       shoucang: /收藏/gms,
       yurenjie: /愚人节/gms,
@@ -729,24 +733,30 @@
       })
 
       // 筛选栏symbol
+      let tagATagFirst = `#mn-nav-sort-parent .subforum_subject_detail_text_down > div:first-Child > a:first-Child`
       let i = 0
-      $All(`#mn-nav-sort-parent .subforum_subject_detail_text_down > div:first-Child > a:first-Child`).forEach(node => {
+      $All(tagATagFirst).forEach(node => {
         node.innerHTML = `${symbolHTML(symbolPostSort[i])}<span>${node.innerText}</span>`
         i++
       })
 
       // 版块tag图标替换
-      $All(`#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a`).forEach(node => {
-      
+      let tagAtag = `#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a`
+      $All(tagAtag).forEach(node => {
+
+
         let postTagNameRegx = /(.*)（.*/gm
         let postTagName = node.innerText.match(postTagNameRegx) !== null ?
           node.innerText.replace(postTagNameRegx, `$1`)
           : `<span class="post-tag-name">${node.innerText}</span>`
         let postNumRegx = /\d+/gm
         let postNum = node.innerText.match(postNumRegx) !== null ? `（${node.innerText.match(postNumRegx)[0]}）` : ''
-        node.innerHTML = `<span>${tagIconMatch(postTagName)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
-      })
 
+        // 有img图标且有自定义图标时匹配替换
+        if (node.children !== null && node.innerHTML !== tagIconMatch(node.innerHTML)) {
+          node.innerHTML = `<span>${tagIconMatch(postTagName)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
+        }
+      })
 
 
     }

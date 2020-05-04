@@ -1580,9 +1580,11 @@ div.subforum_subject_detail_text_down > div:first-child a{
 #mn-nav-tag-parent .subforum_subject_detail_text_down div.active a .post-tag-num{
 	color:var(--element-background);
 }
-
+/*tag原始图标*/
 #mn-nav-tag-parent img{
-	display:none;
+	margin-right:4px;
+	border-radius:4px;
+	overflow:hidden;
 }
 
 .tag-tip{
@@ -1614,6 +1616,10 @@ div.subforum_subject_detail_text_down > div:first-child a{
 
 #mn-nav-tag-parent .subforum_subject_detail_text_down div.active a{
 	background-color:var(--point)!important;
+	color:var(--font-color-light);
+}
+#mn-nav-tag-parent .subforum_subject_detail_text_down div.active a .icon{
+	color:black;
 }
 #mn-nav-tag-parent .subforum_subject_detail_text_down div.active .post-tag-name{
 	color:var(--font-color-light);
