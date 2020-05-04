@@ -853,7 +853,6 @@
 
       // 替换symbol
       $All(`.mn-nav-right-control-panel a`).forEach(node => {
-        node.style = ''
         for (const key in controlPanelRegex) {
           if (controlPanelRegex[key].test(node.innerHTML) == true) {
             node.innerHTML = symbolHTML(symbolControlPanel[key])
