@@ -619,6 +619,7 @@
     postattachment: "keylolpostattachment",
     postsolve: "keylolpostsolve"
   }
+  // 用户面板
   const symbolHotPostUser = {
     addfriend: "keyloladdfriend",
     iconmail: "keyloliconmail",
@@ -626,6 +627,13 @@
     online: "keylolonline"
   }
 
+  // 控制面板
+  const symbolControlPanel = {
+    rss: "keylolrss",
+    control: "keylolcontrol",
+    collect: "keylolcollect",
+    rabbin: "keylolrabbin"
+  }
 
   // 移动列表导航
   const symbolPostNav = {
@@ -820,6 +828,14 @@
 
 
     // 订阅、收藏 管理面板 回收站
+    // 控制面板
+    const controlPanelRegex = {
+      rss: /订阅/gms,
+      control: /管理/gms,
+      collect: /收藏/gms,
+      rabbin: /回收/gms
+    }
+
     let mnNavControlPanelNodes = $All(`div[class*="subforum_left_title_right"]`)
     if (mnNavControlPanelNodes !== null) {
       console.log(mnNavControlPanelNodes)
@@ -831,13 +847,20 @@
 
       // div[class*="subforum_left_title_right"] 子版块
       mnNavControlPanelNodes.forEach(node => {
-        console.log(node.innerHTML)
+        console.log()
         mnNavRightControlPanel.insertBefore(node, null)
       })
 
+      // 替换symbol
+      $All(`.mn-nav-right-control-panel a`).forEach(node => {
+        node.style = ''
+        for (const key in controlPanelRegex) {
+          if (controlPanelRegex[key].test(node.innerHTML) == true) {
+            node.innerHTML = symbolHTML(symbolControlPanel[key])
+          }
+        }
+      })
     }
-
-
   }
 
 
