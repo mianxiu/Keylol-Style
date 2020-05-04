@@ -605,7 +605,7 @@
     vote: "keylolvote",
     top: "keyloltop",
     globaltop: "keylolglobaltop",
-    vs:"keylolvs"
+    vs: "keylolvs"
   }
   const symbolHotPostInfo = {
     attach_img: "keylolattach_img",
@@ -651,7 +651,9 @@
     // 创建父节点
     let mnNavParentTemplate = `
           <div class="mn-nav-left"></div>
-          <div class="mn-nav-right"></div>
+          <div class="mn-nav-right">
+            <div class="mn-nav-right-control-panel"></div>
+          </div>
         `
     let mnNavParent = document.createElement(`div`)
     mnNavParent.id = `mn-nav-parent`
@@ -661,6 +663,7 @@
     // 移动子节点
     let mnNavLeft = $(`.mn-nav-left`)
     let mnNavRight = $(`.mn-nav-right`)
+    let mnNavRightControlPanel = $(`.mn-nav-right-control-panel`)
 
 
 
@@ -800,10 +803,10 @@
     // 分页栏
     if ($(`#pgt>.pg`) !== null) {
       // 热门分页
-      mnNavRight.insertBefore($(`#pgt>.pg`), null)
+      mnNavRight.insertBefore($(`#pgt>.pg`), mnNavRightControlPanel)
     } else {
       // 子版分页
-      mnNavRight.insertBefore($(`#fd_page_top>.pg`), null)
+      mnNavRight.insertBefore($(`#fd_page_top>.pg`), mnNavRightControlPanel)
 
       // 分页symbol
       if ($(`.pg>.prev`) !== null) {
@@ -816,7 +819,24 @@
 
 
 
-    mnNavRight.insertBefore($(`.y`), null)
+    // 订阅、收藏 管理面板 回收站
+    let mnNavControlPanelNodes = $All(`div[class*="subforum_left_title_right"]`)
+    if (mnNavControlPanelNodes !== null) {
+      console.log(mnNavControlPanelNodes)
+      // .y 热门版块
+      let yNode = $(`.bm_h.cl .y`)
+      if (yNode !== null) {
+        mnNavRightControlPanel.insertBefore(yNode, null)
+      }
+
+      // div[class*="subforum_left_title_right"] 子版块
+      mnNavControlPanelNodes.forEach(node => {
+        mnNavRightControlPanel.insertBefore(node, null)
+      })
+
+
+    }
+
 
   }
 
@@ -890,7 +910,7 @@
         return icnTemplate(symbolHotPostStats.top)
       }
 
-      if(icnVsRegx.test(icnHtml) == true){
+      if (icnVsRegx.test(icnHtml) == true) {
         return icnTemplate(symbolHotPostStats.vs)
       }
       if (icnFolderRegx.test(icnHtml) == true) {
@@ -978,8 +998,8 @@
 
 
       // 发表时间
-      let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx,`$1`)
-      : tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm) !== null ? tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm)[0] : ''
+      let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
+        : tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm) !== null ? tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm)[0] : ''
 
 
       // 已完成节点
