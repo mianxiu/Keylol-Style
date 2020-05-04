@@ -1822,7 +1822,26 @@ div.subforum_subject_detail_text_down>div:first-child a {
 
 }
 
-/* --------列表------------ */
+/* ------------------列表------------------------ */
+/*新帖子提醒*/
+#forumnewshow{
+
+}
+#forumnewshow a{
+	color:var(--font-color-light);
+	position:fixed;
+	box-shadow:var(--shadow-hot);
+	z-index:112;
+	top:30px;
+	left:0;
+	margin-left:42vw;
+	height:var(--element-height-34);
+	display:flex;
+	padding:var(--element-padding-0-10);
+	background-color:var(--point);
+	align-items:center;
+	border-radius:var(--border-radius-10);
+}
 #separatorline{
 	overflow:hidden;
 	height:0px;
