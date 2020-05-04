@@ -9,22 +9,32 @@
 // @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_zq56oirsnm.js
+// @require      https:////at.alicdn.com/t/font_1797873_wwar7ax0xoa.js
 
 // ==/UserScript==
 
-/**
+/**this is iconfont.cn symbol
  * @require keylol home icons link
  * @require game & manufactor logo link
  * @require keylol post icons link
+ * @require keylol editor icons link
  * 
  */
 ; (function () {
   "use strict"
 
+  /**
+   * document.querySelector
+   * @param {string} selector 
+   */
   function $(selector) {
     return document.querySelector(selector)
   }
 
+  /**
+   * document.querySelectorAll
+   * @param {string} selector 
+   */
   function $All(selector) {
     return document.querySelectorAll(selector)
   }
@@ -711,7 +721,7 @@
       let detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
 
       if (detail2.length > 4) {
-        console.log(2)
+     
         let mnNavTagNode = $(`#mn-nav-tag-parent`)
         mnNavTagNode.insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
       }
@@ -736,7 +746,7 @@
 
           let num = event.target.id.match(/\d+/gm)[0]
           $(`#current-forum-rule`).innerHTML = $(`#forum-rule-${num}`).innerHTML
-          console.log(num)
+       
         }
 
         $All(`.ptn.xg2 > a`).forEach(node => {
@@ -838,7 +848,7 @@
 
     let mnNavControlPanelNodes = $All(`div[class*="subforum_left_title_right"]`)
     if (mnNavControlPanelNodes !== null) {
-      console.log(mnNavControlPanelNodes)
+ 
       // .y 热门版块
       let yNode = $(`.bm_h.cl .y`)
       if (yNode !== null) {
@@ -847,7 +857,7 @@
 
       // div[class*="subforum_left_title_right"] 子版块
       mnNavControlPanelNodes.forEach(node => {
-        console.log()
+        
         mnNavRightControlPanel.insertBefore(node, null)
       })
 
@@ -1143,6 +1153,16 @@
   }
 
   /**
+   * 发帖模块
+   */
+  function postPanel() {
+    let postNode = $(`#f_pst`)
+    if (postNode !== null) {
+        console.log('have a post panel')
+    }
+
+  }
+  /**
    * 列表函数组合
    */
   function hotPost() {
@@ -1181,6 +1201,7 @@
       console.log(`i am subject`)
       movePostNav()
       hotPostList()
+      postPanel()
     }
 
     if (isPost == true) {
