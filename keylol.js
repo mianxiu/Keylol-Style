@@ -855,7 +855,7 @@
       $All(`.mn-nav-right-control-panel a`).forEach(node => {
         for (const key in controlPanelRegex) {
           if (controlPanelRegex[key].test(node.innerHTML) == true) {
-            node.innerHTML = symbolHTML(symbolControlPanel[key])
+            node.innerHTML = `<span>${symbolHTML(symbolControlPanel[key])}</span><span class="control-panel-tip">${node.innerHTML}</span>`
           }
         }
       })

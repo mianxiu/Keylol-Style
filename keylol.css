@@ -1529,7 +1529,26 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 .mn-nav-right-control-panel div{
 	display:flex;
+}
+.mn-nav-right-control-panel a{
+	display:flex;
+	justify-content:center;
 	
+
+}
+.mn-nav-right-control-panel a .control-panel-tip{
+	position:absolute;
+	padding:var(--element-padding-0-10);
+	margin-top:40px;
+	height:var(--element-height-34);
+	background-color:var(--tip-background);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	color:var(--font-color-light);
+	display:none;
+}
+.mn-nav-right-control-panel a:hover .control-panel-tip{
+	display:flex;
 }
 /*-----------------------------帖子nav----------------------*/
 /*帖子类型*/
