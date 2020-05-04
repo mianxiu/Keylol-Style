@@ -8,7 +8,7 @@
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_wksfe647p3a.js
+// @require      https://at.alicdn.com/t/font_1794025_zq56oirsnm.js
 
 // ==/UserScript==
 
@@ -831,9 +831,9 @@
 
       // div[class*="subforum_left_title_right"] 子版块
       mnNavControlPanelNodes.forEach(node => {
+        console.log(node.innerHTML)
         mnNavRightControlPanel.insertBefore(node, null)
       })
-
 
     }
 
