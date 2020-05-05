@@ -902,13 +902,17 @@
 
     // middle大小头像链接
     function avatar(suid) {
-      if (suid.length > 6) {
-        return `//${document.domain}/uc_server/data/avatar/00${suid.charAt(0)}/${suid.charAt(1)}${suid.charAt(2)}/${suid.charAt(3)}${suid.charAt(4)}/${suid.charAt(5)}${suid.charAt(6)}_avatar_small.jpg`
+      let suidCache = []
 
-      } else {
-        return `//${document.domain}/uc_server/data/avatar/000/${suid.charAt(0)}${suid.charAt(1)}/${suid.charAt(2)}${suid.charAt(3)}/${suid.charAt(4)}${suid.charAt(5)}_avatar_small.jpg`
-
+      for (let i = suid.length - 1; i > -1; i -= 2) {
+        let suidNum = `${suid.charAt(i - 1)}${suid.charAt(i)}`
+        suidCache.push(`${suidNum.padStart(2, '0')}`)
       }
+      suidCache.reverse()
+
+      let avatarNum = suidCache.length > 3 ? (suidCache[0] = suidCache[0].padStart(3, '0'),suidCache) : (suidCache.unshift(`000`),suidCache)
+
+      return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm,`/`)}_avatar_small.jpg`
     }
 
 
@@ -1273,7 +1277,6 @@
     // 替换迷你编辑器图标
     if (postIconNode != null) {
 
-
       // 高级模式
       $(`#fastposteditor > div > div.bar > span > a`).innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
       // 加粗
@@ -1291,7 +1294,7 @@
             if (symbolEditorRegex[key].test(a.id) == true) {
               a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${
                 a.title !== '' ? a.title : a.innerText
-              }</span>`
+                }</span>`
             }
           }
         }
@@ -1339,7 +1342,10 @@
 
     if (isSubject == true) {
       console.log(`i am subject`)
-      postPanel()
+      if ($(`.pt.hm`) == null) {
+        postPanel()
+      }
+
       movePostNav()
       hotPostList()
 
