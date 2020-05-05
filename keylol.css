@@ -2420,7 +2420,10 @@ display:flex;
 /*规则*/
 #fastpostform > div:nth-child(8){
 	display:flex;
-	
+	    flex-flow: wrap;
+}
+#fastpostform > div:nth-child(8) a{
+	color:var(--point);
 }
 #fastpostform > div:nth-child(8) br{
 	display:none;
