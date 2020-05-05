@@ -1207,6 +1207,12 @@
     wallpaper: "keylolwallpaper"
   }
 
+  /**
+   * 移动面板节点
+   */
+  function movePostPanel(){
+    let postFormNode = $(`#fastpostform`)
+  }
 
   /**
    * 发帖模块
