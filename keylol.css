@@ -1452,9 +1452,9 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   transition: var(--motion-2);
   display: flex;
   align-items: center;
-  padding: var(--element-padding);
+  padding: var(--element-padding-0-10);
   background-color: var(--element-background);
-
+	height:var(--element-height-34);
 }
 
 #thread_types>li>a {
