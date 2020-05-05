@@ -2293,6 +2293,14 @@ margin-bottom:var(--element-margin-bottom-18);
 	padding:var(--element-padding-0-10);
 	margin:0 10px;
 }
+
+span[id*="checkseccodeverify"]{
+	display: flex;
+    position: absolute;
+    align-items: center;
+    margin-top: -24px;
+    margin-left: 240px;
+}
 /*表情*/
 #fastsmilies,
 #smilies_preview{
