@@ -734,13 +734,18 @@
       if (ruleParent !== null) {
         let mnNavRuleParentNode = $(`#mn-nav-rule-parent`)
         mnNavRuleParentNode.innerHTML = `<div id="mn-nav-rule-switch"></div>`
-        mnNavRuleParentNode.insertBefore(ruleParent, null)
+
 
         const lineRegx = /<\/a> \| <div/gm
         ruleParent.innerHTML = ruleParent.innerHTML.replace(lineRegx, `<\/a><div`)
 
-        $(`#mn-nav-rule-switch`).insertBefore($(`.ptn.xg2`), null)
-        mnNavRuleParentNode.insertBefore($(`#current-forum-rule`), null)
+        let ruleNode = $(`#current-forum-rule`)
+        if (ruleNode.innerHTML !== '') {
+          mnNavRuleParentNode.insertBefore(ruleParent, null)
+          $(`#mn-nav-rule-switch`).insertBefore($(`.ptn.xg2`), null)
+          mnNavRuleParentNode.insertBefore(ruleNode, null)
+        }
+
 
 
         // 添加切换按钮
@@ -910,9 +915,9 @@
       }
       suidCache.reverse()
 
-      let avatarNum = suidCache.length > 3 ? (suidCache[0] = suidCache[0].padStart(3, '0'),suidCache) : (suidCache.unshift(`000`),suidCache)
+      let avatarNum = suidCache.length > 3 ? (suidCache[0] = suidCache[0].padStart(3, '0'), suidCache) : (suidCache.unshift(`000`), suidCache)
 
-      return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm,`/`)}_avatar_small.jpg`
+      return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm, `/`)}_avatar_small.jpg`
     }
 
 
