@@ -2300,6 +2300,7 @@ margin-bottom:var(--element-margin-bottom-18);
 }
 .webuploader-pick{
 	text-indent:initial!important;
+	justify-content:center;
 }
 #fastposteditor > div > div.bar > span > a:hover span.editor-tip,
 #spanButtonPlaceholder:hover span.editor-tip,
@@ -2338,4 +2339,5 @@ display:flex;
 #fastposteditor > div > div.bar > span > a {
 	margin-left:var(--pst-width);
 	display: flex;
+	justify-content: center;
 }
