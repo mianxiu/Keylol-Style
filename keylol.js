@@ -1212,7 +1212,7 @@
   /**
    * 移动面板节点
    */
-  function movePostPanel(){
+  function movePostPanel() {
     let postFormNode = $(`#fastpostform`)
   }
 
@@ -1232,8 +1232,8 @@
       eraser: /removeformat/,
       flash: /fls/,
       floatleft: /floatleft/,
-      floatright:/floatright/,
-      foldhide:/cst1_spoil/,
+      floatright: /floatright/,
+      foldhide: /cst1_spoil/,
       fontbackground: /backcolor/,
       fontcolor: /forecolor/,
       fontitalic: /I|italic/gms,
@@ -1250,7 +1250,7 @@
       netease: /cst1_163/,
       neteaselist: /cst2_163a/,
       normallist: /insertunorderedlist/,
-      numberlist:/insertorderedlist/,
+      numberlist: /insertorderedlist/,
       phonetic: /cst2_rb/,
       postpassword: /password/,
       quoter: /quote/,
@@ -1262,7 +1262,7 @@
       steamlink: /cst2_steam/,
       suspend: /cst2_hover/,
       table: /tbl/,
-      texthidden:/cst1_spoiler/,
+      texthidden: /cst1_spoiler/,
       unlink: /unlink/,
       wallpaper: /postbg/
     }
@@ -1272,9 +1272,18 @@
     let postFullEditor = $(`#e_body`)
     // 替换迷你编辑器图标
     if (postIconNode != null) {
+
+
+      // 附件
+      $(`.fpd > a:first-child`).innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">Bold</span>`
+      // 附件
+      $(`.webuploader-pick`).innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
+
+      // a节点
       postIconNode.childNodes.forEach(a => {
+
         if (a.tagName === 'A') {
- 
+
           for (const key in symbolEditorRegex) {
 
             if (symbolEditorRegex[key].test(a.id) == true) {
@@ -1329,7 +1338,7 @@
       postPanel()
       movePostNav()
       hotPostList()
-      
+
     }
 
     if (isPost == true) {
