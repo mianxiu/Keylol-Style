@@ -2243,20 +2243,31 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 	justify-content:end;
 }
 
+/**/
+.forumrowdata{
+margin-bottom:var(--element-margin-bottom-18);
+}
+.forumrowdata a{
+	color:var(--point);
+}
 /*主题选择*/
 #fastpostform > div.pbt.cl input,
 #fastpostmessage{
-	padding:var(--element-margin-bottom-18);
 	background-color:var(--input-post-background);
 	border-radius:var(--border-radius-10);
 }
 
 #fastpostmessage{
-	min-height:calc(var(--element-height-34) * 4);
+	padding:var(--element-margin-bottom-18);
+	min-height:calc(var(--element-height-34) * 3);
 	width:var(--pst-width)!important;
 }
-#fastpostform > div.pbt.cl{
+#fastpostform > div.pbt.cl{	
 	align-items:center;
+}
+#fastpostform > div.pbt.cl input{
+	height:var(--element-height-34);
+	padding:var(--element-padding-0-10);
 }
 /*验证码*/
 .mtm.sec{
