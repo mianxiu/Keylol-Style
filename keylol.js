@@ -1222,7 +1222,7 @@
   function postPanel() {
     const symbolEditorRegex = {
       attchment: /attachn/,
-      atuser: /at/,
+      atuser: /fastpostat|at/,
       autolayout: /autotypeset/,
       blod: /B|bold/gms,
       centerlayout: /justifycenter/,
