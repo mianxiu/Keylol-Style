@@ -1207,65 +1207,73 @@
     wallpaper: "keylolwallpaper",
   }
 
-  const symbolEditorRegx = {
-    attchment: "keylolattchment",
-    atuser: "keylolatuser",
-    autolayout: "keylolautolayout",
-    blod: "keylolblod",
-    centerlayout: "keylolcenterlayout",
-    code: "keylolcode",
-    downloadimg: "keyloldownloadimg",
-    emoji: "keylolemoji",
-    eraser: "keyloleraser",
-    flash: "keylolflash",
-    floatleft: "keylolfloatleft",
-    floatright: "keylolfloatright",
-    foldhide: "keylolfoldhide",
-    fontbackground: "keylolfontbackground",
-    fontcolor: "keylolfontcolor",
-    fontitalic: "keylolfontitalic",
-    fontunderline: "keylolfontunderline",
-    fromword: "keylolfromword",
-    gaojimoshi: "keylolgaojimoshi",
-    img: "keylolimg",
-    leftlaout: "keylolleftlaout",
-    line: "keylolline",
-    link: "keylollink",
-    movie: "keylolmovie",
-    music: "keylolmusic",
-    musiclink: "keylolmusiclink",
-    netease: "keylolnetease",
-    neteaselist: "keylolneteaselist",
-    normallist: "keylolnormallist",
-    numberlist: "keylolnumberlist",
-    phonetic: "keylolphonetic",
-    postpassword: "keylolpostpassword",
-    quoter: "keylolquoter",
-    reflash: "keylolreflash",
-    rightlaout: "keylolrightlaout",
-    selectnomalsvg: "keylolselectnomalsvg",
-    steamapp: "keylolsteamapp",
-    steamappsub: "keylolsteamappsub",
-    steamlink: "keylolsteamlink",
-    suspend: "keylolsuspend",
-    table: "keyloltable",
-    texthidden: "keyloltexthidden",
-    unlink: "keylolunlink",
-    wallpaper: "keylolwallpaper",
-  }
+
   /**
    * 发帖模块
    */
   function postPanel() {
-    
+    const symbolEditorRegx = {
+      attchment: /attachn/,
+      atuser: /at/,
+      autolayout: /autotypeset/,
+      blod: /B|bold/gms,
+      centerlayout: /justifycenter/,
+      code: /code/,
+      downloadimg: /downremoteimg/,
+      emoji: /sml/,
+      eraser: /removeformat/,
+      flash: /fls/,
+      floatleft: /floatleft/,
+      floatright:/floatright/,
+      foldhide:/cst1_spoil/,
+      fontbackground: /backcolor/,
+      fontcolor: /forecolor/,
+      fontitalic: /I|italic/gms,
+      fontunderline: /U|underline/gms,
+      fromword: /pasteword/,
+      gaojimoshi: "keylolgaojimoshi",
+      img: /image/,
+      leftlaout: /justifyleft/,
+      line: /inserthorizontalrule/,
+      link: /url/,
+      movie: /vid/,
+      music: /aud/,
+      musiclink: /html5audio/,
+      netease: /cst1_163/,
+      neteaselist: /cst2_163a/,
+      normallist: /insertunorderedlist/,
+      numberlist:/insertorderedlist/,
+      phonetic: /cst2_rb/,
+      postpassword: /password/,
+      quoter: /quote/,
+      reflash: "keylolreflash",
+      rightlaout: /justifyright/,
+      selectnomalsvg: "keylolselectnomalsvg",
+      steamapp: /cst1_sframe/,
+      steamappsub: /cst2_sfpack/,
+      steamlink: /cst2_steam/,
+      suspend: /cst2_hover/,
+      table: /tbl/,
+      texthidden:/cst1_spoiler/,
+      unlink: /unlink/,
+      wallpaper: /postbg/,
+    }
+
     let postNode = $(`#f_pst`)
     let postIconNode = $(`.fpd`)
     let postFullEditor = $(`#e_body`)
-    // 替换编辑器图标
+    // 替换迷你编辑器图标
     if (postIconNode != null) {
-      postIconNode.children.forEach(a => {
+      postIconNode.childNodes.forEach(a => {
         if (a.tagName === 'A') {
 
+          console.log(a.id)
+
+          for (let key in symbolEditorRegx) {
+            if (symbolEditorRegx[key].test(a.innerHTML) == true) {
+              a.innerHTML = `<span>${symbolEditor[key]}</span><span class="editor-tip">${a.innerHTML}</span>`
+            }
+          }
         }
       })
     }
