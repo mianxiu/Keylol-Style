@@ -2224,7 +2224,7 @@ _pst .cl{
 	
 }
 .pbt {
-	flex-direction: row-reverse;
+	flex-direction: row-reverse!important;
    justify-content: flex-end;
 
 	
