@@ -2257,6 +2257,7 @@ margin-bottom:var(--element-margin-bottom-18);
 	border-radius:var(--border-radius-10);
 }
 
+
 #fastpostmessage{
 	padding:var(--element-margin-bottom-18);
 	min-height:calc(var(--element-height-34) * 3);
@@ -2284,7 +2285,9 @@ margin-bottom:var(--element-margin-bottom-18);
 }
 #fastposteditor > div > div.bar > span > a span.editor-tip,
 .webuploader-pick span.editor-tip,
-.fpd a>span.editor-tip{
+.fpd a>span.editor-tip,
+#fastpostform > div.pbt.cl > span{
+	z-index:11;
 	position:absolute;
 	padding:var(--element-padding-0-10);
 	height:var(--element-height-34);
@@ -2317,6 +2320,10 @@ margin-bottom:var(--element-margin-bottom-18);
 	overflow:visible;
 	background:none;
 }
+
+#subject:focus + span{
+	display:flex!important;
+}
 /*上传附件*/
 div[id*="rt_rt_"]{
 	position:absolute!important;
@@ -2336,8 +2343,36 @@ div[id*="rt_rt_"] input{
 .bar .y{
 display:flex;
 }
+/*主题*/
 #fastposteditor > div > div.bar > span > a {
 	margin-left:var(--pst-width);
 	display: flex;
 	justify-content: center;
+}
+#typeid_fast_ctrl{
+	display:flex;
+	width:auto!important;
+	padding:var(--element-padding-0-10);
+	background-color:var(--point);
+	height:var(--element-height-34);
+	align-items:center;
+	border-radius:var(--border-radius-10);
+	color:var(--font-color-light);
+}
+#typeid_fast_ctrl_menu{
+	background-color:var(--point);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	width:auto!important;
+	display:flex;
+	padding-top:10px;
+}
+#typeid_fast_ctrl_menu > ul > li{
+	display:flex;
+	padding:var(--element-padding-0-10);
+	height:var(--element-height-34);
+	color:var(--font-second-light-aphal);
+}
+#typeid_fast_ctrl_menu > ul > li:hover{
+	color:var(--font-color-light);
 }
