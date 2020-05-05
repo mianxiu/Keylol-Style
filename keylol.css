@@ -2218,10 +2218,18 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 #fastsmilies div{
 	display:flex;
 }
-#f_pst .cl{
+_pst .cl{
 	justify-content:flex-end;
-	flex-direction:row-reverse;
+	flex-direction:column;
+	
 }
+.pbt {
+	flex-direction: row-reverse;
+   justify-content: flex-end;
+
+	
+}
+#f
 /*快速图标栏&高级模式*/
 #f_pst .bar{
 	height:var(--element-height-34);
@@ -2252,7 +2260,7 @@ margin-bottom:var(--element-margin-bottom-18);
 }
 /*主题选择*/
 #fastpostform > div.pbt.cl input,
-#fastpostmessage{
+#fastpostmessage{overflow:hidden;
 	background-color:var(--input-post-background);
 	border-radius:var(--border-radius-10);
 }
@@ -2264,7 +2272,7 @@ margin-bottom:var(--element-margin-bottom-18);
 	width:var(--pst-width)!important;
 }
 #fastpostform > div.pbt.cl{	
-	align-items:center;
+	
 }
 #fastpostform > div.pbt.cl input{
 	height:var(--element-height-34);
@@ -2358,6 +2366,7 @@ display:flex;
 	align-items:center;
 	border-radius:var(--border-radius-10);
 	color:var(--font-color-light);
+	margin-left:18px;;
 }
 #typeid_fast_ctrl_menu{
 	background-color:var(--point);
@@ -2376,3 +2385,4 @@ display:flex;
 #typeid_fast_ctrl_menu > ul > li:hover{
 	color:var(--font-color-light);
 }
+/*表情*/
