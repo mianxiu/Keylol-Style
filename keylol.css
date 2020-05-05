@@ -1355,11 +1355,13 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 
 /* 底部广告 */
 .rnd_ai_f {
+	width:var(--body-width);
   height: 120px;
   box-shadow: var(--shadow-outline);
   border-radius: var(--border-radius-10);
   overflow: hidden;
   margin: var(--margin-bottom-60) 0;
+  justify-content:center;
 }
 
 .bbs_daily_stats {
@@ -2197,8 +2199,8 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
   margin-right: 10px;
 }
 /*-----------------------快速发帖-------------------*/
-.cl{
-	
+#f_pst{
+	width:var(--body-width);
 }
 #f_pst div{
 	display:flex;
@@ -2225,7 +2227,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 	border-radius:var(--border-radius-10);
 	padding:var(--element-margin-bottom-18);
 	min-height:calc(var(--element-height-34) * 4);
-	
+	width:920px!important;
 }
 /*验证码*/
 .mtm.sec{
