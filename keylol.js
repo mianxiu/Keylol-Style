@@ -1274,7 +1274,9 @@
     if (postIconNode != null) {
 
 
-      // 附件
+      // 高级模式
+      $(`#fastposteditor > div > div.bar > span > a`).innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
+      // 加粗
       $(`.fpd > a:first-child`).innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">Bold</span>`
       // 附件
       $(`.webuploader-pick`).innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`

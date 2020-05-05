@@ -2204,6 +2204,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 /*-----------------------快速发帖-------------------*/
 #f_pst{
 	width:var(--body-width);
+	--pst-width:920px;
 }
 #f_pst div{
 	display:flex;
@@ -2228,6 +2229,8 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 #f_pst .bar{
 	margin:8px 0px;
 	align-items:center;
+	justify-content:space-between;
+	
 }
 #f_pst .bar .icon{
 	width:1.8em;
@@ -2244,7 +2247,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 	background-color:var(--input-post-background);
 	border-radius:var(--border-radius-10);
 	min-height:calc(var(--element-height-34) * 4);
-	width:920px!important;
+	width:var(--pst-width)!important;
 }
 /*验证码*/
 .mtm.sec{
@@ -2259,6 +2262,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 	display:flex;
 	justify-content:center;
 }
+#fastposteditor > div > div.bar > span > a span.editor-tip,
 .webuploader-pick span.editor-tip,
 .fpd a>span.editor-tip{
 	position:absolute;
@@ -2277,6 +2281,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 .webuploader-pick{
 	text-indent:initial!important;
 }
+#fastposteditor > div > div.bar > span > a:hover span.editor-tip,
 #spanButtonPlaceholder:hover span.editor-tip,
 .fpd a:hover>span.editor-tip{
 	display:flex;
@@ -2305,4 +2310,11 @@ div[id*="rt_rt_"] input{
 	display:flex;
 	width:25px;
 	height:25px;
+}
+/*高级模式*/
+.bar .y{
+display:flex;
+}
+#fastposteditor > div > div.bar > span > a {
+	margin-left:var(--pst-width);
 }
