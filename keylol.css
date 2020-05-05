@@ -2363,6 +2363,63 @@ span[id*="checkseccodeverify"] {
   background-color: var(--background-color);
 }
 
+/*表情弹窗*/
+#fastpostsml_menu{
+	display:flex;
+	padding:var(--element-margin-bottom-18);
+	background-color:var(--element-background);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	width:auto;
+}
+#fastpostsmiliesdiv_tb{
+	flex-wrap:wrap;
+	display:flex;
+	
+}
+#fastpostsmiliesdiv_tb ul{
+	display:flex;
+	flex-direction:row;
+	flex-wrap:wrap;
+}
+#fastpostsmiliesdiv_tb ul li{
+	padding:8px;
+	display:flex;
+	flex-wrap:nowrap;
+	border-radius:var(--border-radius-10);
+}
+
+#fastpostsmiliesdiv_tb ul li:hover{
+	background-color:var(--background-color);
+}
+#fastpostsmiliesdiv_page{
+	display:flex;
+	align-items:center;
+}
+#fastpostsmiliesdiv_data{
+	padding:10px;
+}
+#fastpostsmiliesdiv_table td{
+	padding:2px;
+	border-radius:var(--border-radius-10);
+}
+
+
+#fastpostsmiliesdiv_page .z{
+	display:flex;
+	position:absolute;
+	margin-left:40px;
+}
+#fastpostsmiliesdiv_page .z a{
+	padding:10px;	
+	border-radius:var(--border-radius-10);
+}
+#fastpostsmiliesdiv_page .z a:hover,
+#fastpostsmiliesdiv_table td:hover{
+	background-color:var(--background-color);
+	
+}
+
 .fpd {
   position: absolute;
 }
