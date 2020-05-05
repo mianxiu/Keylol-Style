@@ -1881,9 +1881,9 @@ div.subforum_subject_detail_text_down>div:first-child a {
 .new>em:first-child,
 .lock>em:first-child,
 .common>em:first-child,
-.common>a[title*="只看已解决"],
-.lock>a[title*="只看已解决"],
-.new>a[title*="只看已解决"],
+.common>a[href*="type=2"],
+.lock>a[href*="type=2"],
+.new>a[href*="type=2"],
 .fromg,
 tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   display: none;
@@ -1895,7 +1895,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 /*隐藏顶置*/
-.post-list a[title*="隐藏"] {
+.post-list a[class*="showhide"] {
   margin-right: 10px;
 }
 
