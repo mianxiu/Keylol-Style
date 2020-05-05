@@ -1266,12 +1266,10 @@
     if (postIconNode != null) {
       postIconNode.childNodes.forEach(a => {
         if (a.tagName === 'A') {
-
-          
+ 
 
           for (const key in symbolEditorRegex) {
 
-            console.log(symbolEditorRegex[key])
 
             if (symbolEditorRegex[key].test(a.id) == true) {
               a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.innerHTML}</span>`
