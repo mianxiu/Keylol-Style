@@ -2279,9 +2279,32 @@ margin-bottom:var(--element-margin-bottom-18);
 	height:var(--element-height-34);
 	padding:var(--element-padding-0-10);
 }
+
 /*验证码*/
 .mtm.sec{
-	margin-top:100px
+	
+}
+/*表情*/
+#fastsmilies,
+#smilies_preview{
+	position:absolute;
+	margin-left:calc(var(--pst-width) + 55px);
+}
+#smilies_preview{
+	display:none;
+	position:absolute!important;
+	left:calc(1200px)!important;
+	
+}
+#fastsmilies > table > tbody > tr{
+	padding:2px;
+}
+#fastsmilies > table > tbody > tr td{
+	padding:2px;
+	border-radius:var(--border-radius-10);
+}
+#fastsmilies > table > tbody > tr td:hover{
+	background-color:var(--background-color);
 }
 .fpd{
 	position:absolute;
@@ -2384,8 +2407,4 @@ display:flex;
 }
 #typeid_fast_ctrl_menu > ul > li:hover{
 	color:var(--font-color-light);
-}
-/*表情*/
-#fastsmilies{
-	
 }
