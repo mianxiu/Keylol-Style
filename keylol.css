@@ -2223,6 +2223,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 #f_pst .area textarea{
 	background-color:var(--input-post-background);
 	border-radius:var(--border-radius-10);
+	padding:var(--element-margin-bottom-18);
 	
 }
 /*验证码*/
