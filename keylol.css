@@ -1523,6 +1523,9 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   background-color: var(--background-color);
 }
 /*订阅 收藏 管理 回收*/
+.subforum_left_title_right_up{
+	margin-left:0px!important;
+}
 .mn-nav-right-control-panel .icon{
 	width:2.4em!important;
 	height:2.4em!important;
