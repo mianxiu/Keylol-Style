@@ -2282,7 +2282,16 @@ margin-bottom:var(--element-margin-bottom-18);
 
 /*验证码*/
 .mtm.sec{
-	
+	padding:var(--element-margin-bottom-18);
+	align-items:center;
+}
+.mtm.sec input[id*="seccodeverify"]{
+	background-color:var(--input-post-background);
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-10);
+	height:var(--element-height-34);
+	padding:var(--element-padding-0-10);
+	margin:0 10px;
 }
 /*表情*/
 #fastsmilies,
@@ -2407,4 +2416,12 @@ display:flex;
 }
 #typeid_fast_ctrl_menu > ul > li:hover{
 	color:var(--font-color-light);
+}
+/*规则*/
+#fastpostform > div:nth-child(8){
+	display:flex;
+	
+}
+#fastpostform > div:nth-child(8) br{
+	display:none;
 }
