@@ -2220,9 +2220,10 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 }
 /*快速图标栏&高级模式*/
 #f_pst .bar{
-	position:absolute;
+	height:var(--element-height-34);
 }
-#f_pst .area textarea{
+#f_pst .tedt{
+	flex-direction: column;
 	background-color:var(--input-post-background);
 	border-radius:var(--border-radius-10);
 	padding:var(--element-margin-bottom-18);

@@ -1275,9 +1275,7 @@
       postIconNode.childNodes.forEach(a => {
         if (a.tagName === 'A') {
  
-
           for (const key in symbolEditorRegex) {
-
 
             if (symbolEditorRegex[key].test(a.id) == true) {
               a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.innerHTML}</span>`
@@ -1328,9 +1326,10 @@
 
     if (isSubject == true) {
       console.log(`i am subject`)
+      postPanel()
       movePostNav()
       hotPostList()
-      postPanel()
+      
     }
 
     if (isPost == true) {
