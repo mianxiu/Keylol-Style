@@ -1204,7 +1204,7 @@
     table: "keyloltable",
     texthidden: "keyloltexthidden",
     unlink: "keylolunlink",
-    wallpaper: "keylolwallpaper",
+    wallpaper: "keylolwallpaper"
   }
 
 
@@ -1212,7 +1212,7 @@
    * 发帖模块
    */
   function postPanel() {
-    const symbolEditorRegx = {
+    const symbolEditorRegex = {
       attchment: /attachn/,
       atuser: /at/,
       autolayout: /autotypeset/,
@@ -1231,8 +1231,8 @@
       fontitalic: /I|italic/gms,
       fontunderline: /U|underline/gms,
       fromword: /pasteword/,
-      gaojimoshi: "keylolgaojimoshi",
-      img: /image/,
+      gaojimoshi: /高级模式/,
+      img: /image|img/,
       leftlaout: /justifyleft/,
       line: /inserthorizontalrule/,
       link: /url/,
@@ -1246,9 +1246,9 @@
       phonetic: /cst2_rb/,
       postpassword: /password/,
       quoter: /quote/,
-      reflash: "keylolreflash",
+      reflash: /换一个/,
       rightlaout: /justifyright/,
-      selectnomalsvg: "keylolselectnomalsvg",
+      selectnomalsvg: /fastpostrefresh/,
       steamapp: /cst1_sframe/,
       steamappsub: /cst2_sfpack/,
       steamlink: /cst2_steam/,
@@ -1256,7 +1256,7 @@
       table: /tbl/,
       texthidden:/cst1_spoiler/,
       unlink: /unlink/,
-      wallpaper: /postbg/,
+      wallpaper: /postbg/
     }
 
     let postNode = $(`#f_pst`)
@@ -1267,11 +1267,14 @@
       postIconNode.childNodes.forEach(a => {
         if (a.tagName === 'A') {
 
-          console.log(a.id)
+          
 
-          for (let key in symbolEditorRegx) {
-            if (symbolEditorRegx[key].test(a.innerHTML) == true) {
-              a.innerHTML = `<span>${symbolEditor[key]}</span><span class="editor-tip">${a.innerHTML}</span>`
+          for (const key in symbolEditorRegex) {
+
+            console.log(symbolEditorRegex[key])
+
+            if (symbolEditorRegex[key].test(a.id) == true) {
+              a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.innerHTML}</span>`
             }
           }
         }
