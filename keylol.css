@@ -2271,16 +2271,16 @@ margin-bottom:var(--element-margin-bottom-18);
 	min-height:calc(var(--element-height-34) * 3);
 	width:var(--pst-width)!important;
 }
-#fastpostform > div.pbt.cl{	
-	
+#fastpostform .cl{	
+	flex-direction:column;
 }
+
 #fastpostform > div.pbt.cl input{
 	height:var(--element-height-34);
 	padding:var(--element-padding-0-10);
 }
 /*验证码*/
 .mtm.sec{
-	position:absolute;
 	margin-top:100px
 }
 .fpd{
@@ -2386,3 +2386,6 @@ display:flex;
 	color:var(--font-color-light);
 }
 /*表情*/
+#fastsmilies{
+	
+}
