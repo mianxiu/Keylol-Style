@@ -1277,7 +1277,7 @@
       // 高级模式
       $(`#fastposteditor > div > div.bar > span > a`).innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
       // 加粗
-      $(`.fpd > a:first-child`).innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">Bold</span>`
+      $(`.fpd > a:first-child`).innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">${$(`.fpd > a:first-child`).title}</span>`
       // 附件
       $(`.webuploader-pick`).innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
 
@@ -1289,7 +1289,9 @@
           for (const key in symbolEditorRegex) {
 
             if (symbolEditorRegex[key].test(a.id) == true) {
-              a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.innerHTML}</span>`
+              a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${
+                a.title !== '' ? a.title : a.innerText
+              }</span>`
             }
           }
         }

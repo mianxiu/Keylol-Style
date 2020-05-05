@@ -2242,12 +2242,21 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 #f_pst .area{
 	justify-content:end;
 }
+
+/*主题选择*/
+#fastpostform > div.pbt.cl input,
 #fastpostmessage{
 	padding:var(--element-margin-bottom-18);
 	background-color:var(--input-post-background);
 	border-radius:var(--border-radius-10);
+}
+
+#fastpostmessage{
 	min-height:calc(var(--element-height-34) * 4);
 	width:var(--pst-width)!important;
+}
+#fastpostform > div.pbt.cl{
+	align-items:center;
 }
 /*验证码*/
 .mtm.sec{
@@ -2317,4 +2326,5 @@ display:flex;
 }
 #fastposteditor > div > div.bar > span > a {
 	margin-left:var(--pst-width);
+	display: flex;
 }
