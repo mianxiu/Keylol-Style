@@ -2224,6 +2224,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 	background-color:var(--input-post-background);
 	border-radius:var(--border-radius-10);
 	padding:var(--element-margin-bottom-18);
+	min-height:calc(var(--element-height-34) * 4);
 	
 }
 /*验证码*/
