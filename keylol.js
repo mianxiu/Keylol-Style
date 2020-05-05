@@ -721,7 +721,7 @@
       let detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
 
       if (detail2.length > 4) {
-     
+
         let mnNavTagNode = $(`#mn-nav-tag-parent`)
         mnNavTagNode.insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
       }
@@ -746,7 +746,7 @@
 
           let num = event.target.id.match(/\d+/gm)[0]
           $(`#current-forum-rule`).innerHTML = $(`#forum-rule-${num}`).innerHTML
-       
+
         }
 
         $All(`.ptn.xg2 > a`).forEach(node => {
@@ -848,7 +848,7 @@
 
     let mnNavControlPanelNodes = $All(`div[class*="subforum_left_title_right"]`)
     if (mnNavControlPanelNodes !== null) {
- 
+
       // .y 热门版块
       let yNode = $(`.bm_h.cl .y`)
       if (yNode !== null) {
@@ -857,7 +857,7 @@
 
       // div[class*="subforum_left_title_right"] 子版块
       mnNavControlPanelNodes.forEach(node => {
-        
+
         mnNavRightControlPanel.insertBefore(node, null)
       })
 
@@ -1152,13 +1152,125 @@
     }
   }
 
+
+
+
+
+
+
+  // 在iconfont.cn 批量获取对象名
+  // let nodes={};document.querySelectorAll(`.icon-code-show`).forEach(node=>{nodes[node.innerText.replace(/keylol/,'')] = node.innerText});console.log(nodes);
+  const symbolEditor = {
+    attchment: "keylolattchment",
+    atuser: "keylolatuser",
+    autolayout: "keylolautolayout",
+    blod: "keylolblod",
+    centerlayout: "keylolcenterlayout",
+    code: "keylolcode",
+    downloadimg: "keyloldownloadimg",
+    emoji: "keylolemoji",
+    eraser: "keyloleraser",
+    flash: "keylolflash",
+    floatleft: "keylolfloatleft",
+    floatright: "keylolfloatright",
+    foldhide: "keylolfoldhide",
+    fontbackground: "keylolfontbackground",
+    fontcolor: "keylolfontcolor",
+    fontitalic: "keylolfontitalic",
+    fontunderline: "keylolfontunderline",
+    fromword: "keylolfromword",
+    gaojimoshi: "keylolgaojimoshi",
+    img: "keylolimg",
+    leftlaout: "keylolleftlaout",
+    line: "keylolline",
+    link: "keylollink",
+    movie: "keylolmovie",
+    music: "keylolmusic",
+    musiclink: "keylolmusiclink",
+    netease: "keylolnetease",
+    neteaselist: "keylolneteaselist",
+    normallist: "keylolnormallist",
+    numberlist: "keylolnumberlist",
+    phonetic: "keylolphonetic",
+    postpassword: "keylolpostpassword",
+    quoter: "keylolquoter",
+    reflash: "keylolreflash",
+    rightlaout: "keylolrightlaout",
+    selectnomalsvg: "keylolselectnomalsvg",
+    steamapp: "keylolsteamapp",
+    steamappsub: "keylolsteamappsub",
+    steamlink: "keylolsteamlink",
+    suspend: "keylolsuspend",
+    table: "keyloltable",
+    texthidden: "keyloltexthidden",
+    unlink: "keylolunlink",
+    wallpaper: "keylolwallpaper",
+  }
+
+  const symbolEditorRegx = {
+    attchment: "keylolattchment",
+    atuser: "keylolatuser",
+    autolayout: "keylolautolayout",
+    blod: "keylolblod",
+    centerlayout: "keylolcenterlayout",
+    code: "keylolcode",
+    downloadimg: "keyloldownloadimg",
+    emoji: "keylolemoji",
+    eraser: "keyloleraser",
+    flash: "keylolflash",
+    floatleft: "keylolfloatleft",
+    floatright: "keylolfloatright",
+    foldhide: "keylolfoldhide",
+    fontbackground: "keylolfontbackground",
+    fontcolor: "keylolfontcolor",
+    fontitalic: "keylolfontitalic",
+    fontunderline: "keylolfontunderline",
+    fromword: "keylolfromword",
+    gaojimoshi: "keylolgaojimoshi",
+    img: "keylolimg",
+    leftlaout: "keylolleftlaout",
+    line: "keylolline",
+    link: "keylollink",
+    movie: "keylolmovie",
+    music: "keylolmusic",
+    musiclink: "keylolmusiclink",
+    netease: "keylolnetease",
+    neteaselist: "keylolneteaselist",
+    normallist: "keylolnormallist",
+    numberlist: "keylolnumberlist",
+    phonetic: "keylolphonetic",
+    postpassword: "keylolpostpassword",
+    quoter: "keylolquoter",
+    reflash: "keylolreflash",
+    rightlaout: "keylolrightlaout",
+    selectnomalsvg: "keylolselectnomalsvg",
+    steamapp: "keylolsteamapp",
+    steamappsub: "keylolsteamappsub",
+    steamlink: "keylolsteamlink",
+    suspend: "keylolsuspend",
+    table: "keyloltable",
+    texthidden: "keyloltexthidden",
+    unlink: "keylolunlink",
+    wallpaper: "keylolwallpaper",
+  }
   /**
    * 发帖模块
    */
   function postPanel() {
+    
     let postNode = $(`#f_pst`)
+    let postIconNode = $(`.fpd`)
+    let postFullEditor = $(`#e_body`)
+    // 替换编辑器图标
+    if (postIconNode != null) {
+      postIconNode.children.forEach(a => {
+        if (a.tagName === 'A') {
+
+        }
+      })
+    }
     if (postNode !== null) {
-        console.log('have a post panel')
+      console.log('have a post panel')
     }
 
   }
