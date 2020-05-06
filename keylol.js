@@ -54,7 +54,7 @@
   var observerOptions = {
     childList: true,
     subtree: true,
-    attributeFilter:[]
+    attributeFilter: []
   }
   var observer = new MutationObserver(clearCss)
   observer.observe(targetNode, observerOptions)
@@ -1328,19 +1328,31 @@
 
 
     let appendParentNode = $(`#append_parent`)
-    var config = { 
+    var config = {
       childList: true,
-      subtree:true,
-      attributeFilter:[]
-     };
+      attributeFilter: []
+    };
 
     let symbolUserCardCallback = function () {
 
       let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
-      let content = $All(`#${lastCardMenuId} a`)
 
-      content[2].innerText = '21231'
-        console.log(content )
+
+      let callback = function () {
+
+        let content = $All(`#${lastCardMenuId} a`)
+
+        console.log(content[0].innerHTML)
+
+        if (content !== null) {
+          content[2].innerHTML = symbolHTML(symbolUserCard.addfriend)
+          content[3].innerHTML = symbolHTML(symbolUserCard.hi)
+          content[4].innerHTML = symbolHTML(symbolUserCard.iconmail)
+        }
+      }
+
+      setTimeout(callback, 50)
+
 
     }
 
