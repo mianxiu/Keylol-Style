@@ -1690,7 +1690,11 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   width: 1.3em;
   height: 1.3em;
   margin-right: 2px;
-	color:var(--icon-fill);
+  color:var(--icon-fill);
+}
+
+#mn-nav-sort-parent .icon{
+	color:var(--icon-line);
 }
 
 /*排序*/
