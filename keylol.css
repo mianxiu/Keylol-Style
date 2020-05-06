@@ -259,6 +259,7 @@ body {
 
 #nav-menu-parent .icon{
 	color:var(--icon-line);
+	
 }
 
 #nav-menu-parent {
@@ -1718,6 +1719,9 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   color: var(--font-color-light);
   background-color: var(--point);
 
+}
+#mn-nav-sort-parent .active a .icon{
+	color:var(--font-color-light)
 }
 
 div.subforum_subject_detail_text_down>div:first-child a {
