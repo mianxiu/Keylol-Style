@@ -937,10 +937,14 @@
    */
   function hotPostList() {
     // 列表
-    let trNode = $All(`tbody>tr`)
+    let trNode = $All(`tbody[id*="thread"]>tr`)
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
+    const commontAtag = /<th.+?"[common|lock].+?(<a.+?a>.+).+?<\/th>/gms
+    const icnRegx = /<td.+?icn.+?td>/gms
+    const commontRegx = /(<th.+?"[common|lock].+?<\/th>)/gms
+    const lastCommont = /td>\s(<td.+?by.+?username.+?<\/td>)/gms
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
@@ -1057,8 +1061,9 @@
     for (let i = 0; i < trNode.length; i++) {
       let tnode = trNode[i]
 
-      let tableHTML = tnode.innerHTML.replace(tdRegx, `div`)
-      let divs = tableHTML.match(divRegx)
+      let tableHTML = tnode.innerHTML
+      //let divs = tableHTML.match(divRegx)
+      
 
 
       let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, '$1') : ''
@@ -1158,13 +1163,14 @@
       `
       ) : ''
 
+      console.log(tableHTML)
       let trTemplate = `
-                ${icn(divs[0])}
+                ${icn(tableHTML.match(icnRegx)[0])}
                 ${subTag(tableHTML)}
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
-                         ${divs[1]}
+                         ${tableHTML.match(commontRegx)[0].replace(commontAtag,'$1')}
                          <div class="post-info">
                           ${join}
                           ${reward}
@@ -1191,13 +1197,13 @@
                              <div class="post-list-time">${em}</div>
                          </div>
                          <div class="post-list-right-r">
-                         <!--时间-->            
-                             <div class="post-list-last-comment">${divs[5]}</div>
+                         <!--时间${tableHTML.match(lastCommont)[0]}-->            
+                             <div class="post-list-last-comment"></div>
                          </div>
                      </div>
                  </div>
                 <div class="post-list-tip">
-                    <div class="post-list-by-forum">${divs[2]}</div>
+                    <div class="post-list-by-forum"></div>
                 </div>  
            `
       tnode.innerHTML = trTemplate
@@ -1361,11 +1367,21 @@
    */
   function autopbn() {
     let defaultTr = $All(`tbody[id*="normalthread_"]>tr`)
-    console.log(`default ${defaultTr.length}`)
+
+    const trRegx = /(<tr.+?"common.+?<\/tr>)/gms
+
     let autopbnCallback = () => {
-      defaultTr = $All(`tbody[id*="normalthread_"]>tr`)
-      console.log(defaultTr.length)
-      console.log(`ajax next page`)
+      let nextList = event.target.rel
+      console.log(event.target.rel)
+
+      fetch(nextList).then(res => {
+        return res.text()
+      }).then(text => {
+        console.log(text.match(trRegx))
+      })
+
+
+
 
     }
 
