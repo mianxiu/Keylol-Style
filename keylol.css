@@ -1726,7 +1726,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 #mn-nav-sort-parent .active a {
-  color: var(--font-nomal);
+  color: var(--font-color-light);
   background-color: var(--point);
 
 }
