@@ -108,6 +108,7 @@
   --font-point-second-title: rgba(201, 214, 233, 0.5);
   --input-background: #dedede;
   --input-post-background: #f4f4f4;
+  --font-visit:#056396;
 }
 
 .darkmode-css {
@@ -174,6 +175,7 @@
   --font-point-second-title: rgba(201, 214, 233, 0.5);
   --input-background: #203A5C;
   --input-post-background: #081423;
+  --font-visit:#5A6D87;
 
 }
 
@@ -1550,7 +1552,9 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   padding: var(--element-padding-0-10);
   background-color: var(--element-background);
 }
-
+.mn-nav-right>.pg>label span{
+	color:var(--font-nomal);
+}
 
 #thread_types>li>a:hover,
 .mn-nav-right>.pg>a:hover {
@@ -1908,6 +1912,9 @@ div.subforum_subject_detail_text_down>div:first-child a {
 div[id*="forum_rules"] #current-forum-rule {
   display: none;
 }
+#current-forum-rule a{
+	color:var(--font-visit);
+}
 
 .ptn a,
 #current-forum-rule {
@@ -1929,6 +1936,7 @@ div[id*="forum_rules"] #current-forum-rule {
   border-radius: 0 var(--border-radius-10) var(--border-radius-10) var(--border-radius-10);
   margin-top: 0px !important;
   box-shadow: var(--shadow-outline);
+	color:var(--font-nomal);
 
 }
 
