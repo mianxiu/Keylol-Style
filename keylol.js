@@ -88,7 +88,7 @@
   }
 
   let darkModeCallback = () => {
-   let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
     switch (darkModeValue) {
       case '1':
         $('html').classList.remove(`darkmode-css`)
@@ -858,7 +858,10 @@
       mnNavRight.insertBefore($(`#pgt>.pg`), mnNavRightControlPanel)
     } else {
       // 子版分页
-      mnNavRight.insertBefore($(`#fd_page_top>.pg`), mnNavRightControlPanel)
+      if ($(`#fd_page_top>.pg`) !== null) {
+        mnNavRight.insertBefore($(`#fd_page_top>.pg`), mnNavRightControlPanel)
+      }
+
 
       // 分页symbol
       if ($(`.pg>.prev`) !== null) {
