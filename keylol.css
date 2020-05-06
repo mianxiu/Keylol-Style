@@ -2007,6 +2007,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-tps{
 	color:var(--font-nomal);
 }
+.bm_c table .post-info .icon{
+color:var(--icon-fill);
+}
 .post-list-left .symbol-icons,
 .post-list-right-l .symbol-icons {
   margin-right: 6px;
