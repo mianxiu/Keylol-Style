@@ -54,6 +54,7 @@
   var observerOptions = {
     childList: true,
     subtree: true,
+    attributeFilter:[]
   }
   var observer = new MutationObserver(clearCss)
   observer.observe(targetNode, observerOptions)
@@ -112,7 +113,9 @@
           return res.text()
         })
         .then((bodyText) => {
+
           let imgUrls = bodyText.match(imgRegx)
+
           if (imgUrls.length > 1) {
             let imgNode = postUrl.children[0]
             postUrl.insertBefore(document.createElement(`div`), imgNode)
@@ -1317,7 +1320,7 @@
   function userCard() {
 
     const symbolUserCardRegx = {
-      addfriend: /<a.+?frien.+>(.+?)<\/a>/gm,
+      addfriend: /(<a.+?frien.+>)(.+?)(<\/a>)/gm,
       hi: /a_poke/,
       iconmail: /a_sendpm/,
       online: /keylolonline/
@@ -1325,23 +1328,25 @@
 
 
     let appendParentNode = $(`#append_parent`)
-    var config = { childList: true };
+    var config = { 
+      childList: true,
+      subtree:true,
+      attributeFilter:[]
+     };
 
     let symbolUserCardCallback = function () {
 
-
-
       let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
-      let content = $(`#${lastCardMenuId}`).childNodes[0]
-      console.log(content)
+      let content = $All(`#${lastCardMenuId} a`)
+
+      content[2].innerText = '21231'
+        console.log(content )
 
     }
 
     let userCardObserver = new MutationObserver(symbolUserCardCallback)
 
     userCardObserver.observe(appendParentNode, config)
-
-
 
 
   }

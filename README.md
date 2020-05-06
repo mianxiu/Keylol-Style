@@ -1,11 +1,8 @@
 ## Tampermonkey或其他扩展
 编辑脚本->设置->运行时期选`document-body`
+位置 1
 
-## 图床选择
 
-新浪
-
-leancloud
 
 ## 资源请求
 
@@ -61,6 +58,8 @@ ajaxwaitid 是进度提示
 ```js
 let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNodeRegx, `<span>最...
 ```
+## 关于 MutationObserver
+[MutationObserverInit](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserverInit)的属性添加`attributeFilter:[]`时，可以屏蔽所有属性变动，只监听节点生成
 
 ## tip
 [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
