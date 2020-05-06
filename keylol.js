@@ -1337,7 +1337,10 @@
   }
 
 
-
+// 无权发帖
+ function postPanelNoPermission(){
+   
+ }
 
 
   // 用户面板
@@ -1433,8 +1436,11 @@
 
     if (isSubject == true) {
       console.log(`i am subject`)
+      // 无权发帖
       if ($(`.pt.hm`) == null) {
         postPanel()
+      }else{
+        console.log(`无权发帖`)
       }
 
       movePostNav()
