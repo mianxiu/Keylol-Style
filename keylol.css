@@ -2074,7 +2074,9 @@ color:var(--icon-fill);
   height: var(--element-height-34);
   margin-right: 6px;
   white-space: nowrap;
-
+}
+.bm_c table  .post-list-icn .icon{
+	color:var(--icon-fill);
 }
 
 .post-list-icn a {
