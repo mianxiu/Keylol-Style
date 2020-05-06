@@ -59,6 +59,7 @@
   --point-green: #67c8ae;
   --point-blue: #6296e1;
   --icon-line:black;
+  --icon-fill:rgb(0, 0, 0);
   --icon-active:rgb(255, 255, 255);
   /* subject */
   --origni-bg: #1e262c;
@@ -123,7 +124,8 @@
   --point-yellow: #fdbb2d;
   --point-green: #67c8ae;
   --point-blue: #6296e1;
-  --icon-line:rgb(0, 0, 0);
+  --icon-line:#B7C8DF;
+  --icon-fill:rgb(0, 0, 0);
   --icon-active:#B7C8DF;
   /* subject */
   --origni-bg: #1e262c;
@@ -1680,7 +1682,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   width: 1.3em;
   height: 1.3em;
   margin-right: 2px;
-	color:var(--icon-line);
+	color:var(--icon-fill);
 }
 
 /*排序*/
