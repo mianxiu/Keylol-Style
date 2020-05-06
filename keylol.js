@@ -87,8 +87,25 @@
     navMenuParent.insertBefore(navMenu, null)
   }
 
+  let darkModeCallback = () => {
+   let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    switch (darkModeValue) {
+      case '1':
+        $('html').classList.remove(`darkmode-css`)
+        document.cookie = 'darkMode=0'
+        break;
+      case '0':
+        $('html').classList.add(`darkmode-css`)
+        document.cookie = 'darkMode=1'
+        break;
+    }
+  }
+
+  darkModeCallback()
+
   var listenElement = function () {
     moveElement()
+    darkModeCallback()
   }
 
   var moveObserver = new MutationObserver(listenElement)
@@ -301,8 +318,20 @@
     ul.insertBefore(document.createElement(`li`), ul.children[0])
     ul.children[0].insertBefore(document.createElement(`a`), null)
     ul.children[0].children[0].id = `darkmode`
+
     let darkmodeNode = $(`#darkmode`)
+
     darkmodeNode.innerText = `深色模式`
+
+    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+
+
+    // 初始化
+    if (darkModeValue == '') {
+      console.log('add darkmode cookie')
+      document.cookie = 'darkMode=0'
+    }
+    darkmodeNode.addEventListener('click', darkModeCallback)
   }
 
   // 首页symbol -----------------------------------------------------------------------
@@ -1316,16 +1345,10 @@
     online: "keylolonline"
   }
 
-
+  /**
+   * 替换用户卡片弹窗
+   */
   function userCard() {
-
-    const symbolUserCardRegx = {
-      addfriend: /(<a.+?frien.+>)(.+?)(<\/a>)/gm,
-      hi: /a_poke/,
-      iconmail: /a_sendpm/,
-      online: /keylolonline/
-    }
-
 
     let appendParentNode = $(`#append_parent`)
     var config = {
@@ -1335,23 +1358,26 @@
 
     let symbolUserCardCallback = function () {
 
-      let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
 
 
       let callback = function () {
 
-        let content = $All(`#${lastCardMenuId} a`)
+        let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
 
-        console.log(content[0].innerHTML)
 
-        if (content !== null) {
-          content[2].innerHTML = symbolHTML(symbolUserCard.addfriend)
-          content[3].innerHTML = symbolHTML(symbolUserCard.hi)
-          content[4].innerHTML = symbolHTML(symbolUserCard.iconmail)
-        }
+        let friend = $(`#${lastCardMenuId} a[id*="a_friend_li"]`)
+        let poke = $(`#${lastCardMenuId} a[id*="a_poke"]`)
+        let pm = $(`#${lastCardMenuId} a[id*="a_sendpm"]`)
+
+
+        friend.innerHTML = `<span>${symbolHTML(symbolUserCard.addfriend)}</span><span class="user-card-tip">${friend.innerText}</span>`
+        poke.innerHTML = `<span>${symbolHTML(symbolUserCard.hi)}</span></span><span class="user-card-tip">${poke.innerText}</span>`
+        pm.innerHTML = `<span>${symbolHTML(symbolUserCard.iconmail)}</span></span><span class="user-card-tip">${pm.innerText}</span>`
+
       }
 
-      setTimeout(callback, 50)
+      setTimeout(callback, 100)
+      clearTimeout(callback)
 
 
     }

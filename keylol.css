@@ -11,6 +11,7 @@
   vertical-align: -0.15em;
   fill: currentColor;
   overflow: hidden;
+  color: black;
 }
 
 :root {
@@ -46,6 +47,7 @@
 
 :root {
   /* color */
+  --body-background:#ebebeb;
   --background-color: #ebebeb;
   --element-background: #fafafa;
   --menu-hover-background: #dedede;
@@ -55,6 +57,7 @@
   --point-yellow: #fdbb2d;
   --point-green: #67c8ae;
   --point-blue: #6296e1;
+  --icon-line:black;
   /* subject */
   --origni-bg: #1e262c;
   --uplay-bg: #fafafa;
@@ -103,6 +106,68 @@
   --input-post-background: #f4f4f4;
 }
 
+.darkmode-css {
+
+  /* color */
+  --body-background:#070E17;
+  --background-color: #203A5C;
+  --element-background: #101f31;
+  --menu-hover-background: rgb(44, 77, 119);
+  --tip-background: #203A5C;
+  --point: #07244D;
+  --point-orange: #fd6c2d;
+  --point-yellow: #fdbb2d;
+  --point-green: #67c8ae;
+  --point-blue: #6296e1;
+  /* subject */
+  --origni-bg: #1e262c;
+  --uplay-bg: #fafafa;
+  --gog-bg: #2c2c2c;
+  --window-store-bg: #ededed;
+  --epic-game-bg: #2a2a2a;
+  --sankwo-bg: #292e41;
+  --cube-bg: #1b344b;
+  --wegame-bg: #211f1e;
+  --console-bg: #2b2c31;
+  --mobile-bg: #fafafa;
+
+  /* game */
+  --all-game-bg: #056396;
+  --dota2-bg: #100f0f;
+  --battle-net-bg: #0b0d12;
+  --dota-underlord-bg: #342c4a;
+  --ea-bg: #fafafa;
+  --csgo-bg: #273548;
+  --vr-bg: #767676;
+  --gta-bg: #fafafa;
+  --survivel-bg: #f2a900;
+  --value-bg: #f74843;
+  --ak-bg: #2d2e31;
+  --uplay-game-bg: #398bf3;
+
+  /* help */
+  --help-green: #228167;
+  --help-green-key: #033c2c;
+  --help-yellow: #b08923;
+  --help-yellow-key: #523904;
+  --help-red: #97624b;
+  --help-red-key: #5e240c;
+  --help-blue: #4e6b94;
+  --help-blue-key: #132b4e;
+
+  /* font */
+  --font-color-light: #B7C8DF;
+  --font-nomal: #B7C8DF;
+  --font-second-title: #aeaeae;
+  --font-second-light-aphal: rgba(255, 255, 255, 0.3);
+  --font-second-aphal: rgba(0, 0, 0, 0.3);
+  --font-point: #93abcd;
+  --font-point-second-title: rgba(201, 214, 233, 0.5);
+  --input-background: #203A5C;
+  --input-post-background: #081423;
+
+}
+
 html,
 body,
 ul,
@@ -146,7 +211,7 @@ body {
   display: var(--display-flex);
   align-items: center;
   flex-direction: column;
-  background-color: var(--background-color);
+  background-color: var(--body-background);
   width: 100%;
 }
 
@@ -1818,9 +1883,10 @@ div.subforum_subject_detail_text_down>div:first-child a {
 }
 
 /*隐藏*/
-div[id*="forum_rules"] #current-forum-rule{
-	display:none;
+div[id*="forum_rules"] #current-forum-rule {
+  display: none;
 }
+
 .ptn a,
 #current-forum-rule {
   padding: var(--element-padding);
@@ -2167,22 +2233,54 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
   color: var(--font-nomal);
 }
 
-/*会员卡片*/
+/*------会员卡片------*/
 .p_opt div {
   display: flex;
+
 }
 
 .p_opt {
 
+  min-width: 160px;
   background-color: var(--background-color);
   border-radius: var(--border-radius-10);
   box-shadow: var(--shadow-hot);
   padding: var(--element-padding);
 }
 
-.card_gender_0 {
+div[class*="card_gender"] .o.cl a {
+
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+}
+
+div[class*="card_gender"] .icon {
+  transition: .2s all;
+  width: 1.8em;
+  height: 1.8em;
+  margin-right: 10px;
+}
+
+div[class*="card_gender"] .user-card-tip {
+  position: absolute;
+  margin-top: 40px;
+  display: none;
+  background-color: var(--tip-background);
+  height: var(--element-height-34);
+  padding: var(--element-padding-0-10);
+  border-radius: var(--border-radius-10);
+  box-shadow: var(--shadow-hot);
+  align-items: center;
+  color: var(--font-color-light);
+  white-space: nowrap;
+  flex-direction: row;
+}
+
+div[class*="card_gender"] a:hover .user-card-tip {
+  display: flex;
 }
 
 .card_mn {
@@ -2209,7 +2307,8 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 
 .o.cl {
   position: absolute;
-  margin-top: 30px;
+  margin-top: 24px;
+  margin-left: 58px;
 }
 
 .pbn.cl {
@@ -2368,60 +2467,68 @@ span[id*="checkseccodeverify"] {
 }
 
 /*表情弹窗*/
-#fastpostsml_menu{
-	display:flex;
-	padding:var(--element-margin-bottom-18);
-	background-color:var(--element-background);
-	border-radius:var(--border-radius-10);
-	box-shadow:var(--shadow-hot);
-	width:auto;
-}
-#fastpostsmiliesdiv_tb{
-	flex-wrap:wrap;
-	display:flex;
-	
-}
-#fastpostsmiliesdiv_tb ul{
-	display:flex;
-	flex-direction:row;
-	flex-wrap:wrap;
-}
-#fastpostsmiliesdiv_tb ul li{
-	padding:8px;
-	display:flex;
-	flex-wrap:nowrap;
-	border-radius:var(--border-radius-10);
+#fastpostsml_menu {
+  display: flex;
+  padding: var(--element-margin-bottom-18);
+  background-color: var(--element-background);
+  border-radius: var(--border-radius-10);
+  box-shadow: var(--shadow-hot);
+  width: auto;
 }
 
-#fastpostsmiliesdiv_tb ul li:hover{
-	background-color:var(--background-color);
+#fastpostsmiliesdiv_tb {
+  flex-wrap: wrap;
+  display: flex;
+
 }
-#fastpostsmiliesdiv_page{
-	display:flex;
-	align-items:center;
+
+#fastpostsmiliesdiv_tb ul {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
-#fastpostsmiliesdiv_data{
-	padding:10px;
+
+#fastpostsmiliesdiv_tb ul li {
+  padding: 8px;
+  display: flex;
+  flex-wrap: nowrap;
+  border-radius: var(--border-radius-10);
 }
-#fastpostsmiliesdiv_table td{
-	padding:2px;
-	border-radius:var(--border-radius-10);
+
+#fastpostsmiliesdiv_tb ul li:hover {
+  background-color: var(--background-color);
+}
+
+#fastpostsmiliesdiv_page {
+  display: flex;
+  align-items: center;
+}
+
+#fastpostsmiliesdiv_data {
+  padding: 10px;
+}
+
+#fastpostsmiliesdiv_table td {
+  padding: 2px;
+  border-radius: var(--border-radius-10);
 }
 
 
-#fastpostsmiliesdiv_page .z{
-	display:flex;
-	position:absolute;
-	margin-left:40px;
+#fastpostsmiliesdiv_page .z {
+  display: flex;
+  position: absolute;
+  margin-left: 40px;
 }
-#fastpostsmiliesdiv_page .z a{
-	padding:10px;	
-	border-radius:var(--border-radius-10);
+
+#fastpostsmiliesdiv_page .z a {
+  padding: 10px;
+  border-radius: var(--border-radius-10);
 }
+
 #fastpostsmiliesdiv_page .z a:hover,
-#fastpostsmiliesdiv_table td:hover{
-	background-color:var(--background-color);
-	
+#fastpostsmiliesdiv_table td:hover {
+  background-color: var(--background-color);
+
 }
 
 .fpd {
