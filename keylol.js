@@ -1001,7 +1001,10 @@
     }
 
 
-    // 替换图标---
+    /**
+     * 替换图标
+     * @param {string} subTagHtml 
+     */
     function subTag(subTagHtml) {
       // 是否有图标的匹配规则不一样
       const tagRegx = {
@@ -1029,14 +1032,14 @@
     // 回复---
     function replyNum(html) {
 
-      
+
       // 回复数
       const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
       const replyByNodeRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
       const replyNode = html.match(replyNodeRegx)
       const replyByNode = html.match(replyByNodeRegx)
 
-      
+
       if (replyNode !== null && replyByNodeRegx !== null) {
         // 最新回复人和时间
         let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`) : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
@@ -1357,10 +1360,16 @@
    * ajax下一页
    */
   function autopbn() {
+    let defaultTr = $All(`tbody[id*="normalthread_"]>tr`)
+    console.log(`default ${defaultTr.length}`)
+    let autopbnCallback = () => {
+      defaultTr = $All(`tbody[id*="normalthread_"]>tr`)
+      console.log(defaultTr.length)
+      console.log(`ajax next page`)
 
-      $(`#autopbn`).addEventListener('click', () => {
-        setTimeout(() => { hotPostList() }, 100)
-      })
+    }
+
+    $(`#autopbn`).addEventListener('click', autopbnCallback)
 
   }
 
@@ -1453,7 +1462,7 @@
       console.log(`i am hot post`)
       hotPost()
       userCard()
-      
+
     }
 
     if (isSubject == true) {

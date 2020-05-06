@@ -1652,7 +1652,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 .mn-nav-right-control-panel {
-  margin-left: 10px;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row-reverse;
 }
