@@ -1992,6 +1992,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .bm_c table .icon {
   width: 1.3em;
   height: 1.3em;
+  color:var(--icon-line)
 }
 
 /*隐藏顶置*/
@@ -2205,6 +2206,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 }
 
 .post-list-num span {
+	color:var(--font-nomal);
   flex-direction: row;
 }
 
@@ -2563,7 +2565,11 @@ span[id*="checkseccodeverify"] {
 
 }
 
-.fpd {
+.darkmode-css .fpd .icon,
+.darkmode-css .webuploader-pick .icon{
+	color:var(--icon-line);
+}
+.fpd {	
   position: absolute;
 }
 
