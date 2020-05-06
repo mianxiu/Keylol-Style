@@ -1988,6 +1988,7 @@ div[id*="forum_rules"] #current-forum-rule {
 .common>a[href*="type=2"],
 .lock>a[href*="type=2"],
 .new>a[href*="type=2"],
+.common>em>a[href*="typeid"],
 .fromg,
 tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   display: none;
