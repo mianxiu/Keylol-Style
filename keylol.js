@@ -1337,9 +1337,16 @@
   }
 
 
-// 无权发帖
+/**
+ * 无权发帖
+ */
  function postPanelNoPermission(){
-   
+   let pthmNode = $(`.pt.hm`)
+   let postForm = $(`#fastpostform`)
+   postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
+   $(`.forumrowdata`).remove()
+   $(`#f_pst>.bm_h`).remove()
+
  }
 
 
@@ -1441,6 +1448,7 @@
         postPanel()
       }else{
         console.log(`无权发帖`)
+        postPanelNoPermission()
       }
 
       movePostNav()

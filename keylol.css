@@ -47,20 +47,20 @@
 
 :root {
   /* color */
-  --body-background:#ebebeb;
+  --body-background: #ebebeb;
   --background-color: #ebebeb;
   --element-background: #fafafa;
   --menu-hover-background: #dedede;
   --tip-background: #2c2c2c;
-  --active-background:red;
+  --active-background: red;
   --point: #056396;
   --point-orange: #fd6c2d;
   --point-yellow: #fdbb2d;
   --point-green: #67c8ae;
   --point-blue: #6296e1;
-  --icon-line:black;
-  --icon-fill:rgb(0, 0, 0);
-  --icon-active:rgb(255, 255, 255);
+  --icon-line: black;
+  --icon-fill: rgb(0, 0, 0);
+  --icon-active: rgb(255, 255, 255);
   /* subject */
   --origni-bg: #1e262c;
   --uplay-bg: #fafafa;
@@ -88,7 +88,7 @@
   --uplay-game-bg: #398bf3;
 
   /* help */
-  --help-background:#056396;
+  --help-background: #056396;
   --help-green: #8fd5c2;
   --help-green-key: #125c49;
   --help-yellow: #f2cc7b;
@@ -108,26 +108,26 @@
   --font-point-second-title: rgba(201, 214, 233, 0.5);
   --input-background: #dedede;
   --input-post-background: #f4f4f4;
-  --font-visit:#056396;
+  --font-visit: #056396;
 }
 
 .darkmode-css {
 
   /* color */
-  --body-background:#070E17;
+  --body-background: #070E17;
   --background-color: #203A5C;
   --element-background: #101f31;
   --menu-hover-background: rgb(44, 77, 119);
   --tip-background: #203A5C;
-  --active-background:rgb(186, 255, 74);
+  --active-background: rgb(186, 255, 74);
   --point: #203a5c;
   --point-orange: #fd6c2d;
   --point-yellow: #fdbb2d;
   --point-green: #67c8ae;
   --point-blue: #6296e1;
-  --icon-line:#B7C8DF;
-  --icon-fill:rgb(0, 0, 0);
-  --icon-active:#B7C8DF;
+  --icon-line: #B7C8DF;
+  --icon-fill: rgb(0, 0, 0);
+  --icon-active: #B7C8DF;
   /* subject */
   --origni-bg: #1e262c;
   --uplay-bg: #fafafa;
@@ -155,7 +155,7 @@
   --uplay-game-bg: #398bf3;
 
   /* help */
-  --help-background:#07244d;
+  --help-background: #07244d;
   --help-green: #228167;
   --help-green-key: #033c2c;
   --help-yellow: #b08923;
@@ -175,7 +175,7 @@
   --font-point-second-title: rgba(201, 214, 233, 0.5);
   --input-background: #203A5C;
   --input-post-background: #081423;
-  --font-visit:#5A6D87;
+  --font-visit: #5A6D87;
 
 }
 
@@ -267,9 +267,9 @@ body {
 
 #nav-logo>span:last-child {}
 
-#nav-menu-parent .icon{
-	color:var(--icon-line);
-	
+#nav-menu-parent .icon {
+  color: var(--icon-line);
+
 }
 
 #nav-menu-parent {
@@ -395,11 +395,13 @@ body {
   padding: 0;
   margin: 0;
   border: none;
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 }
-.search-box::placeholder{
-	color:var(--font-second-aphal);
+
+.search-box::placeholder {
+  color: var(--font-second-aphal);
 }
+
 /* 搜索切换按钮 */
 
 .search-bar-form>.dropdown {
@@ -421,7 +423,7 @@ body {
   display: flex;
   width: 100%;
   min-width: 30px;
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 }
 
 .search-bar-form>.dropdown>.dropdown-menu>li,
@@ -491,7 +493,7 @@ body {
   height: 100%;
   text-align: left;
   line-height: var(--down-menu-height);
-  cursor:pointer;
+  cursor: pointer;
 }
 
 /* 分隔线 */
@@ -699,9 +701,10 @@ body {
 #tabPAhn0P_content>div>div>ol>li>a:hover {
   box-shadow: var(--shadow-hot);
 }
+
 .darkmode-css #tabPAhn0P_content>div>div>ol>li>a:hover {
   box-shadow: var(--shadow-hot);
-	background-color:var(--menu-hover-background);
+  background-color: var(--menu-hover-background);
 }
 
 
@@ -903,9 +906,11 @@ body {
 .index_subject_row {
   margin-bottom: var(--margin-bottom-60);
 }
+
 .darkmode-css .index_subject_game {
-	opacity:.8;
+  opacity: .8;
 }
+
 /* 子版块 */
 .subject_row_detail {
   padding: 12px 12px;
@@ -1492,9 +1497,10 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 .th {
   display: none;
 }
+
 .bm_h,
-.forumrowdata{
-	color:var(--font-nomal);
+.forumrowdata {
+  color: var(--font-nomal);
 }
 
 #mn-nav-parent {
@@ -1577,8 +1583,9 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   padding: var(--element-padding-0-10);
   background-color: var(--element-background);
 }
-.mn-nav-right>.pg>label span{
-	color:var(--font-nomal);
+
+.mn-nav-right>.pg>label span {
+  color: var(--font-nomal);
 }
 
 #thread_types>li>a:hover,
@@ -1715,13 +1722,15 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   width: 1.3em;
   height: 1.3em;
   margin-right: 2px;
-  color:var(--icon-fill);
+  color: var(--icon-fill);
 }
-#mn-nav-parent .pg .icon{
-	color:var(--icon-line);
+
+#mn-nav-parent .pg .icon {
+  color: var(--icon-line);
 }
-#mn-nav-sort-parent .icon{
-	color:var(--icon-line);
+
+#mn-nav-sort-parent .icon {
+  color: var(--icon-line);
 }
 
 /*排序*/
@@ -1769,42 +1778,46 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   background-color: var(--point);
 
 }
-#mn-nav-sort-parent .active a .icon{
-	color:var(--icon-active)
+
+#mn-nav-sort-parent .active a .icon {
+  color: var(--icon-active)
 }
 
 div.subforum_subject_detail_text_down>div:first-child a {
   display: flex;
   align-items: center;
 }
+
 /*子版块*/
-#pgt+.subforum div{
-	display:flex;
-	align-content:center;
-	
-}
-#pgt+.subforum img{
-	height:48px;
-	border-radius:var(--border-radius-10);
-	margin-right:18px;
-}
-#pgt+.subforum .subforum_subject_title{
-	display:none;
+#pgt+.subforum div {
+  display: flex;
+  align-content: center;
+
 }
 
-#pgt+.subforum .subforum_subject_detail{
-	padding:var(--element-margin-bottom-18);
-	background-color:var(--element-background);
-	border-radius:var(--border-radius-10);
-	margin-bottom:18px;
-	box-shadow:var(--shadow-outline);
-	align-items:center;
+#pgt+.subforum img {
+  height: 48px;
+  border-radius: var(--border-radius-10);
+  margin-right: 18px;
+}
+
+#pgt+.subforum .subforum_subject_title {
+  display: none;
+}
+
+#pgt+.subforum .subforum_subject_detail {
+  padding: var(--element-margin-bottom-18);
+  background-color: var(--element-background);
+  border-radius: var(--border-radius-10);
+  margin-bottom: 18px;
+  box-shadow: var(--shadow-outline);
+  align-items: center;
 }
 
 .subforum {
   margin: 0 !important;
   display: flex;
-	
+
 }
 
 .subforum_subject2 {
@@ -1834,7 +1847,7 @@ div.subforum_subject_detail_text_down>div:first-child a {
 }
 
 #mn-nav-parent .subforum_right_title {
-   color:var(--font-nomal);
+  color: var(--font-nomal);
   display: flex;
   align-items: center;
   height: var(--element-height-34);
@@ -1967,8 +1980,9 @@ div.subforum_subject_detail_text_down>div:first-child a {
 div[id*="forum_rules"] #current-forum-rule {
   display: none;
 }
-#current-forum-rule a{
-	color:var(--font-visit);
+
+#current-forum-rule a {
+  color: var(--font-visit);
 }
 
 .ptn a,
@@ -1991,7 +2005,7 @@ div[id*="forum_rules"] #current-forum-rule {
   border-radius: 0 var(--border-radius-10) var(--border-radius-10) var(--border-radius-10);
   margin-top: 0px !important;
   box-shadow: var(--shadow-outline);
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 
 }
 
@@ -2026,7 +2040,7 @@ div[id*="forum_rules"] #current-forum-rule {
 }
 
 /*--隐藏原来的图标--*/
-.subforum_subject_detail2 > a[href*="type=poll"],
+.subforum_subject_detail2>a[href*="type=poll"],
 .bm.bw0.pgs.cl,
 .bm_c img[alt*="attach"],
 .bm_c img[alt*="agree"],
@@ -2049,7 +2063,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .bm_c table .icon {
   width: 1.3em;
   height: 1.3em;
-  color:var(--icon-line)
+  color: var(--icon-line)
 }
 
 /*隐藏顶置*/
@@ -2061,12 +2075,15 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-info {
   margin-left: 10px;
 }
-.post-tps{
-	color:var(--font-nomal);
+
+.post-tps {
+  color: var(--font-nomal);
 }
-.bm_c table .post-info .icon{
-color:var(--icon-fill);
+
+.bm_c table .post-info .icon {
+  color: var(--icon-fill);
 }
+
 .post-list-left .symbol-icons,
 .post-list-right-l .symbol-icons {
   margin-right: 6px;
@@ -2088,10 +2105,11 @@ color:var(--icon-fill);
   transition: var(--motion-2);
   box-shadow: var(--shadow-hot);
 }
+
 .darkmode-css .bm_c tbody:hover .post-list {
   transition: var(--motion-2);
   box-shadow: var(--shadow-hot);
-  background-color:var(--menu-hover-background);
+  background-color: var(--menu-hover-background);
 }
 
 .bm_c table>tbody>tr>div {
@@ -2133,8 +2151,9 @@ color:var(--icon-fill);
   margin-right: 6px;
   white-space: nowrap;
 }
-.bm_c table  .post-list-icn .icon{
-	color:var(--icon-fill);
+
+.bm_c table .post-list-icn .icon {
+  color: var(--icon-fill);
 }
 
 .post-list-icn a {
@@ -2270,7 +2289,7 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
 }
 
 .post-list-num span {
-	color:var(--font-nomal);
+  color: var(--font-nomal);
   flex-direction: row;
 }
 
@@ -2421,6 +2440,15 @@ div[class*="card_gender"] a:hover .user-card-tip {
 }
 
 /*-----------------------快速发帖-------------------*/
+/*无权发帖*/
+.premission-tip {
+  color: var(--font-nomal);
+}
+
+.premission-tip a {
+  color: var(--font-visit);
+}
+
 #f_pst {
   width: var(--body-width);
   --pst-width: 920px;
@@ -2471,10 +2499,11 @@ _pst .cl {
 #f_pst .bar .icon {
   width: 1.8em;
   height: 1.8em;
-	
+
 }
-.darkmode-css #f_pst .bar .icon{
-	color:var(--icon-line);
+
+.darkmode-css #f_pst .bar .icon {
+  color: var(--icon-line);
 }
 
 #f_pst .tedt {
@@ -2500,7 +2529,7 @@ _pst .cl {
   overflow: hidden;
   background-color: var(--input-post-background);
   border-radius: var(--border-radius-10);
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 }
 
 
@@ -2523,7 +2552,7 @@ _pst .cl {
 .mtm.sec {
   padding: var(--element-margin-bottom-18);
   align-items: center;
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 }
 
 .mtm.sec input[id*="seccodeverify"] {
@@ -2533,7 +2562,7 @@ _pst .cl {
   height: var(--element-height-34);
   padding: var(--element-padding-0-10);
   margin: 0 10px;
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 }
 
 span[id*="checkseccodeverify"] {
@@ -2637,10 +2666,11 @@ span[id*="checkseccodeverify"] {
 }
 
 .darkmode-css .fpd .icon,
-.darkmode-css .webuploader-pick .icon{
-	color:var(--icon-line);
+.darkmode-css .webuploader-pick .icon {
+  color: var(--icon-line);
 }
-.fpd {	
+
+.fpd {
   position: absolute;
 }
 
@@ -2760,7 +2790,7 @@ div[id*="rt_rt_"] input {
 #fastpostform>div:nth-child(8) {
   display: flex;
   flex-flow: wrap;
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 }
 
 #fastpostform>div:nth-child(8) a {
@@ -2772,16 +2802,34 @@ div[id*="rt_rt_"] input {
 }
 
 /*无法访问*/
-.f_c.altw{
-	height:calc(100vh - 478px);
-	border-radius:var(--border-radius-10);
+.f_c.altw {
+  height: calc(100vh - 478px);
+  border-radius: var(--border-radius-10);
 }
-.f_c.altw p{
-	font-size:18px;
-	font-weight:bold;
-	color:var(--font-nomal);
-	
+
+.f_c.altw p {
+  font-size: 18px;
+  font-weight: bold;
+  color: var(--font-nomal);
+
 }
-.f_c.altw a{
-	color:var(--font-visit);
+
+.f_c.altw a {
+  color: var(--font-visit);
+}
+
+/*底部下一页*/
+#autopbn {
+  max-width: 60px;
+  color: var(--font-color-light);
+  height: var(--element-height-34);
+  font-size: var(--font-size-12);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: var(--element-padding-0-10);
+  background-color: var(--point);
+  margin-right: var(--marign-padding-18);
+  border-radius: var(--border-radius-10);
+  margin-bottom: var(--marign-padding-18);
 }
