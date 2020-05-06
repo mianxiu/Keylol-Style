@@ -2014,6 +2014,7 @@ div[id*="forum_rules"] #current-forum-rule {
 }
 
 /*--隐藏原来的图标--*/
+.subforum_subject_detail2 > a[href*="type=poll"],
 .bm.bw0.pgs.cl,
 .bm_c img[alt*="attach"],
 .bm_c img[alt*="agree"],
