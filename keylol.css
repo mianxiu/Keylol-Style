@@ -483,6 +483,7 @@ body {
   height: 100%;
   text-align: left;
   line-height: var(--down-menu-height);
+  cursor:pointer;
 }
 
 /* 分隔线 */
