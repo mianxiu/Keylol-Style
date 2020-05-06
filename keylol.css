@@ -2002,17 +2002,17 @@ div[id*="forum_rules"] #current-forum-rule {
 }
 
 #forumnewshow a {
-  color: var(--font-color-light);
+  color: var(--help-yellow-key);
   position: fixed;
   box-shadow: var(--shadow-hot);
   z-index: 112;
-  top: 30px;
+  top: 80px;
   left: 0;
   margin-left: 42vw;
   height: var(--element-height-34);
   display: flex;
   padding: var(--element-padding-0-10);
-  background-color: var(--point);
+  background-color: rgb(253, 187, 45);
   align-items: center;
   border-radius: var(--border-radius-10);
 }
