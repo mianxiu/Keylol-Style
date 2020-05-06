@@ -2521,6 +2521,7 @@ _pst .cl {
 .mtm.sec {
   padding: var(--element-margin-bottom-18);
   align-items: center;
+	color:var(--font-nomal);
 }
 
 .mtm.sec input[id*="seccodeverify"] {
@@ -2530,6 +2531,7 @@ _pst .cl {
   height: var(--element-height-34);
   padding: var(--element-padding-0-10);
   margin: 0 10px;
+	color:var(--font-nomal);
 }
 
 span[id*="checkseccodeverify"] {
