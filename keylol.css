@@ -52,12 +52,14 @@
   --element-background: #fafafa;
   --menu-hover-background: #dedede;
   --tip-background: #2c2c2c;
+  --active-background:red;
   --point: #056396;
   --point-orange: #fd6c2d;
   --point-yellow: #fdbb2d;
   --point-green: #67c8ae;
   --point-blue: #6296e1;
   --icon-line:black;
+  --icon-active:rgb(255, 255, 255);
   /* subject */
   --origni-bg: #1e262c;
   --uplay-bg: #fafafa;
@@ -85,6 +87,7 @@
   --uplay-game-bg: #398bf3;
 
   /* help */
+  --help-background:#056396;
   --help-green: #8fd5c2;
   --help-green-key: #125c49;
   --help-yellow: #f2cc7b;
@@ -114,12 +117,14 @@
   --element-background: #101f31;
   --menu-hover-background: rgb(44, 77, 119);
   --tip-background: #203A5C;
-  --point: #07244D;
+  --active-background:rgb(186, 255, 74);
+  --point: #203a5c;
   --point-orange: #fd6c2d;
   --point-yellow: #fdbb2d;
   --point-green: #67c8ae;
   --point-blue: #6296e1;
   --icon-line:#B7C8DF;
+  --icon-active:#B7C8DF;
   /* subject */
   --origni-bg: #1e262c;
   --uplay-bg: #fafafa;
@@ -147,6 +152,7 @@
   --uplay-game-bg: #398bf3;
 
   /* help */
+  --help-background:#07244d;
   --help-green: #228167;
   --help-green-key: #033c2c;
   --help-yellow: #b08923;
@@ -826,12 +832,12 @@ body {
   height: var(--slidebar-size);
   width: var(--slidebar-size);
   border-radius: var(--border-radius-200);
-  background-color: var(--background-color);
+  background-color: var(--font-color-light);
   opacity: 0.3;
 }
 
 .slidebar>ul>li.on {
-  background-color: var(--background-color);
+  background-color: var(--font-color-light);
   opacity: 1;
 }
 
@@ -1673,6 +1679,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   width: 1.3em;
   height: 1.3em;
   margin-right: 2px;
+	color:var(--font-nomal);
 }
 
 /*排序*/
@@ -1716,12 +1723,12 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 #mn-nav-sort-parent .active a {
-  color: var(--font-color-light);
+  color: var(--font-nomal);
   background-color: var(--point);
 
 }
 #mn-nav-sort-parent .active a .icon{
-	color:var(--font-color-light)
+	color:var(--icon-active)
 }
 
 div.subforum_subject_detail_text_down>div:first-child a {
@@ -1980,7 +1987,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-info {
   margin-left: 10px;
 }
-
+.post-tps{
+	color:var(--font-nomal);
+}
 .post-list-left .symbol-icons,
 .post-list-right-l .symbol-icons {
   margin-right: 6px;
