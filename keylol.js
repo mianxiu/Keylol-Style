@@ -933,7 +933,7 @@
 
 
   /**
-   * 热门列表匹配
+   * 列表匹配
    */
   function hotPostList() {
     // 列表
@@ -1029,12 +1029,14 @@
     // 回复---
     function replyNum(html) {
 
+      
       // 回复数
       const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
       const replyByNodeRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
       const replyNode = html.match(replyNodeRegx)
       const replyByNode = html.match(replyByNodeRegx)
 
+      
       if (replyNode !== null && replyByNodeRegx !== null) {
         // 最新回复人和时间
         let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`) : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
@@ -1337,18 +1339,30 @@
   }
 
 
-/**
- * 无权发帖
- */
- function postPanelNoPermission(){
-   let pthmNode = $(`.pt.hm`)
-   let postForm = $(`#fastpostform`)
-   postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
-   $(`.forumrowdata`).remove()
-   $(`#f_pst>.bm_h`).remove()
+  /**
+   * 无权发帖
+   */
+  function postPanelNoPermission() {
+    let pthmNode = $(`.pt.hm`)
+    let postForm = $(`#fastpostform`)
+    postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
+    $(`.forumrowdata`).remove()
+    $(`#f_pst>.bm_h`).remove()
 
- }
 
+
+  }
+
+  /**
+   * ajax下一页
+   */
+  function autopbn() {
+
+      $(`#autopbn`).addEventListener('click', () => {
+        setTimeout(() => { hotPostList() }, 100)
+      })
+
+  }
 
   // 用户面板
   const symbolUserCard = {
@@ -1439,6 +1453,7 @@
       console.log(`i am hot post`)
       hotPost()
       userCard()
+      
     }
 
     if (isSubject == true) {
@@ -1446,7 +1461,7 @@
       // 无权发帖
       if ($(`.pt.hm`) == null) {
         postPanel()
-      }else{
+      } else {
         console.log(`无权发帖`)
         postPanelNoPermission()
       }
@@ -1454,6 +1469,7 @@
       movePostNav()
       hotPostList()
       userCard()
+      autopbn()
 
     }
 
