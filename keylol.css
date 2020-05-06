@@ -1770,11 +1770,16 @@ div.subforum_subject_detail_text_down>div:first-child a {
   display: flex;
   align-items: center;
 }
-
+/*子版块*/
 #pgt+.subforum div{
 	display:flex;
 	align-content:center;
 	
+}
+#pgt+.subforum img{
+	height:48px;
+	border-radius:var(--border-radius-10);
+	margin-right:18px;
 }
 #pgt+.subforum .subforum_subject_title{
 	display:none;
