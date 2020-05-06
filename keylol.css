@@ -699,6 +699,11 @@ body {
 #tabPAhn0P_content>div>div>ol>li>a:hover {
   box-shadow: var(--shadow-hot);
 }
+.darkmode-css #tabPAhn0P_content>div>div>ol>li>a:hover {
+  box-shadow: var(--shadow-hot);
+	background-color:var(--menu-hover-background);
+}
+
 
 /* ---------------热门图片------- */
 #frameCX66dD_left,
@@ -2081,6 +2086,11 @@ color:var(--icon-fill);
   transition: var(--motion-2);
   box-shadow: var(--shadow-hot);
 }
+.darkmode-css .bm_c tbody:hover .post-list {
+  transition: var(--motion-2);
+  box-shadow: var(--shadow-hot);
+  background-color:var(--menu-hover-background);
+}
 
 .bm_c table>tbody>tr>div {
   background-color: var(--element-background);
@@ -2151,9 +2161,6 @@ color:var(--icon-fill);
   box-shadow: var(--shadow-hot) !important;
 }
 
-tbody tr:hover .post-list-tip {
-  display: flex !important;
-}
 
 
 /*阅读权限*/
