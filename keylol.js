@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https:////at.alicdn.com/t/font_1797873_wwar7ax0xoa.js
-// @require      https://at.alicdn.com/t/font_1764890_s32akqsl73.js
+// @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_zq56oirsnm.js
 
