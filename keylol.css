@@ -123,7 +123,7 @@
   --point-yellow: #fdbb2d;
   --point-green: #67c8ae;
   --point-blue: #6296e1;
-  --icon-line:#B7C8DF;
+  --icon-line:rgb(0, 0, 0);
   --icon-active:#B7C8DF;
   /* subject */
   --origni-bg: #1e262c;
@@ -1679,7 +1679,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
   width: 1.3em;
   height: 1.3em;
   margin-right: 2px;
-	color:var(--font-nomal);
+	color:var(--icon-line);
 }
 
 /*排序*/
@@ -1756,7 +1756,7 @@ div.subforum_subject_detail_text_down>div:first-child a {
   padding: var(--element-padding);
   background-color: var(--tip-background);
   border-radius: var(--border-radius-10);
-  color: var(--font-second-light-aphal);
+  color: var(--font-color-light);
   margin-top: var(--tip-margin-top-30);
   justify-content: center;
   display: none;
@@ -1768,6 +1768,7 @@ div.subforum_subject_detail_text_down>div:first-child a {
 }
 
 #mn-nav-parent .subforum_right_title {
+   color:var(--font-nomal);
   display: flex;
   align-items: center;
   height: var(--element-height-34);

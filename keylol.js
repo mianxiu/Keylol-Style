@@ -1358,8 +1358,6 @@
 
     let symbolUserCardCallback = function () {
 
-
-
       let callback = function () {
 
         let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
