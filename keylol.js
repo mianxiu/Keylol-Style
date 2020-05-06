@@ -20,6 +20,8 @@
  * @require game & manufactor logo link
  * @require keylol post icons link
  * 
+ * 在iconfont.cn 批量获取对象名
+ * // let nodes={};document.querySelectorAll(`.icon-code-show`).forEach(node=>{nodes[node.innerText.replace(/keylol/,'')] = node.innerText});console.log(nodes);
  * 
  */
 ; (function () {
@@ -631,13 +633,6 @@
     postattachment: "keylolpostattachment",
     postsolve: "keylolpostsolve"
   }
-  // 用户面板
-  const symbolHotPostUser = {
-    addfriend: "keyloladdfriend",
-    iconmail: "keyloliconmail",
-    hi: "keylolhi",
-    online: "keylolonline"
-  }
 
   // 控制面板
   const symbolControlPanel = {
@@ -880,6 +875,28 @@
   }
 
 
+
+  /**
+   * 
+   * @param {string} suid 
+   * @param {string} size small middle
+   */
+  function avatar(suid, size) {
+    let suidCache = []
+
+    for (let i = suid.length - 1; i > -1; i -= 2) {
+      let suidNum = `${suid.charAt(i - 1)}${suid.charAt(i)}`
+      suidCache.push(`${suidNum.padStart(2, '0')}`)
+    }
+    suidCache.reverse()
+
+    let avatarNum = suidCache.length > 3 ? (suidCache[0] = suidCache[0].padStart(3, '0'), suidCache) : (suidCache.unshift(`000`), suidCache)
+
+    return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm, `/`)}_avatar_${size}.jpg`
+  }
+
+
+
   /**
    * 热门列表匹配
    */
@@ -904,22 +921,6 @@
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
     const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
     const solveHotRegx = /\[已解决\]/gm
-
-    // middle大小头像链接
-    function avatar(suid) {
-      let suidCache = []
-
-      for (let i = suid.length - 1; i > -1; i -= 2) {
-        let suidNum = `${suid.charAt(i - 1)}${suid.charAt(i)}`
-        suidCache.push(`${suidNum.padStart(2, '0')}`)
-      }
-      suidCache.reverse()
-
-      let avatarNum = suidCache.length > 3 ? (suidCache[0] = suidCache[0].padStart(3, '0'), suidCache) : (suidCache.unshift(`000`), suidCache)
-
-      return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm, `/`)}_avatar_small.jpg`
-    }
-
 
     // 判断帖子模式图标---
     function icn(icnHtml) {
@@ -1022,7 +1023,7 @@
 
       let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, '$1') : ''
 
-      let avatarUrl = avatar(suid)
+      let avatarUrl = avatar(suid, `small`)
 
       // 用户头像$名称
       // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
@@ -1167,10 +1168,6 @@
 
 
 
-
-
-  // 在iconfont.cn 批量获取对象名
-  // let nodes={};document.querySelectorAll(`.icon-code-show`).forEach(node=>{nodes[node.innerText.replace(/keylol/,'')] = node.innerText});console.log(nodes);
   const symbolEditor = {
     attchment: "keylolattchment",
     atuser: "keylolatuser",
@@ -1216,13 +1213,6 @@
     texthidden: "keyloltexthidden",
     unlink: "keylolunlink",
     wallpaper: "keylolwallpaper"
-  }
-
-  /**
-   * 移动面板节点
-   */
-  function movePostPanel() {
-    let postFormNode = $(`#fastpostform`)
   }
 
   /**
@@ -1310,6 +1300,57 @@
     }
 
   }
+
+
+
+
+
+  // 用户面板
+  const symbolUserCard = {
+    addfriend: "keyloladdfriend",
+    hi: "keylolhi",
+    iconmail: "keyloliconmail",
+    online: "keylolonline"
+  }
+
+
+  function userCard() {
+
+    const symbolUserCardRegx = {
+      addfriend: /<a.+?frien.+>(.+?)<\/a>/gm,
+      hi: /a_poke/,
+      iconmail: /a_sendpm/,
+      online: /keylolonline/
+    }
+
+
+    let appendParentNode = $(`#append_parent`)
+    var config = { childList: true };
+
+    let symbolUserCardCallback = function () {
+
+
+
+      let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
+      let content = $(`#${lastCardMenuId}`).childNodes[0]
+      console.log(content)
+
+    }
+
+    let userCardObserver = new MutationObserver(symbolUserCardCallback)
+
+    userCardObserver.observe(appendParentNode, config)
+
+
+
+
+  }
+
+
+
+
+
+
   /**
    * 列表函数组合
    */
@@ -1343,6 +1384,7 @@
     if (isHotPost == true) {
       console.log(`i am hot post`)
       hotPost()
+      userCard()
     }
 
     if (isSubject == true) {
@@ -1353,6 +1395,7 @@
 
       movePostNav()
       hotPostList()
+      userCard()
 
     }
 
