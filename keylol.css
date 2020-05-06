@@ -393,8 +393,11 @@ body {
   padding: 0;
   margin: 0;
   border: none;
+	color:var(--font-nomal);
 }
-
+.search-box::placeholder{
+	color:var(--font-second-aphal);
+}
 /* 搜索切换按钮 */
 
 .search-bar-form>.dropdown {
@@ -416,6 +419,7 @@ body {
   display: flex;
   width: 100%;
   min-width: 30px;
+	color:var(--font-nomal);
 }
 
 .search-bar-form>.dropdown>.dropdown-menu>li,
@@ -1086,7 +1090,7 @@ div.index_subject_game div.subject_row_detail_text_down {
 .navItem-1 {
   padding: 8px 10px;
   align-items: center;
-  background-color: var(--point);
+  background-color: var(--help-background);
 }
 
 .navItem-1>a {
@@ -1152,7 +1156,7 @@ div.index_subject_game div.subject_row_detail_text_down {
 #forum-question>div.index_subject_row>div {
   width: 314px;
   padding: 8px 10px;
-  background-color: var(--point);
+  background-color: var(--help-background);
   flex-direction: row;
 }
 
