@@ -2498,6 +2498,7 @@ _pst .cl {
   overflow: hidden;
   background-color: var(--input-post-background);
   border-radius: var(--border-radius-10);
+	color:var(--font-nomal);
 }
 
 
@@ -2755,10 +2756,11 @@ div[id*="rt_rt_"] input {
 #fastpostform>div:nth-child(8) {
   display: flex;
   flex-flow: wrap;
+	color:var(--font-nomal);
 }
 
 #fastpostform>div:nth-child(8) a {
-  color: var(--point);
+  color: var(--font-visit);
 }
 
 #fastpostform>div:nth-child(8) br {
