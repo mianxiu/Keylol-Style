@@ -898,7 +898,9 @@ body {
 .index_subject_row {
   margin-bottom: var(--margin-bottom-60);
 }
-
+.darkmode-css .index_subject_game {
+	opacity:.8;
+}
 /* 子版块 */
 .subject_row_detail {
   padding: 12px 12px;
@@ -908,6 +910,8 @@ body {
   background-color: var(--element-background);
   align-items: center;
 }
+
+
 
 .subject_row_detail:hover {
   box-shadow: var(--shadow-hot);
@@ -1043,9 +1047,21 @@ div.index_subject_game div.subject_row_detail_text_down {
   color: var(--font-nomal);
 }
 
+.darkmode-css #manufacturer>div.index_subject_row>div:nth-child(2) div.subject_row_detail_text_up>a,
+.darkmode-css #manufacturer>div.index_subject_row>div:nth-child(4) div.subject_row_detail_text_up>a,
+.darkmode-css #manufacturer>div.index_subject_row>div:nth-child(6) div.subject_row_detail_text_up>a,
+.darkmode-css #manufacturer>div.index_subject_row>div:nth-child(11) div.subject_row_detail_text_up>a {
+  color: #2c2c2c;
+}
+
 #game>div.index_subject_row>div:nth-child(7)>div.subject_row_detail_text>div.subject_row_detail_text_up>a,
 #game>div.index_subject_row>div:nth-child(9)>div.subject_row_detail_text>div.subject_row_detail_text_up>a {
   color: var(--font-nomal);
+}
+
+.darkmode-css #game>div.index_subject_row>div:nth-child(7)>div.subject_row_detail_text>div.subject_row_detail_text_up>a,
+.darkmode-css #game>div.index_subject_row>div:nth-child(9)>div.subject_row_detail_text>div.subject_row_detail_text_up>a {
+  color: #2c2c2c;
 }
 
 #game>div.index_subject_row>div:nth-child(7)>div.subject_row_detail_text>div.subject_row_detail_text_down,
