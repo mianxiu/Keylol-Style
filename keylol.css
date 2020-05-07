@@ -2860,6 +2860,12 @@ div[id*="rt_rt_"] input {
 }
 
 /*-------------帖子内容-----------------------------------*/
+/*hide 前端太渣*/
+#post-content-title+#mn-nav-parent > div.mn-nav-right > div.mn-nav-right-control-panel > div:nth-child(1),
+#post-content-title+#mn-nav-parent > div.mn-nav-right > div.mn-nav-right-control-panel > div:nth-child(2)
+{
+	display:none;
+}
 #thread_subject {
   font-size: 18px;
   color: var(--font-nomal);
