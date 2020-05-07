@@ -80,31 +80,32 @@
     let tbContainer = $("body>.tb-container")
 
     // 用户栏&LOGO
-    navMenu.insertBefore(tbContainer, null)
-    navMenu.insertBefore($("#nav-additional>#nav-user-action-bar"), null)
-    navMenu.insertBefore(logo, navMenu.childNodes[0])
-    navMenuParent.insertBefore(navMenu, null)
+    navMenu !== null ? navMenu.insertBefore(tbContainer, null) : null
+    navMenu !== null ? navMenu.insertBefore($("#nav-additional>#nav-user-action-bar"), null) : null
+    navMenu !== null ? navMenu.insertBefore(logo, navMenu.childNodes[0]) : null
+    navMenu !== null ? navMenuParent.insertBefore(navMenu, null) : null
   }
 
-  let darkModeCallback = () => {
-    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1")
-    switch (darkModeValue) {
-      case "1":
-        $("html").classList.remove(`darkmode-css`)
-        document.cookie = "darkMode=0"
-        break
-      case "0":
-        $("html").classList.add(`darkmode-css`)
-        document.cookie = "darkMode=1"
-        break
+
+  //初始化深色模式
+  function darkModeInit() {
+    let darkModeValue = localStorage.getItem(`darkmode`)
+    if ( darkModeValue == null) {
+      localStorage.setItem(`darkmode`, `0`)
     }
+    if(darkModeValue === '1'){
+      $(`html`).classList.add(`darkmode-css`)
+    }else{
+      $(`html`).classList.remove(`darkmode-css`)
+    }
+    
+
   }
 
-  darkModeCallback()
 
   var listenElement = function () {
     moveElement()
-    darkModeCallback()
+    darkModeInit()
   }
 
   var moveObserver = new MutationObserver(listenElement)
@@ -678,7 +679,7 @@
   }
 
   // 移动列表导航
-  const symbolPostNav = {
+  const symbolPostListNav = {
     prePage: "keylolpre-page",
     todaynum: "keyloltodaynum",
     post: "keylolpost",
@@ -690,7 +691,7 @@
   /**
    * 移动子版列表导航
    */
-  function movePostNav() {
+  function movePostListNav() {
     let mnNode = $(`.mn`)
     // 创建父节点
     let mnNavParentTemplate = `
@@ -819,9 +820,9 @@
       let today = $(`.subforum_right_title_left_up`)
       let post = $(`.subforum_right_title_mid_up`)
       let comment = $(`.subforum_right_title_right_up`)
-      today.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostNav.todaynum)}<span class="subforum-info-tip">${today.innerHTML}</span></div>`
-      post.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostNav.post)}<span class="subforum-info-tip">${post.innerHTML}</span></div>`
-      comment.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostNav.comments)}<span class="subforum-info-tip">${comment.innerHTML}</span></div>`
+      today.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostListNav.todaynum)}<span class="subforum-info-tip">${today.innerHTML}</span></div>`
+      post.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostListNav.post)}<span class="subforum-info-tip">${post.innerHTML}</span></div>`
+      comment.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostListNav.comments)}<span class="subforum-info-tip">${comment.innerHTML}</span></div>`
     }
 
     // 分页栏
@@ -836,7 +837,7 @@
 
       // 分页symbol
       if ($(`.pg>.prev`) !== null) {
-        $(`.pg>.prev`).innerHTML = symbolHTML(symbolPostNav.prePage)
+        $(`.pg>.prev`).innerHTML = symbolHTML(symbolPostListNav.prePage)
       }
     }
 
@@ -1160,11 +1161,11 @@
     let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ""
 
     // 快速跳转
-   if(tableHTML.match(tpsRegx) !== null){
-     console.log(tableHTML.match(tpsRegx)[0])
-     
-   }
-    let tps = tableHTML.match(tpsRegx) !== null ?  `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
+    if (tableHTML.match(tpsRegx) !== null) {
+      console.log(tableHTML.match(tpsRegx)[0])
+
+    }
+    let tps = tableHTML.match(tpsRegx) !== null ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
 
     let newPost =
       tableHTML.match(newPostRegx) !== null
@@ -1373,7 +1374,7 @@
     console.log(`has threadlisttableid`)
 
     let threadList = $(`#threadlisttableid`)
-    
+
 
     if (threadList !== null) {
 
@@ -1438,13 +1439,76 @@
     userCardObserver.observe(appendParentNode, config)
   }
 
-  /**---------------------------------------------- */
 
+  /**
+   * 帖子详细相关-------------------------------------------
+   * 
+   */
+
+
+  const symbolPostNav = {
+
+  }
+  /**
+   * 帖子内容导航
+   */
+  function postContentNav() {
+    const postNavTemplate = `
+    <div id="post-content-title"></div>
+    <div id="post-nav">
+         <div class="post-nav-left"></div>
+         <div class="post-nav-right">
+             <div class="post-nav-right-control-panel"></div>
+         </div>
+    </div>
+    `
+
+    let wp = $(`#wp`)
+    let postNavParent = document.createElement(`div`)
+    postNavParent.id = `post-nav-parent`
+    postNavParent.innerHTML = postNavTemplate
+
+    wp.insertBefore(postNavParent, wp.childNodes[0])
+
+    // 移动节点
+    let titleNode = $(`#thread_subject`)
+    let newPostNode = $(`#newspecial`)
+    let replyNode = $(`#post_reply`)
+    let infoNode = $(`.subforum_right_title`)
+
+    let pgNode = $(`#pgt .pg`)
+    let collectNode = $(`#k_favorite`)
+    let copyLinkNode = $(`a[onclick*="opyThreadUrl"]`)
+
+
+    let postContentTitle = $(`#post-content-title`)
+    let postNavLeft = $(`.post-nav-left`)
+    let postNavRight = $(`.post-nav-right`)
+    let postControlPanel = $(`.post-nav-right-control-panel`)
+
+
+    postContentTitle.insertBefore(titleNode, null)
+    postNavLeft.insertBefore(newPostNode, null)
+    replyNode !== null ? postNavLeft.insertBefore(replyNode, null) : null
+    postNavLeft.insertBefore(infoNode, null)
+
+    console.log(collectNode)
+    console.log(copyLinkNode)
+    pgNode !== null ? postNavRight.insertBefore(pgNode, postControlPanel) : null
+    postControlPanel.insertBefore(collectNode, null)
+    postControlPanel.insertBefore(copyLinkNode, null)
+
+
+
+  }
+
+
+  /**---------------------------------------------- */
   /**
    * 列表函数组合
    */
   function hotPost() {
-    movePostNav()
+    movePostListNav()
     getPostListNode()
   }
 
@@ -1494,7 +1558,7 @@
 
       postPanel()
 
-      movePostNav()
+      movePostListNav()
       getPostListNode()
       userCard()
       autopbn()
@@ -1502,6 +1566,7 @@
 
     if (isPost == true) {
       console.log(`i am post`)
+      postContentNav()
     }
   }
 
