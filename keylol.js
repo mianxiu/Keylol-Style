@@ -941,9 +941,9 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-    const commontAtag = /<th.+?"[common|lock].+?(<a.+?a>.+).+?<\/th>/gms
+    const commontAtag = /th.+?(<a\s+href="t.+?xst.+?a>).+?th>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
-    const commontRegx = /(<th.+?"[common|lock].+?<\/th>)/gms
+    const commontRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
     const lastCommont = /td>\s(<td.+?by.+?username.+?<\/td>)/gms
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
@@ -1170,7 +1170,7 @@
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
-                         ${tableHTML.match(commontRegx)[0].replace(commontAtag,'$1')}
+                         ${tableHTML.match(commontRegx)[0].match(commontAtag)[0].replace(commontAtag,'$1')}
                          <div class="post-info">
                           ${join}
                           ${reward}
