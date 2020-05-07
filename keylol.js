@@ -1420,7 +1420,7 @@
         let normalThreadTr = $All(`tbody[id*="normalthread"] tr`)
 
         normalThreadTr.forEach(tr => {
-          console.log(tr)
+         
           if (tr.className !== 'post-tr') {
             postListRender(tr)
           }
