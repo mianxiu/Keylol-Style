@@ -941,12 +941,12 @@
     const divRegx = /<div.+?\/div>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
 
-    const commontAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms    
+    const commontAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
     const commontRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
 
     const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
 
-    const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
+    const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?a>)<\/cite>/gms
 
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
 
@@ -1076,14 +1076,18 @@
     // 用户头像$名称
     // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
     //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
+    if (tableHTML.match(userRegx) !== null) {
+      tableHTML.match(userRegx)[0].innerHTML
+    }
+
     let user = tableHTML.match(userRegx) !== null ? tableHTML.match(userRegx)[0].replace(userRegx,
       `
-                $1
+                
                 <span class="post-avatar">
                 <img src="${avatarUrl}">
-                <span>$2</span>
+                <span>$1</span>
                 </span>
-                $3
+                
            `
     ) : ''
 
@@ -1378,7 +1382,9 @@
    * ajax下一页后，渲染新增的DOM
    */
   function autopbn() {
+
     console.log(`has threadlisttableid`)
+
     let threadList = $(`#threadlisttableid`)
 
     if (threadList !== null) {
@@ -1394,7 +1400,8 @@
         console.log(listTrNode.length)
 
         for (let i = listTrNode.length - 1; i > listTrnodeHistoryLength - 1; i--) {
-          console.log(listTrNode[i])
+          
+          //console.log(listTrNode[i].innerHTML)
           postListRender(listTrNode[i].childNodes[0])
 
         }
