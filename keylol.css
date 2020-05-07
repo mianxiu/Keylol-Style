@@ -672,7 +672,7 @@ body {
   box-shadow: var(--shadow-outline);
   border-radius: var(--border-radius-10);
   cursor: pointer;
-	color:var(--font-nomal);
+  color: var(--font-nomal);
 }
 
 #tabPContentShow:focus {
@@ -1653,7 +1653,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 .mn-nav-right-control-panel {
-	flex-wrap: wrap;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -2190,7 +2190,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-join,
 .post-reward,
 .post-reply-reward,
-.post-new-post-tip{
+.post-new-post-tip {
   margin-right: 6px;
   font-size: var(--font-size-12);
   padding: 2px;
@@ -2218,11 +2218,13 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-reply-reward {
   background-color: var(--point-orange);
 }
-.post-new{
-	display:flex;
-	justify-content:center;
-	align-items:center;
+
+.post-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 /*提示全局*/
 .post-lock-tip,
 .post-join-tip,
@@ -2263,9 +2265,10 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   display: flex;
 
 }
+
 .darkmode-css .post-reward:hover .post-reward-tip,
-.darkmode-css .post-reply-reward:hover .post-reply-reward-tip{
-	color:black;
+.darkmode-css .post-reply-reward:hover .post-reply-reward-tip {
+  color: black;
 }
 
 .post-reply-reward:hover .post-reply-reward-tip {
@@ -2301,8 +2304,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   color: var(--font-nomal);
   flex-direction: row;
 }
-.post-list-num > span > a > span{
-	color:var(--font-color-light);
+
+.post-list-num>span>a>span {
+  color: var(--font-color-light);
 }
 
 .post-list-num:hover .post-reply-tip {
@@ -2311,8 +2315,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   background-color: var(--tip-background);
   display: flex;
 }
-.post-reply-tip>span:nth-child(1){
-	color:var(--font-point-second-title);
+
+.post-reply-tip>span:nth-child(1) {
+  color: var(--font-point-second-title);
 }
 
 /*tps*/
@@ -2391,8 +2396,8 @@ div[class*="card_gender"] .o.cl a {
 
 div[class*="card_gender"] .icon {
   transition: .2s all;
-  width: 1.8em;
-  height: 1.8em;
+  width: 1.6em;
+  height: 1.6em;
   margin-right: 10px;
 }
 
@@ -2847,4 +2852,70 @@ div[id*="rt_rt_"] input {
   margin-right: var(--marign-padding-18);
   border-radius: var(--border-radius-10);
   margin-bottom: var(--marign-padding-18);
+}
+
+/*-------------帖子内容-----------------------------------*/
+#thread_subject {
+  font-size: 18px;
+  color: var(--font-nomal);
+}
+
+#post-nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+#post-nav div {
+  align-items: center;
+  display: flex;
+}
+
+.subforum_right_title {
+  color: var(--font-nomal);
+  display: flex;
+  align-items: center;
+  height: var(--element-height-34);
+  background-color: var(--element-background);
+  box-shadow: var(--shadow-outline);
+  border-radius: var(--border-radius-10);
+  padding: var(--element-padding-0-10);
+}
+
+.post-nav-right .pg {
+  height: var(--element-height-34);
+  display: flex;
+  transition: var(--motion-2);
+  border-radius: var(--border-radius-10);
+  overflow: hidden;
+  box-shadow: var(--shadow-outline);
+}
+
+.post-nav-right .pg>strong {
+  display: flex;
+  align-items: center;
+  padding: var(--element-padding-0-10);
+}
+
+.post-nav-right .pg>a {
+  display: flex;
+  align-items: center;
+  padding: var(--element-padding-0-10);
+  background-color: var(--element-background);
+  height: var(--element-height-34);
+}
+
+.post-nav-right .pg>label {
+  display: flex;
+  align-items: center;
+  padding: var(--element-padding-0-10);
+  background-color: var(--element-background);
+}
+
+.post-nav-right .pg>label>input {
+  width: 20px;
+  color: var(--font-nomal);
+  padding: 4px;
+  border-radius: var(--border-radius-2);
+  background-color: var(--input-background);
+  margin-right: 10px;
 }
