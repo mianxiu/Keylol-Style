@@ -942,7 +942,7 @@
     const commontAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
     const commontRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
-    const lastCommont = /td>\s(<td.+?by.+?username.+?<\/td>)/gms
+    const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
     const attacImgRegx = /<img.+?attach_img.+?>/gm
@@ -1363,29 +1363,42 @@
   }
 
   /**
-   * ajax下一页
+   * ajax下一页后，渲染新增的DOM
    */
   function autopbn() {
-    let defaultTr = $All(`tbody[id*="normalthread_"]>tr`)
+    console.log(`has threadlisttableid`)
+    let threadList = $(`#threadlisttableid`)
 
-    const trRegx = /(<tr.+?"common.+?<\/tr>)/gms
-
-    let autopbnCallback = () => {
-      let nextList = event.target.rel
-      console.log(event.target.rel)
-
-      fetch(nextList).then(res => {
-        return res.text()
-      }).then(text => {
-        console.log(text.match(trRegx))
-      })
+    if (threadList !== null) {
 
 
+      let listTrnodeHistoryLength = threadList.childNodes.length
 
+      let tableCallback = () => {
+
+        let listTrNode = threadList.childNodes
+
+        console.log(listTrnodeHistoryLength)
+        console.log(listTrNode.length)
+
+        for (let i = listTrNode.length - 1; i > listTrnodeHistoryLength - 1; i--) {
+          console.log(listTrNode[i])
+          postListRender(listTrNode[i].childNodes[0])
+
+        }
+
+        listTrnodeHistoryLength = listTrNode.length
+
+      }
+
+      let tableConfig = {
+        childList: true
+      }
+
+      let threadListObserver = new MutationObserver(tableCallback)
+      threadListObserver.observe(threadList, tableConfig)
 
     }
-
-    $(`#autopbn`).addEventListener('click', autopbnCallback)
 
   }
 
@@ -1425,17 +1438,13 @@
         pm.innerHTML = `<span>${symbolHTML(symbolUserCard.iconmail)}</span></span><span class="user-card-tip">${pm.innerText}</span>`
 
       }
-
       setTimeout(callback, 100)
       clearTimeout(callback)
 
-
     }
-
     let userCardObserver = new MutationObserver(symbolUserCardCallback)
 
     userCardObserver.observe(appendParentNode, config)
-
 
   }
 
@@ -1498,8 +1507,8 @@
     if (isSubject == true) {
       console.log(`i am subject`)
 
-      postPanel() 
-      
+      postPanel()
+
       movePostNav()
       getPostListNode()
       userCard()
