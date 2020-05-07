@@ -1036,10 +1036,6 @@
     // 用户头像$名称
     // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
     //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
-    if (tableHTML.match(userRegx) !== null) {
-      tableHTML.match(userRegx)[0].innerHTML
-    }
-
     function user() {
       let userTemplate, userTemplateRegx
 
@@ -1052,7 +1048,7 @@
         userTemplateRegx = userHotRegx
       }
 
-      return userTemplate.replace(
+      return userTemplate !==undefined ? userTemplate.replace(
         userTemplateRegx,
         `
       $1
@@ -1062,6 +1058,7 @@
       </span>  
       $3`
       )
+      : ''
     }
 
     // 发表时间
