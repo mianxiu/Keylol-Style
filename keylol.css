@@ -2258,6 +2258,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   display: flex;
 
 }
+.darkmode-css .post-reward:hover .post-reward-tip {
+	color:black;
+}
 
 .post-reply-reward:hover .post-reply-reward-tip {
   color: var(--font-nomal);
