@@ -1695,7 +1695,12 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 /*-----------------------------帖子nav----------------------*/
-
+/*banner*/
+.bm.bml.pbn img{
+	width:100%;
+	border-radius:var(--border-radius-10);
+	margin-bottom:18px;
+}
 /*帖子类型*/
 #newspecial_menu {
   display: flex;

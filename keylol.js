@@ -1508,35 +1508,37 @@
 
     wp.insertBefore(postNavParent, wp.childNodes[0])
 
-    // 移动节点
-    let titleNode = $(`#thread_subject`)
-    let newPostNode = $(`#newspecial`)
-    let replyNode = $(`#post_reply`)
-    let infoNode = $(`.subforum_right_title`)
+    // // 移动节点
+    // let titleNode = $(`#thread_subject`)
+    // let newPostNode = $(`#newspecial`)
+    // let replyNode = $(`#post_reply`)
+    // let infoNode = $(`.subforum_right_title`)
 
-    let pgNode = $(`#pgt .pg`)
-    let collectNode = $(`#k_favorite`)
-    let copyLinkNode = $(`a[onclick*="opyThreadUrl"]`)
-
-
-    let postContentTitle = $(`#post-content-title`)
-    let postNavLeft = $(`.post-nav-left`)
-    let postNavRight = $(`.post-nav-right`)
-    let postControlPanel = $(`.post-nav-right-control-panel`)
+    // let pgNode = $(`#pgt .pg`)
+    // let collectNode = $(`#k_favorite`)
+    // let copyLinkNode = $(`a[onclick*="opyThreadUrl"]`)
 
 
-    postContentTitle.insertBefore(titleNode, null)
-    postNavLeft.insertBefore(newPostNode, null)
-    replyNode !== null ? postNavLeft.insertBefore(replyNode, null) : null
-    postNavLeft.insertBefore(infoNode, null)
-
-    console.log(collectNode)
-    console.log(copyLinkNode)
-    pgNode !== null ? postNavRight.insertBefore(pgNode, postControlPanel) : null
-    postControlPanel.insertBefore(collectNode, null)
-    postControlPanel.insertBefore(copyLinkNode, null)
+    // let postContentTitle = $(`#post-content-title`)
+    // let postNavLeft = $(`.post-nav-left`)
+    // let postNavRight = $(`.post-nav-right`)
+    // let postControlPanel = $(`.post-nav-right-control-panel`)
 
 
+    // postContentTitle.insertBefore(titleNode, null)
+    // postNavLeft.insertBefore(newPostNode, null)
+    // replyNode !== null ? postNavLeft.insertBefore(replyNode, null) : null
+    // postNavLeft.insertBefore(infoNode, null)
+
+    // console.log(collectNode)
+    // console.log(copyLinkNode)
+    // pgNode !== null ? postNavRight.insertBefore(pgNode, postControlPanel) : null
+    // postControlPanel.insertBefore(collectNode, null)
+    // postControlPanel.insertBefore(copyLinkNode, null)
+
+    renderNewBtn()
+    renderPagePanel()
+    renderControlPanel()
 
   }
 
