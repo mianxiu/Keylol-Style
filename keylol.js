@@ -23,7 +23,7 @@
  * // let nodes={};document.querySelectorAll(`.icon-code-show`).forEach(node=>{nodes[node.innerText.replace(/keylol/,'')] = node.innerText});console.log(nodes);
  *
  */
-;(function () {
+; (function () {
   "use strict"
 
   /**
@@ -181,11 +181,11 @@
   /**
    * 热门主题颜色条目改为背景
    */
-  function hotPostBackground(){
+  function hotPostBackground() {
     let hotList = $All(`div[id*=portal_block_] [style*="color"]`)
-    hotList.forEach(fontTag=>{
-        fontTag.parentNode.style = `background-color:${fontTag.style.color};opacity:.8;`
-        fontTag.style.color = `rgba(255,255,255,9)`
+    hotList.forEach(fontTag => {
+      fontTag.parentNode.style = `background-color:${fontTag.style.color};opacity:.8;`
+      fontTag.style.color = `rgba(255,255,255,9)`
     })
 
   }
@@ -900,8 +900,10 @@
     const divRegx = /<div.+?\/div>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
 
-    const commontAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
-    const commontRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
+    const commonAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
+    const commonRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
+    const commonTdAtag = /(fn">)(|\/em).+?(<a\s{0,}href="t.+xst.+?a>)/gms
+    const commonTdRegx = /td><td.+?xst.+?td>/gms
 
     const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
 
@@ -1048,7 +1050,7 @@
         userTemplateRegx = userHotRegx
       }
 
-      return userTemplate !==undefined ? userTemplate.replace(
+      return userTemplate !== undefined ? userTemplate.replace(
         userTemplateRegx,
         `
       $1
@@ -1058,16 +1060,33 @@
       </span>  
       $3`
       )
-      : ''
+        : ''
     }
 
+    /**
+     * 匹配帖子
+     */
+    function common() {
+
+
+      if (tableHTML.match(commonRegx) !== null) {
+
+        return tableHTML.match(commonRegx)[0].match(commonAtag)[0].replace(commonAtag, "$1")
+
+      } else {
+        console.log(tableHTML.match(commonTdRegx)[0])
+        return tableHTML.match(commonTdRegx)[0].match(commonTdAtag)[0].replace(commonTdAtag, "$3")
+      }
+
+
+    }
     // 发表时间
     let postTime =
       tableHTML.match(postTimeRegx) !== null
         ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
         : tableHTML.match(postTimeEmRegx) !== null
-        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, "$1")
-        : ""
+          ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, "$1")
+          : ""
 
     // 已完成节点
     let solve = () => {
@@ -1144,14 +1163,14 @@
     let newPost =
       tableHTML.match(newPostRegx) !== null
         ? tableHTML.match(newPostRegx)[0].replace(
-            newPostRegx,
-            `
+          newPostRegx,
+          `
       $1
       <span class="post-new">${symbolHTML(symbolHotPostInfo.newpost)}</span>
       <span class="post-new-post-tip">新主题</span>
       $3
       `
-          )
+        )
         : ""
 
     let trTemplate = `
@@ -1160,7 +1179,7 @@
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
-                         ${tableHTML.match(commontRegx)[0].match(commontAtag)[0].replace(commontAtag, "$1")}
+                         ${common()}
                          <div class="post-info">
                           ${join}
                           ${reward}
@@ -1349,23 +1368,50 @@
     console.log(`has threadlisttableid`)
 
     let threadList = $(`#threadlisttableid`)
+    let normalThread = $All(`tbody[id*="normalthread"]`)
 
     if (threadList !== null) {
-      
-      let listTrnodeHistoryLength = threadList.childNodes.length
+
+      // 加载页面后默认列表长度，首元素id
+      // 
+      let listTrHistoryLength = threadList.childNodes.length
+
+      let normalHistoryLength = normalThread.length
+      let normalHistoryLastId = normalThread[normalThread.length - 1].id
+
+
 
       let tableCallback = () => {
+
+        // ajax后新增的节点
         let listTrNode = threadList.childNodes
 
-        console.log(listTrnodeHistoryLength)
-        console.log(listTrNode.length)
+        normalThread = $All(`tbody[id*="normalthread"]`)
+        let normalLength = normalThread.length
 
-        for (let i = listTrNode.length - 1; i > listTrnodeHistoryLength - 1; i--) {
-          //console.log(listTrNode[i].innerHTML)
-          postListRender(listTrNode[i].childNodes[0])
+        let normalLastId = normalThread[normalThread.length - 1].id
+
+
+        // 判断新帖子或下一页
+        if (normalLastId === normalHistoryLastId) {
+     
+          for (let k = 0; k < normalLength; k++) {
+
+            console.log(normalThread[k])
+
+            postListRender(normalThread[k].childNodes[0])
+          }
+        } else {
+
+          for (let i = listTrNode.length - 1; i > listTrHistoryLength - 1; i--) {
+            postListRender(listTrNode[i].childNodes[0])
+          }
+
         }
 
-        listTrnodeHistoryLength = listTrNode.length
+        listTrHistoryLength = listTrNode.length
+
+
       }
 
       let tableConfig = {
