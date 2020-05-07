@@ -1163,7 +1163,6 @@
       `
       ) : ''
 
-      console.log(tableHTML)
       let trTemplate = `
                 ${icn(tableHTML.match(icnRegx)[0])}
                 ${subTag(tableHTML)}
