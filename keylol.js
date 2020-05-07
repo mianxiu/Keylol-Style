@@ -896,6 +896,8 @@
    * 列表渲染
    */
   function postListRender(trNode) {
+
+
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
@@ -1027,9 +1029,11 @@
       return ""
     }
 
-    // 渲染
+    // 渲染 -------------
+    trNode.classList.add(`post-tr`)
+
     let tableHTML = trNode.innerHTML
-    //let divs = tableHTML.match(divRegx)
+
 
     let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, "$1") : ""
 
@@ -1365,17 +1369,20 @@
     console.log(`has threadlisttableid`)
 
     let threadList = $(`#threadlisttableid`)
-    let normalThread = $All(`tbody[id*="normalthread"]`)
+    
 
     if (threadList !== null) {
 
-
       let tableCallback = () => {
 
-        threadList.childNodes.forEach(node => {
-          if (node.tagName === 'TBDOY' && node) {
-
+        let normalThreadTr = $All(`tbody[id*="normalthread"] tr`)
+        
+        normalThreadTr.forEach(tr => {
+          console.log(tr)
+          if (tr.className !== 'post-tr') {
+            postListRender(tr)
           }
+
         })
 
       }
