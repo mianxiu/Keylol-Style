@@ -939,17 +939,25 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-    const commontAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
+
+    const commontAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms    
     const commontRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
+
     const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
+
     const userRegx = /(<a.+[s|u]id.+>)(.+?)(<\/a>)/gm
+
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
+
     const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
+
+    const tpsAtag = /<a.+?a>/gms
     const tpsRegx = /<span class="tps">.+<\/span>/gm
+
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
     const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
     const attachmentRegx = /<img.+?attachment.+?>/gms
@@ -1147,7 +1155,12 @@
 
     let attachment = tableHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
     let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
-    let tps = tableHTML.match(tpsRegx) !== null ? tableHTML.match(tpsRegx)[0].replace(/tps/, `post-tps`) : ''
+
+
+    // 快速跳转
+    let tps = tableHTML.match(tpsRegx) !== null
+      ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>`
+      : ''
 
     let newPost = tableHTML.match(newPostRegx) !== null ? tableHTML.match(newPostRegx)[0].replace(newPostRegx,
       `
@@ -1168,8 +1181,7 @@
                          <div class="post-info">
                           ${join}
                           ${reward}
-                          ${solve()}
-                     
+                          ${solve()}        
                           ${replyReward}
                           ${digest}
                           ${lock}
