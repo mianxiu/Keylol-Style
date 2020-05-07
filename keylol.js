@@ -949,6 +949,7 @@
     const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?a>)<\/cite>/gms
 
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
+    const postTimeEmRegx = /cite><em>(\d{4}.+?表)<\/em>/gms
 
     const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
@@ -960,8 +961,10 @@
 
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
     const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
+
     const attachmentRegx = /<img.+?attachment.+?>/gms
     const digestRegx = /<img.+?digest.+?>/gms
+
     const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
     const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
@@ -1094,8 +1097,11 @@
 
 
     // 发表时间
-    let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
-      : tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm) !== null ? tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm)[0] : ''
+    let postTime = tableHTML.match(postTimeRegx) !== null
+      ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
+      : tableHTML.match(postTimeEmRegx) !== null
+        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx,'$1')
+        : ''
 
 
     // 已完成节点
@@ -1204,10 +1210,10 @@
                              <div class="post-list-num">
                              ${replyNum(tableHTML)}
                              </div>
-                             <div class="post-list-time">${em}</div>
+                             <div class="post-list-time">${postTime}</div>
                          </div>
                          <div class="post-list-right-r">
-                         <!--时间${tableHTML.match(lastCommont)[0]}-->            
+                         <!--时间${tableHTML.match(lastCommont)[0]}-->
                              <div class="post-list-last-comment"></div>
                          </div>
                      </div>
@@ -1400,7 +1406,7 @@
         console.log(listTrNode.length)
 
         for (let i = listTrNode.length - 1; i > listTrnodeHistoryLength - 1; i--) {
-          
+
           //console.log(listTrNode[i].innerHTML)
           postListRender(listTrNode[i].childNodes[0])
 
