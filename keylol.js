@@ -23,7 +23,7 @@
  * // let nodes={};document.querySelectorAll(`.icon-code-show`).forEach(node=>{nodes[node.innerText.replace(/keylol/,'')] = node.innerText});console.log(nodes);
  *
  */
-;(function () {
+; (function () {
   "use strict"
 
   /**
@@ -1023,38 +1023,38 @@
       tableHTML.match(userRegx)[0].innerHTML
     }
 
-    let user =
-      tableHTML.match(userRegx) !== null
-        ? tableHTML.match(userRegx)[0].replace(
-            userRegx,
-            `         $1
-                <span class="post-avatar">
-                <img src="${avatarUrl}">
-                <span>$2</span>
-                </span>  
-                $3       
-           `
-          )
-        : tableHTML.match(userHotRegx) !== null
-        ? tableHTML.match(userHotRegx)[0].replace(
-            userHotRegx,
-            `$1    
-          <span class="post-avatar">
-          <img src="${avatarUrl}">
-          <span>$2</span>
-          </span>
-          $3           
-     `
-          )
-        : ""
+
+    function user() {
+      let userTemplate, userTemplateRegx
+
+      if (tableHTML.match(userRegx) !== null) {
+        userTemplate = tableHTML.match(userRegx)[0]
+        userTemplateRegx = userRegx
+      }
+      if (tableHTML.match(userHotRegx) !== null) {
+        userTemplate = tableHTML.match(userHotRegx)[0]
+        userTemplateRegx = userHotRegx
+      }
+
+      return userTemplate.replace(userTemplateRegx, `
+      $1
+      <span class="post-avatar">
+      <img src="${avatarUrl}">
+      <span>$2</span>
+      </span>  
+      $3`
+      )
+    }
+
+
 
     // 发表时间
     let postTime =
       tableHTML.match(postTimeRegx) !== null
         ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
         : tableHTML.match(postTimeEmRegx) !== null
-        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, "$1")
-        : ""
+          ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, "$1")
+          : ""
 
     // 已完成节点
     let solve = () => {
@@ -1131,14 +1131,14 @@
     let newPost =
       tableHTML.match(newPostRegx) !== null
         ? tableHTML.match(newPostRegx)[0].replace(
-            newPostRegx,
-            `
+          newPostRegx,
+          `
       $1
       <span class="post-new">${symbolHTML(symbolHotPostInfo.newpost)}</span>
       <span class="post-new-post-tip">新主题</span>
       $3
       `
-          )
+        )
         : ""
 
     let trTemplate = `
@@ -1166,7 +1166,7 @@
                      <div class="post-list-right">
                          <!--会员-->
                          <div class="post-list-right-l">
-                             <div class="post-list-by-member">${user}</div>
+                             <div class="post-list-by-member">${user()}</div>
                              <div class="post-list-num">
                              ${replyNum(tableHTML)}
                              </div>
