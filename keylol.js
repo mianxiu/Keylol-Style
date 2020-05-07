@@ -1146,10 +1146,8 @@
       tableHTML.match(replyReWardRegx) !== null
         ? `
           <span class="post-reply-reward">
-                <span>${tableHTML.match(replyReWardRegx)[0].replace(replyReWardRegx, "$1")}
+                    <span>${tableHTML.match(replyReWardRegx)[0].replace(replyReWardRegx, "$1")}</span>
                     <span class="post-reply-reward-tip">奖励蒸气(克)</span>
-                </span>
-               
           </span>
       `
         : ""
@@ -1166,8 +1164,10 @@
           newPostRegx,
           `
       $1
-      <span class="post-new">${symbolHTML(symbolHotPostInfo.newpost)}</span>
+      <span class="post-new">
+      <span>${symbolHTML(symbolHotPostInfo.newpost)}</span>
       <span class="post-new-post-tip">新主题</span>
+      </span>   
       $3
       `
         )
@@ -1210,9 +1210,6 @@
                          </div>
                      </div>
                  </div>
-                <div class="post-list-tip">
-                    <div class="post-list-by-forum"></div>
-                </div>  
            `
     trNode.innerHTML = trTemplate
   }
@@ -1372,45 +1369,14 @@
 
     if (threadList !== null) {
 
-      // 加载页面后默认列表长度，首元素id
-      // 
-      let listTrHistoryLength = threadList.childNodes.length
-
-      let normalHistoryLength = normalThread.length
-      let normalHistoryLastId = normalThread[normalThread.length - 1].id
-
-
 
       let tableCallback = () => {
 
-        // ajax后新增的节点
-        let listTrNode = threadList.childNodes
+        threadList.childNodes.forEach(node => {
+          if (node.tagName === 'TBDOY' && node) {
 
-        normalThread = $All(`tbody[id*="normalthread"]`)
-        let normalLength = normalThread.length
-
-        let normalLastId = normalThread[normalThread.length - 1].id
-
-
-        // 判断新帖子或下一页
-        if (normalLastId === normalHistoryLastId) {
-     
-          for (let k = 0; k < normalLength; k++) {
-
-            console.log(normalThread[k])
-
-            postListRender(normalThread[k].childNodes[0])
           }
-        } else {
-
-          for (let i = listTrNode.length - 1; i > listTrHistoryLength - 1; i--) {
-            postListRender(listTrNode[i].childNodes[0])
-          }
-
-        }
-
-        listTrHistoryLength = listTrNode.length
-
+        })
 
       }
 

@@ -2189,7 +2189,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-join,
 .post-reward,
 .post-reply-reward,
-.post-new-post-tip {
+.post-new-post-tip{
   margin-right: 6px;
   font-size: var(--font-size-12);
   padding: 2px;
@@ -2217,7 +2217,11 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-reply-reward {
   background-color: var(--point-orange);
 }
-
+.post-new{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+}
 /*提示全局*/
 .post-lock-tip,
 .post-join-tip,
@@ -2269,7 +2273,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 
 }
 
-div.post-info>a.xi1:hover>.post-new-post-tip {
+.post-new:hover>.post-new-post-tip {
   color: var(--font-second-light-aphal);
   background-color: var(--tip-background);
   display: flex;
