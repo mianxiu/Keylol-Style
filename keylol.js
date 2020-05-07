@@ -920,7 +920,7 @@
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
 
-    const tpsAtag = /<a.+?a>/gms
+    const tpsAtag = /<a.+a>/gms
     const tpsRegx = /<span class="tps">.+<\/span>/gm
 
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
@@ -1160,7 +1160,11 @@
     let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ""
 
     // 快速跳转
-    let tps = tableHTML.match(tpsRegx) !== null ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
+   if(tableHTML.match(tpsRegx) !== null){
+     console.log(tableHTML.match(tpsRegx)[0])
+     
+   }
+    let tps = tableHTML.match(tpsRegx) !== null ?  `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
 
     let newPost =
       tableHTML.match(newPostRegx) !== null
@@ -1376,7 +1380,7 @@
       let tableCallback = () => {
 
         let normalThreadTr = $All(`tbody[id*="normalthread"] tr`)
-        
+
         normalThreadTr.forEach(tr => {
           console.log(tr)
           if (tr.className !== 'post-tr') {
