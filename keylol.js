@@ -946,6 +946,7 @@
 
     const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
 
+    const userHotRegx = /2/gms
     const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?a>)<\/cite>/gms
 
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
