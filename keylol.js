@@ -1351,6 +1351,7 @@
     let threadList = $(`#threadlisttableid`)
 
     if (threadList !== null) {
+      
       let listTrnodeHistoryLength = threadList.childNodes.length
 
       let tableCallback = () => {

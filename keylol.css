@@ -1652,7 +1652,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 .mn-nav-right-control-panel {
-  flex-wrap: wrap;
+	flex-wrap: wrap;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -2292,12 +2292,18 @@ div.post-info>a.xi1:hover>.post-new-post-tip {
   color: var(--font-nomal);
   flex-direction: row;
 }
+.post-list-num > span > a > span{
+	color:var(--font-color-light);
+}
 
 .post-list-num:hover .post-reply-tip {
   z-index: 303;
   color: var(--font-second-light-aphal);
   background-color: var(--tip-background);
   display: flex;
+}
+.post-reply-tip>span:nth-child(1){
+	color:var(--font-point-second-title);
 }
 
 /*tps*/
