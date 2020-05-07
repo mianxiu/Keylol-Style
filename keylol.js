@@ -11,7 +11,6 @@
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_zq56oirsnm.js
 
-
 // ==/UserScript==
 
 /**this is iconfont.cn symbol
@@ -19,17 +18,17 @@
  * @require keylol home icons link
  * @require game & manufactor logo link
  * @require keylol post icons link
- * 
+ *
  * 在iconfont.cn 批量获取对象名
  * // let nodes={};document.querySelectorAll(`.icon-code-show`).forEach(node=>{nodes[node.innerText.replace(/keylol/,'')] = node.innerText});console.log(nodes);
- * 
+ *
  */
-; (function () {
+;(function () {
   "use strict"
 
   /**
    * document.querySelector
-   * @param {string} selector 
+   * @param {string} selector
    */
   function $(selector) {
     return document.querySelector(selector)
@@ -37,7 +36,7 @@
 
   /**
    * document.querySelectorAll
-   * @param {string} selector 
+   * @param {string} selector
    */
   function $All(selector) {
     return document.querySelectorAll(selector)
@@ -54,7 +53,7 @@
   var observerOptions = {
     childList: true,
     subtree: true,
-    attributeFilter: []
+    attributeFilter: [],
   }
   var observer = new MutationObserver(clearCss)
   observer.observe(targetNode, observerOptions)
@@ -88,16 +87,16 @@
   }
 
   let darkModeCallback = () => {
-    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
+    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1")
     switch (darkModeValue) {
-      case '1':
-        $('html').classList.remove(`darkmode-css`)
-        document.cookie = 'darkMode=0'
-        break;
-      case '0':
-        $('html').classList.add(`darkmode-css`)
-        document.cookie = 'darkMode=1'
-        break;
+      case "1":
+        $("html").classList.remove(`darkmode-css`)
+        document.cookie = "darkMode=0"
+        break
+      case "0":
+        $("html").classList.add(`darkmode-css`)
+        document.cookie = "darkMode=1"
+        break
     }
   }
 
@@ -130,7 +129,6 @@
           return res.text()
         })
         .then((bodyText) => {
-
           let imgUrls = bodyText.match(imgRegx)
 
           if (imgUrls.length > 1) {
@@ -277,7 +275,6 @@
 
     $(`.forum_stats`).innerHTML += statsTemplate
 
-
     // 关注重点
     let forumNav = $(`.forum_nav`)
     let navLeftNode = $(`.index_navi_left`)
@@ -323,22 +320,21 @@
 
     darkmodeNode.innerText = `深色模式`
 
-    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1");
-
+    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1")
 
     // 初始化
-    if (darkModeValue == '') {
-      console.log('add darkmode cookie')
-      document.cookie = 'darkMode=0'
+    if (darkModeValue == "") {
+      console.log("add darkmode cookie")
+      document.cookie = "darkMode=0"
     }
-    darkmodeNode.addEventListener('click', darkModeCallback)
+    darkmodeNode.addEventListener("click", darkModeCallback)
   }
 
   // 首页symbol -----------------------------------------------------------------------
   // 数组的顺序对应元素
   /**
    * 输入icon id,生成symbol 节点
-   * @param {string}} id 
+   * @param {string}} id
    * @returns {HTMLSpanElement}
    */
   let symbolHTMLNode = function (id) {
@@ -351,7 +347,7 @@
   /**
    * 输入icon id,生成symbol片段
    * 详情 https://www.iconfont.cn/help/detail?spm=a313x.7781069.1998910419.d8cf4382a&helptype=code
-   * @param {string} id 
+   * @param {string} id
    * @returns {string} span string
    */
   let symbolHTML = function (id) {
@@ -383,12 +379,7 @@
 
   // 搜索栏 消息 提醒 logo
   // 搜索栏和导航栏
-  const symbolNav = [
-    "kelolmenu_iconsearch",
-    "kelolmenu_icon_mail",
-    "kelolmenu_icon_post_reply",
-    "kelolkeylol_logo"
-  ]
+  const symbolNav = ["kelolmenu_iconsearch", "kelolmenu_icon_mail", "kelolmenu_icon_post_reply", "kelolkeylol_logo"]
   function setNavIcons() {
     let navNodes = {
       searchNode: $(`.search-bar-form > .dropdown `),
@@ -415,8 +406,6 @@
 
     // 设置logo
     $("#nav-logo").innerHTML += symbolHTML(symbolNav[3])
-
-
   }
 
   // steam平台工具
@@ -556,7 +545,7 @@
   // 首页symbol
   // 导航栏的一系列函数
   function navFunction() {
-    // 检测 是否登录 
+    // 检测 是否登录
 
     console.log(`add nav menu icons`)
     setNavIcons()
@@ -567,7 +556,6 @@
       console.log(`add down menu icons`)
       setDownMenuIcons()
     }
-
   }
 
   // 首页样式函数
@@ -597,12 +585,11 @@
 
   /**
    * 输入带关键字的html,匹配版块tag的图标
-   * @param {string} html 
+   * @param {string} html
    * @returns {string} symbol片段
    * @returns {string} 无匹配时返回 html
    */
   function tagIconMatch(html) {
-
     // 判断版块,替换版块tag图标
     const symbolSubTag = {
       yundong: "keylolyundong",
@@ -617,7 +604,6 @@
       jiqiao: "keyloljiqiao",
       yingyin: "keylolyingyin",
       lingyi: "keylollingyi",
-
     }
 
     const tagSymbolRegx = {
@@ -632,7 +618,7 @@
       ouqi: /欧气/gms,
       jiqiao: /社区/gms,
       yingyin: /影音/gms,
-      lingyi: /灵异/gms
+      lingyi: /灵异/gms,
     }
 
     for (const key in tagSymbolRegx) {
@@ -651,7 +637,7 @@
     vote: "keylolvote",
     top: "keyloltop",
     globaltop: "keylolglobaltop",
-    vs: "keylolvs"
+    vs: "keylolvs",
   }
   const symbolHotPostInfo = {
     attach_img: "keylolattach_img",
@@ -663,7 +649,7 @@
     lock: "keylollock",
     postdigest: "keylolpostdigest",
     postattachment: "keylolpostattachment",
-    postsolve: "keylolpostsolve"
+    postsolve: "keylolpostsolve",
   }
 
   // 控制面板
@@ -671,7 +657,7 @@
     rss: "keylolrss",
     control: "keylolcontrol",
     collect: "keylolcollect",
-    rabbin: "keylolrabbin"
+    rabbin: "keylolrabbin",
   }
 
   // 移动列表导航
@@ -679,16 +665,10 @@
     prePage: "keylolpre-page",
     todaynum: "keyloltodaynum",
     post: "keylolpost",
-    comments: "keylolcomments"
+    comments: "keylolcomments",
   }
   // 按tag排序图标
-  const symbolPostSort = [
-    "keylolviewsort",
-    "keyloltypesort",
-    "keyloltimesort",
-    "keylolstatussort"
-  ]
-
+  const symbolPostSort = ["keylolviewsort", "keyloltypesort", "keyloltimesort", "keylolstatussort"]
 
   /**
    * 移动子版列表导航
@@ -712,13 +692,10 @@
     let mnNavRight = $(`.mn-nav-right`)
     let mnNavRightControlPanel = $(`.mn-nav-right-control-panel`)
 
-
-
     // 子版块相关
     // 子版块创建规则，筛选父节点
     // 存在子版元素
     if ($(`.subforum`) !== null) {
-
       let mnNavSortParent = document.createElement(`div`)
       let mnNavRuleParent = document.createElement(`div`)
       let mnNavTagParent = document.createElement(`div`)
@@ -731,30 +708,25 @@
       mnNode.insertBefore(mnNavSortParent, $(`.bm.bml.pbn`))
       mnNode.insertBefore(mnNavTagParent, $(`.bm.bml.pbn`))
 
-
-
       // 清除｜清除不名意义a tag
-      $All('.subforum_subject_detail_text_down div').forEach(node => {
-        if (node.innerText === '｜' || node.innerHTML == '') {
+      $All(".subforum_subject_detail_text_down div").forEach((node) => {
+        if (node.innerText === "｜" || node.innerHTML == "") {
           node.remove()
         }
       })
-      $All('.subforum_subject_detail_text_down a').forEach(node => {
+      $All(".subforum_subject_detail_text_down a").forEach((node) => {
         if (/^\s*$/.test(node.innerText)) {
           node.remove()
         }
       })
 
-
       // tag栏
       let detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
 
       if (detail2.length > 4) {
-
         let mnNavTagNode = $(`#mn-nav-tag-parent`)
         mnNavTagNode.insertBefore($(`.subforum_subject2 > div.subforum_subject_detail2:last-child`), null)
       }
-
 
       // 规则栏
       let ruleParent = $(`.ptn.xg2`)
@@ -762,79 +734,63 @@
         let mnNavRuleParentNode = $(`#mn-nav-rule-parent`)
         mnNavRuleParentNode.innerHTML = `<div id="mn-nav-rule-switch"></div>`
 
-
         const lineRegx = /<\/a> \| <div/gm
         ruleParent.innerHTML = ruleParent.innerHTML.replace(lineRegx, `<\/a><div`)
 
         let ruleNode = $(`#current-forum-rule`)
-        if (ruleNode.innerHTML !== '') {
+        if (ruleNode.innerHTML !== "") {
           mnNavRuleParentNode.insertBefore(ruleParent, null)
           $(`#mn-nav-rule-switch`).insertBefore($(`.ptn.xg2`), null)
           mnNavRuleParentNode.insertBefore(ruleNode, null)
         }
 
-
-
         // 添加切换按钮
         let switchRule = function () {
-
           let num = event.target.id.match(/\d+/gm)[0]
           $(`#current-forum-rule`).innerHTML = $(`#forum-rule-${num}`).innerHTML
-
         }
 
-        $All(`.ptn.xg2 > a`).forEach(node => {
-          node.removeEventListener('click', switchRule)
-          node.addEventListener('click', switchRule)
+        $All(`.ptn.xg2 > a`).forEach((node) => {
+          node.removeEventListener("click", switchRule)
+          node.addEventListener("click", switchRule)
         })
-
       }
-
-
 
       // 移动筛选栏
       detail2 = $All(`.subforum_subject2 > div.subforum_subject_detail2`)
-      detail2.forEach(node => {
-        node.style = ''
+      detail2.forEach((node) => {
+        node.style = ""
         $(`#mn-nav-sort-parent`).insertBefore(node, null)
-
       })
 
       // 筛选栏symbol
       let tagATagFirst = `#mn-nav-sort-parent .subforum_subject_detail_text_down > div:first-Child > a:first-Child`
       let i = 0
-      $All(tagATagFirst).forEach(node => {
+      $All(tagATagFirst).forEach((node) => {
         node.innerHTML = `${symbolHTML(symbolPostSort[i])}<span>${node.innerText}</span>`
         i++
       })
 
       // 版块tag图标替换
       let tagAtag = `#mn-nav-tag-parent > div > div.subforum_subject_detail_text_down > div > a`
-      $All(tagAtag).forEach(node => {
-
-
+      $All(tagAtag).forEach((node) => {
         let postTagNameRegx = /(.*)（.*/gm
-        let postTagName = node.innerText.match(postTagNameRegx) !== null ?
-          node.innerText.replace(postTagNameRegx, `$1`)
-          : `<span class="post-tag-name">${node.innerText}</span>`
+        let postTagName = node.innerText.match(postTagNameRegx) !== null ? node.innerText.replace(postTagNameRegx, `$1`) : `<span class="post-tag-name">${node.innerText}</span>`
         let postNumRegx = /\d+/gm
-        let postNum = node.innerText.match(postNumRegx) !== null ? `（${node.innerText.match(postNumRegx)[0]}）` : ''
+        let postNum = node.innerText.match(postNumRegx) !== null ? `（${node.innerText.match(postNumRegx)[0]}）` : ""
 
         // 有img图标且有自定义图标时匹配替换
         if (node.children !== null && node.innerHTML !== tagIconMatch(node.innerHTML)) {
           node.innerHTML = `<span>${tagIconMatch(postTagName)}<span class="post-tag-num">${postNum}</span></span><span class="tag-tip">${node.innerText}</span>`
         }
       })
-
-
     }
-
 
     // new post btn
     $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
     mnNavLeft.insertBefore($(`#pgt>a`), null)
     // 热门和子版导航不一样
-    if ($('#thread_types') !== null) {
+    if ($("#thread_types") !== null) {
       // 热门导航
       mnNavLeft.insertBefore($(`#thread_types`), null)
     } else {
@@ -851,7 +807,6 @@
       comment.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostNav.comments)}<span class="subforum-info-tip">${comment.innerHTML}</span></div>`
     }
 
-
     // 分页栏
     if ($(`#pgt>.pg`) !== null) {
       // 热门分页
@@ -862,17 +817,11 @@
         mnNavRight.insertBefore($(`#fd_page_top>.pg`), mnNavRightControlPanel)
       }
 
-
       // 分页symbol
       if ($(`.pg>.prev`) !== null) {
         $(`.pg>.prev`).innerHTML = symbolHTML(symbolPostNav.prePage)
       }
-
-
-
     }
-
-
 
     // 订阅、收藏 管理面板 回收站
     // 控制面板
@@ -880,12 +829,11 @@
       rss: /订阅/gms,
       control: /管理/gms,
       collect: /收藏/gms,
-      rabbin: /回收/gms
+      rabbin: /回收/gms,
     }
 
     let mnNavControlPanelNodes = $All(`div[class*="subforum_left_title_right"]`)
     if (mnNavControlPanelNodes !== null) {
-
       // .y 热门版块
       let yNode = $(`.bm_h.cl .y`)
       if (yNode !== null) {
@@ -893,13 +841,12 @@
       }
 
       // div[class*="subforum_left_title_right"] 子版块
-      mnNavControlPanelNodes.forEach(node => {
-
+      mnNavControlPanelNodes.forEach((node) => {
         mnNavRightControlPanel.insertBefore(node, null)
       })
 
       // 替换symbol
-      $All(`.mn-nav-right-control-panel a`).forEach(node => {
+      $All(`.mn-nav-right-control-panel a`).forEach((node) => {
         for (const key in controlPanelRegex) {
           if (controlPanelRegex[key].test(node.innerHTML) == true) {
             node.innerHTML = `<span>${symbolHTML(symbolControlPanel[key])}</span><span class="control-panel-tip">${node.innerHTML}</span>`
@@ -909,11 +856,9 @@
     }
   }
 
-
-
   /**
-   * 
-   * @param {string} suid 
+   *
+   * @param {string} suid
    * @param {string} size small middle
    */
   function avatar(suid, size) {
@@ -921,22 +866,19 @@
 
     for (let i = suid.length - 1; i > -1; i -= 2) {
       let suidNum = `${suid.charAt(i - 1)}${suid.charAt(i)}`
-      suidCache.push(`${suidNum.padStart(2, '0')}`)
+      suidCache.push(`${suidNum.padStart(2, "0")}`)
     }
     suidCache.reverse()
 
-    let avatarNum = suidCache.length > 3 ? (suidCache[0] = suidCache[0].padStart(3, '0'), suidCache) : (suidCache.unshift(`000`), suidCache)
+    let avatarNum = suidCache.length > 3 ? ((suidCache[0] = suidCache[0].padStart(3, "0")), suidCache) : (suidCache.unshift(`000`), suidCache)
 
     return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm, `/`)}_avatar_${size}.jpg`
   }
-
-
 
   /**
    * 列表渲染
    */
   function postListRender(trNode) {
-
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
@@ -946,8 +888,8 @@
 
     const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
 
-    const userHotRegx = /2/gms
-    const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?a>)<\/cite>/gms
+    const userHotRegx = /(<a href="suid-.+?>)(.+?)(<\/a>)/gms
+    const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?>)(.+?)(<\/a>)<\/cite>/gms
 
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
     const postTimeEmRegx = /cite>\s{0,}<em>(\d{4}.+?表)<\/em>/gms
@@ -973,7 +915,6 @@
 
     // 判断帖子模式图标---
     function icn(icnHtml) {
-
       const icnFolderRegx = /.*folder_common.*/gms
       const icnRewardRegx = /reward/gm
       const icnLockRegx = /lock/gms
@@ -988,7 +929,6 @@
       // 默认新窗口
       // 悬赏
       if (icnRewardRegx.test(icnHtml) == true) {
-
         return icnTemplate(symbolHotPostStats.reward)
       }
 
@@ -1007,27 +947,26 @@
         return icnTemplate(symbolHotPostStats.vs)
       }
       if (icnFolderRegx.test(icnHtml) == true) {
-        return ''
+        return ""
       }
 
-      return ''
-
+      return ""
     }
-
 
     /**
      * 替换图标
-     * @param {string} subTagHtml 
+     * @param {string} subTagHtml
      */
     function subTag(subTagHtml) {
       // 是否有图标的匹配规则不一样
       const tagRegx = {
         subjectIconRegx: /(<a title.+?>).+?(<\/a>)/gm,
-        subJectRegx: /<em>\[(<a href=.+?>.+?<\/a>)\]<\/em>/gm
+        subJectRegx: /<em>\[(<a href=.+?>.+?<\/a>)\]<\/em>/gm,
       }
       // 有图标
       if (subTagHtml.match(tagRegx.subjectIconRegx) !== null) {
-        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subjectIconRegx)[0].replace(tagRegx.subjectIconRegx,
+        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subjectIconRegx)[0].replace(
+          tagRegx.subjectIconRegx,
           `
           $1${tagIconMatch(subTagHtml.match(tagRegx.subjectIconRegx)[0])}$2
         `
@@ -1037,43 +976,43 @@
 
       // 无图标
       if (subTagHtml.match(tagRegx.subJectRegx) !== null) {
-        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subJectRegx)[0].replace(tagRegx.subJectRegx, '$1')}</div>`
+        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subJectRegx)[0].replace(tagRegx.subJectRegx, "$1")}</div>`
       }
-      return ''
+      return ""
     }
-
 
     // 回复---
     function replyNum(html) {
-
-
       // 回复数
       const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
       const replyByNodeRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
       const replyNode = html.match(replyNodeRegx)
       const replyByNode = html.match(replyByNodeRegx)
 
-
       if (replyNode !== null && replyByNodeRegx !== null) {
         // 最新回复人和时间
-        let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`) : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
+        let replyByTemplate =
+          replyByNode.length > 1
+            ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
+            : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
 
-        let replyTemplate = replyNode[0].replace(replyNodeRegx, `
+        let replyTemplate = replyNode[0].replace(
+          replyNodeRegx,
+          `
 
-        <div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div><span class="post-reply-tip">${replyByTemplate}</span>`)
+        <div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div><span class="post-reply-tip">${replyByTemplate}</span>`
+        )
         return replyTemplate
       }
 
-      return ''
+      return ""
     }
-
-
 
     // 渲染
     let tableHTML = trNode.innerHTML
     //let divs = tableHTML.match(divRegx)
 
-    let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, '$1') : ''
+    let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, "$1") : ""
 
     let avatarUrl = avatar(suid, `small`)
 
@@ -1084,103 +1023,123 @@
       tableHTML.match(userRegx)[0].innerHTML
     }
 
-    let user = tableHTML.match(userRegx) !== null ? tableHTML.match(userRegx)[0].replace(userRegx,
-      `
-                
+    let user =
+      tableHTML.match(userRegx) !== null
+        ? tableHTML.match(userRegx)[0].replace(
+            userRegx,
+            `         $1
                 <span class="post-avatar">
                 <img src="${avatarUrl}">
-                <span>$1</span>
-                </span>
-                
+                <span>$2</span>
+                </span>  
+                $3       
            `
-    ) : ''
-
-
+          )
+        : tableHTML.match(userHotRegx) !== null
+        ? tableHTML.match(userHotRegx)[0].replace(
+            userHotRegx,
+            `$1    
+          <span class="post-avatar">
+          <img src="${avatarUrl}">
+          <span>$2</span>
+          </span>
+          $3           
+     `
+          )
+        : ""
 
     // 发表时间
-    let postTime = tableHTML.match(postTimeRegx) !== null
-      ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
-      : tableHTML.match(postTimeEmRegx) !== null
-        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, '$1')
-        : ''
-
+    let postTime =
+      tableHTML.match(postTimeRegx) !== null
+        ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
+        : tableHTML.match(postTimeEmRegx) !== null
+        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, "$1")
+        : ""
 
     // 已完成节点
     let solve = () => {
       if (tableHTML.match(solveRegx) !== null) {
-        return tableHTML.match(solveRegx)[0].replace(solveRegx, `
+        return tableHTML.match(solveRegx)[0].replace(
+          solveRegx,
+          `
             <span class="post-solve">$1${symbolHTML(symbolHotPostInfo.postsolve)}$2</span>`
         )
       } else if (tableHTML.match(solveHotRegx) !== null) {
-        return tableHTML.match(solveHotRegx)[0].replace(solveHotRegx, `
+        return tableHTML.match(solveHotRegx)[0].replace(
+          solveHotRegx,
+          `
           <span class="post-solve">${symbolHTML(symbolHotPostInfo.postsolve)}</span>`
         )
       } else {
-        return ''
+        return ""
       }
     }
 
-
-    let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
-    let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
-    let lock = tableHTML.match(lockRegx) !== null ?
-      `
+    let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ""
+    let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ""
+    let lock =
+      tableHTML.match(lockRegx) !== null
+        ? `
           <span class="post-lock">
                 <div>
                 ${symbolHTML(symbolHotPostInfo.lock)}
-                <span>${tableHTML.match(lockRegx)[0].replace(lockRegx, '$1')}</span>
+                <span>${tableHTML.match(lockRegx)[0].replace(lockRegx, "$1")}</span>
                 </div>
                 <span class="post-lock-tip">阅读权限</span>
           </span>
       `
-      : ''
+        : ""
 
-    let join = tableHTML.match(joinRegx) !== null ?
-      `
+    let join =
+      tableHTML.match(joinRegx) !== null
+        ? `
           <span class="post-join">
-                <span>${tableHTML.match(joinRegx)[0].replace(joinRegx, '$1')}</span>
+                <span>${tableHTML.match(joinRegx)[0].replace(joinRegx, "$1")}</span>
                 <span class="post-join-tip">参与人数</span>
           </span>
       `
-      : ''
+        : ""
 
-    let reward = tableHTML.match(rewardRegx) !== null ?
-      `
+    let reward =
+      tableHTML.match(rewardRegx) !== null
+        ? `
           <span class="post-reward">
-                <span>${tableHTML.match(rewardRegx)[0].replace(rewardRegx, '$1')}</span>
+                <span>${tableHTML.match(rewardRegx)[0].replace(rewardRegx, "$1")}</span>
                 <span class="post-reward-tip">悬赏蒸气(克)</span>
           </span>
       `
-      : ''
+        : ""
 
-    let replyReward = tableHTML.match(replyReWardRegx) !== null ?
-      `
+    let replyReward =
+      tableHTML.match(replyReWardRegx) !== null
+        ? `
           <span class="post-reply-reward">
-                <span>${tableHTML.match(replyReWardRegx)[0].replace(replyReWardRegx, '$1')}
+                <span>${tableHTML.match(replyReWardRegx)[0].replace(replyReWardRegx, "$1")}
                     <span class="post-reply-reward-tip">奖励蒸气(克)</span>
                 </span>
                
           </span>
       `
-      : ''
+        : ""
 
-    let attachment = tableHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
-    let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
-
+    let attachment = tableHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ""
+    let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ""
 
     // 快速跳转
-    let tps = tableHTML.match(tpsRegx) !== null
-      ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>`
-      : ''
+    let tps = tableHTML.match(tpsRegx) !== null ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
 
-    let newPost = tableHTML.match(newPostRegx) !== null ? tableHTML.match(newPostRegx)[0].replace(newPostRegx,
-      `
+    let newPost =
+      tableHTML.match(newPostRegx) !== null
+        ? tableHTML.match(newPostRegx)[0].replace(
+            newPostRegx,
+            `
       $1
       <span class="post-new">${symbolHTML(symbolHotPostInfo.newpost)}</span>
       <span class="post-new-post-tip">新主题</span>
       $3
       `
-    ) : ''
+          )
+        : ""
 
     let trTemplate = `
                 ${icn(tableHTML.match(icnRegx)[0])}
@@ -1188,7 +1147,7 @@
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
-                         ${tableHTML.match(commontRegx)[0].match(commontAtag)[0].replace(commontAtag, '$1')}
+                         ${tableHTML.match(commontRegx)[0].match(commontAtag)[0].replace(commontAtag, "$1")}
                          <div class="post-info">
                           ${join}
                           ${reward}
@@ -1224,20 +1183,14 @@
                 </div>  
            `
     trNode.innerHTML = trTemplate
-
   }
-
-
 
   function getPostListNode() {
     let postListNodes = $All(`tbody[id*="thread"]>tr`)
-    postListNodes.forEach(trNode => {
+    postListNodes.forEach((trNode) => {
       postListRender(trNode)
     })
-
   }
-
-
 
   const symbolEditor = {
     attchment: "keylolattchment",
@@ -1283,7 +1236,7 @@
     table: "keyloltable",
     texthidden: "keyloltexthidden",
     unlink: "keylolunlink",
-    wallpaper: "keylolwallpaper"
+    wallpaper: "keylolwallpaper",
   }
 
   /**
@@ -1334,7 +1287,7 @@
       table: /tbl/,
       texthidden: /cst1_spoiler/,
       unlink: /unlink/,
-      wallpaper: /postbg/
+      wallpaper: /postbg/,
     }
 
     let postNode = $(`#f_pst`)
@@ -1342,7 +1295,6 @@
     let postFullEditor = $(`#e_body`)
     // 替换迷你编辑器图标
     if (postIconNode != null) {
-
       // 高级模式
       $(`#fastposteditor > div > div.bar > span > a`).innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
       // 加粗
@@ -1351,27 +1303,20 @@
       $(`.webuploader-pick`).innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
 
       // a节点
-      postIconNode.childNodes.forEach(a => {
-
-        if (a.tagName === 'A') {
-
+      postIconNode.childNodes.forEach((a) => {
+        if (a.tagName === "A") {
           for (const key in symbolEditorRegex) {
-
             if (symbolEditorRegex[key].test(a.id) == true) {
-              a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${
-                a.title !== '' ? a.title : a.innerText
-                }</span>`
+              a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.title !== "" ? a.title : a.innerText}</span>`
             }
           }
         }
       })
     }
     if (postNode !== null) {
-      console.log('have a post panel')
+      console.log("have a post panel")
     }
-
   }
-
 
   /**
    * 无权发帖
@@ -1382,50 +1327,40 @@
     postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
     $(`.forumrowdata`).remove()
     $(`#f_pst>.bm_h`).remove()
-
   }
 
   /**
    * ajax下一页后，渲染新增的DOM
    */
   function autopbn() {
-
     console.log(`has threadlisttableid`)
 
     let threadList = $(`#threadlisttableid`)
 
     if (threadList !== null) {
-
-
       let listTrnodeHistoryLength = threadList.childNodes.length
 
       let tableCallback = () => {
-
         let listTrNode = threadList.childNodes
 
         console.log(listTrnodeHistoryLength)
         console.log(listTrNode.length)
 
         for (let i = listTrNode.length - 1; i > listTrnodeHistoryLength - 1; i--) {
-
           //console.log(listTrNode[i].innerHTML)
           postListRender(listTrNode[i].childNodes[0])
-
         }
 
         listTrnodeHistoryLength = listTrNode.length
-
       }
 
       let tableConfig = {
-        childList: true
+        childList: true,
       }
 
       let threadListObserver = new MutationObserver(tableCallback)
       threadListObserver.observe(threadList, tableConfig)
-
     }
-
   }
 
   // 用户面板
@@ -1433,50 +1368,38 @@
     addfriend: "keyloladdfriend",
     hi: "keylolhi",
     iconmail: "keyloliconmail",
-    online: "keylolonline"
+    online: "keylolonline",
   }
 
   /**
    * 替换用户卡片弹窗
    */
   function userCard() {
-
     let appendParentNode = $(`#append_parent`)
     var config = {
       childList: true,
-      attributeFilter: []
-    };
+      attributeFilter: [],
+    }
 
     let symbolUserCardCallback = function () {
-
       let callback = function () {
-
         let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
-
 
         let friend = $(`#${lastCardMenuId} a[id*="a_friend_li"]`)
         let poke = $(`#${lastCardMenuId} a[id*="a_poke"]`)
         let pm = $(`#${lastCardMenuId} a[id*="a_sendpm"]`)
 
-
         friend.innerHTML = `<span>${symbolHTML(symbolUserCard.addfriend)}</span><span class="user-card-tip">${friend.innerText}</span>`
         poke.innerHTML = `<span>${symbolHTML(symbolUserCard.hi)}</span></span><span class="user-card-tip">${poke.innerText}</span>`
         pm.innerHTML = `<span>${symbolHTML(symbolUserCard.iconmail)}</span></span><span class="user-card-tip">${pm.innerText}</span>`
-
       }
       setTimeout(callback, 100)
       clearTimeout(callback)
-
     }
     let userCardObserver = new MutationObserver(symbolUserCardCallback)
 
     userCardObserver.observe(appendParentNode, config)
-
   }
-
-
-
-
 
   /**---------------------------------------------- */
 
@@ -1527,7 +1450,6 @@
       console.log(`i am hot post`)
       hotPost()
       userCard()
-
     }
 
     if (isSubject == true) {
@@ -1539,7 +1461,6 @@
       getPostListNode()
       userCard()
       autopbn()
-
     }
 
     if (isPost == true) {
@@ -1552,7 +1473,6 @@
     navFunction()
     footer()
     pageDecide()
-
   })
 
   var css = `
