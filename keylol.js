@@ -396,7 +396,12 @@
 
   // 搜索栏 消息 提醒 logo
   // 搜索栏和导航栏
-  const symbolNav = ["kelolmenu_iconsearch", "kelolmenu_icon_mail", "kelolmenu_icon_post_reply", "kelolkeylol_logo"]
+  const symbolNav = [
+    "kelolmenu_iconsearch",
+    "kelolmenu_icon_mail",
+    "kelolmenu_icon_post_reply",
+    "kelolkeylol_logo"
+  ]
   function setNavIcons() {
     let navNodes = {
       searchNode: $(`.search-bar-form > .dropdown `),
@@ -711,10 +716,9 @@
 
     mnNode.insertBefore(mnNavParent, mnNode.children[0])
     // 移动子节点
-    let mnNavLeft = $(`.mn-nav-left`)
-    let mnNavRight = $(`.mn-nav-right`)
-    let mnNavRightControlPanel = $(`.mn-nav-right-control-panel`)
-
+    
+    
+  
     // 子版块相关
     // 子版块创建规则，筛选父节点
     // 存在子版元素
@@ -809,6 +813,16 @@
       })
     }
 
+  }
+
+
+  /**
+   * 发帖按钮
+   */
+  function renderNewBtn() {
+
+
+    let mnNavLeft = $(`.mn-nav-left`)
     // new post btn
     $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
     mnNavLeft.insertBefore($(`#pgt>a`), null)
@@ -830,22 +844,36 @@
       comment.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostListNav.comments)}<span class="subforum-info-tip">${comment.innerHTML}</span></div>`
     }
 
+  }
+
+  /**
+   * 操作分页
+   */
+  function movePagePanel() {
+
+    let mnNavRight = $(`.mn-nav-right`)
+    let mnNavRightControlPanel = $(`.mn-nav-right-control-panel`)
     // 分页栏
-    if ($(`#pgt>.pg`) !== null) {
+    if ($(`#pgt .pg`) !== null) {
       // 热门分页
-      mnNavRight.insertBefore($(`#pgt>.pg`), mnNavRightControlPanel)
+      mnNavRight.insertBefore($(`#pgt .pg`), mnNavRightControlPanel)
     } else {
       // 子版分页
-      if ($(`#fd_page_top>.pg`) !== null) {
+      if ($(`#fd_page_top .pg`) !== null) {
         mnNavRight.insertBefore($(`#fd_page_top>.pg`), mnNavRightControlPanel)
       }
 
       // 分页symbol
-      if ($(`.pg>.prev`) !== null) {
-        $(`.pg>.prev`).innerHTML = symbolHTML(symbolPostListNav.prePage)
+      if ($(`.pg .prev`) !== null) {
+        $(`.pg .prev`).innerHTML = symbolHTML(symbolPostListNav.prePage)
       }
     }
+  }
 
+  /**
+   * 控制面板
+   */
+  function controlPanel() {
     // 订阅、收藏 管理面板 回收站
     // 控制面板
     const controlPanelRegex = {
@@ -854,6 +882,8 @@
       collect: /收藏/gms,
       rabbin: /回收/gms,
     }
+
+    let mnNavRightControlPanel = $(`.mn-nav-right-control-panel`)
 
     let mnNavControlPanelNodes = $All(`div[class*="subforum_left_title_right"]`)
     if (mnNavControlPanelNodes !== null) {
@@ -878,6 +908,8 @@
       })
     }
   }
+
+
 
   /**
    *
@@ -1166,10 +1198,7 @@
     let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ""
 
     // 快速跳转
-    if (tableHTML.match(tpsRegx) !== null) {
-      console.log(tableHTML.match(tpsRegx)[0])
 
-    }
     let tps = tableHTML.match(tpsRegx) !== null ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
 
     let newPost =
@@ -1228,7 +1257,10 @@
     trNode.innerHTML = trTemplate
   }
 
-  function getPostListNode() {
+  /**
+   * 渲染列表
+   */
+  function renderPostLists() {
     let postListNodes = $All(`tbody[id*="thread"]>tr`)
     postListNodes.forEach((trNode) => {
       postListRender(trNode)
@@ -1460,17 +1492,17 @@
   function postContentNav() {
     const postNavTemplate = `
     <div id="post-content-title"></div>
-    <div id="post-nav">
-         <div class="post-nav-left"></div>
-         <div class="post-nav-right">
-             <div class="post-nav-right-control-panel"></div>
+    <div id="mn-nav-parent">
+         <div class="mn-nav-left"></div>
+         <div class="mn-nav-right">
+             <div class="mn-nav-right-control-panel"></div>
          </div>
     </div>
     `
 
     let wp = $(`#wp`)
     let postNavParent = document.createElement(`div`)
-    postNavParent.id = `post-nav-parent`
+    postNavParent.id = `mn`
     postNavParent.innerHTML = postNavTemplate
 
     wp.insertBefore(postNavParent, wp.childNodes[0])
@@ -1514,7 +1546,10 @@
    */
   function hotPost() {
     movePostListNav()
-    getPostListNode()
+    renderNewBtn()
+    movePagePanel()
+    controlPanel()
+    renderPostLists()
   }
 
   /**
@@ -1564,7 +1599,10 @@
       postPanel()
 
       movePostListNav()
-      getPostListNode()
+      renderNewBtn()
+      movePagePanel()
+      controlPanel()
+      renderPostLists()
       userCard()
       autopbn()
     }
