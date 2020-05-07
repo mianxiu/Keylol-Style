@@ -935,7 +935,7 @@
   /**
    * 列表匹配
    */
-  function hotPostList() {
+  function postListRender() {
     // 列表
     let trNode = $All(`tbody[id*="thread"]>tr`)
 
@@ -1448,7 +1448,7 @@
    */
   function hotPost() {
     movePostNav()
-    hotPostList()
+    postListRender()
   }
 
   /**
@@ -1491,7 +1491,7 @@
       }
 
       movePostNav()
-      hotPostList()
+      postListRender()
       userCard()
       autopbn()
 
