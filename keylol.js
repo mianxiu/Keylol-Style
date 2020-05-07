@@ -701,7 +701,7 @@
   /**
    * 移动子版列表导航
    */
-  function movePostListNav() {
+  function renderPostListNav() {
     let mnNode = $(`.mn`)
     // 创建父节点
     let mnNavParentTemplate = `
@@ -716,9 +716,9 @@
 
     mnNode.insertBefore(mnNavParent, mnNode.children[0])
     // 移动子节点
-    
-    
-  
+
+
+
     // 子版块相关
     // 子版块创建规则，筛选父节点
     // 存在子版元素
@@ -849,7 +849,7 @@
   /**
    * 操作分页
    */
-  function movePagePanel() {
+  function renderPagePanel() {
 
     let mnNavRight = $(`.mn-nav-right`)
     let mnNavRightControlPanel = $(`.mn-nav-right-control-panel`)
@@ -860,20 +860,21 @@
     } else {
       // 子版分页
       if ($(`#fd_page_top .pg`) !== null) {
-        mnNavRight.insertBefore($(`#fd_page_top>.pg`), mnNavRightControlPanel)
+        mnNavRight.insertBefore($(`#fd_page_top .pg`), mnNavRightControlPanel)
       }
+    }
 
-      // 分页symbol
-      if ($(`.pg .prev`) !== null) {
-        $(`.pg .prev`).innerHTML = symbolHTML(symbolPostListNav.prePage)
-      }
+    // 分页symbol
+    if ($(`.mn-nav-right .prev`) !== null) {
+    
+      $(`.mn-nav-right .prev`).innerHTML = symbolHTML(symbolPostListNav.prePage)
     }
   }
 
   /**
    * 控制面板
    */
-  function controlPanel() {
+  function renderControlPanel() {
     // 订阅、收藏 管理面板 回收站
     // 控制面板
     const controlPanelRegex = {
@@ -1420,7 +1421,7 @@
         let normalThreadTr = $All(`tbody[id*="normalthread"] tr`)
 
         normalThreadTr.forEach(tr => {
-         
+
           if (tr.className !== 'post-tr') {
             postListRender(tr)
           }
@@ -1545,10 +1546,10 @@
    * 列表函数组合
    */
   function hotPost() {
-    movePostListNav()
+    renderPostListNav()
     renderNewBtn()
-    movePagePanel()
-    controlPanel()
+    renderPagePanel()
+    renderControlPanel()
     renderPostLists()
   }
 
@@ -1598,10 +1599,10 @@
 
       postPanel()
 
-      movePostListNav()
+      renderPostListNav()
       renderNewBtn()
-      movePagePanel()
-      controlPanel()
+      renderPagePanel()
+      renderControlPanel()
       renderPostLists()
       userCard()
       autopbn()
