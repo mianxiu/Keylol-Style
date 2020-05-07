@@ -818,7 +818,6 @@
     $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
     mnNavLeft.insertBefore($(`#pgt>a`), null)
 
-
   }
 
 
@@ -896,7 +895,6 @@
     rabbin: "keylolrabbin",
     lolshare: "keylolshare",
   }
-
   /**
    * 控制面板
    */
@@ -904,10 +902,11 @@
     // 订阅、收藏 管理面板 回收站
     // 控制面板
     const controlPanelRegex = {
-      rss: /订阅/gms,
-      control: /管理/gms,
-      collect: /收藏/gms,
+      rss: /rss/gms,
+      control: /modcp/gms,
+      collect: /favorite/gms,
       rabbin: /回收/gms,
+      lolshare: /t\d\d\d/gms,
     }
 
     let mnNavRightControlPanel = $(`.mn-nav-right-control-panel`)
@@ -928,259 +927,260 @@
       // 替换symbol
       $All(`.mn-nav-right-control-panel a`).forEach((node) => {
         for (const key in controlPanelRegex) {
-          if (controlPanelRegex[key].test(node.innerHTML) == true) {
+          console.log(node.href)
+          if (controlPanelRegex[key].test(node.href) == true || controlPanelRegex[key].test(node.innerHTML) == true) {
             node.innerHTML = `<span>${symbolHTML(symbolControlPanel[key])}</span><span class="control-panel-tip">${node.innerHTML}</span>`
           }
-        }
-      })
     }
+  })
+}
   }
 
 
 
-  /**
-   *
-   * @param {string} suid
-   * @param {string} size small middle
-   */
-  function avatar(suid, size) {
-    let suidCache = []
+/**
+ *
+ * @param {string} suid
+ * @param {string} size small middle
+ */
+function avatar(suid, size) {
+  let suidCache = []
 
-    for (let i = suid.length - 1; i > -1; i -= 2) {
-      let suidNum = `${suid.charAt(i - 1)}${suid.charAt(i)}`
-      suidCache.push(`${suidNum.padStart(2, "0")}`)
-    }
-    suidCache.reverse()
-
-    let avatarNum = suidCache.length > 3 ? ((suidCache[0] = suidCache[0].padStart(3, "0")), suidCache) : (suidCache.unshift(`000`), suidCache)
-
-    return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm, `/`)}_avatar_${size}.jpg`
+  for (let i = suid.length - 1; i > -1; i -= 2) {
+    let suidNum = `${suid.charAt(i - 1)}${suid.charAt(i)}`
+    suidCache.push(`${suidNum.padStart(2, "0")}`)
   }
+  suidCache.reverse()
 
-  /**
-   * 列表渲染
-   */
-  function postListRender(trNode) {
+  let avatarNum = suidCache.length > 3 ? ((suidCache[0] = suidCache[0].padStart(3, "0")), suidCache) : (suidCache.unshift(`000`), suidCache)
+
+  return `https://keylol.com/uc_server/data/avatar/${avatarNum.toString().replace(/,/gm, `/`)}_avatar_${size}.jpg`
+}
+
+/**
+ * 列表渲染
+ */
+function postListRender(trNode) {
 
 
-    const tdRegx = /tr|td|th/gms
-    const divRegx = /<div.+?\/div>/gms
-    const icnRegx = /<td.+?icn.+?td>/gms
+  const tdRegx = /tr|td|th/gms
+  const divRegx = /<div.+?\/div>/gms
+  const icnRegx = /<td.+?icn.+?td>/gms
 
-    const commonAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
-    const commonRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
-    const commonTdAtag = /(fn">)(|\/em).+?(<a\s{0,}href="t.+xst.+?a>)/gms
-    const commonTdRegx = /td><td.+?xst.+?td>/gms
+  const commonAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
+  const commonRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
+  const commonTdAtag = /(fn">)(|\/em).+?(<a\s{0,}href="t.+xst.+?a>)/gms
+  const commonTdRegx = /td><td.+?xst.+?td>/gms
 
-    const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
+  const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
 
-    const userHotRegx = /(<a href="suid-.+?>)(.+?)(<\/a>)/gms
-    const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?>)(.+?)(<\/a>)<\/cite>/gms
+  const userHotRegx = /(<a href="suid-.+?>)(.+?)(<\/a>)/gms
+  const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?>)(.+?)(<\/a>)<\/cite>/gms
 
-    const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
-    const postTimeEmRegx = /cite>\s{0,}<em>(\d{4}.+?表)<\/em>/gms
+  const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
+  const postTimeEmRegx = /cite>\s{0,}<em>(\d{4}.+?表)<\/em>/gms
 
-    const attacImgRegx = /<img.+?attach_img.+?>/gm
-    const agreeRegx = /<img.+?agree.+?>/gm
-    const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
-    const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
+  const attacImgRegx = /<img.+?attach_img.+?>/gm
+  const agreeRegx = /<img.+?agree.+?>/gm
+  const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
+  const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
 
-    const tpsAtag = /<a.+a>/gms
-    const tpsRegx = /<span class="tps">.+<\/span>/gm
+  const tpsAtag = /<a.+a>/gms
+  const tpsRegx = /<span class="tps">.+<\/span>/gm
 
-    const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
-    const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
+  const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
+  const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
 
-    const attachmentRegx = /<img.+?attachment.+?>/gms
-    const digestRegx = /<img.+?digest.+?>/gms
+  const attachmentRegx = /<img.+?attachment.+?>/gms
+  const digestRegx = /<img.+?digest.+?>/gms
 
-    const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
-    const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
-    const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
-    const solveHotRegx = /\[已解决\]/gm
+  const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
+  const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
+  const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
+  const solveHotRegx = /\[已解决\]/gm
 
-    // 判断帖子模式图标---
-    function icn(icnHtml) {
-      const icnFolderRegx = /.*folder_common.*/gms
-      const icnRewardRegx = /reward/gm
-      const icnLockRegx = /lock/gms
-      const icnGlobalRegx = /pin_2/gms
-      const icnTopRegx = /pin_1/gms
-      const icnVsRegx = /debate/gms
+  // 判断帖子模式图标---
+  function icn(icnHtml) {
+    const icnFolderRegx = /.*folder_common.*/gms
+    const icnRewardRegx = /reward/gm
+    const icnLockRegx = /lock/gms
+    const icnGlobalRegx = /pin_2/gms
+    const icnTopRegx = /pin_1/gms
+    const icnVsRegx = /debate/gms
 
-      let icnTemplate = (symbolName) => {
-        return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
-      }
+    let icnTemplate = (symbolName) => {
+      return `<div class="post-list-icn">${symbolHTML(symbolName)}</div>`
+    }
 
-      // 默认新窗口
-      // 悬赏
-      if (icnRewardRegx.test(icnHtml) == true) {
-        return icnTemplate(symbolHotPostStats.reward)
-      }
+    // 默认新窗口
+    // 悬赏
+    if (icnRewardRegx.test(icnHtml) == true) {
+      return icnTemplate(symbolHotPostStats.reward)
+    }
 
-      if (icnLockRegx.test(icnHtml) == true) {
-        return icnTemplate(symbolHotPostStats.closepost)
-      }
+    if (icnLockRegx.test(icnHtml) == true) {
+      return icnTemplate(symbolHotPostStats.closepost)
+    }
 
-      if (icnGlobalRegx.test(icnHtml) == true) {
-        return icnTemplate(symbolHotPostStats.globaltop)
-      }
-      if (icnTopRegx.test(icnHtml) == true) {
-        return icnTemplate(symbolHotPostStats.top)
-      }
+    if (icnGlobalRegx.test(icnHtml) == true) {
+      return icnTemplate(symbolHotPostStats.globaltop)
+    }
+    if (icnTopRegx.test(icnHtml) == true) {
+      return icnTemplate(symbolHotPostStats.top)
+    }
 
-      if (icnVsRegx.test(icnHtml) == true) {
-        return icnTemplate(symbolHotPostStats.vs)
-      }
-      if (icnFolderRegx.test(icnHtml) == true) {
-        return ""
-      }
-
+    if (icnVsRegx.test(icnHtml) == true) {
+      return icnTemplate(symbolHotPostStats.vs)
+    }
+    if (icnFolderRegx.test(icnHtml) == true) {
       return ""
     }
 
-    /**
-     * 替换图标
-     * @param {string} subTagHtml
-     */
-    function subTag(subTagHtml) {
-      // 是否有图标的匹配规则不一样
-      const tagRegx = {
-        subjectIconRegx: /(<a title.+?>).+?(<\/a>)/gm,
-        subJectRegx: /<em>\[(<a href=.+?>.+?<\/a>)\]<\/em>/gm,
-      }
-      // 有图标
-      if (subTagHtml.match(tagRegx.subjectIconRegx) !== null) {
-        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subjectIconRegx)[0].replace(
-          tagRegx.subjectIconRegx,
-          `
+    return ""
+  }
+
+  /**
+   * 替换图标
+   * @param {string} subTagHtml
+   */
+  function subTag(subTagHtml) {
+    // 是否有图标的匹配规则不一样
+    const tagRegx = {
+      subjectIconRegx: /(<a title.+?>).+?(<\/a>)/gm,
+      subJectRegx: /<em>\[(<a href=.+?>.+?<\/a>)\]<\/em>/gm,
+    }
+    // 有图标
+    if (subTagHtml.match(tagRegx.subjectIconRegx) !== null) {
+      return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subjectIconRegx)[0].replace(
+        tagRegx.subjectIconRegx,
+        `
           $1${tagIconMatch(subTagHtml.match(tagRegx.subjectIconRegx)[0])}$2
         `
-        )}
+      )}
         </div>`
-      }
-
-      // 无图标
-      if (subTagHtml.match(tagRegx.subJectRegx) !== null) {
-        return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subJectRegx)[0].replace(tagRegx.subJectRegx, "$1")}</div>`
-      }
-      return ""
     }
 
-    // 回复---
-    function replyNum(html) {
-      // 回复数
-      const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
-      const replyByNodeRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
-      const replyNode = html.match(replyNodeRegx)
-      const replyByNode = html.match(replyByNodeRegx)
+    // 无图标
+    if (subTagHtml.match(tagRegx.subJectRegx) !== null) {
+      return `<div class="post-list-icn">${subTagHtml.match(tagRegx.subJectRegx)[0].replace(tagRegx.subJectRegx, "$1")}</div>`
+    }
+    return ""
+  }
 
-      if (replyNode !== null && replyByNodeRegx !== null) {
-        // 最新回复人和时间
-        let replyByTemplate =
-          replyByNode.length > 1
-            ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
-            : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
+  // 回复---
+  function replyNum(html) {
+    // 回复数
+    const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
+    const replyByNodeRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
+    const replyNode = html.match(replyNodeRegx)
+    const replyByNode = html.match(replyByNodeRegx)
 
-        let replyTemplate = replyNode[0].replace(
-          replyNodeRegx,
-          `
+    if (replyNode !== null && replyByNodeRegx !== null) {
+      // 最新回复人和时间
+      let replyByTemplate =
+        replyByNode.length > 1
+          ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
+          : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
+
+      let replyTemplate = replyNode[0].replace(
+        replyNodeRegx,
+        `
 
         <div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div><span class="post-reply-tip">${replyByTemplate}</span>`
-        )
-        return replyTemplate
-      }
-
-      return ""
+      )
+      return replyTemplate
     }
 
-    // 渲染 -------------
-    trNode.classList.add(`post-tr`)
+    return ""
+  }
 
-    let tableHTML = trNode.innerHTML
+  // 渲染 -------------
+  trNode.classList.add(`post-tr`)
+
+  let tableHTML = trNode.innerHTML
 
 
-    let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, "$1") : ""
+  let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, "$1") : ""
 
-    let avatarUrl = avatar(suid, `small`)
+  let avatarUrl = avatar(suid, `small`)
 
-    // 用户头像$名称
-    // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
-    //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
-    function user() {
-      let userTemplate, userTemplateRegx
+  // 用户头像$名称
+  // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
+  //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
+  function user() {
+    let userTemplate, userTemplateRegx
 
-      if (tableHTML.match(userRegx) !== null) {
-        userTemplate = tableHTML.match(userRegx)[0]
-        userTemplateRegx = userRegx
-      }
-      if (tableHTML.match(userHotRegx) !== null) {
-        userTemplate = tableHTML.match(userHotRegx)[0]
-        userTemplateRegx = userHotRegx
-      }
+    if (tableHTML.match(userRegx) !== null) {
+      userTemplate = tableHTML.match(userRegx)[0]
+      userTemplateRegx = userRegx
+    }
+    if (tableHTML.match(userHotRegx) !== null) {
+      userTemplate = tableHTML.match(userHotRegx)[0]
+      userTemplateRegx = userHotRegx
+    }
 
-      return userTemplate !== undefined ? userTemplate.replace(
-        userTemplateRegx,
-        `
+    return userTemplate !== undefined ? userTemplate.replace(
+      userTemplateRegx,
+      `
       $1
       <span class="post-avatar">
       <img src="${avatarUrl}">
       <span>$2</span>
       </span>  
       $3`
-      )
-        : ''
+    )
+      : ''
+  }
+
+  /**
+   * 匹配帖子
+   */
+  function common() {
+
+
+    if (tableHTML.match(commonRegx) !== null) {
+
+      return tableHTML.match(commonRegx)[0].match(commonAtag)[0].replace(commonAtag, "$1")
+
+    } else {
+      console.log(tableHTML.match(commonTdRegx)[0])
+      return tableHTML.match(commonTdRegx)[0].match(commonTdAtag)[0].replace(commonTdAtag, "$3")
     }
 
-    /**
-     * 匹配帖子
-     */
-    function common() {
 
+  }
+  // 发表时间
+  let postTime =
+    tableHTML.match(postTimeRegx) !== null
+      ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
+      : tableHTML.match(postTimeEmRegx) !== null
+        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, "$1")
+        : ""
 
-      if (tableHTML.match(commonRegx) !== null) {
-
-        return tableHTML.match(commonRegx)[0].match(commonAtag)[0].replace(commonAtag, "$1")
-
-      } else {
-        console.log(tableHTML.match(commonTdRegx)[0])
-        return tableHTML.match(commonTdRegx)[0].match(commonTdAtag)[0].replace(commonTdAtag, "$3")
-      }
-
-
-    }
-    // 发表时间
-    let postTime =
-      tableHTML.match(postTimeRegx) !== null
-        ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
-        : tableHTML.match(postTimeEmRegx) !== null
-          ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, "$1")
-          : ""
-
-    // 已完成节点
-    let solve = () => {
-      if (tableHTML.match(solveRegx) !== null) {
-        return tableHTML.match(solveRegx)[0].replace(
-          solveRegx,
-          `
+  // 已完成节点
+  let solve = () => {
+    if (tableHTML.match(solveRegx) !== null) {
+      return tableHTML.match(solveRegx)[0].replace(
+        solveRegx,
+        `
             <span class="post-solve">$1${symbolHTML(symbolHotPostInfo.postsolve)}$2</span>`
-        )
-      } else if (tableHTML.match(solveHotRegx) !== null) {
-        return tableHTML.match(solveHotRegx)[0].replace(
-          solveHotRegx,
-          `
+      )
+    } else if (tableHTML.match(solveHotRegx) !== null) {
+      return tableHTML.match(solveHotRegx)[0].replace(
+        solveHotRegx,
+        `
           <span class="post-solve">${symbolHTML(symbolHotPostInfo.postsolve)}</span>`
-        )
-      } else {
-        return ""
-      }
+      )
+    } else {
+      return ""
     }
+  }
 
-    let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ""
-    let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ""
-    let lock =
-      tableHTML.match(lockRegx) !== null
-        ? `
+  let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ""
+  let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ""
+  let lock =
+    tableHTML.match(lockRegx) !== null
+      ? `
           <span class="post-lock">
                 <div>
                 ${symbolHTML(symbolHotPostInfo.lock)}
@@ -1189,50 +1189,50 @@
                 <span class="post-lock-tip">阅读权限</span>
           </span>
       `
-        : ""
+      : ""
 
-    let join =
-      tableHTML.match(joinRegx) !== null
-        ? `
+  let join =
+    tableHTML.match(joinRegx) !== null
+      ? `
           <span class="post-join">
                 <span>${tableHTML.match(joinRegx)[0].replace(joinRegx, "$1")}</span>
                 <span class="post-join-tip">参与人数</span>
           </span>
       `
-        : ""
+      : ""
 
-    let reward =
-      tableHTML.match(rewardRegx) !== null
-        ? `
+  let reward =
+    tableHTML.match(rewardRegx) !== null
+      ? `
           <span class="post-reward">
                 <span>${tableHTML.match(rewardRegx)[0].replace(rewardRegx, "$1")}</span>
                 <span class="post-reward-tip">悬赏蒸气(克)</span>
           </span>
       `
-        : ""
+      : ""
 
-    let replyReward =
-      tableHTML.match(replyReWardRegx) !== null
-        ? `
+  let replyReward =
+    tableHTML.match(replyReWardRegx) !== null
+      ? `
           <span class="post-reply-reward">
                     <span>${tableHTML.match(replyReWardRegx)[0].replace(replyReWardRegx, "$1")}</span>
                     <span class="post-reply-reward-tip">奖励蒸气(克)</span>
           </span>
       `
-        : ""
+      : ""
 
-    let attachment = tableHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ""
-    let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ""
+  let attachment = tableHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ""
+  let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ""
 
-    // 快速跳转
+  // 快速跳转
 
-    let tps = tableHTML.match(tpsRegx) !== null ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
+  let tps = tableHTML.match(tpsRegx) !== null ? `<span class="post-tps">${tableHTML.match(tpsRegx)[0].match(tpsAtag)[0]}</span>` : ""
 
-    let newPost =
-      tableHTML.match(newPostRegx) !== null
-        ? tableHTML.match(newPostRegx)[0].replace(
-          newPostRegx,
-          `
+  let newPost =
+    tableHTML.match(newPostRegx) !== null
+      ? tableHTML.match(newPostRegx)[0].replace(
+        newPostRegx,
+        `
       $1
       <span class="post-new">
       <span>${symbolHTML(symbolHotPostInfo.newpost)}</span>
@@ -1240,10 +1240,10 @@
       </span>   
       $3
       `
-        )
-        : ""
+      )
+      : ""
 
-    let trTemplate = `
+  let trTemplate = `
                 ${icn(tableHTML.match(icnRegx)[0])}
                 ${subTag(tableHTML)}
                  <div class="post-list">
@@ -1281,243 +1281,243 @@
                      </div>
                  </div>
            `
-    trNode.innerHTML = trTemplate
+  trNode.innerHTML = trTemplate
+}
+
+/**
+ * 渲染列表
+ */
+function renderPostLists() {
+  let postListNodes = $All(`tbody[id*="thread"]>tr`)
+  postListNodes.forEach((trNode) => {
+    postListRender(trNode)
+  })
+}
+
+const symbolEditor = {
+  attchment: "keylolattchment",
+  atuser: "keylolatuser",
+  autolayout: "keylolautolayout",
+  blod: "keylolblod",
+  centerlayout: "keylolcenterlayout",
+  code: "keylolcode",
+  downloadimg: "keyloldownloadimg",
+  emoji: "keylolemoji",
+  eraser: "keyloleraser",
+  flash: "keylolflash",
+  floatleft: "keylolfloatleft",
+  floatright: "keylolfloatright",
+  foldhide: "keylolfoldhide",
+  fontbackground: "keylolfontbackground",
+  fontcolor: "keylolfontcolor",
+  fontitalic: "keylolfontitalic",
+  fontunderline: "keylolfontunderline",
+  fromword: "keylolfromword",
+  gaojimoshi: "keylolgaojimoshi",
+  img: "keylolimg",
+  leftlaout: "keylolleftlaout",
+  line: "keylolline",
+  link: "keylollink",
+  movie: "keylolmovie",
+  music: "keylolmusic",
+  musiclink: "keylolmusiclink",
+  netease: "keylolnetease",
+  neteaselist: "keylolneteaselist",
+  normallist: "keylolnormallist",
+  numberlist: "keylolnumberlist",
+  phonetic: "keylolphonetic",
+  postpassword: "keylolpostpassword",
+  quoter: "keylolquoter",
+  reflash: "keylolreflash",
+  rightlaout: "keylolrightlaout",
+  selectnomalsvg: "keylolselectnomalsvg",
+  steamapp: "keylolsteamapp",
+  steamappsub: "keylolsteamappsub",
+  steamlink: "keylolsteamlink",
+  suspend: "keylolsuspend",
+  table: "keyloltable",
+  texthidden: "keyloltexthidden",
+  unlink: "keylolunlink",
+  wallpaper: "keylolwallpaper",
+}
+
+/**
+ * 发帖模块
+ */
+function postPanelPermission() {
+  const symbolEditorRegex = {
+    attchment: /attachn/,
+    atuser: /fastpostat|at/,
+    autolayout: /autotypeset/,
+    blod: /B|bold/gms,
+    centerlayout: /justifycenter/,
+    code: /code/,
+    downloadimg: /downremoteimg/,
+    emoji: /sml/,
+    eraser: /removeformat/,
+    flash: /fls/,
+    floatleft: /floatleft/,
+    floatright: /floatright/,
+    foldhide: /cst1_spoil/,
+    fontbackground: /backcolor/,
+    fontcolor: /forecolor/,
+    fontitalic: /I|italic/gms,
+    fontunderline: /U|underline/gms,
+    fromword: /pasteword/,
+    gaojimoshi: /高级模式/,
+    img: /image|img/,
+    leftlaout: /justifyleft/,
+    line: /inserthorizontalrule/,
+    link: /url/,
+    movie: /vid/,
+    music: /aud/,
+    musiclink: /html5audio/,
+    netease: /cst1_163/,
+    neteaselist: /cst2_163a/,
+    normallist: /insertunorderedlist/,
+    numberlist: /insertorderedlist/,
+    phonetic: /cst2_rb/,
+    postpassword: /password/,
+    quoter: /quote/,
+    reflash: /换一个/,
+    rightlaout: /justifyright/,
+    selectnomalsvg: /fastpostrefresh/,
+    steamapp: /cst1_sframe/,
+    steamappsub: /cst2_sfpack/,
+    steamlink: /cst2_steam/,
+    suspend: /cst2_hover/,
+    table: /tbl/,
+    texthidden: /cst1_spoiler/,
+    unlink: /unlink/,
+    wallpaper: /postbg/,
   }
 
-  /**
-   * 渲染列表
-   */
-  function renderPostLists() {
-    let postListNodes = $All(`tbody[id*="thread"]>tr`)
-    postListNodes.forEach((trNode) => {
-      postListRender(trNode)
-    })
-  }
+  let postNode = $(`#f_pst`)
+  let postIconNode = $(`.fpd`)
+  let postFullEditor = $(`#e_body`)
+  // 替换迷你编辑器图标
+  if (postIconNode != null) {
+    // 高级模式
+    $(`#fastposteditor > div > div.bar > span > a`).innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
+    // 加粗
+    $(`.fpd > a:first-child`).innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">${$(`.fpd > a:first-child`).title}</span>`
+    // 附件
+    $(`.webuploader-pick`).innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
 
-  const symbolEditor = {
-    attchment: "keylolattchment",
-    atuser: "keylolatuser",
-    autolayout: "keylolautolayout",
-    blod: "keylolblod",
-    centerlayout: "keylolcenterlayout",
-    code: "keylolcode",
-    downloadimg: "keyloldownloadimg",
-    emoji: "keylolemoji",
-    eraser: "keyloleraser",
-    flash: "keylolflash",
-    floatleft: "keylolfloatleft",
-    floatright: "keylolfloatright",
-    foldhide: "keylolfoldhide",
-    fontbackground: "keylolfontbackground",
-    fontcolor: "keylolfontcolor",
-    fontitalic: "keylolfontitalic",
-    fontunderline: "keylolfontunderline",
-    fromword: "keylolfromword",
-    gaojimoshi: "keylolgaojimoshi",
-    img: "keylolimg",
-    leftlaout: "keylolleftlaout",
-    line: "keylolline",
-    link: "keylollink",
-    movie: "keylolmovie",
-    music: "keylolmusic",
-    musiclink: "keylolmusiclink",
-    netease: "keylolnetease",
-    neteaselist: "keylolneteaselist",
-    normallist: "keylolnormallist",
-    numberlist: "keylolnumberlist",
-    phonetic: "keylolphonetic",
-    postpassword: "keylolpostpassword",
-    quoter: "keylolquoter",
-    reflash: "keylolreflash",
-    rightlaout: "keylolrightlaout",
-    selectnomalsvg: "keylolselectnomalsvg",
-    steamapp: "keylolsteamapp",
-    steamappsub: "keylolsteamappsub",
-    steamlink: "keylolsteamlink",
-    suspend: "keylolsuspend",
-    table: "keyloltable",
-    texthidden: "keyloltexthidden",
-    unlink: "keylolunlink",
-    wallpaper: "keylolwallpaper",
-  }
-
-  /**
-   * 发帖模块
-   */
-  function postPanelPermission() {
-    const symbolEditorRegex = {
-      attchment: /attachn/,
-      atuser: /fastpostat|at/,
-      autolayout: /autotypeset/,
-      blod: /B|bold/gms,
-      centerlayout: /justifycenter/,
-      code: /code/,
-      downloadimg: /downremoteimg/,
-      emoji: /sml/,
-      eraser: /removeformat/,
-      flash: /fls/,
-      floatleft: /floatleft/,
-      floatright: /floatright/,
-      foldhide: /cst1_spoil/,
-      fontbackground: /backcolor/,
-      fontcolor: /forecolor/,
-      fontitalic: /I|italic/gms,
-      fontunderline: /U|underline/gms,
-      fromword: /pasteword/,
-      gaojimoshi: /高级模式/,
-      img: /image|img/,
-      leftlaout: /justifyleft/,
-      line: /inserthorizontalrule/,
-      link: /url/,
-      movie: /vid/,
-      music: /aud/,
-      musiclink: /html5audio/,
-      netease: /cst1_163/,
-      neteaselist: /cst2_163a/,
-      normallist: /insertunorderedlist/,
-      numberlist: /insertorderedlist/,
-      phonetic: /cst2_rb/,
-      postpassword: /password/,
-      quoter: /quote/,
-      reflash: /换一个/,
-      rightlaout: /justifyright/,
-      selectnomalsvg: /fastpostrefresh/,
-      steamapp: /cst1_sframe/,
-      steamappsub: /cst2_sfpack/,
-      steamlink: /cst2_steam/,
-      suspend: /cst2_hover/,
-      table: /tbl/,
-      texthidden: /cst1_spoiler/,
-      unlink: /unlink/,
-      wallpaper: /postbg/,
-    }
-
-    let postNode = $(`#f_pst`)
-    let postIconNode = $(`.fpd`)
-    let postFullEditor = $(`#e_body`)
-    // 替换迷你编辑器图标
-    if (postIconNode != null) {
-      // 高级模式
-      $(`#fastposteditor > div > div.bar > span > a`).innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
-      // 加粗
-      $(`.fpd > a:first-child`).innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">${$(`.fpd > a:first-child`).title}</span>`
-      // 附件
-      $(`.webuploader-pick`).innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
-
-      // a节点
-      postIconNode.childNodes.forEach((a) => {
-        if (a.tagName === "A") {
-          for (const key in symbolEditorRegex) {
-            if (symbolEditorRegex[key].test(a.id) == true) {
-              a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.title !== "" ? a.title : a.innerText}</span>`
-            }
+    // a节点
+    postIconNode.childNodes.forEach((a) => {
+      if (a.tagName === "A") {
+        for (const key in symbolEditorRegex) {
+          if (symbolEditorRegex[key].test(a.id) == true) {
+            a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.title !== "" ? a.title : a.innerText}</span>`
           }
         }
+      }
+    })
+  }
+  if (postNode !== null) {
+    console.log("have a post panel")
+  }
+}
+
+/**
+ * 无权发帖
+ */
+function postPanelNoPermission() {
+  let pthmNode = $(`.pt.hm`)
+  let postForm = $(`#fastpostform`)
+  postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
+  $(`.forumrowdata`).remove()
+  $(`#f_pst>.bm_h`).remove()
+}
+
+/**
+ * ajax下一页后，渲染新增的DOM
+ */
+function autopbn() {
+  console.log(`has threadlisttableid`)
+
+  let threadList = $(`#threadlisttableid`)
+
+
+  if (threadList !== null) {
+
+    let tableCallback = () => {
+
+      let normalThreadTr = $All(`tbody[id*="normalthread"] tr`)
+
+      normalThreadTr.forEach(tr => {
+
+        if (tr.className !== 'post-tr') {
+          postListRender(tr)
+        }
+
       })
+
     }
-    if (postNode !== null) {
-      console.log("have a post panel")
-    }
-  }
 
-  /**
-   * 无权发帖
-   */
-  function postPanelNoPermission() {
-    let pthmNode = $(`.pt.hm`)
-    let postForm = $(`#fastpostform`)
-    postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
-    $(`.forumrowdata`).remove()
-    $(`#f_pst>.bm_h`).remove()
-  }
-
-  /**
-   * ajax下一页后，渲染新增的DOM
-   */
-  function autopbn() {
-    console.log(`has threadlisttableid`)
-
-    let threadList = $(`#threadlisttableid`)
-
-
-    if (threadList !== null) {
-
-      let tableCallback = () => {
-
-        let normalThreadTr = $All(`tbody[id*="normalthread"] tr`)
-
-        normalThreadTr.forEach(tr => {
-
-          if (tr.className !== 'post-tr') {
-            postListRender(tr)
-          }
-
-        })
-
-      }
-
-      let tableConfig = {
-        childList: true,
-      }
-
-      let threadListObserver = new MutationObserver(tableCallback)
-      threadListObserver.observe(threadList, tableConfig)
-    }
-  }
-
-  // 用户面板
-  const symbolUserCard = {
-    addfriend: "keyloladdfriend",
-    hi: "keylolhi",
-    iconmail: "keyloliconmail",
-    online: "keylolonline",
-  }
-
-  /**
-   * 替换用户卡片弹窗
-   */
-  function userCard() {
-    let appendParentNode = $(`#append_parent`)
-    var config = {
+    let tableConfig = {
       childList: true,
-      attributeFilter: [],
     }
 
-    let symbolUserCardCallback = function () {
-      let callback = function () {
-        let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
+    let threadListObserver = new MutationObserver(tableCallback)
+    threadListObserver.observe(threadList, tableConfig)
+  }
+}
 
-        let friend = $(`#${lastCardMenuId} a[id*="a_friend_li"]`)
-        let poke = $(`#${lastCardMenuId} a[id*="a_poke"]`)
-        let pm = $(`#${lastCardMenuId} a[id*="a_sendpm"]`)
+// 用户面板
+const symbolUserCard = {
+  addfriend: "keyloladdfriend",
+  hi: "keylolhi",
+  iconmail: "keyloliconmail",
+  online: "keylolonline",
+}
 
-        friend.innerHTML = `<span>${symbolHTML(symbolUserCard.addfriend)}</span><span class="user-card-tip">${friend.innerText}</span>`
-        poke.innerHTML = `<span>${symbolHTML(symbolUserCard.hi)}</span></span><span class="user-card-tip">${poke.innerText}</span>`
-        pm.innerHTML = `<span>${symbolHTML(symbolUserCard.iconmail)}</span></span><span class="user-card-tip">${pm.innerText}</span>`
-      }
-      setTimeout(callback, 100)
-      clearTimeout(callback)
+/**
+ * 替换用户卡片弹窗
+ */
+function userCard() {
+  let appendParentNode = $(`#append_parent`)
+  var config = {
+    childList: true,
+    attributeFilter: [],
+  }
+
+  let symbolUserCardCallback = function () {
+    let callback = function () {
+      let lastCardMenuId = appendParentNode.childNodes[appendParentNode.childNodes.length - 1].id
+
+      let friend = $(`#${lastCardMenuId} a[id*="a_friend_li"]`)
+      let poke = $(`#${lastCardMenuId} a[id*="a_poke"]`)
+      let pm = $(`#${lastCardMenuId} a[id*="a_sendpm"]`)
+
+      friend.innerHTML = `<span>${symbolHTML(symbolUserCard.addfriend)}</span><span class="user-card-tip">${friend.innerText}</span>`
+      poke.innerHTML = `<span>${symbolHTML(symbolUserCard.hi)}</span></span><span class="user-card-tip">${poke.innerText}</span>`
+      pm.innerHTML = `<span>${symbolHTML(symbolUserCard.iconmail)}</span></span><span class="user-card-tip">${pm.innerText}</span>`
     }
-    let userCardObserver = new MutationObserver(symbolUserCardCallback)
-
-    userCardObserver.observe(appendParentNode, config)
+    setTimeout(callback, 100)
+    clearTimeout(callback)
   }
+  let userCardObserver = new MutationObserver(symbolUserCardCallback)
+
+  userCardObserver.observe(appendParentNode, config)
+}
 
 
-  /**
-   * 帖子详细相关-------------------------------------------
-   * 
-   */
+/**
+ * 帖子详细相关-------------------------------------------
+ * 
+ */
 
 
-  const symbolPostNav = {
+const symbolPostNav = {
 
-  }
-  /**
-   * 帖子内容导航
-   */
-  function postContentNav() {
-    const postNavTemplate = `
+}
+/**
+ * 帖子内容导航
+ */
+function postContentNav() {
+  const postNavTemplate = `
     <div id="post-content-title"></div>
     <div id="mn-nav-parent">
          <div class="mn-nav-left"></div>
@@ -1527,131 +1527,131 @@
     </div>
     `
 
-    let wp = $(`#wp`)
-    let postNavParent = document.createElement(`div`)
-    postNavParent.id = `mn`
-    postNavParent.innerHTML = postNavTemplate
+  let wp = $(`#wp`)
+  let postNavParent = document.createElement(`div`)
+  postNavParent.id = `mn`
+  postNavParent.innerHTML = postNavTemplate
 
-    wp.insertBefore(postNavParent, wp.childNodes[0])
+  wp.insertBefore(postNavParent, wp.childNodes[0])
 
-    // // 移动节点
-    // let titleNode = $(`#thread_subject`)
-    // let newPostNode = $(`#newspecial`)
-    // let replyNode = $(`#post_reply`)
-    // let infoNode = $(`.subforum_right_title`)
+  // // 移动节点
+  // let titleNode = $(`#thread_subject`)
+  // let newPostNode = $(`#newspecial`)
+  // let replyNode = $(`#post_reply`)
+  // let infoNode = $(`.subforum_right_title`)
 
-    // let pgNode = $(`#pgt .pg`)
-    // let collectNode = $(`#k_favorite`)
-    // let copyLinkNode = $(`a[onclick*="opyThreadUrl"]`)
-
-
-    // let postContentTitle = $(`#post-content-title`)
-    // let postNavLeft = $(`.post-nav-left`)
-    // let postNavRight = $(`.post-nav-right`)
-    // let postControlPanel = $(`.post-nav-right-control-panel`)
+  // let pgNode = $(`#pgt .pg`)
+  // let collectNode = $(`#k_favorite`)
+  // let copyLinkNode = $(`a[onclick*="opyThreadUrl"]`)
 
 
-    // postContentTitle.insertBefore(titleNode, null)
-    // postNavLeft.insertBefore(newPostNode, null)
-    // replyNode !== null ? postNavLeft.insertBefore(replyNode, null) : null
-    // postNavLeft.insertBefore(infoNode, null)
+  // let postContentTitle = $(`#post-content-title`)
+  // let postNavLeft = $(`.post-nav-left`)
+  // let postNavRight = $(`.post-nav-right`)
+  // let postControlPanel = $(`.post-nav-right-control-panel`)
 
-    // console.log(collectNode)
-    // console.log(copyLinkNode)
-    // pgNode !== null ? postNavRight.insertBefore(pgNode, postControlPanel) : null
-    // postControlPanel.insertBefore(collectNode, null)
-    // postControlPanel.insertBefore(copyLinkNode, null)
 
-    renderNewBtn()
-    renderPagePanel()
-    renderControlPanel()
+  // postContentTitle.insertBefore(titleNode, null)
+  // postNavLeft.insertBefore(newPostNode, null)
+  // replyNode !== null ? postNavLeft.insertBefore(replyNode, null) : null
+  // postNavLeft.insertBefore(infoNode, null)
 
+  // console.log(collectNode)
+  // console.log(copyLinkNode)
+  // pgNode !== null ? postNavRight.insertBefore(pgNode, postControlPanel) : null
+  // postControlPanel.insertBefore(collectNode, null)
+  // postControlPanel.insertBefore(copyLinkNode, null)
+
+  renderNewBtn()
+  renderPagePanel()
+  renderControlPanel()
+
+}
+
+
+/**---------------------------------------------- */
+/**
+ * 列表函数组合
+ */
+function hotPost() {
+  renderPostListNav()
+  renderNewBtn()
+  renderPostInfo()
+  renderPagePanel()
+  renderControlPanel()
+  renderPostLists()
+}
+
+/**
+ * 判断发帖权限
+ */
+function postPanel() {
+  // 无权发帖
+  if ($(`.pt.hm`) == null) {
+    postPanelPermission()
+  } else {
+    console.log(`无权发帖`)
+    postPanelNoPermission()
+  }
+}
+
+/**
+ * 判断页面来操作不同的节点
+ */
+let pageDecide = function () {
+  // https://keylol.com
+  let keylolDomin = `.*${document.domain.replace(/\./gm, `\\.`)}`
+  let currentHref = window.location.href
+
+  // 首页
+  let isHome = new RegExp(`(${keylolDomin}\/forum.php$)|(${keylolDomin}\/$)`, "gm").test(currentHref)
+  // 热门主题列表
+  let isHotPost = new RegExp(`${keylolDomin}\/forum.php\\?mod=guide.*`).test(currentHref)
+  // 版块
+  let isSubject = new RegExp(`(${keylolDomin}\/forum.php\\?mod=forumdisplay.*)|${keylolDomin}\/f\\d{3}.*`).test(currentHref)
+  // 帖子
+  let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=viewthread.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
+
+  if (isHome == true) {
+    console.log(`i am home`)
+    home()
   }
 
+  if (isHotPost == true) {
+    console.log(`i am hot post`)
+    hotPost()
+    userCard()
+  }
 
-  /**---------------------------------------------- */
-  /**
-   * 列表函数组合
-   */
-  function hotPost() {
+  if (isSubject == true) {
+    console.log(`i am subject`)
+
+    postPanel()
+
     renderPostListNav()
     renderNewBtn()
     renderPostInfo()
     renderPagePanel()
     renderControlPanel()
     renderPostLists()
+    userCard()
+    autopbn()
   }
 
-  /**
-   * 判断发帖权限
-   */
-  function postPanel() {
-    // 无权发帖
-    if ($(`.pt.hm`) == null) {
-      postPanelPermission()
-    } else {
-      console.log(`无权发帖`)
-      postPanelNoPermission()
-    }
+  if (isPost == true) {
+    console.log(`i am post`)
+    postContentNav()
   }
+}
 
-  /**
-   * 判断页面来操作不同的节点
-   */
-  let pageDecide = function () {
-    // https://keylol.com
-    let keylolDomin = `.*${document.domain.replace(/\./gm, `\\.`)}`
-    let currentHref = window.location.href
+// DOM加载后
+document.addEventListener("DOMContentLoaded", function (event) {
+  navFunction()
+  footer()
+  pageDecide()
+})
 
-    // 首页
-    let isHome = new RegExp(`(${keylolDomin}\/forum.php$)|(${keylolDomin}\/$)`, "gm").test(currentHref)
-    // 热门主题列表
-    let isHotPost = new RegExp(`${keylolDomin}\/forum.php\\?mod=guide.*`).test(currentHref)
-    // 版块
-    let isSubject = new RegExp(`(${keylolDomin}\/forum.php\\?mod=forumdisplay.*)|${keylolDomin}\/f\\d{3}.*`).test(currentHref)
-    // 帖子
-    let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=viewthread.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
-
-    if (isHome == true) {
-      console.log(`i am home`)
-      home()
-    }
-
-    if (isHotPost == true) {
-      console.log(`i am hot post`)
-      hotPost()
-      userCard()
-    }
-
-    if (isSubject == true) {
-      console.log(`i am subject`)
-
-      postPanel()
-
-      renderPostListNav()
-      renderNewBtn()
-      renderPostInfo()
-      renderPagePanel()
-      renderControlPanel()
-      renderPostLists()
-      userCard()
-      autopbn()
-    }
-
-    if (isPost == true) {
-      console.log(`i am post`)
-      postContentNav()
-    }
-  }
-
-  // DOM加载后
-  document.addEventListener("DOMContentLoaded", function (event) {
-    navFunction()
-    footer()
-    pageDecide()
-  })
-
-  var css = `
+var css = `
 body{
 background:green;
 }
@@ -1659,17 +1659,17 @@ background:green;
 
 
 `
-  // 添加css
-  var node = document.createElement("style")
-  node.type = "text/css"
-  node.appendChild(document.createTextNode(css))
-  var html = $("html")
-  document.documentElement.appendChild(node)
+// 添加css
+var node = document.createElement("style")
+node.type = "text/css"
+node.appendChild(document.createTextNode(css))
+var html = $("html")
+document.documentElement.appendChild(node)
 
-  // Your code here...
-  // 取消observer
-  setTimeout(() => {
-    observer.disconnect()
-    moveObserver.disconnect()
-  }, 300)
-})()
+// Your code here...
+// 取消observer
+setTimeout(() => {
+  observer.disconnect()
+  moveObserver.disconnect()
+}, 300)
+}) ()
