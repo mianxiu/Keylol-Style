@@ -941,7 +941,7 @@
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
-    const commontAtag = /th.+?(<a\s+href="t.+?xst.+?a>).+?th>/gms
+    const commontAtag = /th.+?(<a\s+href="(t|forum\.php\?mod=view).+?xst.+?a>).+?th>/gms
     const icnRegx = /<td.+?icn.+?td>/gms
     const commontRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
     const lastCommont = /td>\s(<td.+?by.+?username.+?<\/td>)/gms
