@@ -672,6 +672,7 @@ body {
   box-shadow: var(--shadow-outline);
   border-radius: var(--border-radius-10);
   cursor: pointer;
+  color: var(--font-nomal);
 }
 
 #tabPContentShow:focus {
@@ -1652,7 +1653,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 .mn-nav-right-control-panel {
-	flex-wrap: wrap;
+  flex-wrap: wrap;
   display: flex;
   flex-direction: row-reverse;
 }
@@ -2189,7 +2190,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-join,
 .post-reward,
 .post-reply-reward,
-.post-new-post-tip{
+.post-new-post-tip {
   margin-right: 6px;
   font-size: var(--font-size-12);
   padding: 2px;
@@ -2217,11 +2218,13 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-reply-reward {
   background-color: var(--point-orange);
 }
-.post-new{
-	display:flex;
-	justify-content:center;
-	align-items:center;
+
+.post-new {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 /*提示全局*/
 .post-lock-tip,
 .post-join-tip,
@@ -2262,8 +2265,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   display: flex;
 
 }
+
 .darkmode-css .post-reward:hover .post-reward-tip {
-	color:black;
+  color: black;
 }
 
 .post-reply-reward:hover .post-reply-reward-tip {
@@ -2299,8 +2303,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   color: var(--font-nomal);
   flex-direction: row;
 }
-.post-list-num > span > a > span{
-	color:var(--font-color-light);
+
+.post-list-num>span>a>span {
+  color: var(--font-color-light);
 }
 
 .post-list-num:hover .post-reply-tip {
@@ -2309,8 +2314,9 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
   background-color: var(--tip-background);
   display: flex;
 }
-.post-reply-tip>span:nth-child(1){
-	color:var(--font-point-second-title);
+
+.post-reply-tip>span:nth-child(1) {
+  color: var(--font-point-second-title);
 }
 
 /*tps*/
