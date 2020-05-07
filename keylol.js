@@ -949,7 +949,7 @@
     const userRegx = /by-author">\s{0,}<cite class="threadlist-reply-username".+?(<a.+?a>)<\/cite>/gms
 
     const postTimeRegx = /em>(<span.+?title="\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
-    const postTimeEmRegx = /cite><em>(\d{4}.+?表)<\/em>/gms
+    const postTimeEmRegx = /cite>\s{0,}<em>(\d{4}.+?表)<\/em>/gms
 
     const attacImgRegx = /<img.+?attach_img.+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
@@ -1100,7 +1100,7 @@
     let postTime = tableHTML.match(postTimeRegx) !== null
       ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
       : tableHTML.match(postTimeEmRegx) !== null
-        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx,'$1')
+        ? tableHTML.match(postTimeEmRegx)[0].replace(postTimeEmRegx, '$1')
         : ''
 
 
