@@ -7,14 +7,16 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_gp2i2yzhb75.js
+// @require      https://at.alicdn.com/t/font_1804200_h62w7rvsus9.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
-// @require      https://at.alicdn.com/t/font_1794025_zq56oirsnm.js
+// @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
 
 // ==/UserScript==
 
 /**this is iconfont.cn symbol
  * @require keylol editor icons link
+ * @require keylol post content icnos
  * @require keylol home icons link
  * @require game & manufactor logo link
  * @require keylol post icons link
@@ -680,21 +682,7 @@
     postsolve: "keylolpostsolve",
   }
 
-  // 控制面板
-  const symbolControlPanel = {
-    rss: "keylolrss",
-    control: "keylolcontrol",
-    collect: "keylolcollect",
-    rabbin: "keylolrabbin",
-  }
 
-  // 移动列表导航
-  const symbolPostListNav = {
-    prePage: "keylolpre-page",
-    todaynum: "keyloltodaynum",
-    post: "keylolpost",
-    comments: "keylolcomments",
-  }
   // 按tag排序图标
   const symbolPostSort = ["keylolviewsort", "keyloltypesort", "keyloltimesort", "keylolstatussort"]
 
@@ -816,16 +804,41 @@
   }
 
 
+
+
+
+
   /**
    * 发帖按钮
    */
   function renderNewBtn() {
 
-
     let mnNavLeft = $(`.mn-nav-left`)
     // new post btn
     $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
     mnNavLeft.insertBefore($(`#pgt>a`), null)
+
+
+  }
+
+
+
+
+  // 移动列表导航
+  const symbolPostListNav = {
+    prePage: "keylolpre-page",
+    todaynum: "keyloltodaynum",
+    post: "keylolpost",
+    comments: "keylolcomments",
+    viewnuminfo: "keylolviewnuminfo"
+  }
+  /**
+   * 版块、帖子信息
+   */
+  function renderPostInfo() {
+
+    let mnNavLeft = $(`.mn-nav-left`)
+
     // 热门和子版导航不一样
     if ($("#thread_types") !== null) {
       // 热门导航
@@ -845,6 +858,8 @@
     }
 
   }
+
+
 
   /**
    * 操作分页
@@ -866,9 +881,20 @@
 
     // 分页symbol
     if ($(`.mn-nav-right .prev`) !== null) {
-    
       $(`.mn-nav-right .prev`).innerHTML = symbolHTML(symbolPostListNav.prePage)
     }
+  }
+
+
+
+
+  // 控制面板
+  const symbolControlPanel = {
+    rss: "keylolrss",
+    control: "keylolcontrol",
+    collect: "keylolcollect",
+    rabbin: "keylolrabbin",
+    lolshare: "keylolshare",
   }
 
   /**
@@ -1550,6 +1576,7 @@
   function hotPost() {
     renderPostListNav()
     renderNewBtn()
+    renderPostInfo()
     renderPagePanel()
     renderControlPanel()
     renderPostLists()
@@ -1603,6 +1630,7 @@
 
       renderPostListNav()
       renderNewBtn()
+      renderPostInfo()
       renderPagePanel()
       renderControlPanel()
       renderPostLists()
