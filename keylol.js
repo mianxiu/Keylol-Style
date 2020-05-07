@@ -90,15 +90,15 @@
   //初始化深色模式
   function darkModeInit() {
     let darkModeValue = localStorage.getItem(`darkmode`)
-    if ( darkModeValue == null) {
+    if (darkModeValue == null) {
       localStorage.setItem(`darkmode`, `0`)
     }
-    if(darkModeValue === '1'){
+    if (darkModeValue === '1') {
       $(`html`).classList.add(`darkmode-css`)
-    }else{
+    } else {
       $(`html`).classList.remove(`darkmode-css`)
     }
-    
+
 
   }
 
@@ -324,22 +324,27 @@
    */
   function darkMode() {
     let ul = $(`#nav-user-action-bar > ul > li.dropdown > ul`)
-    ul.insertBefore(document.createElement(`li`), ul.children[0])
-    ul.children[0].insertBefore(document.createElement(`a`), null)
-    ul.children[0].children[0].id = `darkmode`
 
-    let darkmodeNode = $(`#darkmode`)
+    let darkmodeNode = document.createElement(`li`)
+    darkmodeNode.innerHTML = `
+        <a id="darkmode">深色模式</a>  
+    `
+    ul.insertBefore(darkmodeNode, ul.childNodes[0])
 
-    darkmodeNode.innerText = `深色模式`
+    let darkModeCallback = () => {
+      let darkModeValue = localStorage.getItem(`darkmode`)
 
-    let darkModeValue = document.cookie.replace(/(?:(?:^|.*;\s*)darkMode\s*\=\s*([^;]*).*$)|^.*$/, "$1")
-
-    // 初始化
-    if (darkModeValue == "") {
-      console.log("add darkmode cookie")
-      document.cookie = "darkMode=0"
+      if (darkModeValue === `1`) {
+        localStorage.setItem(`darkmode`, `0`)
+        $(`html`).classList.remove(`darkmode-css`)
+      } else {
+        localStorage.setItem(`darkmode`, `1`)
+        $(`html`).classList.add(`darkmode-css`)
+      }
     }
-    darkmodeNode.addEventListener("click", darkModeCallback)
+
+
+    $(`#darkmode`).addEventListener("click", darkModeCallback)
   }
 
   // 首页symbol -----------------------------------------------------------------------
