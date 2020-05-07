@@ -933,11 +933,9 @@
 
 
   /**
-   * 列表匹配
+   * 列表渲染
    */
-  function postListRender() {
-    // 列表
-    let trNode = $All(`tbody[id*="thread"]>tr`)
+  function postListRender(trNode) {
 
     const tdRegx = /tr|td|th/gms
     const divRegx = /<div.+?\/div>/gms
@@ -1057,24 +1055,21 @@
       return ''
     }
 
-    // 遍历每个帖子
-    for (let i = 0; i < trNode.length; i++) {
-      let tnode = trNode[i]
-
-      let tableHTML = tnode.innerHTML
-      //let divs = tableHTML.match(divRegx)
-      
 
 
-      let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, '$1') : ''
+    // 渲染
+    let tableHTML = trNode.innerHTML
+    //let divs = tableHTML.match(divRegx)
 
-      let avatarUrl = avatar(suid, `small`)
+    let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, '$1') : ''
 
-      // 用户头像$名称
-      // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
-      //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
-      let user = tableHTML.match(userRegx) !== null ? tableHTML.match(userRegx)[0].replace(userRegx,
-        `
+    let avatarUrl = avatar(suid, `small`)
+
+    // 用户头像$名称
+    // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
+    //         <a class="threadlist-blue-text" href="home.php?mod=space&amp;uid=1330011"
+    let user = tableHTML.match(userRegx) !== null ? tableHTML.match(userRegx)[0].replace(userRegx,
+      `
                 $1
                 <span class="post-avatar">
                 <img src="${avatarUrl}">
@@ -1082,35 +1077,35 @@
                 </span>
                 $3
            `
-      ) : ''
+    ) : ''
 
 
 
-      // 发表时间
-      let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
-        : tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm) !== null ? tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm)[0] : ''
+    // 发表时间
+    let em = tableHTML.match(postTimeRegx) !== null ? tableHTML.match(postTimeRegx)[0].replace(postTimeRegx, `$1`)
+      : tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm) !== null ? tableHTML.match(/<em>(\d{4}.+?表)<\/em>/gm)[0] : ''
 
 
-      // 已完成节点
-      let solve = () => {
-        if (tableHTML.match(solveRegx) !== null) {
-          return tableHTML.match(solveRegx)[0].replace(solveRegx, `
+    // 已完成节点
+    let solve = () => {
+      if (tableHTML.match(solveRegx) !== null) {
+        return tableHTML.match(solveRegx)[0].replace(solveRegx, `
             <span class="post-solve">$1${symbolHTML(symbolHotPostInfo.postsolve)}$2</span>`
-          )
-        } else if (tableHTML.match(solveHotRegx) !== null) {
-          return tableHTML.match(solveHotRegx)[0].replace(solveHotRegx, `
+        )
+      } else if (tableHTML.match(solveHotRegx) !== null) {
+        return tableHTML.match(solveHotRegx)[0].replace(solveHotRegx, `
           <span class="post-solve">${symbolHTML(symbolHotPostInfo.postsolve)}</span>`
-          )
-        } else {
-          return ''
-        }
+        )
+      } else {
+        return ''
       }
+    }
 
 
-      let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
-      let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
-      let lock = tableHTML.match(lockRegx) !== null ?
-        `
+    let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ''
+    let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ''
+    let lock = tableHTML.match(lockRegx) !== null ?
+      `
           <span class="post-lock">
                 <div>
                 ${symbolHTML(symbolHotPostInfo.lock)}
@@ -1119,28 +1114,28 @@
                 <span class="post-lock-tip">阅读权限</span>
           </span>
       `
-        : ''
+      : ''
 
-      let join = tableHTML.match(joinRegx) !== null ?
-        `
+    let join = tableHTML.match(joinRegx) !== null ?
+      `
           <span class="post-join">
                 <span>${tableHTML.match(joinRegx)[0].replace(joinRegx, '$1')}</span>
                 <span class="post-join-tip">参与人数</span>
           </span>
       `
-        : ''
+      : ''
 
-      let reward = tableHTML.match(rewardRegx) !== null ?
-        `
+    let reward = tableHTML.match(rewardRegx) !== null ?
+      `
           <span class="post-reward">
                 <span>${tableHTML.match(rewardRegx)[0].replace(rewardRegx, '$1')}</span>
                 <span class="post-reward-tip">悬赏蒸气(克)</span>
           </span>
       `
-        : ''
+      : ''
 
-      let replyReward = tableHTML.match(replyReWardRegx) !== null ?
-        `
+    let replyReward = tableHTML.match(replyReWardRegx) !== null ?
+      `
           <span class="post-reply-reward">
                 <span>${tableHTML.match(replyReWardRegx)[0].replace(replyReWardRegx, '$1')}
                     <span class="post-reply-reward-tip">奖励蒸气(克)</span>
@@ -1148,28 +1143,28 @@
                
           </span>
       `
-        : ''
+      : ''
 
-      let attachment = tableHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
-      let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
-      let tps = tableHTML.match(tpsRegx) !== null ? tableHTML.match(tpsRegx)[0].replace(/tps/, `post-tps`) : ''
+    let attachment = tableHTML.match(attachmentRegx) !== null ? symbolHTML(symbolHotPostInfo.postattachment) : ''
+    let digest = tableHTML.match(digestRegx) !== null ? symbolHTML(symbolHotPostInfo.postdigest) : ''
+    let tps = tableHTML.match(tpsRegx) !== null ? tableHTML.match(tpsRegx)[0].replace(/tps/, `post-tps`) : ''
 
-      let newPost = tableHTML.match(newPostRegx) !== null ? tableHTML.match(newPostRegx)[0].replace(newPostRegx,
-        `
+    let newPost = tableHTML.match(newPostRegx) !== null ? tableHTML.match(newPostRegx)[0].replace(newPostRegx,
+      `
       $1
       <span class="post-new">${symbolHTML(symbolHotPostInfo.newpost)}</span>
       <span class="post-new-post-tip">新主题</span>
       $3
       `
-      ) : ''
+    ) : ''
 
-      let trTemplate = `
+    let trTemplate = `
                 ${icn(tableHTML.match(icnRegx)[0])}
                 ${subTag(tableHTML)}
                  <div class="post-list">
                          <div class="post-list-left">
                          <div class="post-list-common">
-                         ${tableHTML.match(commontRegx)[0].match(commontAtag)[0].replace(commontAtag,'$1')}
+                         ${tableHTML.match(commontRegx)[0].match(commontAtag)[0].replace(commontAtag, '$1')}
                          <div class="post-info">
                           ${join}
                           ${reward}
@@ -1205,11 +1200,19 @@
                     <div class="post-list-by-forum"></div>
                 </div>  
            `
-      tnode.innerHTML = trTemplate
-    }
+    trNode.innerHTML = trTemplate
+
   }
 
 
+
+  function getPostListNode() {
+    let postListNodes = $All(`tbody[id*="thread"]>tr`)
+    postListNodes.forEach(trNode => {
+      postListRender(trNode)
+    })
+
+  }
 
 
 
@@ -1263,7 +1266,7 @@
   /**
    * 发帖模块
    */
-  function postPanel() {
+  function postPanelPermission() {
     const symbolEditorRegex = {
       attchment: /attachn/,
       atuser: /fastpostat|at/,
@@ -1357,8 +1360,6 @@
     $(`.forumrowdata`).remove()
     $(`#f_pst>.bm_h`).remove()
 
-
-
   }
 
   /**
@@ -1442,13 +1443,27 @@
 
 
 
+  /**---------------------------------------------- */
 
   /**
    * 列表函数组合
    */
   function hotPost() {
     movePostNav()
-    postListRender()
+    getPostListNode()
+  }
+
+  /**
+   * 判断发帖权限
+   */
+  function postPanel() {
+    // 无权发帖
+    if ($(`.pt.hm`) == null) {
+      postPanelPermission()
+    } else {
+      console.log(`无权发帖`)
+      postPanelNoPermission()
+    }
   }
 
   /**
@@ -1482,16 +1497,11 @@
 
     if (isSubject == true) {
       console.log(`i am subject`)
-      // 无权发帖
-      if ($(`.pt.hm`) == null) {
-        postPanel()
-      } else {
-        console.log(`无权发帖`)
-        postPanelNoPermission()
-      }
 
+      postPanel() 
+      
       movePostNav()
-      postListRender()
+      getPostListNode()
       userCard()
       autopbn()
 
