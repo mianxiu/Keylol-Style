@@ -179,6 +179,17 @@
   }
 
   /**
+   * 热门主题颜色条目改为背景
+   */
+  function hotPostBackground(){
+    let hotList = $All(`div[id*=portal_block_] [style*="color"]`)
+    hotList.forEach(fontTag=>{
+        fontTag.parentNode.style = `background-color:${fontTag.style.color};opacity:.8;`
+        fontTag.style.color = `rgba(255,255,255,9)`
+    })
+
+  }
+  /**
    * 移动版块节点
    */
   function createIndexSubjectParent() {
@@ -494,6 +505,9 @@
     "kelolhelp_panel_software",
     "kelolhelp_panel_magic",
   ]
+  /**
+   * 替换帮助版块
+   */
   function setHelpIcons() {
     let helpNode = $All(
       `#index-subject-parent > div.index_subject_left > div.index_subject_forum > div:nth-child(1) > div.index_subject_row > div > div.subject_row_detail_pic > a`
@@ -558,13 +572,16 @@
     }
   }
 
-  // 首页样式函数
+  /**
+   * 首页样式
+   */
   function home() {
     console.log(`fetch hot img`)
     fetchHotImg()
 
     console.log(`add tabPAHn0P_content show more button`)
     hotPostShowMore()
+    hotPostBackground()
 
     console.log(`create subject parent`)
     createIndexSubjectParent()
