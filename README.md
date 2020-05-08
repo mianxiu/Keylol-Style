@@ -65,5 +65,5 @@ let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNod
 [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
 
 ## flexbox 和 positon:sticky 混用修复
-为使用sticky的元素添加`align-self`
+为使用sticky的元素添加`align-self:flex-start`
 [my-position-sticky-element-isnt-sticky-when-using-flexbox](https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox)

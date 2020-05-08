@@ -2861,6 +2861,19 @@ div[id*="rt_rt_"] input {
 }
 
 /*-------------帖子内容-----------------------------------*/
+
+/*全局*/
+#postlist > [id^="post_"]{
+	display:flex;
+	flex-direction:row;
+	margin-bottom:18px;
+}
+.post-user-card{
+	position:sticky;
+	top:10px;
+	align-self:flex-start;
+}
+
 /*hide 前端太渣*/
 #mn-content-title+#mn-nav-parent>div.mn-nav-right>div.mn-nav-right-control-panel>div:nth-child(1),
 #mn-content-title+#mn-nav-parent>div.mn-nav-right>div.mn-nav-right-control-panel>div:nth-child(2) {
@@ -2956,6 +2969,7 @@ div[id*="favatar"] {
   margin-block-start: 0px;
   margin-block-end: 0px;
 }
+
 /*-----内容-----*/
 .pcb{
 	display:flex;
@@ -2963,5 +2977,5 @@ div[id*="favatar"] {
 }
 td[id*="postmessage"]{
 	display:flex;
-	flex-direction:column;s
+	flex-direction:column;
 }
