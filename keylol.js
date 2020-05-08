@@ -1608,7 +1608,7 @@
 
     Steam_icon_logo_post: "keylolSteam_icon_logo_post",
     aZ: "keylola-z",
-    aZ1: "keylola-z-1", 
+    aZ1: "keylola-z-1",
     hide: "keylolhide",
     jubao: "keyloljubao",
     onlyposter: "keylolonlyposter",
@@ -1623,8 +1623,8 @@
     coin: "keylolcoin",
     percent: "keylolpercent",
     steamcreate: "keylolsteamcreate",
-    comments:"keylolcomments",
-    post:"keylolpost",
+    comments: "keylolcomments",
+    post: "keylolpost",
     steampoint: "keylolsteampoint"
   }
 
@@ -1637,27 +1637,49 @@
 
     const postFavatarRegx = {
 
-      username:/authi">(<a.+?suid.+?>)(.+?)(<\/a>)/gm,
-      avatar:/<div.+?avatar.+?img.+div>/gm,
-      steamcreate:/<a.+?type=create.+?a>/gm,
-      percent:/th.+?(<a.+?\d{0,}%<\/a>).+?p>(.+?)<\/th>/gm,
-      steampoint:/td.+?(<a\s{0,}class.+?do=profile.+?>)(\d{0,})(?!%)(<\/a>).+?p>(.+?)<\/td>/gm,
-      post:/(<a.+?type=thread.+?>)(\d{0,})(<\/a>).+?\/p>(.+?)<\/th>/gm,
-      comments:/(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{1,}&amp;do=thread&amp;type=reply.+?>)(\d{1,})(<\/a>)<\/p>(.+?)<\/th>/gm,
-      coin:/(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile".+?xi2">)(\d{0,})(<\/a>).+?p>(.+?)<\/td>/gm,
-      level:/<a.+usergroup.+?img.+?<\/a>/gm,
-      customstatus:/<p.+customstatus.+?<\/p>/gm,
-      medal:/<p.+?class="md_ctrl.+?p>/gm
+      username: /authi">(<a.+?suid.+?>.+?<\/a>)/gm,
+      avatar: /<div.+?avatar.+?img.+div>/gm,
+      steamcreate: /<a.+?type=create.+?a>/gm,
+      percent: /th.+?(<a.+?\d{0,}%<\/a>).+?p>(.+?)<\/th>/gm,
+      steampoint: /td.+?(<a\s{0,}class.+?do=profile.+?>)(\d{0,})(?!%)(<\/a>).+?p>(.+?)<\/td>/gm,
+      post: /(<a.+?type=thread.+?>)(\d{0,})(<\/a>).+?\/p>(.+?)<\/th>/gm,
+      comments: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{1,}&amp;do=thread&amp;type=reply.+?>)(\d{1,})(<\/a>)<\/p>(.+?)<\/th>/gm,
+      coin: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile".+?xi2">)(\d{0,})(<\/a>).+?p>(.+?)<\/td>/gm,
+      level: /<a.+usergroup.+?img.+?<\/a>/gm,
+      customstatus: /<p.+customstatus.+?<\/p>/gm,
+      medal: /<p.+?class="md_ctrl.+?p>/gm
 
     }
 
     let favatarHTML = favatarNode.innerHTML
 
+
+    function avatar() {
+      let elementMatch = favatarHTML.match(postFavatarRegx.avatar)
+      return elementMatch !== null ? elementMatch[0] : ''
+    }
+
+    function username(){
+      let elementMatch = favatarHTML.match(postFavatarRegx.username)
+      return elementMatch !== null ? elementMatch[0].replace(username,`$1`) : ''
+    }
+
+    function customStatus(){
+      let elementMatch = favatarHTML.match(postFavatarRegx.customstatus)
+      return elementMatch !== null ? elementMatch[0] : ''
+    }
+
     let favatarTemplate = `
+    <div class="favatar-top">
+        <div class="favatar-avatar">${avatar()}</div>
+        <div class="favatar-name">${username()}</div>
+        <div class="favatar-status">${customStatus()}</div>
+    </div>
     `
 
 
-    console.log(favatars)
+    favatarNode.innerHTML = favatarTemplate
+
 
   }
 

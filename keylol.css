@@ -2866,11 +2866,21 @@ div[id*="rt_rt_"] input {
 {
 	display:none;
 }
+
+table[id*="pid"],
+table[id*="pid"] tr,
+table[id*="pid"] td{
+	display:flex;
+}
 #mn-content-title a{
+	padding:8px 0;
 	font-size:18px;
 	color:var(--font-nomal);
 }
 #mn-content-title a:last-child{
 	margin-left:18px;
-	color:var(--font-second-title);
+	color:var(--font-second-aphal);
+}
+div[id*="favatar"]{
+	display:flex;
 }
