@@ -3010,21 +3010,25 @@ td[id*="postmessage"]{
 	
 }
 .authi .icon{
-	width:1.6em;
-	height:1.6em;
+	width:1.4em;
+	height:1.4em;
 	margin-right:4px;
 	color:var(--icon-line);
 }
 .authi,
 .authi em,
 .authi a{
+	transition:.2s all;
 	font-style:normal;
 	color:var(--font-nomal);
 	display:flex;
 	align-items:center;
 	padding:8px 10px;
+	border-radius:var(--border-radius-10);
 }
-
+.authi a:hover{
+	background-color:var(--body-background);
+}
 
 /*电梯*/
 #fj input{
@@ -3032,14 +3036,21 @@ td[id*="postmessage"]{
 }
 /*steam信息*/
 .steam_connect_user_bar{
-	color:var(--font-nomal);
-	padding:10px;
-	background-color:var(--background-color);
+	display:flex;
+	height:var(--element-height-34);
+	color:var(--font-nomal);	
 	border-radius:var(--border-radius-10);
+	overflow:hidden;
+	align-items:center;
 }
 .steam_connect_user_bar a{
-	
-	margin-right:10px;
+	transition:.2s all;
+	padding:10px;
+	background-color:var(--body-background);
+}
+
+.steam_connect_user_bar a:hover{
+	background-color:var(--input-background);
 }
 /*个性签名*/
 .post-content-sign{
