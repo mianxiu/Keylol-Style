@@ -2883,4 +2883,12 @@ table[id*="pid"] td{
 }
 div[id*="favatar"]{
 	display:flex;
+	width:180px;
+	flex-direction:column;
+}
+
+.favatar-avatar img{
+display:flex;
+	border-radius:var(--border-radius-10);
+	
 }

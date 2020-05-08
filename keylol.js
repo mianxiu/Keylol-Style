@@ -1637,9 +1637,10 @@
 
     const postFavatarRegx = {
 
-      username: /authi">(<a.+?suid.+?>.+?<\/a>)/gm,
+      // authi">
+      username: /(<a.+?suid.+?>.+?<\/a>)/gm,
       avatar: /<div.+?avatar.+?img.+div>/gm,
-      steamcreate: /<a.+?type=create.+?a>/gm,
+      steamcreate: /(<a.+?type=create.+?>.+?<\/a>)<\/p>(.+?)<\/th>/gm,
       percent: /th.+?(<a.+?\d{0,}%<\/a>).+?p>(.+?)<\/th>/gm,
       steampoint: /td.+?(<a\s{0,}class.+?do=profile.+?>)(\d{0,})(?!%)(<\/a>).+?p>(.+?)<\/td>/gm,
       post: /(<a.+?type=thread.+?>)(\d{0,})(<\/a>).+?\/p>(.+?)<\/th>/gm,
@@ -1659,14 +1660,24 @@
       return elementMatch !== null ? elementMatch[0] : ''
     }
 
-    function username(){
+    function username() {
       let elementMatch = favatarHTML.match(postFavatarRegx.username)
-      return elementMatch !== null ? elementMatch[0].replace(username,`$1`) : ''
+      return elementMatch !== null ? elementMatch[0] : ''
     }
 
-    function customStatus(){
+    function customStatus() {
       let elementMatch = favatarHTML.match(postFavatarRegx.customstatus)
       return elementMatch !== null ? elementMatch[0] : ''
+    }
+
+    function steamcreate() {
+      let elementMatch = favatarHTML.match(postFavatarRegx.steamcreate)
+      return elementMatch != null ? elementMatch[0].replace(postFavatarRegx.steamcreate,
+        `<span class="favatar-info-title">${symbolHTML(symbolPostFavatar.steamcreate)}<span>$2</span></span>
+      <span>$1</span>
+      `
+      )
+        : ''
     }
 
     let favatarTemplate = `
@@ -1674,6 +1685,9 @@
         <div class="favatar-avatar">${avatar()}</div>
         <div class="favatar-name">${username()}</div>
         <div class="favatar-status">${customStatus()}</div>
+    </div>
+    <div class="favatar-mid">
+        <div class="">${steamcreate()}</div>
     </div>
     `
 
