@@ -820,23 +820,25 @@
 
     let mnNavLeft = $(`.mn-nav-left`)
     let newPostNode = $(`#pgt>a`)
+    // 帖子详细页面
+    let newFromPostNode = $(`#newspecial`)
     let replyPostNode = $(`#post_reply`)
 
 
     if (replyPostNode !== null) {
 
       // 发帖按钮
-      newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span></span>`
-      mnNavLeft.insertBefore($(`#pgt>a`), null)
+      newFromPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span></span>`
+      mnNavLeft.insertBefore(newFromPostNode, null)
 
       // 回复按钮  
       replyPostNode.innerHTML = `${symbolHTML(symbolPostBotton.comments)}<span>回复</span>`
-      mnNavLeft.insertBefore($(`#pgt>a`), null)
+      mnNavLeft.insertBefore(replyPostNode, null)
     }
-    else{
-            // 发帖按钮
-            newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span>发贴</span>`
-            mnNavLeft.insertBefore($(`#pgt>a`), null)
+    else {
+      // 发帖按钮
+      newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span>发贴</span>`
+      mnNavLeft.insertBefore(newPostNode, null)
     }
 
 
@@ -851,33 +853,64 @@
     todaynum: "keyloltodaynum",
     post: "keylolpost",
     comments: "keylolcomments",
-    viewnuminfo: "keylolviewnuminfo"
+    viewnuminfo: "keylolviewnuminfo",
+    shoucang: "keylolshoucang"
   }
   /**
    * 版块、帖子信息
    */
   function renderPostInfo() {
 
+    /**
+     * 
+     * @param {Element}} element 
+     * @param {string} symbolKey 
+     */
+    function renderPostInfoChild(element, symbolKey) {
+      if (element !== null) {
+        element.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolKey)}<span class="subforum-info-tip">${element.innerHTML}</span></div>`
+      }
+
+    }
+
     let mnNavLeft = $(`.mn-nav-left`)
+    let thread = $("#thread_types")
+    let favatar = $(`div[id*="favatar"]`)
 
     // 热门和子版导航不一样
-    if ($("#thread_types") !== null) {
+    if (thread !== null) {
+
       // 热门导航
       mnNavLeft.insertBefore($(`#thread_types`), null)
     } else {
+
       // 子版信息
       $(`.subforum_right_title`).insertBefore($(`.subforum_left_title_left_down>div`), $(`.subforum_right_title`).children[0])
       mnNavLeft.insertBefore($(`.subforum`), null)
 
       // 子版信息symbol
-      let today = $(`.subforum_right_title_left_up`)
-      let post = $(`.subforum_right_title_mid_up`)
-      let comment = $(`.subforum_right_title_right_up`)
-      today.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostListNav.todaynum)}<span class="subforum-info-tip">${today.innerHTML}</span></div>`
-      post.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostListNav.post)}<span class="subforum-info-tip">${post.innerHTML}</span></div>`
-      comment.innerHTML = `<div class="suforum-symbol">${symbolHTML(symbolPostListNav.comments)}<span class="subforum-info-tip">${comment.innerHTML}</span></div>`
-    }
+      let left = $(`.subforum_right_title_left_up`)
+      let mid = $(`.subforum_right_title_mid_up`)
+      let right = $(`.subforum_right_title_right_up`)
 
+      if (favatar === null) {
+
+        // 子版块
+        renderPostInfoChild(left, symbolPostListNav.todaynum)
+        renderPostInfoChild(mid, symbolPostListNav.post)
+        renderPostInfoChild(right, symbolPostListNav.comments)
+
+      } else {
+
+        // 帖子页面
+        renderPostInfoChild(left, symbolPostListNav.comments)
+        renderPostInfoChild(mid, symbolPostListNav.viewnuminfo)
+        renderPostInfoChild(right, symbolPostListNav.shoucang)
+
+      }
+
+
+    }
   }
 
 
@@ -1542,7 +1575,7 @@
    */
   function postContentNav() {
     const postNavTemplate = `
-    <div id="post-content-title"></div>
+    <div id="mn-content-title"></div>
     <div id="mn-nav-parent">
          <div class="mn-nav-left"></div>
          <div class="mn-nav-right">
@@ -1559,26 +1592,26 @@
     wp.insertBefore(postNavParent, wp.childNodes[0])
 
     // // 移动节点
-    // let titleNode = $(`#thread_subject`)
+    let titleNode = $(`#thread_subject`)
     // let newPostNode = $(`#newspecial`)
     // let replyNode = $(`#post_reply`)
-    // let infoNode = $(`.subforum_right_title`)
+    let infoNode = $(`.subforum_right_title`)
 
     // let pgNode = $(`#pgt .pg`)
     // let collectNode = $(`#k_favorite`)
     // let copyLinkNode = $(`a[onclick*="opyThreadUrl"]`)
 
 
-    // let postContentTitle = $(`#post-content-title`)
-    // let postNavLeft = $(`.post-nav-left`)
+    let postContentTitle = $(`#mn-content-title`)
+    let postNavLeft = $(`.mn-nav-left`)
     // let postNavRight = $(`.post-nav-right`)
     // let postControlPanel = $(`.post-nav-right-control-panel`)
 
 
-    // postContentTitle.insertBefore(titleNode, null)
+    postContentTitle.insertBefore(titleNode, null)
     // postNavLeft.insertBefore(newPostNode, null)
     // replyNode !== null ? postNavLeft.insertBefore(replyNode, null) : null
-    // postNavLeft.insertBefore(infoNode, null)
+    postNavLeft.insertBefore(infoNode, null)
 
     // console.log(collectNode)
     // console.log(copyLinkNode)
@@ -1586,9 +1619,7 @@
     // postControlPanel.insertBefore(collectNode, null)
     // postControlPanel.insertBefore(copyLinkNode, null)
 
-    renderNewBtn()
-    renderPagePanel()
-    renderControlPanel()
+
 
   }
 
@@ -1665,6 +1696,11 @@
     if (isPost == true) {
       console.log(`i am post`)
       postContentNav()
+      renderNewBtn()
+      renderPostInfo()
+      renderPagePanel()
+      renderControlPanel()
+
     }
   }
 
