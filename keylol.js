@@ -1651,8 +1651,8 @@
       percent: /th.+?(<a.+?\d{0,}%<\/a>).+?p>(.+?)<\/th>/gm,
       steampoint: /td.+?(<a\s{0,}class.+?do=profile.+?>\d{0,}(?!%)<\/a>).+?p>(.+?)<\/td>/gm,
       post: /(<a.+?type=thread.+?>\d{0,}<\/a>).+?\/p>(.+?)<\/th>/gm,
-      comments: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{1,}&amp;do=thread&amp;type=reply.+?>\d{1,}<\/a>)<\/p>(.+?)<\/th>/gm,
-      coin: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile".+?xi2">\d{0,}<\/a>).+?p>(.+?)<\/td>/gm
+      comments: /<th><p>(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=thread&amp;type=reply&amp;view=me&amp;from=space".+?>.+?\/a>)<\/p>(.+?)<\/th>/gm,
+      coin:/<p>(<a href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile"\s{0,}class="xi2".+?\/a>)<\/p>(.+?)<\/td>/gm
 
     }
 
