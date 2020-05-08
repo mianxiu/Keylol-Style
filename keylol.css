@@ -2861,76 +2861,9 @@ div[id*="rt_rt_"] input {
 
 /*-------------帖子内容-----------------------------------*/
 /*hide 前端太渣*/
-#post-content-title+#mn-nav-parent > div.mn-nav-right > div.mn-nav-right-control-panel > div:nth-child(1),
-#post-content-title+#mn-nav-parent > div.mn-nav-right > div.mn-nav-right-control-panel > div:nth-child(2)
+#mn-content-title+#mn-nav-parent > div.mn-nav-right > div.mn-nav-right-control-panel > div:nth-child(1),
+#mn-content-title+#mn-nav-parent > div.mn-nav-right > div.mn-nav-right-control-panel > div:nth-child(2)
 {
 	display:none;
 }
-#thread_subject {
-  font-size: 18px;
-  color: var(--font-nomal);
-}
 
-#post-nav {
-  display: flex;
-  justify-content: space-between;
-}
-
-#post-nav div {
-  align-items: center;
-  display: flex;
-}
-
-.subforum_right_title {
-  color: var(--font-nomal);
-  display: flex;
-  align-items: center;
-  height: var(--element-height-34);
-  background-color: var(--element-background);
-  box-shadow: var(--shadow-outline);
-  border-radius: var(--border-radius-10);
-  padding: var(--element-padding-0-10);
-}
-
-.post-nav-right .pg {
-  height: var(--element-height-34);
-  display: flex;
-  transition: var(--motion-2);
-  border-radius: var(--border-radius-10);
-  overflow: hidden;
-  box-shadow: var(--shadow-outline);
-}
-
-.post-nav-right .pg>strong {
-  display: flex;
-  height: var(--element-height-34);
-  align-items: center;
-  color: var(--font-color-light);
-  padding: var(--element-padding-0-10);
-  background-color: var(--point);
-}
-
-.post-nav-right .pg>a {
-  display: flex;
-  align-items: center;
-  padding: var(--element-padding-0-10);
-  background-color: var(--element-background);
-  height: var(--element-height-34);
-}
-
-.post-nav-right .pg>label {
-  height: var(--element-height-34);
-  display: flex;
-  align-items: center;
-  padding: var(--element-padding-0-10);
-  background-color: var(--element-background);
-}
-
-.post-nav-right .pg>label>input {
-  width: 20px;
-  color: var(--font-nomal);
-  padding: 4px;
-  border-radius: var(--border-radius-2);
-  background-color: var(--input-background);
-  margin-right: 10px;
-}
