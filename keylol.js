@@ -1736,8 +1736,9 @@
       <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
       <div class="post-content">
           <div class="post-content-top">${postContentNode.innerHTML}</div>
-          <div class="post-content-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}}${postBottomBar.innerHTML}</div>
           <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
+          <div class="post-content-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}${postBottomBar.innerHTML}</div>
+          
       </div>
       `
 
@@ -1813,7 +1814,7 @@
         }
       }
       node.innerHTML = postTopBarTemplate
-      console.log(node.innerHTML)
+
     })
 
   }
@@ -1828,7 +1829,7 @@
 
     movePostElement()
     renderPostInfoSymbol()
-    
+
     let favatarNodes = $All(`div[id*="favatar"]`)
     favatarNodes.forEach(node => {
       renderPostFavatar(node)

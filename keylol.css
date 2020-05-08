@@ -2872,8 +2872,16 @@ div[id*="rt_rt_"] input {
 	position:sticky;
 	top:10px;
 	align-self:flex-start;
+	margin-right:8px;
 }
 
+.post-content{
+	width:1012px;
+	background-color:var(--element-background);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+	overflow:hidden;
+}
 
 /*hide 前端太渣*/
 #mn-content-title+#mn-nav-parent>div.mn-nav-right>div.mn-nav-right-control-panel>div:nth-child(1),
@@ -2983,9 +2991,11 @@ div[id*="favatar"] {
 }
 
 /*-----内容-----*/
+
 .pcb{
-	display:flex;
+	display:inline-block;
 	flex-direction:column;
+	padding:0 30px;
 }
 td[id*="postmessage"]{
 	display:flex;
@@ -3020,3 +3030,20 @@ td[id*="postmessage"]{
 #fj input{
 	display:flex;
 }
+/*steam信息*/
+.steam_connect_user_bar{
+	color:var(--font-nomal);
+	padding:10px;
+	background-color:var(--background-color);
+	border-radius:var(--border-radius-10);
+}
+.steam_connect_user_bar a{
+	
+	margin-right:10px;
+}
+/*个性签名*/
+.post-content-sign{
+	display:flex;
+	padding:8px;
+}
+
