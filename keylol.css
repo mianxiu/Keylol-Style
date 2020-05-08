@@ -2865,8 +2865,10 @@ div[id*="rt_rt_"] input {
 /*全局*/
 #postlist > [id^="post_"]{
 	display:flex;
-	flex-direction:column;
+	flex-direction:column-reverse;
 	margin-bottom:18px;
+	align-items:flex-end;
+	
 }
 .post-user-card{
 	position:sticky;
@@ -2884,6 +2886,7 @@ div[id*="rt_rt_"] input {
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 	overflow:hidden;
+	padding-bottom:60px;
 }
 
 /*hide 前端太渣*/
@@ -3067,5 +3070,12 @@ td[id*="postmessage"]{
 .post-content-sign{
 	display:flex;
 	padding:8px;
+	
 }
 
+.post-bottom{
+	display:flex;
+	justify-content:end;
+	align-items:center;
+	position:absolute;
+}

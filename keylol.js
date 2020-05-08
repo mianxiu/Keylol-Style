@@ -1761,14 +1761,14 @@
 
 
     const symbolPostContent = {
-
       Steam_icon_logo_post: "keylolSteam_icon_logo_post",
       hide: "keylolhide",
       jubao: "keyloljubao",
       postaddscore: "keylolpostaddscore",
       shoucang: "keylolshoucang",
       tiezidaoju: "keyloltiezidaoju",
-      zhichi: "keylolzhichi"
+      zhichi: "keylolzhichi",
+      reply: "keylolcomments"
     }
 
     // 匹配steam图标
@@ -1782,6 +1782,43 @@
         node.firstChild.textContent = ''
         node.insertBefore(steamName, node.childNodes[0])
       }
+    })
+
+
+    // 支持收藏举报等按钮
+    const symbolPostContentRegx = {
+      tiezidcju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>)/gm,
+      //hide: "keylolhide",
+      jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm,
+      //postaddscore: "keylolpostaddscore",
+      //shoucang: "keylolshoucang",
+      zhichi: /(<a.+?replyadd.+?>)(.+?)(<\/a>)/gm,
+      reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gms
+    }
+
+    let popCl = $All(`.pob.cl`)
+
+    popCl.forEach(node => {
+
+      let popClTemplate = ``
+      let nodeHTML = node.innerHTML
+
+      for (const key in symbolPostContentRegx) {
+        if (symbolPostContentRegx[key].test(nodeHTML) === true) {
+
+          let nodeMatch = nodeHTML.match(symbolPostContentRegx[key])[0].replace(symbolPostContentRegx[key], `
+          $1
+          <span>${symbolHTML(symbolPostContent[key])}</span>
+          <span>$2</span>
+          $3
+          `)
+
+          popClTemplate += nodeMatch
+        }
+      }
+
+      node.innerHTML = popClTemplate
+
     })
 
   }
