@@ -2865,7 +2865,7 @@ div[id*="rt_rt_"] input {
 /*全局*/
 #postlist > [id^="post_"]{
 	display:flex;
-	flex-direction:row;
+	flex-direction:column;
 	margin-bottom:18px;
 }
 .post-user-card{
@@ -2875,6 +2875,9 @@ div[id*="rt_rt_"] input {
 	margin-right:8px;
 }
 
+.post-top{
+	display:flex;
+}
 .post-content{
 	width:1012px;
 	background-color:var(--element-background);

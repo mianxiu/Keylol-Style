@@ -1734,12 +1734,14 @@
     function postTamplate(favatarNode, postContentNode, collectBtn, postBottomBar, sign) {
 
       return `
-      <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
-      <div class="post-content">
-          <div class="post-content-top">${postContentNode.innerHTML}</div>
-          <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
-          <div class="post-content-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}${postBottomBar.innerHTML}</div>      
+      <div class="post-top">
+          <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
+          <div class="post-content">
+              <div class="post-content-top">${postContentNode.innerHTML}</div>
+              <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
+          </div>
       </div>
+      <div class="post-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}${postBottomBar.innerHTML}</div> 
       `
 
     }
