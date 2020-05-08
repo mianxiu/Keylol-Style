@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_gp2i2yzhb75.js
-// @require      https://at.alicdn.com/t/font_1804200_h62w7rvsus9.js
+// @require      https://at.alicdn.com/t/font_1804200_j5y9vsvkxa.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1606,6 +1606,21 @@
 
   const symbolPostFavatar = {
 
+    Steam_icon_logo_post: "keylolSteam_icon_logo_post",
+    aZ: "keylola-z",
+    aZ1: "keylola-z-1",
+    coin: "keylolcoin",
+    hide: "keylolhide",
+    jubao: "keyloljubao",
+    onlyposter: "keylolonlyposter",
+    percent: "keylolpercent",
+    postaddscore: "keylolpostaddscore",
+    readmode: "keylolreadmode",
+    shoucang: "keylolshoucang",
+    steampoint: "keylolsteampoint",
+    steamcreate: "keylolsteamcreate",
+    tiezidaoju: "keyloltiezidaoju",
+    zhichi: "keylolzhichi"
   }
 
   /**
@@ -1714,7 +1729,7 @@
       renderNewBtn()
       renderPostInfo()
       renderPagePanel()
-      
+
       renderPostContent()
       renderControlPanel()
     }
