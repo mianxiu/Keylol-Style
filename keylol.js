@@ -1771,7 +1771,7 @@
     zhichi: "keylolzhichi"
   }
 
-  const symbolPostInTopBar = {
+  const symbolPostTopBar = {
     posttime: "keyloltimesort",
     az: "keylolaZ",
     za: "keylolzA",
@@ -1783,17 +1783,36 @@
   function renderPostInfoSymbol() {
 
     const postTopBarRegx = {
-      posttime:  /<em\s{0,}id="authorposto.+?>(.+?)<\/span><\/em>/gm,
-      az: /<a.+?ordertype=2.+?>(.+?)<\/a>/gm,
-      za: /<a.+?ordertype=1.+?>(.+?)<\/a>/gm,
-      onlyposter: /<a.+?authorid.+?>(.+?)<\/a>/gm,
-      readmode: /<a.+?readmode.+?>(.+?)<\/a>/gm
+      posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
+      onlyposter: /(<a.+?authorid.+?>)(.+?)(<\/a>)/gm,
+      az: /(<a.+?ordertype=2.+?>)(.+?)(<\/a>)/gm,
+      za: /(<a.+?ordertype=1.+?>)(.+?)(<\/a>)/gm,
+      readmode: /(<a.+?readmode.+?>)(.+?)(<\/a>)/gm
 
     }
 
     let postTopBar = $All(`#postlist > [id^="post_"] .authi`)
 
+
     postTopBar.forEach(node => {
+
+      let postTopBarTemplate = ``
+      let nodeHTML = node.innerHTML
+
+      for (const key in postTopBarRegx) {
+
+        if (postTopBarRegx[key].test(nodeHTML) == true) {
+
+          postTopBarTemplate += nodeHTML.match(postTopBarRegx[key])[0].replace(postTopBarRegx[key],
+            `$1
+          <span>${symbolHTML(symbolPostTopBar[key])}</span>
+          <span>$2</span>
+          $3
+          `
+          )
+        }
+      }
+      node.innerHTML = postTopBarTemplate
       console.log(node.innerHTML)
     })
 
@@ -1808,7 +1827,8 @@
   function renderPostContent() {
 
     movePostElement()
-
+    renderPostInfoSymbol()
+    
     let favatarNodes = $All(`div[id*="favatar"]`)
     favatarNodes.forEach(node => {
       renderPostFavatar(node)

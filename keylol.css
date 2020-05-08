@@ -2991,3 +2991,19 @@ td[id*="postmessage"]{
 	display:flex;
 	flex-direction:column;
 }
+/*顶部栏*/
+.authi .icon{
+	width:1.6em;
+	height:1.6em;
+	margin-right:4px;
+	color:var(--icon-line);
+}
+.authi,
+.authi em,
+.authi a{
+	font-style:normal;
+	color:var(--font-nomal);
+	display:flex;
+	align-items:center;
+	padding:8px 10px;
+}
