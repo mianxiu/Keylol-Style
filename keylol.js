@@ -100,8 +100,6 @@
     } else {
       $(`html`).classList.remove(`darkmode-css`)
     }
-
-
   }
 
 
@@ -345,7 +343,6 @@
       }
     }
 
-
     $(`#darkmode`).addEventListener("click", darkModeCallback)
   }
 
@@ -404,15 +401,20 @@
     "kelolmenu_icon_post_reply",
     "kelolkeylol_logo"
   ]
+  /**
+   * 导航symbol
+   */
   function setNavIcons() {
     let navNodes = {
       searchNode: $(`.search-bar-form > .dropdown `),
-      actionNode: $(`#nav-user-action-bar > ul > li > a.btn-user-action`),
-      highLightNode: $(`#nav-user-action-bar > ul > li > a.btn-user-action-highlight`),
+      actionNode: $(`#nav-user-action-bar > ul > li > a[href*="do=pm"]`),
+      highLightNode: $(`#nav-user-action-bar > ul > li > a[href*="view=mypost"]`),
     }
+    
 
     // 登录状态
     if (navNodes.highLightNode !== null) {
+      console.log(123131)
       let i = 0
       for (const key in navNodes) {
         let node = navNodes[key]
@@ -424,6 +426,7 @@
         i++
       }
     } else {
+      console.log(111123231)
       // 未登录只插入搜索
       navNodes.searchNode.insertBefore(symbolHTMLNode(symbolNav[0]), navNodes.searchNode.children[0])
     }
@@ -1565,11 +1568,6 @@
    * 帖子详细相关-------------------------------------------
    * 
    */
-
-
-  const symbolPostNav = {
-
-  }
   /**
    * 帖子内容导航
    */
@@ -1602,6 +1600,14 @@
     postContentTitle.insertBefore(titleNode, null)
     postContentTitle.insertBefore(tagInfo, null)
     postNavLeft.insertBefore(infoNode, null)
+
+  }
+
+
+  const symbolPostFavatar = {
+
+  }
+  function postFavatar(){
 
   }
 
