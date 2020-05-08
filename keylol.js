@@ -1740,13 +1740,14 @@
      * @param {Element} postContentNode 帖子内容
      * @param {Element} postBottomBar 帖子底部支持、举报栏
      */
-    function postTamplate(favatarNode, postContentNode, postBottomBar) {
+    function postTamplate(favatarNode, postContentNode, collectBtn, postBottomBar, sign) {
 
       return `
       <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
       <div class="post-content">
-      <div class="post-content-top">${postContentNode.innerHTML}</div>
-      <div class="post-content-bottom">${postBottomBar.innerHTML}</div>
+          <div class="post-content-top">${postContentNode.innerHTML}</div>
+          <div class="post-content-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}}${postBottomBar.innerHTML}</div>
+          <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
       </div>
       `
 
@@ -1759,9 +1760,12 @@
 
       let favatarSelector = $(`#${id} div[id*="favatar"]`)
       let postConentSelector = $(`#${id} .plc`)
+      let collectBtn = $(`#${id} #p_btn`)
+      let sign = $(`#${id} .sign`)
       let postBottomBar = $(`#${id} .po.hin`)
 
-      post.innerHTML = postTamplate(favatarSelector, postConentSelector,postBottomBar)
+
+      post.innerHTML = postTamplate(favatarSelector, postConentSelector, collectBtn, postBottomBar, sign)
       console.log(favatarSelector, postConentSelector)
     })
   }
