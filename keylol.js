@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_gp2i2yzhb75.js
-// @require      https://at.alicdn.com/t/font_1804200_uk2i2h218oq.js
+// @require      https://at.alicdn.com/t/font_1804200_9tm3e6x8ol.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1604,20 +1604,6 @@
   }
 
 
-  const symbolPostContent = {
-
-    Steam_icon_logo_post: "keylolSteam_icon_logo_post",
-    aZ: "keylola-z",
-    aZ1: "keylola-z-1",
-    hide: "keylolhide",
-    jubao: "keyloljubao",
-    onlyposter: "keylolonlyposter",
-    postaddscore: "keylolpostaddscore",
-    readmode: "keylolreadmode",
-    shoucang: "keylolshoucang",
-    tiezidaoju: "keyloltiezidaoju",
-    zhichi: "keylolzhichi"
-  }
 
   const symbolPostStatus = {
     coin: "keylolcoin",
@@ -1695,7 +1681,6 @@
         }
       }
 
-
       return favatarStatusTemplate
 
     }
@@ -1761,19 +1746,58 @@
     postLists.forEach(post => {
       let id = post.id
 
-      
       let favatarSelector = $(`#${id} div[id*="favatar"]`)
       let postConentSelector = $(`#${id} .plc`)
       let collectBtn = $(`#${id} #p_btn`)
       let sign = $(`#${id} .sign`)
       let postBottomBar = $(`#${id} .po.hin`)
 
-
       post.innerHTML = postTamplate(favatarSelector, postConentSelector, collectBtn, postBottomBar, sign)
-      console.log(favatarSelector, postConentSelector)
     })
   }
 
+
+
+
+  const symbolPostContent = {
+
+    Steam_icon_logo_post: "keylolSteam_icon_logo_post",
+
+    hide: "keylolhide",
+    jubao: "keyloljubao",
+    postaddscore: "keylolpostaddscore",
+    shoucang: "keylolshoucang",
+    tiezidaoju: "keyloltiezidaoju",
+    zhichi: "keylolzhichi"
+  }
+
+  const symbolPostInTopBar = {
+    posttime: "keyloltimesort",
+    az: "keylolaZ",
+    za: "keylolzA",
+    onlyposter: "keylolonlyposter",
+    readmode: "keylolreadmode"
+
+  }
+
+  function renderPostInfoSymbol() {
+
+    const postTopBarRegx = {
+      posttime:  /<em\s{0,}id="authorposto.+?>(.+?)<\/span><\/em>/gm,
+      az: /<a.+?ordertype=2.+?>(.+?)<\/a>/gm,
+      za: /<a.+?ordertype=1.+?>(.+?)<\/a>/gm,
+      onlyposter: /<a.+?authorid.+?>(.+?)<\/a>/gm,
+      readmode: /<a.+?readmode.+?>(.+?)<\/a>/gm
+
+    }
+
+    let postTopBar = $All(`#postlist > [id^="post_"] .authi`)
+
+    postTopBar.forEach(node => {
+      console.log(node.innerHTML)
+    })
+
+  }
   /**
    * 帖子渲染函数组合
    * 
