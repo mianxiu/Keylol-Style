@@ -1606,6 +1606,7 @@
 
 
   const symbolPostStatus = {
+    // 用户卡片图标
     coin: "keylolcoin",
     percent: "keylolpercent",
     steamcreate: "keylolsteamcreate",
@@ -1737,16 +1738,15 @@
       <div class="post-content">
           <div class="post-content-top">${postContentNode.innerHTML}</div>
           <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
-          <div class="post-content-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}${postBottomBar.innerHTML}</div>
-          
+          <div class="post-content-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}${postBottomBar.innerHTML}</div>      
       </div>
       `
 
     }
 
     postLists.forEach(post => {
+      // 移动帖子布局
       let id = post.id
-
       let favatarSelector = $(`#${id} div[id*="favatar"]`)
       let postConentSelector = $(`#${id} .plc`)
       let collectBtn = $(`#${id} #p_btn`)
@@ -1755,22 +1755,38 @@
 
       post.innerHTML = postTamplate(favatarSelector, postConentSelector, collectBtn, postBottomBar, sign)
     })
+
+
+
+    const symbolPostContent = {
+
+      Steam_icon_logo_post: "keylolSteam_icon_logo_post",
+      hide: "keylolhide",
+      jubao: "keyloljubao",
+      postaddscore: "keylolpostaddscore",
+      shoucang: "keylolshoucang",
+      tiezidaoju: "keyloltiezidaoju",
+      zhichi: "keylolzhichi"
+    }
+
+    // 匹配steam图标
+    let steamUserBar = $All(`.steam_connect_user_bar`)
+    steamUserBar.forEach(node => {
+      if (node.firstChild.nodeName === '#text') {
+
+        let steamName = document.createElement(`span`)
+        steamName.className = `steam-name`
+        steamName.innerHTML = `<span>${symbolHTML(symbolPostContent.Steam_icon_logo_post)}</span><span>${node.firstChild.textContent}</span>`
+        node.firstChild.textContent = ''
+        node.insertBefore(steamName, node.childNodes[0])
+      }
+    })
+
   }
 
 
 
 
-  const symbolPostContent = {
-
-    Steam_icon_logo_post: "keylolSteam_icon_logo_post",
-
-    hide: "keylolhide",
-    jubao: "keyloljubao",
-    postaddscore: "keylolpostaddscore",
-    shoucang: "keylolshoucang",
-    tiezidaoju: "keyloltiezidaoju",
-    zhichi: "keylolzhichi"
-  }
 
   const symbolPostTopBar = {
     posttime: "keyloltimesort",

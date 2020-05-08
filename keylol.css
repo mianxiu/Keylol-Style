@@ -3009,7 +3009,8 @@ td[id*="postmessage"]{
 	flex-direction:row-reverse;
 	
 }
-.authi .icon{
+.authi .icon,
+.steam-name .icon{
 	width:1.4em;
 	height:1.4em;
 	margin-right:4px;
@@ -3035,7 +3036,9 @@ td[id*="postmessage"]{
 	display:flex;
 }
 /*steam信息*/
-.steam_connect_user_bar{
+
+.steam_connect_user_bar,
+.steam-name{
 	display:inline-flex;
 	height:var(--element-height-34);
 	color:var(--font-nomal);	
@@ -3043,13 +3046,15 @@ td[id*="postmessage"]{
 	overflow:hidden;
 	align-items:center;
 }
-.steam_connect_user_bar a{
+.steam_connect_user_bar a,
+.steam-name{
 	transition:.2s all;
 	padding:10px;
 	background-color:var(--body-background);
 }
 
-.steam_connect_user_bar a:hover{
+.steam_connect_user_bar a:hover,
+.steam-name:hover{
 	background-color:var(--input-background);
 }
 /*个性签名*/
