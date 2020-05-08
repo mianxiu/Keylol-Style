@@ -674,8 +674,8 @@
     agree: "keylolagree",
     reply: "keylolreply",
     newpost: "keylolnewpost",
-    hidetop: "keylolhidetop",
     createnewpost: "keylolcreatenewpost",
+    hidetop: "keylolhidetop",
     lock: "keylollock",
     postdigest: "keylolpostdigest",
     postattachment: "keylolpostattachment",
@@ -812,11 +812,33 @@
    * 发帖按钮
    */
   function renderNewBtn() {
+    const symbolPostBotton = {
+      createnewpost: "keylolcreatenewpost",
+      comments: "keylolcomments"
+    }
+
 
     let mnNavLeft = $(`.mn-nav-left`)
-    // new post btn
-    $(`#pgt>a`).innerHTML = `${symbolHTML(symbolHotPostInfo.createnewpost)}<span>发新帖</span>`
-    mnNavLeft.insertBefore($(`#pgt>a`), null)
+    let newPostNode = $(`#pgt>a`)
+    let replyPostNode = $(`#post_reply`)
+
+
+    if (replyPostNode !== null) {
+
+      // 发帖按钮
+      newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span></span>`
+      mnNavLeft.insertBefore($(`#pgt>a`), null)
+
+      // 回复按钮  
+      replyPostNode.innerHTML = `${symbolHTML(symbolPostBotton.comments)}<span>回复</span>`
+      mnNavLeft.insertBefore($(`#pgt>a`), null)
+    }
+    else{
+            // 发帖按钮
+            newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span>发贴</span>`
+            mnNavLeft.insertBefore($(`#pgt>a`), null)
+    }
+
 
   }
 
