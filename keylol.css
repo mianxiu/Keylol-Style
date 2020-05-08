@@ -2874,6 +2874,7 @@ div[id*="rt_rt_"] input {
 	align-self:flex-start;
 }
 
+
 /*hide 前端太渣*/
 #mn-content-title+#mn-nav-parent>div.mn-nav-right>div.mn-nav-right-control-panel>div:nth-child(1),
 #mn-content-title+#mn-nav-parent>div.mn-nav-right>div.mn-nav-right-control-panel>div:nth-child(2) {
@@ -2889,7 +2890,18 @@ table[id*="pid"] > tbody{
 	justify-content:space-between;
 	max-width:var(--body-width);
 }
-
+/*回帖奖励信息*/
+#pl_top{
+	display:flex;
+	background-color:var(--element-background);
+	height:var(--element-height-34);
+	align-items:center;
+	padding:var(--element-padding-0-10);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+	margin-bottom:18px;
+		
+}
 #mn-content-title a {
   padding: 8px 0;
   font-size: 18px;
