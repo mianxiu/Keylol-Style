@@ -1642,8 +1642,9 @@
       steamcreate:/<a.+?type=create.+?a>/gm,
       percent:/<a.+?%.+?a>/gm,
       steampoint:/<a\s{0,}class.+?do=profile.+?>\d{0,}(?!%)<\/a>/gm,
-      steamcreate:/<a.+?type=thread.+?<\/a>/gm,
-      steamcreate:/<a.+?type=create.+?a>/gm
+      post:/<a.+?type=thread.+?<\/a>/gm,
+      comments:/(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{1,}&amp;do=thread&amp;type=reply.+?>)(\d{1,})(<\/a>)/gm,
+      coin:/(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile".+?xi2">)(\d{0,})(<\/a>)/gm
 
     }
 
