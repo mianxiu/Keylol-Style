@@ -1730,6 +1730,9 @@
   }
 
 
+  /**
+   * 移动帖子布局
+   */
   function movePostElement() {
 
     let postLists = $All(`#postlist > [id^="post_"]`)
@@ -1738,7 +1741,9 @@
      * 
      * @param {Element} favatarNode 用户卡片
      * @param {Element} postContentNode 帖子内容
+     * @param {Element} collectBtn 收藏按钮
      * @param {Element} postBottomBar 帖子底部支持、举报栏
+     * @param {Element} sign 个人签名
      */
     function postTamplate(favatarNode, postContentNode, collectBtn, postBottomBar, sign) {
 
@@ -1756,8 +1761,7 @@
     postLists.forEach(post => {
       let id = post.id
 
-
-
+      
       let favatarSelector = $(`#${id} div[id*="favatar"]`)
       let postConentSelector = $(`#${id} .plc`)
       let collectBtn = $(`#${id} #p_btn`)
