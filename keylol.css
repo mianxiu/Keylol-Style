@@ -2869,9 +2869,12 @@ div[id*="rt_rt_"] input {
 
 table[id*="pid"],
 table[id*="pid"] tr,
-table[id*="pid"] td {
+table[id*="pid"] td,
+table[id*="pid"] > tbody{
   display: flex;
   position: sticky;
+	justify-content:space-between;
+	max-width:var(--body-width);
 }
 
 #mn-content-title a {
@@ -2952,4 +2955,13 @@ div[id*="favatar"] {
 .favatar p {
   margin-block-start: 0px;
   margin-block-end: 0px;
+}
+/*-----内容-----*/
+.pcb{
+	display:flex;
+	flex-direction:column;
+}
+td[id*="postmessage"]{
+	display:flex;
+	flex-direction:column;s
 }
