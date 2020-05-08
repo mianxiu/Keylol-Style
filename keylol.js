@@ -414,7 +414,7 @@
 
     // 登录状态
     if (navNodes.highLightNode !== null) {
-      console.log(123131)
+  
       let i = 0
       for (const key in navNodes) {
         let node = navNodes[key]
@@ -426,7 +426,7 @@
         i++
       }
     } else {
-      console.log(111123231)
+ 
       // 未登录只插入搜索
       navNodes.searchNode.insertBefore(symbolHTMLNode(symbolNav[0]), navNodes.searchNode.children[0])
     }
