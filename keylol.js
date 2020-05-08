@@ -1652,7 +1652,7 @@
       steampoint: /td.+?(<a\s{0,}class.+?do=profile.+?>\d{0,}(?!%)<\/a>).+?p>(.+?)<\/td>/gm,
       post: /(<a.+?type=thread.+?>\d{0,}<\/a>).+?\/p>(.+?)<\/th>/gm,
       comments: /<th><p>(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=thread&amp;type=reply&amp;view=me&amp;from=space".+?>.+?\/a>)<\/p>(.+?)<\/th>/gm,
-      coin:/<p>(<a href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile"\s{0,}class="xi2".+?\/a>)<\/p>(.+?)<\/td>/gm
+      coin: /<p>(<a href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile"\s{0,}class="xi2".+?\/a>)<\/p>(.+?)<\/td>/gm
 
     }
 
@@ -1673,6 +1673,7 @@
       let elementMatch = favatarHTML.match(postUserInfoRegx.customstatus)
       return elementMatch !== null ? elementMatch[0] : ''
     }
+
 
     function favatarStatus() {
 
@@ -1700,6 +1701,15 @@
 
     }
 
+    function level() {
+      let elementMatch = favatarHTML.match(postUserInfoRegx.level)
+      return elementMatch !== null ? elementMatch[0] : ''
+    }
+
+    function medal() {
+      let elementMatch = favatarHTML.match(postUserInfoRegx.medal)
+      return elementMatch !== null ? elementMatch[0] : ''
+    }
 
 
     let favatarTemplate = `
@@ -1710,6 +1720,10 @@
     </div>
     <div class="favatar-mid">
         ${favatarStatus()}
+    </div>
+    <div class="favatar-bottom">
+     ${level()}
+     ${medal()}
     </div>
     `
 
