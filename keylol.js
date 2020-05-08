@@ -1619,7 +1619,7 @@
     zhichi: "keylolzhichi"
   }
 
-  const symbolPostFavatar = {
+  const symbolPostStatus = {
     coin: "keylolcoin",
     percent: "keylolpercent",
     steamcreate: "keylolsteamcreate",
@@ -1635,20 +1635,24 @@
   function renderPostFavatar(favatarNode) {
 
 
-    const postFavatarRegx = {
-
-      // authi">
+    const postUserInfoRegx = {
+      // 头像用户名等
       username: /(<a.+?suid.+?>.+?<\/a>)/gm,
       avatar: /<div.+?avatar.+?img.+div>/gm,
+      customstatus: /<p.+customstatus.+?<\/p>/gm,
+      medal: /<p.+?class="md_ctrl.+?p>/gm,
+      level: /<a.+usergroup.+?img.+?<\/a>/gm,
+    }
+
+    const postStatusRegx = {
+
+      // 积分信息    
       steamcreate: /(<a.+?type=create.+?>.+?<\/a>)<\/p>(.+?)<\/th>/gm,
       percent: /th.+?(<a.+?\d{0,}%<\/a>).+?p>(.+?)<\/th>/gm,
-      steampoint: /td.+?(<a\s{0,}class.+?do=profile.+?>)(\d{0,})(?!%)(<\/a>).+?p>(.+?)<\/td>/gm,
-      post: /(<a.+?type=thread.+?>)(\d{0,})(<\/a>).+?\/p>(.+?)<\/th>/gm,
-      comments: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{1,}&amp;do=thread&amp;type=reply.+?>)(\d{1,})(<\/a>)<\/p>(.+?)<\/th>/gm,
-      coin: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile".+?xi2">)(\d{0,})(<\/a>).+?p>(.+?)<\/td>/gm,
-      level: /<a.+usergroup.+?img.+?<\/a>/gm,
-      customstatus: /<p.+customstatus.+?<\/p>/gm,
-      medal: /<p.+?class="md_ctrl.+?p>/gm
+      steampoint: /td.+?(<a\s{0,}class.+?do=profile.+?>\d{0,}(?!%)<\/a>).+?p>(.+?)<\/td>/gm,
+      post: /(<a.+?type=thread.+?>\d{0,}<\/a>).+?\/p>(.+?)<\/th>/gm,
+      comments: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{1,}&amp;do=thread&amp;type=reply.+?>\d{1,}<\/a>)<\/p>(.+?)<\/th>/gm,
+      coin: /(<a\s{0,}href="home\.php\?mod=space&amp;uid=\d{0,}&amp;do=profile".+?xi2">\d{0,}<\/a>).+?p>(.+?)<\/td>/gm
 
     }
 
@@ -1656,29 +1660,47 @@
 
 
     function avatar() {
-      let elementMatch = favatarHTML.match(postFavatarRegx.avatar)
+      let elementMatch = favatarHTML.match(postUserInfoRegx.avatar)
       return elementMatch !== null ? elementMatch[0] : ''
     }
 
     function username() {
-      let elementMatch = favatarHTML.match(postFavatarRegx.username)
+      let elementMatch = favatarHTML.match(postUserInfoRegx.username)
       return elementMatch !== null ? elementMatch[0] : ''
     }
 
     function customStatus() {
-      let elementMatch = favatarHTML.match(postFavatarRegx.customstatus)
+      let elementMatch = favatarHTML.match(postUserInfoRegx.customstatus)
       return elementMatch !== null ? elementMatch[0] : ''
     }
 
-    function steamcreate() {
-      let elementMatch = favatarHTML.match(postFavatarRegx.steamcreate)
-      return elementMatch != null ? elementMatch[0].replace(postFavatarRegx.steamcreate,
-        `<span class="favatar-info-title">${symbolHTML(symbolPostFavatar.steamcreate)}<span>$2</span></span>
-      <span>$1</span>
-      `
-      )
-        : ''
+    function favatarStatus() {
+
+      let favatarStatusTemplate = ``
+
+      for (const key in postStatusRegx) {
+        if (postStatusRegx[key].test(favatarHTML) === true) {
+
+          let elementMatch = favatarHTML.match(postStatusRegx[key])[0]
+
+          favatarStatusTemplate += elementMatch.replace(postStatusRegx[key],
+            `
+            <div>
+            <span class="favatar-info-title">${symbolHTML(symbolPostStatus[key])}<span>$2</span></span>
+            <span>$1</span>
+            </div>
+          `
+          )
+
+        }
+      }
+
+
+      return favatarStatusTemplate
+
     }
+
+
 
     let favatarTemplate = `
     <div class="favatar-top">
@@ -1686,8 +1708,8 @@
         <div class="favatar-name">${username()}</div>
         <div class="favatar-status">${customStatus()}</div>
     </div>
-    <div class="favatar-mid">
-        <div class="">${steamcreate()}</div>
+    < class="favatar-mid">
+        ${favatarStatus()}
     </div>
     `
 
