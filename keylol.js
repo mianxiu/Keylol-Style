@@ -1736,28 +1736,33 @@
 
     /**
      * 
-     * @param {Element} favatarNode 
-     * @param {Element} postContentNode 
+     * @param {Element} favatarNode 用户卡片
+     * @param {Element} postContentNode 帖子内容
+     * @param {Element} postBottomBar 帖子底部支持、举报栏
      */
-    function postTamplate(favatarNode,postContentNode){
+    function postTamplate(favatarNode, postContentNode, postBottomBar) {
 
       return `
       <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
-      <div class="post-content">${postContentNode.innerHTML}</div>
+      <div class="post-content">
+      <div class="post-content-top">${postContentNode.innerHTML}</div>
+      <div class="post-content-bottom">${postBottomBar.innerHTML}</div>
+      </div>
       `
-      
+
     }
 
     postLists.forEach(post => {
       let id = post.id
-      
+
 
 
       let favatarSelector = $(`#${id} div[id*="favatar"]`)
       let postConentSelector = $(`#${id} .plc`)
+      let postBottomBar = $(`#${id} .po.hin`)
 
-      post.innerHTML = postTamplate(favatarSelector,postConentSelector)
-      console.log(favatarSelector,postConentSelector)
+      post.innerHTML = postTamplate(favatarSelector, postConentSelector,postBottomBar)
+      console.log(favatarSelector, postConentSelector)
     })
   }
 
