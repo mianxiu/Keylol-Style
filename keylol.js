@@ -1593,33 +1593,15 @@
 
     // // 移动节点
     let titleNode = $(`#thread_subject`)
-    // let newPostNode = $(`#newspecial`)
-    // let replyNode = $(`#post_reply`)
+    let tagInfo = $(`.subforum_left_title_left_up a:last-child`)
     let infoNode = $(`.subforum_right_title`)
-
-    // let pgNode = $(`#pgt .pg`)
-    // let collectNode = $(`#k_favorite`)
-    // let copyLinkNode = $(`a[onclick*="opyThreadUrl"]`)
-
 
     let postContentTitle = $(`#mn-content-title`)
     let postNavLeft = $(`.mn-nav-left`)
-    // let postNavRight = $(`.post-nav-right`)
-    // let postControlPanel = $(`.post-nav-right-control-panel`)
-
 
     postContentTitle.insertBefore(titleNode, null)
-    // postNavLeft.insertBefore(newPostNode, null)
-    // replyNode !== null ? postNavLeft.insertBefore(replyNode, null) : null
+    postContentTitle.insertBefore(tagInfo, null)
     postNavLeft.insertBefore(infoNode, null)
-
-    // console.log(collectNode)
-    // console.log(copyLinkNode)
-    // pgNode !== null ? postNavRight.insertBefore(pgNode, postControlPanel) : null
-    // postControlPanel.insertBefore(collectNode, null)
-    // postControlPanel.insertBefore(copyLinkNode, null)
-
-
 
   }
 

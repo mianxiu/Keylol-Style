@@ -2866,4 +2866,11 @@ div[id*="rt_rt_"] input {
 {
 	display:none;
 }
-
+#mn-content-title a{
+	font-size:18px;
+	color:var(--font-nomal);
+}
+#mn-content-title a:last-child{
+	margin-left:18px;
+	color:var(--font-second-title);
+}
