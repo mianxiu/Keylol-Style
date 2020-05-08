@@ -854,7 +854,7 @@
     post: "keylolpost",
     comments: "keylolcomments",
     viewnuminfo: "keylolviewnuminfo",
-    shoucang: "keylolshoucang"
+    shoucang:"keylolshoucang"
   }
   /**
    * 版块、帖子信息
@@ -879,14 +879,13 @@
 
     // 热门和子版导航不一样
     if (thread !== null) {
-
       // 热门导航
       mnNavLeft.insertBefore($(`#thread_types`), null)
     } else {
-
       // 子版信息
       $(`.subforum_right_title`).insertBefore($(`.subforum_left_title_left_down>div`), $(`.subforum_right_title`).children[0])
       mnNavLeft.insertBefore($(`.subforum`), null)
+
 
       // 子版信息symbol
       let left = $(`.subforum_right_title_left_up`)
@@ -894,14 +893,13 @@
       let right = $(`.subforum_right_title_right_up`)
 
       if (favatar === null) {
-
         // 子版块
         renderPostInfoChild(left, symbolPostListNav.todaynum)
         renderPostInfoChild(mid, symbolPostListNav.post)
         renderPostInfoChild(right, symbolPostListNav.comments)
 
       } else {
-
+      
         // 帖子页面
         renderPostInfoChild(left, symbolPostListNav.comments)
         renderPostInfoChild(mid, symbolPostListNav.viewnuminfo)
