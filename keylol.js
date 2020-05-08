@@ -410,11 +410,11 @@
       actionNode: $(`#nav-user-action-bar > ul > li > a[href*="do=pm"]`),
       highLightNode: $(`#nav-user-action-bar > ul > li > a[href*="view=mypost"]`),
     }
-    
+
 
     // 登录状态
     if (navNodes.highLightNode !== null) {
-  
+
       let i = 0
       for (const key in navNodes) {
         let node = navNodes[key]
@@ -426,7 +426,7 @@
         i++
       }
     } else {
- 
+
       // 未登录只插入搜索
       navNodes.searchNode.insertBefore(symbolHTMLNode(symbolNav[0]), navNodes.searchNode.children[0])
     }
@@ -1607,10 +1607,37 @@
   const symbolPostFavatar = {
 
   }
-  function postFavatar(){
+
+  /**
+   * 
+   * @param {Element} favatarNode 
+   */
+  function renderPostFavatar(favatarNode) {
+
+    let favatarHTML = favatarNode.innerHTML
+
+
+    console.log(favatars)
 
   }
 
+
+  /**
+   * 帖子渲染函数组合
+   * 
+   * renderPostFavatar 用户面板
+   * 
+   * 
+   */
+  function renderPostContent() {
+
+    let favatarNodes = $All(`div[id*="favatar"]`)
+
+    favatarNodes.forEach(node => {
+      renderPostFavatar(node)
+    })
+
+  }
 
   /**---------------------------------------------- */
   /**
@@ -1687,8 +1714,9 @@
       renderNewBtn()
       renderPostInfo()
       renderPagePanel()
+      
+      renderPostContent()
       renderControlPanel()
-
     }
   }
 
