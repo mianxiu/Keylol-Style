@@ -2885,10 +2885,58 @@ div[id*="favatar"]{
 	display:flex;
 	width:180px;
 	flex-direction:column;
+	background-color:var(--element-background);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+	overflow:hidden;
 }
 
 .favatar-avatar img{
 display:flex;
 	border-radius:var(--border-radius-10);
 	
+}
+.favatar-top{
+	display:flex;
+	flex-direction:column;
+	justify-content:center;
+}
+.favatar-status{
+	color:var(--font-nomal);
+}
+.favatar-avatar{
+	margin:var(--element-margin-bottom-18);
+	display:flex;
+	justify-content:center;
+}
+.favatar-name,
+.favatar-status{
+	padding:4px 20px;
+}
+/*-积分信息-*/
+.favatar-mid{
+	padding:8px 0;
+	color:var(--font-nomal);
+}
+.favatar-mid > div,
+.favatar-info-title{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+	
+}
+.favatar-mid > div{
+	justify-content:space-between;
+	padding:4px 20px;
+	
+}
+
+.favatar-info-title .icon{
+	width:1.6em;
+	height:1.6em;
+	margin-right:10px;
+}
+.favatar p{
+	margin-block-start:0px;
+	margin-block-end:0px;
 }
