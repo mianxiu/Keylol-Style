@@ -3036,9 +3036,12 @@ td[id*="postmessage"]{
 	display:flex;
 }
 /*steam信息*/
-
+.steam_connect_user_bar{
+	margin-bottom:18px;
+}
 .steam_connect_user_bar,
 .steam-name{
+	font-size:var(--font-size-12);
 	display:inline-flex;
 	height:var(--element-height-34);
 	color:var(--font-nomal);	
