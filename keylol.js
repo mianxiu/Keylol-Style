@@ -827,18 +827,20 @@
 
     if (replyPostNode !== null) {
 
-      // 发帖按钮
-      newFromPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span></span>`
-      mnNavLeft.insertBefore(newFromPostNode, null)
-
+      // 倒序插入为第一节点
       // 回复按钮  
       replyPostNode.innerHTML = `${symbolHTML(symbolPostBotton.comments)}<span>回复</span>`
-      mnNavLeft.insertBefore(replyPostNode, null)
+      mnNavLeft.insertBefore(replyPostNode, mnNavLeft.childNodes[0])
+
+      // 发帖按钮
+      newFromPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span></span>`
+      mnNavLeft.insertBefore(newFromPostNode, mnNavLeft.childNodes[0])
+
     }
     else {
       // 发帖按钮
       newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span>发贴</span>`
-      mnNavLeft.insertBefore(newPostNode, null)
+      mnNavLeft.insertBefore(newPostNode, mnNavLeft.childNodes[0])
     }
 
 
@@ -854,7 +856,7 @@
     post: "keylolpost",
     comments: "keylolcomments",
     viewnuminfo: "keylolviewnuminfo",
-    shoucang:"keylolshoucang"
+    shoucang: "keylolshoucang"
   }
   /**
    * 版块、帖子信息
@@ -899,7 +901,7 @@
         renderPostInfoChild(right, symbolPostListNav.comments)
 
       } else {
-      
+
         // 帖子页面
         renderPostInfoChild(left, symbolPostListNav.comments)
         renderPostInfoChild(mid, symbolPostListNav.viewnuminfo)
