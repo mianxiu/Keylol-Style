@@ -1629,6 +1629,26 @@
    */
   function renderPostFavatar(favatarNode) {
 
+
+    const symbolPostFavatarRegx = {
+
+      Steam_icon_logo_post: "keylolSteam_icon_logo_post",
+      aZ: "keylola-z",
+      aZ1: "keylola-z-1",
+      coin: "keylolcoin",
+      hide: "keylolhide",
+      jubao: "keyloljubao",
+      onlyposter: "keylolonlyposter",
+      percent: "keylolpercent",
+      postaddscore: "keylolpostaddscore",
+      readmode: "keylolreadmode",
+      shoucang: "keylolshoucang",
+      steampoint: "keylolsteampoint",
+      steamcreate: "keylolsteamcreate",
+      tiezidaoju: "keyloltiezidaoju",
+      zhichi: "keylolzhichi"
+    }
+
     let favatarHTML = favatarNode.innerHTML
 
 
