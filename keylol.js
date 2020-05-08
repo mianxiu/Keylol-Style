@@ -1629,11 +1629,10 @@
   }
 
   /**
-   * 
+   * 渲染用户卡片
    * @param {Element} favatarNode 
    */
   function renderPostFavatar(favatarNode) {
-
 
     const postUserInfoRegx = {
       // 头像用户名等
@@ -1726,13 +1725,41 @@
      ${medal()}
     </div>
     `
-
-
     favatarNode.innerHTML = favatarTemplate
-
 
   }
 
+
+  function movePostElement() {
+
+    let postLists = $All(`#postlist > [id^="post_"]`)
+
+    /**
+     * 
+     * @param {Element} favatarNode 
+     * @param {Element} postContentNode 
+     */
+    function postTamplate(favatarNode,postContentNode){
+
+      return `
+      <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
+      <div class="post-content">${postContentNode.innerHTML}</div>
+      `
+      
+    }
+
+    postLists.forEach(post => {
+      let id = post.id
+      
+
+
+      let favatarSelector = $(`#${id} div[id*="favatar"]`)
+      let postConentSelector = $(`#${id} .plc`)
+
+      post.innerHTML = postTamplate(favatarSelector,postConentSelector)
+      console.log(favatarSelector,postConentSelector)
+    })
+  }
 
   /**
    * 帖子渲染函数组合
@@ -1743,8 +1770,9 @@
    */
   function renderPostContent() {
 
-    let favatarNodes = $All(`div[id*="favatar"]`)
+    movePostElement()
 
+    let favatarNodes = $All(`div[id*="favatar"]`)
     favatarNodes.forEach(node => {
       renderPostFavatar(node)
     })
