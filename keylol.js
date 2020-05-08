@@ -1708,7 +1708,7 @@
         <div class="favatar-name">${username()}</div>
         <div class="favatar-status">${customStatus()}</div>
     </div>
-    < class="favatar-mid">
+    <div class="favatar-mid">
         ${favatarStatus()}
     </div>
     `
