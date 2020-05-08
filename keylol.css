@@ -2992,6 +2992,13 @@ td[id*="postmessage"]{
 	flex-direction:column;
 }
 /*顶部栏*/
+.pi{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
+	flex-direction:row-reverse;
+	
+}
 .authi .icon{
 	width:1.6em;
 	height:1.6em;
@@ -3006,4 +3013,10 @@ td[id*="postmessage"]{
 	display:flex;
 	align-items:center;
 	padding:8px 10px;
+}
+
+
+/*电梯*/
+#fj input{
+	display:flex;
 }
