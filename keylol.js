@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_gp2i2yzhb75.js
-// @require      https://at.alicdn.com/t/font_1804200_j5y9vsvkxa.js
+// @require      https://at.alicdn.com/t/font_1804200_uk2i2h218oq.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1604,23 +1604,28 @@
   }
 
 
-  const symbolPostFavatar = {
+  const symbolPostContent = {
 
     Steam_icon_logo_post: "keylolSteam_icon_logo_post",
     aZ: "keylola-z",
-    aZ1: "keylola-z-1",
-    coin: "keylolcoin",
+    aZ1: "keylola-z-1", 
     hide: "keylolhide",
     jubao: "keyloljubao",
     onlyposter: "keylolonlyposter",
-    percent: "keylolpercent",
     postaddscore: "keylolpostaddscore",
     readmode: "keylolreadmode",
     shoucang: "keylolshoucang",
-    steampoint: "keylolsteampoint",
-    steamcreate: "keylolsteamcreate",
     tiezidaoju: "keyloltiezidaoju",
     zhichi: "keylolzhichi"
+  }
+
+  const symbolPostFavatar = {
+    coin: "keylolcoin",
+    percent: "keylolpercent",
+    steamcreate: "keylolsteamcreate",
+    comments:"keylolcomments",
+    post:"keylolpost",
+    steampoint: "keylolsteampoint"
   }
 
   /**
@@ -1630,26 +1635,22 @@
   function renderPostFavatar(favatarNode) {
 
 
-    const symbolPostFavatarRegx = {
+    const postFavatarRegx = {
 
-      Steam_icon_logo_post: "keylolSteam_icon_logo_post",
-      aZ: "keylola-z",
-      aZ1: "keylola-z-1",
-      coin: "keylolcoin",
-      hide: "keylolhide",
-      jubao: "keyloljubao",
-      onlyposter: "keylolonlyposter",
-      percent: "keylolpercent",
-      postaddscore: "keylolpostaddscore",
-      readmode: "keylolreadmode",
-      shoucang: "keylolshoucang",
-      steampoint: "keylolsteampoint",
-      steamcreate: "keylolsteamcreate",
-      tiezidaoju: "keyloltiezidaoju",
-      zhichi: "keylolzhichi"
+      username:/authi"><a.+?suid.+?>(.+?)<\/a>/gm,
+      avatar:/<div.+?avatar.+?img.+div>/gm,
+      steamcreate:/<a.+?type=create.+?a>/gm,
+      percent:/<a.+?%.+?a>/gm,
+      steampoint:/<a\s{0,}class.+?do=profile.+?>\d{0,}(?!%)<\/a>/gm,
+      steamcreate:/<a.+?type=thread.+?<\/a>/gm,
+      steamcreate:/<a.+?type=create.+?a>/gm
+
     }
 
     let favatarHTML = favatarNode.innerHTML
+
+    let favatarTemplate = `
+    `
 
 
     console.log(favatars)
