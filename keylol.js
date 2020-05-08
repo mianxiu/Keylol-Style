@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_gp2i2yzhb75.js
-// @require      https://at.alicdn.com/t/font_1804200_9tm3e6x8ol.js
+// @require      https://at.alicdn.com/t/font_1804200_xx04ivi9ner.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1765,7 +1765,7 @@
       hide: "keylolhide",
       jubao: "keyloljubao",
       postaddscore: "keylolpostaddscore",
-      shoucang: "keylolshoucang",
+      shoucang: "keylolshoucangline",
       tiezidaoju: "keyloltiezidaoju",
       zhichi: "keylolzhichi",
       reply: "keylolcomments"
@@ -1787,19 +1787,22 @@
 
     // 支持收藏举报等按钮
     const symbolPostContentRegx = {
-      tiezidcju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>)/gm,
-      //hide: "keylolhide",
-      jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm,
-      //postaddscore: "keylolpostaddscore",
-      //shoucang: "keylolshoucang",
+      reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gms,
+      shoucang: /(<a.+?ac=favorite.+?>)(.+?)(<\/a>)/gm,
+      //tiezidaoju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>)/gm,
+      tiezidaoju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>).+?(<ul.+>.+?<\/ul>)/gms,
+      //hide: "keylolhide",   
+      //postaddscore: "keylolpostaddscore",   
       zhichi: /(<a.+?replyadd.+?>)(.+?)(<\/a>)/gm,
-      reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gms
+      jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm
     }
 
-    let popCl = $All(`.pob.cl`)
+    let popCl = $All(`.post-bottom`)
+
+    console.log(popCl[0].innerHTML)
 
     popCl.forEach(node => {
-
+      console.log(node.innerHTML)
       let popClTemplate = ``
       let nodeHTML = node.innerHTML
 
@@ -1810,6 +1813,7 @@
           $1
           <span>${symbolHTML(symbolPostContent[key])}</span>
           <span>$2</span>
+          ${key === 'tiezidaoju' ? `<span class="mgc-post-list">$4</span>` : ''}
           $3
           `)
 
