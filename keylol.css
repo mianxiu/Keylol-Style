@@ -100,7 +100,7 @@
 
   /* context */
   --quote:#F4F4F4;
-	 --context-yellow:#F8F0DF;
+--context-yellow:#F8F0DF;
 
 
   /* font */
@@ -172,7 +172,7 @@
 
   /* context */
   --quote:#081423;
-  --context-yellow:#F8F0DF;
+  --context-yellow:#B7AC95;
   
 
   /* font */
@@ -3283,6 +3283,7 @@ blockquote{
 	color:var(--font-nomal)
 }
 [id*="ratelog_"]{
+	margin-left:-30px;
 	display:inline-flex;
 	padding:30px;
 	background-color:var(--context-yellow);
@@ -3296,7 +3297,7 @@ blockquote{
 	border-radius: var(--border-radius-200);
 	width:18px;
 	height:18px;
-	
+	margin-right:8px;
 }
 [id*="ratelog_"] .xw1,
 [id*="ratelog_"] .xw1 a{
@@ -3306,6 +3307,8 @@ blockquote{
 [id*="ratelog_"] .xw1 a .icon{
 	width:1.8em;
 	height:1.8em;
+	margin-left:-8px;
+	margin-right:8px
 }
 [id*="ratelog_"] .xw1 a{
 		display:flex;
@@ -3315,12 +3318,30 @@ blockquote{
 	font-style:normal;
 	
 }
+
+
 [id*="ratelog_"] span{
-	
+		color:var(--font-nomal);
+}
+.darkmode-css [id*="ratelog_"] span,
+[id*="ratelog_"] a{
+	color:#2c2c2c;
+	white-space:nowrap;
 }
 [id^="rate_"] td:nth-child(1){
+	display:flex;	
+}
+[id*="ratelog_"] th:last-child a{
+	display:none;
+}
+
+.ratc{
+	margin-top:5px
+}
+[id*="ratelog_"] [id^="rate_"] td:nth-child(1){
 	display:flex;
-	
+	height:24px;
+	align-items:center;
 }
 .cm h3{
 	display:inline-flex;
