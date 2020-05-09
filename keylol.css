@@ -3105,6 +3105,7 @@ td[id*="postmessage"]{
 	
 }
 .post-bottom{
+	padding:8px;
 	width: var(--post-right-width);
 	display:flex;
 	justify-content:flex-end;
@@ -3112,10 +3113,18 @@ td[id*="postmessage"]{
 	position:absolute;
 }
 
-.post-bottom a{
+.post-bottom > a{
+	transition:.2s all;
 	display:flex;
 	align-items:center;
+	height:var(--element-height-34);
+	padding:var(--element-padding-0-10);
+	background-color:var(--element-background);
+	border-radius:var(--border-radius-10);
 	
+}
+.post-bottom a:hover{
+	background-color:var(--background-color);
 }
 /*道具列表*/
 .post-bottom ul[id*="mgc_post_"]{
@@ -3130,6 +3139,8 @@ td[id*="postmessage"]{
 	overflow:hidden;
 }
 .post-bottom ul[id*="mgc_post_"] a[id^="a_"]{
+	display:flex;
+	align-items:center;
 	color:var(--font-nomal);
 	height:var(--element-height-34);
 	background-color:var(--background-color);
