@@ -3012,7 +3012,9 @@ div[id*="favatar"] {
   padding: 8px 0;
   color: var(--font-nomal);
 }
-
+.favatar-mid .icon{
+	color:var(--icon-fill);
+}
 .favatar-mid>div,
 .favatar-info-title {
   display: flex;
