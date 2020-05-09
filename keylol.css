@@ -2877,6 +2877,10 @@ div[id*="rt_rt_"] input {
 #postlist > [id^="post_"] img[src*="smiley"]{
 	width:60px;
 }
+/*大猫*/
+#postlist > [id^="post_"] img[src*="smiley/steamcn_8"]{
+	width:80px;
+}
 
 
 /*icon 全局*/
