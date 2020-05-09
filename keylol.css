@@ -3117,3 +3117,29 @@ td[id*="postmessage"]{
 	align-items:center;
 	
 }
+/*道具列表*/
+.post-bottom ul[id*="mgc_post_"]{
+    display: flex;
+    left: 0px!important;
+    top: 0!important; 
+	margin-left:890px;
+	margin-top:20px;
+	 box-shadow:var(--shadow-hot);
+	flex-direction:column;
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+}
+.post-bottom ul[id*="mgc_post_"] a[id^="a_"]{
+	color:var(--font-nomal);
+	height:var(--element-height-34);
+	background-color:var(--background-color);
+	padding:var(--element-padding-0-10);
+	
+	
+}
+.darkmode-css .post-bottom ul[id*="mgc_post_"] a[id^="a_"]{
+	background-color:var(--body-background);
+}
+.post-bottom ul[id*="mgc_post_"] a[id^="a_"]:hover{
+	background-color:var(--input-background);
+}

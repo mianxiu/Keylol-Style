@@ -1821,7 +1821,8 @@
           let nodeMatch = nodeHTML.match(symbolPostContentRegx[key])[0].replace(symbolPostContentRegx[key], `
           $1
           <span>${symbolHTML(symbolPostContent[key])}</span>
-          <span>$2</span>
+          <span>$2
+          </span>
           ${key === 'tiezidaoju' ? `<span class="mgc-post-list">$4</span>` : ''}
           $3
           `)
