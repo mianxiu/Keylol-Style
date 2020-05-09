@@ -101,6 +101,7 @@
   /* context */
   --quote:#F4F4F4;
 --context-yellow:#F8F0DF;
+	--context-reward:#ffca37;
 
 
   /* font */
@@ -173,6 +174,7 @@
   /* context */
   --quote:#081423;
   --context-yellow:#B7AC95;
+	--context-reward:#d49c3c;
   
 
   /* font */
@@ -3240,6 +3242,9 @@ td[id*="postmessage"] {
 }
 
 /*----内容渲染---*/
+h1,h2,h3,h4,h5,h6{
+	color:var(--font-nomal);
+}
 h3.psth,xs1{
 	display:none;
 }
@@ -3260,7 +3265,9 @@ h3.psth,xs1{
 #copyright a{
 	color:var(--font-visit);
 }
-.locked {
+
+.locked{
+	margin:10px 0;
   color: var(--help-yellow-key);
   background-color: var(--help-yellow);
   border: 2px dashed var(--help-yellow-key);
@@ -3268,7 +3275,21 @@ h3.psth,xs1{
 
 }
 
+.showhide{
+  margin:10px 0;
+  color: var(--help-yellow-key);
+  border: 2px dashed var(--help-yellow-key);
+  padding: 8px;
+}
+.darkmode-css .showhide{
+	border-color:var(--font-visit);
+}
+.darkmode-css .showhide p{
+	color:var(--font-nomal)
+}
+
 img[id*="aimg_"]{
+	margin:8px 0;
   border-radius: var(--border-radius-2);
 }
 
@@ -3293,6 +3314,7 @@ blockquote{
 #copyright p{
 	color:var(--font-nomal)
 }
+/*加分*/
 [id*="ratelog_"]{
 	margin-left:-30px;
 	display:inline-flex;
@@ -3347,7 +3369,6 @@ blockquote{
 [id*="ratelog_"] th:last-child a{
 	display:none;
 }
-
 .ratc{
 	margin-top:17px;
 }
@@ -3356,12 +3377,83 @@ blockquote{
 	height:24px;
 	align-items:center;
 }
-
+/*目录*/
+.tindex h3:before{
+	margin-top:1.8em;
+	position:absolute;
+	content:'';
+	width:18px;
+	height:4px;
+	background-color:var(--font-nomal);
+	margin-right:18px;
+	border-radius:var(--border-radius-2);
+	
+}
+.tindex ul{
+	
+	display:inline-flex;
+	flex-direction:column;
+	
+}
+.tindex li{
+	transition:.2s all;
+	color:var(--font-nomal);
+	height:var(--element-height-34);
+	border-radius:var(--border-radius-10);
+	display:inline-flex;
+	padding:0 8px;
+	align-items:center;
+	cursor:pointer;
+}
+.tindex li:before{
+	content:'';
+	width:6px;
+	height:2px;
+	background-color:var(--font-nomal);
+	margin-right:18px;
+	border-radius:var(--border-radius-2);
+	
+}
+.tindex li:hover{
+	background-color:var(--background-color);
+}
 
 .cm h3{
 	display:inline-flex;
 	font-size:var(--font-size-12);
 	padding:10px;
-	background:red;
+	background:var(--context-reward);
 	margin:0px 0px 18px 0px;
+	border-radius:0 var(--border-radius-10) var(--border-radius-10) 0;
+}
+/*最后编辑*/
+.pstatus{
+	margin:18px 0;
+	display:inline-flex;
+	align-items:center;
+	font-style:normal;
+	color:var(--font-point);
+	background-color:var(--point);
+	padding:0 18px;
+	height:var(--element-height-34);
+	border-radius:var(--border-radius-10);
+	
+}
+/*机遇*/
+.psth.xs1.ple{
+	border-radius:0 var(--border-radius-10) var(--border-radius-10) 0;
+	color:var(--point);
+	display:inline-block;
+	margin:18px 0;
+	margin-left:-30px;
+	padding:8px 8px 8px 30px;
+}
+.darkmode-css .psth.xs1.ple a{
+	color:var(--point)
+}
+/*steam info*/
+.steam-info-wrapper iframe{
+	box-shadow:var(--shadow-hot);
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
 }

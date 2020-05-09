@@ -1239,7 +1239,7 @@
     let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ""
     let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ""
 
-    
+
     let lock =
       tableHTML.match(lockRegx) !== null
         ? `
@@ -1881,18 +1881,18 @@
       za: "keylolzA",
       onlyposter: "keylolonlyposter",
       readmode: "keylolreadmode",
-      allposter:"keylolallposter"
+      allposter: "keylolallposter"
     }
 
 
     // 对象顺序是按钮排序
     const postTopBarRegx = {
-      authNormalIcon:/()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
+      authNormalIcon: /()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
       // 图标
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
       postfrom: /(<span.+?xg1">)(.+?)(<\/span>)/gm,
       onlyposter: /(<a.+?authorid.+?>)(.+?)(<\/a>)/gm,
-      allposter:/(<a.+?href="t.+?rel="nofollow">)(.+?)(<\/a>)/gm,
+      allposter: /(<a.+?href="t.+?rel="nofollow">)(.+?)(<\/a>)/gm,
       az: /(<a.+?ordertype=2.+?>)(.+?)(<\/a>)/gm,
       za: /(<a.+?ordertype=1.+?>)(.+?)(<\/a>)/gm,
       readmode: /(<a.+?readmode.+?>)(.+?)(<\/a>)/gm
@@ -1911,7 +1911,7 @@
         if (postTopBarRegx[key].test(nodeHTML) == true) {
 
           postTopBarTemplate += nodeHTML.match(postTopBarRegx[key])[0].replace(postTopBarRegx[key],
-        `$1
+            `$1
         <span>
         ${key !== 'authNormalIcon' ? symbolHTML(symbolPostTopBar[key]) : ''}
         </span>
@@ -1939,12 +1939,10 @@
     }
     let ratelog = $(`#${post.id} [id*="ratelog_"] .xw1:nth-child(1) a`)
     if (ratelog !== null) {
-  
+
       ratelog.innerHTML = `${symbolHTML(symbolRatelog.postaddscore)}<span>${ratelog.innerHTML}</span>`
     }
   }
-
-
 
   /**
    * 
@@ -1969,7 +1967,6 @@
    */
   function renderPostContent() {
 
-
     let postLists = $All(`#postlist > [id^="post_"]`)
 
     postLists.forEach(postNode => {
@@ -1977,6 +1974,19 @@
     })
 
 
+    function listenPostTindex(post) {
+      let tindexUl = $(`#${post.id} #threadindex ul`)
+
+      let indexLiCallback = () => {
+        renderPostContext(post)
+      }
+
+      if (tindexUl != null) {
+        tindexUl.childNodes.forEach(li => {
+          li.addEventListener('click', indexLiCallback)
+        })
+      }
+    }
 
 
 
