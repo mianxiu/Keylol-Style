@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_gp2i2yzhb75.js
-// @require      https://at.alicdn.com/t/font_1804200_xx04ivi9ner.js
+// @require      https://at.alicdn.com/t/font_1804200_n3wgmivi7c9.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1880,16 +1880,19 @@
       az: "keylolaZ",
       za: "keylolzA",
       onlyposter: "keylolonlyposter",
-      readmode: "keylolreadmode"
+      readmode: "keylolreadmode",
+      allposter:"keylolallposter"
     }
 
 
+    // 对象顺序是按钮排序
     const postTopBarRegx = {
       authNormalIcon:/()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
       // 图标
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
       postfrom: /(<span.+?xg1">)(.+?)(<\/span>)/gm,
       onlyposter: /(<a.+?authorid.+?>)(.+?)(<\/a>)/gm,
+      allposter:/(<a.+?href="t.+?rel="nofollow">)(.+?)(<\/a>)/gm,
       az: /(<a.+?ordertype=2.+?>)(.+?)(<\/a>)/gm,
       za: /(<a.+?ordertype=1.+?>)(.+?)(<\/a>)/gm,
       readmode: /(<a.+?readmode.+?>)(.+?)(<\/a>)/gm
