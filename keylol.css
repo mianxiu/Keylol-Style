@@ -2872,6 +2872,13 @@ div[id*="rt_rt_"] input {
 	
 }
 
+
+/*表情全局*/
+#postlist > [id^="post_"] img[src*="smiley"]{
+	width:60px;
+}
+
+
 /*icon 全局*/
 .authi .icon,
 .steam-name .icon,
@@ -2888,6 +2895,7 @@ div[id*="rt_rt_"] input {
 .fastre .icon{
 	color:var(--icon-fill);
 }
+
 
 .post-user-card{
 	position:sticky;
