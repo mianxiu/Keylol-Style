@@ -747,7 +747,7 @@ body {
 }
 
 .slideshow>li>a>div {
-  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #1e1e1e 100%);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 50%, #1e1e1e 100%);
   position: absolute;
   top: 0;
 }
@@ -3282,14 +3282,44 @@ blockquote{
 #copyright p{
 	color:var(--font-nomal)
 }
-[id*="ratelog"] dd{
+[id*="ratelog_"]{
 	display:inline-flex;
-	background-color:var(--context-yellow)
+	padding:30px;
+	background-color:var(--context-yellow);
+	border-radius:0 10px 10px 0
+}
+[id*="ratelog_"] dd{
+	display:inline-flex;
+	
 }
 [id*="ratelog"] img{
 	border-radius: var(--border-radius-200);
 	width:18px;
 	height:18px;
+	
+}
+[id*="ratelog_"] .xw1,
+[id*="ratelog_"] .xw1 a{
+	color:var(--help-yellow-key);	
+}
+
+[id*="ratelog_"] .xw1 a .icon{
+	width:1.8em;
+	height:1.8em;
+}
+[id*="ratelog_"] .xw1 a{
+		display:flex;
+	   align-items:center;
+}
+[id*="ratelog_"] i{
+	font-style:normal;
+	
+}
+[id*="ratelog_"] span{
+	
+}
+[id^="rate_"] td:nth-child(1){
+	display:flex;
 	
 }
 .cm h3{

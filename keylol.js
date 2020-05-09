@@ -1737,7 +1737,7 @@
           <div class="post-content">
               <div class="post-content-top">
                  <div class="post-content-top-left">${postTopBarLeftSelector.innerHTML}</div>
-                 <div class="post-content-top-right">${postTopBarRightSelector.innerHTML.replace(postTopBarLeftSelector.innerHTML,'')}</div>
+                 <div class="post-content-top-right">${postTopBarRightSelector.innerHTML.replace(postTopBarLeftSelector.innerHTML, '')}</div>
               </div>
               <div class="post-content-mid">${postContentNode.innerHTML}</div>
               <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
@@ -1776,7 +1776,6 @@
       Steam_icon_logo_post: "keylolSteam_icon_logo_post",
       hide: "keylolhide",
       jubao: "keyloljubao",
-      postaddscore: "keylolpostaddscore",
       shoucang: "keylolshoucangline",
       tiezidaoju: "keyloltiezidaoju",
       zhichi: "keylolzhichi",
@@ -1854,7 +1853,6 @@
     za: "keylolzA",
     onlyposter: "keylolonlyposter",
     readmode: "keylolreadmode"
-
   }
 
   /**
@@ -1864,7 +1862,7 @@
 
     const postTopBarRegx = {
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
-      postfrom:/(<span.+?xg1">)(.+?)(<\/span>)/gm,
+      postfrom: /(<span.+?xg1">)(.+?)(<\/span>)/gm,
       onlyposter: /(<a.+?authorid.+?>)(.+?)(<\/a>)/gm,
       az: /(<a.+?ordertype=2.+?>)(.+?)(<\/a>)/gm,
       za: /(<a.+?ordertype=1.+?>)(.+?)(<\/a>)/gm,
@@ -1885,7 +1883,7 @@
         if (postTopBarRegx[key].test(nodeHTML) == true) {
 
           postTopBarTemplate += nodeHTML.match(postTopBarRegx[key])[0].replace(postTopBarRegx[key],
-          `$1
+            `$1
           <span>${symbolHTML(symbolPostTopBar[key])}</span>
           <span>$2</span>
           $3
@@ -1898,6 +1896,21 @@
     })
 
   }
+
+
+
+  const symbolRatelog = {
+    postaddscore: "keylolpostaddscore"
+  }
+  function renderPostContentRatelog() {
+    let ratelogs = $All(`[id*="ratelog_"] .xw1:nth-child(1) a`) 
+    ratelogs.forEach(node=>{
+      node.innerHTML = `${symbolHTML(symbolRatelog.postaddscore)}<span>${node.innerHTML}</span>`
+    })
+  }
+
+
+
   /**
    * 帖子渲染函数组合
    * 
@@ -1909,6 +1922,7 @@
 
     movePostElement()
     renderPostInfoSymbol()
+    renderPostContentRatelog()
 
     let favatarNodes = $All(`div[id*="favatar"]`)
     favatarNodes.forEach(node => {
