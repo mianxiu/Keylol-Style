@@ -2873,7 +2873,7 @@ div[id*="rt_rt_"] input {
   border-radius: var(--border-radius-10);
   box-shadow: var(--shadow-outline);
   overflow: hidden;
-  padding-bottom: 60px;
+  padding-bottom: 50px;
 }
 
 /*hide 前端太渣*/
@@ -3132,9 +3132,13 @@ td[id*="postmessage"] {
 /*个性签名*/
 .post-content-sign {
   display: flex;
-  padding: 8px;
+	height:200px;
+	overflow:hidden;
 }
-
+.post-content-sign img{
+	border-radius:0!important;
+	max-width:1012px;
+}
 /*回复支持道具*/
 #favoritenumber {
   margin-left: 4px;
@@ -3237,13 +3241,15 @@ img[id*="aimg_"]{
   border-radius: var(--border-radius-2);
 }
 
-.quote {
+.quote{
 	margin:8px 0;
   padding:18px 0;
-	background-color:var(--quote);
-		border-radius: var(--border-radius-10);
+ background-color:var(--quote);
+	border-radius: var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 		
+}
+blockquote{
 }
 .modact{
 	padding:8px;
@@ -3266,4 +3272,10 @@ img[id*="aimg_"]{
 	height:18px;
 	
 }
-	
+.cm h3{
+	display:inline-flex;
+	font-size:var(--font-size-12);
+	padding:10px;
+	background:red;
+	margin:0px 0px 18px 0px;
+}
