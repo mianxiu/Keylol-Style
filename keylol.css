@@ -3049,6 +3049,7 @@ td[id*="postmessage"] {
 .authi em,
 .authi a,
 .pi strong a{
+	font-size:var(--font-size-12);
 	transition: .2s all;
 	font-style: normal;
 	color: var(--font-nomal);
@@ -3057,7 +3058,13 @@ td[id*="postmessage"] {
 	padding: 8px 10px;
 	border-radius: var(--border-radius-10);
 }
-
+.authi span.xg1{
+	color:red;
+	display:flex;
+}
+.authi span.xg1>span:first-child{
+	display:none;
+}
 .authi a:hover {
 	background-color: var(--body-background);
 }
@@ -3065,6 +3072,7 @@ td[id*="postmessage"] {
 
 /*steam信息*/
 .steam_connect_user_bar {
+	
 	margin-bottom: 18px;
 }
 
@@ -3083,6 +3091,7 @@ td[id*="postmessage"] {
 .steam-name {
 	transition: .2s all;
 	padding: 10px;
+	font-size:var(--font-size-12);
 	background-color: var(--body-background);
 }
 
@@ -3130,6 +3139,7 @@ td[id*="postmessage"] {
 	padding: var(--element-padding-0-10);
 	background-color: var(--element-background);
 	border-radius: var(--border-radius-10);
+	font-size:var(--font-size-12);
 }
 
 .post-bottom a:hover {
@@ -3142,7 +3152,7 @@ td[id*="postmessage"] {
 	left: 0px !important;
 	top: 0 !important;
 	margin-left: 890px;
-	margin-top: 20px;
+	margin-top: 30px;
 	box-shadow: var(--shadow-hot);
 	flex-direction: column;
 	border-radius: var(--border-radius-10);
@@ -3160,6 +3170,7 @@ td[id*="postmessage"] {
 
 .darkmode-css .post-bottom ul[id*="mgc_post_"] a[id^="a_"] {
 	background-color: var(--body-background);
+	
 }
 
 .post-bottom ul[id*="mgc_post_"] a[id^="a_"]:hover {

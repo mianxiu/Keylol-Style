@@ -1857,10 +1857,14 @@
 
   }
 
+  /**
+   * 帖子信息图标
+   */
   function renderPostInfoSymbol() {
 
     const postTopBarRegx = {
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
+      postfrom:/(<span.+?xg1">)(.+?)(<\/span>)/gm,
       onlyposter: /(<a.+?authorid.+?>)(.+?)(<\/a>)/gm,
       az: /(<a.+?ordertype=2.+?>)(.+?)(<\/a>)/gm,
       za: /(<a.+?ordertype=1.+?>)(.+?)(<\/a>)/gm,
@@ -1881,7 +1885,7 @@
         if (postTopBarRegx[key].test(nodeHTML) == true) {
 
           postTopBarTemplate += nodeHTML.match(postTopBarRegx[key])[0].replace(postTopBarRegx[key],
-            `$1
+          `$1
           <span>${symbolHTML(symbolPostTopBar[key])}</span>
           <span>$2</span>
           $3
