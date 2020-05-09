@@ -1720,8 +1720,6 @@
    * 移动帖子布局
    */
   function movePostElement() {
-
-
     /**
      * 
      * @param {Element} favatarNode 用户卡片
@@ -1730,14 +1728,18 @@
      * @param {Element} postBottomBar 帖子底部支持、举报栏
      * @param {Element} sign 个人签名
      */
-    function postTamplate(favatarNode, postContentNode, collectBtn, mainSupport, postBottomBar, sign) {
+    function postTamplate(favatarNode, postTopBarLeftSelector, postTopBarRightSelector, postContentNode, collectBtn, mainSupport, postBottomBar, sign) {
 
-      
+
       return `
       <div class="post-top">
           <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
           <div class="post-content">
-              <div class="post-content-top">${postContentNode.innerHTML}</div>
+              <div class="post-content-top">
+                 <div class="post-content-top-left">${postTopBarLeftSelector.innerHTML}</div>
+                 <div class="post-content-top-right">${postTopBarRightSelector.innerHTML.replace(postTopBarLeftSelector.innerHTML,'')}</div>
+              </div>
+              <div class="post-content-mid">${postContentNode.innerHTML}</div>
               <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
           </div>
       </div>
@@ -1753,16 +1755,19 @@
     let postLists = $All(`#postlist > [id^="post_"]`)
 
     postLists.forEach(post => {
+
       // 移动帖子布局
       let id = post.id
       let favatarSelector = $(`#${id} div[id*="favatar"]`)
-      let postConentSelector = $(`#${id} .plc`)
+      let postTopBarLeftSelector = $(`#${id} .pti`)
+      let postTopBarRightSelector = $(`#${id} .plc>.pi`)
+      let postConentSelector = $(`#${id} .pct`)
       let collectBtn = $(`#${id} #p_btn`)
       let mainSupport = $(`#${id} #recommend_add`)
       let sign = $(`#${id} .sign`)
       let postBottomBar = $(`#${id} .po.hin`)
 
-      post.innerHTML = postTamplate(favatarSelector, postConentSelector, collectBtn, mainSupport, postBottomBar, sign)
+      post.innerHTML = postTamplate(favatarSelector, postTopBarLeftSelector, postTopBarRightSelector, postConentSelector, collectBtn, mainSupport, postBottomBar, sign)
     })
 
 
@@ -1808,10 +1813,12 @@
 
     let popCl = $All(`.post-bottom`)
 
-    // console.log(popCl[0].innerHTML)
 
+    /**
+     * 渲染内容
+     */
     popCl.forEach(node => {
-      console.log(node.innerHTML)
+
       let popClTemplate = ``
       let nodeHTML = node.innerHTML
 
