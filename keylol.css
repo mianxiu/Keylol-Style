@@ -3240,6 +3240,9 @@ td[id*="postmessage"] {
 }
 
 /*----内容渲染---*/
+h3.psth,xs1{
+	display:none;
+}
 .rnd_ai_pr{
 	position:absolute;
 	border-radius:var(--border-radius-10);
