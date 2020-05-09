@@ -3039,7 +3039,10 @@ td[id*="postmessage"] {
   display: flex;
 
 }
+.post-content-top-right strong{
+	margin-right:8px;
 
+}
 .post-content-top-right {
   flex-direction: row-reverse;
 }
