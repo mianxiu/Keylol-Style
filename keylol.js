@@ -1721,7 +1721,6 @@
    */
   function movePostElement() {
 
-    let postLists = $All(`#postlist > [id^="post_"]`)
 
     /**
      * 
@@ -1731,8 +1730,9 @@
      * @param {Element} postBottomBar 帖子底部支持、举报栏
      * @param {Element} sign 个人签名
      */
-    function postTamplate(favatarNode, postContentNode, collectBtn, postBottomBar, sign) {
+    function postTamplate(favatarNode, postContentNode, collectBtn, mainSupport, postBottomBar, sign) {
 
+      
       return `
       <div class="post-top">
           <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
@@ -1741,10 +1741,16 @@
               <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
           </div>
       </div>
-      <div class="post-bottom">${collectBtn !== null ? collectBtn.innerHTML : ''}${postBottomBar.innerHTML}</div> 
+      <div class="post-bottom">
+      ${collectBtn !== null ? collectBtn.innerHTML : ''}
+      ${mainSupport !== null ? mainSupport.innerHTML : ''}
+      ${postBottomBar.innerHTML}
+      </div> 
       `
 
     }
+
+    let postLists = $All(`#postlist > [id^="post_"]`)
 
     postLists.forEach(post => {
       // 移动帖子布局
@@ -1752,10 +1758,11 @@
       let favatarSelector = $(`#${id} div[id*="favatar"]`)
       let postConentSelector = $(`#${id} .plc`)
       let collectBtn = $(`#${id} #p_btn`)
+      let mainSupport = $(`#${id} #recommend_add`)
       let sign = $(`#${id} .sign`)
       let postBottomBar = $(`#${id} .po.hin`)
 
-      post.innerHTML = postTamplate(favatarSelector, postConentSelector, collectBtn, postBottomBar, sign)
+      post.innerHTML = postTamplate(favatarSelector, postConentSelector, collectBtn, mainSupport, postBottomBar, sign)
     })
 
 
@@ -1768,6 +1775,7 @@
       shoucang: "keylolshoucangline",
       tiezidaoju: "keyloltiezidaoju",
       zhichi: "keylolzhichi",
+      mainzhichi: "keylolzhichi",
       reply: "keylolcomments"
     }
 
@@ -1794,12 +1802,13 @@
       //hide: "keylolhide",   
       //postaddscore: "keylolpostaddscore",   
       zhichi: /(<a.+?replyadd.+?>)(.+?)(<\/a>)/gm,
+      mainzhichi: /(<a.+?recommend_add.+?>)(.+?)(<\/a>)/gm,
       jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm
     }
 
     let popCl = $All(`.post-bottom`)
 
-   // console.log(popCl[0].innerHTML)
+    // console.log(popCl[0].innerHTML)
 
     popCl.forEach(node => {
       console.log(node.innerHTML)

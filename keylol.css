@@ -2868,8 +2868,27 @@ div[id*="rt_rt_"] input {
 	flex-direction:column-reverse;
 	margin-bottom:18px;
 	align-items:flex-end;
+	--post-right-width:1012px;
 	
 }
+
+/*icon 全局*/
+.authi .icon,
+.steam-name .icon,
+.post-bottom .icon,
+.favatar-info-title .icon {
+	width:1.4em;
+	height:1.4em;
+	margin-right:4px;
+	color:var(--icon-line);
+}
+.favatar-info-title .icon{
+	margin-right: 10px;
+}
+.fastre .icon{
+	color:var(--icon-fill);
+}
+
 .post-user-card{
 	position:sticky;
 	top:10px;
@@ -2881,7 +2900,7 @@ div[id*="rt_rt_"] input {
 	display:flex;
 }
 .post-content{
-	width:1012px;
+	width:var(--post-right-width);
 	background-color:var(--element-background);
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
@@ -2985,11 +3004,6 @@ div[id*="favatar"] {
 
 }
 
-.favatar-info-title .icon {
-  width: 1.6em;
-  height: 1.6em;
-  margin-right: 10px;
-}
 
 .favatar p {
   margin-block-start: 0px;
@@ -3015,13 +3029,19 @@ td[id*="postmessage"]{
 	flex-direction:row-reverse;
 	
 }
-.authi .icon,
-.steam-name .icon{
-	width:1.4em;
-	height:1.4em;
-	margin-right:4px;
-	color:var(--icon-line);
+.repcn_bad{
+	color:var(--help-red-key);
 }
+.repcn_good{
+	color:var(--help-green-key)
+}
+.darkmode-css .repcn_bad{
+	color:var(--help-red);
+}
+.darkmode-css .repcn_good{
+	color:var(--help-green);
+}
+
 .authi,
 .authi em,
 .authi a{
@@ -3073,9 +3093,27 @@ td[id*="postmessage"]{
 	
 }
 
+/*回复支持道具*/
+.post-bottom i img{
+	display:none;
+}
+.post-bottom .icon{
+	margin-right: 4px;
+}
+.post-bottom i{
+	font-style:normal;
+	
+}
 .post-bottom{
+	width: var(--post-right-width);
 	display:flex;
-	justify-content:end;
+	justify-content:flex-end;
 	align-items:center;
 	position:absolute;
+}
+
+.post-bottom a{
+	display:flex;
+	align-items:center;
+	
 }
