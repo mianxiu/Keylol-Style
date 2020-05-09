@@ -1787,10 +1787,10 @@
 
     // 支持收藏举报等按钮
     const symbolPostContentRegx = {
-      reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gms,
+      reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gm,
       shoucang: /(<a.+?ac=favorite.+?>)(.+?)(<\/a>)/gm,
       //tiezidaoju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>)/gm,
-      tiezidaoju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>).+?(<ul.+>.+?<\/ul>)/gms,
+      tiezidaoju: /p>\s{0,}(<a.+?mgc_post.+?>)(.+?)(<\/a>).+?(<ul.+?\/li.+?ul>)/gms,
       //hide: "keylolhide",   
       //postaddscore: "keylolpostaddscore",   
       zhichi: /(<a.+?replyadd.+?>)(.+?)(<\/a>)/gm,
@@ -1799,7 +1799,7 @@
 
     let popCl = $All(`.post-bottom`)
 
-    console.log(popCl[0].innerHTML)
+   // console.log(popCl[0].innerHTML)
 
     popCl.forEach(node => {
       console.log(node.innerHTML)
