@@ -1780,28 +1780,25 @@
    */
   function renderSympolSteamBar(post) {
 
+    const symbolSteamBar = {
+      Steam_icon_logo_post: "keylolSteam_icon_logo_post",
+    }
+
     // 匹配steam图标
     let steamUserBar = $(`#${post.id} .steam_connect_user_bar`)
 
-    const symbolPostContent = {
-      Steam_icon_logo_post: "keylolSteam_icon_logo_post",
-      hide: "keylolhide",
-      jubao: "keyloljubao",
-      shoucang: "keylolshoucangline",
-      tiezidaoju: "keyloltiezidaoju",
-      zhichi: "keylolzhichi",
-      mainzhichi: "keylolzhichi",
-      reply: "keylolcomments"
+    if (steamUserBar !== null) {
+      if (steamUserBar.firstChild.nodeName === '#text') {
+        let steamName = document.createElement(`span`)
+        steamName.className = `steam-name`
+        steamName.innerHTML = `<span>${symbolHTML(symbolSteamBar.Steam_icon_logo_post)}</span><span>${steamUserBar.firstChild.textContent}</span>`
+        steamUserBar.firstChild.textContent = ''
+        steamUserBar.insertBefore(steamName, steamUserBar.childNodes[0])
+      }
     }
 
-    if (steamUserBar.firstChild.nodeName === '#text') {
 
-      let steamName = document.createElement(`span`)
-      steamName.className = `steam-name`
-      steamName.innerHTML = `<span>${symbolHTML(symbolPostContent.Steam_icon_logo_post)}</span><span>${steamUserBar.firstChild.textContent}</span>`
-      steamUserBar.firstChild.textContent = ''
-      steamUserBar.insertBefore(steamName, steamUserBar.childNodes[0])
-    }
+
 
   }
 
@@ -1815,10 +1812,19 @@
    */
   function renderPostBottomBar(post) {
 
-
+    
+    const symbolPostBottomBar = {
+      hide: "keylolhide",
+      jubao: "keyloljubao",
+      shoucang: "keylolshoucangline",
+      tiezidaoju: "keyloltiezidaoju",
+      zhichi: "keylolzhichi",
+      mainzhichi: "keylolzhichi",
+      reply: "keylolcomments"
+    }
 
     // 
-    const symbolPostContentRegx = {
+    const symbolPostBottomRegx = {
       reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gm,
       shoucang: /(<a.+?ac=favorite.+?>)(.+?)(<\/a>)/gm,
       //tiezidaoju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>)/gm,
@@ -1839,12 +1845,12 @@
       let popClTemplate = ``
       let popClHTML = popCl.innerHTML
 
-      for (const key in symbolPostContentRegx) {
-        if (symbolPostContentRegx[key].test(popClHTML) === true) {
+      for (const key in symbolPostBottomRegx) {
+        if (symbolPostBottomRegx[key].test(popClHTML) === true) {
 
-          let nodeMatch = popClHTML.match(symbolPostContentRegx[key])[0].replace(symbolPostContentRegx[key], `
+          let nodeMatch = popClHTML.match(symbolPostBottomRegx[key])[0].replace(symbolPostBottomRegx[key], `
               $1
-              <span>${symbolHTML(symbolPostContent[key])}</span>
+              <span>${symbolHTML(symbolPostBottomBar[key])}</span>
               <span>$2
               </span>
               ${key === 'tiezidaoju' ? `<span class="mgc-post-list">$4</span>` : ''}
