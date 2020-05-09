@@ -1716,18 +1716,21 @@
   }
 
 
+
+
   /**
-   * 移动帖子布局
+   * 重构帖子内容布局
+   * @param {Element} post
    */
-  function movePostElement() {
+  function movePostElement(post) {
     /**
-     * 
-     * @param {Element} favatarNode 用户卡片
-     * @param {Element} postContentNode 帖子内容
-     * @param {Element} collectBtn 收藏按钮
-     * @param {Element} postBottomBar 帖子底部支持、举报栏
-     * @param {Element} sign 个人签名
-     */
+* 
+* @param {Element} favatarNode 用户卡片
+* @param {Element} postContentNode 帖子内容
+* @param {Element} collectBtn 收藏按钮
+* @param {Element} postBottomBar 帖子底部支持、举报栏
+* @param {Element} sign 个人签名
+*/
     function postTamplate(favatarNode, postTopBarLeftSelector, postTopBarRightSelector, postContentNode, collectBtn, mainSupport, postBottomBar, sign) {
 
 
@@ -1752,25 +1755,33 @@
 
     }
 
-    let postLists = $All(`#postlist > [id^="post_"]`)
 
-    postLists.forEach(post => {
+    // 移动帖子布局
+    let id = post.id
+    let favatarSelector = $(`#${id} div[id*="favatar"]`)
+    let postTopBarLeftSelector = $(`#${id} .pti`)
+    let postTopBarRightSelector = $(`#${id} .plc>.pi`)
+    let postConentSelector = $(`#${id} .pct`)
+    let collectBtn = $(`#${id} #p_btn`)
+    let mainSupport = $(`#${id} #recommend_add`)
+    let sign = $(`#${id} .sign`)
+    let postBottomBar = $(`#${id} .po.hin`)
 
-      // 移动帖子布局
-      let id = post.id
-      let favatarSelector = $(`#${id} div[id*="favatar"]`)
-      let postTopBarLeftSelector = $(`#${id} .pti`)
-      let postTopBarRightSelector = $(`#${id} .plc>.pi`)
-      let postConentSelector = $(`#${id} .pct`)
-      let collectBtn = $(`#${id} #p_btn`)
-      let mainSupport = $(`#${id} #recommend_add`)
-      let sign = $(`#${id} .sign`)
-      let postBottomBar = $(`#${id} .po.hin`)
-
-      post.innerHTML = postTamplate(favatarSelector, postTopBarLeftSelector, postTopBarRightSelector, postConentSelector, collectBtn, mainSupport, postBottomBar, sign)
-    })
+    post.innerHTML = postTamplate(favatarSelector, postTopBarLeftSelector, postTopBarRightSelector, postConentSelector, collectBtn, mainSupport, postBottomBar, sign)
 
 
+  }
+
+
+
+  /**
+   * 渲染steam信息栏
+   * @param {Element} post 
+   */
+  function renderSympolSteamBar(post) {
+
+    // 匹配steam图标
+    let steamUserBar = $(`#${post.id} .steam_connect_user_bar`)
 
     const symbolPostContent = {
       Steam_icon_logo_post: "keylolSteam_icon_logo_post",
@@ -1783,21 +1794,30 @@
       reply: "keylolcomments"
     }
 
-    // 匹配steam图标
-    let steamUserBar = $All(`.steam_connect_user_bar`)
-    steamUserBar.forEach(node => {
-      if (node.firstChild.nodeName === '#text') {
+    if (steamUserBar.firstChild.nodeName === '#text') {
 
-        let steamName = document.createElement(`span`)
-        steamName.className = `steam-name`
-        steamName.innerHTML = `<span>${symbolHTML(symbolPostContent.Steam_icon_logo_post)}</span><span>${node.firstChild.textContent}</span>`
-        node.firstChild.textContent = ''
-        node.insertBefore(steamName, node.childNodes[0])
-      }
-    })
+      let steamName = document.createElement(`span`)
+      steamName.className = `steam-name`
+      steamName.innerHTML = `<span>${symbolHTML(symbolPostContent.Steam_icon_logo_post)}</span><span>${steamUserBar.firstChild.textContent}</span>`
+      steamUserBar.firstChild.textContent = ''
+      steamUserBar.insertBefore(steamName, steamUserBar.childNodes[0])
+    }
+
+  }
 
 
-    // 支持收藏举报等按钮
+
+
+
+  /**
+   * 重构帖子支持收藏举报等按钮栏
+   * @param {Element} post 
+   */
+  function renderPostBottomBar(post) {
+
+
+
+    // 
     const symbolPostContentRegx = {
       reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gm,
       shoucang: /(<a.+?ac=favorite.+?>)(.+?)(<\/a>)/gm,
@@ -1809,56 +1829,54 @@
       mainzhichi: /(<a.+?recommend_add.+?>)(.+?)(<\/a>)/gm,
       jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm
     }
-
-    let popCl = $All(`.post-bottom`)
-
-
     /**
      * 渲染内容
      */
-    popCl.forEach(node => {
 
+    let popCl = $(`#${post.id} .post-bottom`)
+
+    if (popCl !== null) {
       let popClTemplate = ``
-      let nodeHTML = node.innerHTML
+      let popClHTML = popCl.innerHTML
 
       for (const key in symbolPostContentRegx) {
-        if (symbolPostContentRegx[key].test(nodeHTML) === true) {
+        if (symbolPostContentRegx[key].test(popClHTML) === true) {
 
-          let nodeMatch = nodeHTML.match(symbolPostContentRegx[key])[0].replace(symbolPostContentRegx[key], `
-          $1
-          <span>${symbolHTML(symbolPostContent[key])}</span>
-          <span>$2
-          </span>
-          ${key === 'tiezidaoju' ? `<span class="mgc-post-list">$4</span>` : ''}
-          $3
-          `)
+          let nodeMatch = popClHTML.match(symbolPostContentRegx[key])[0].replace(symbolPostContentRegx[key], `
+              $1
+              <span>${symbolHTML(symbolPostContent[key])}</span>
+              <span>$2
+              </span>
+              ${key === 'tiezidaoju' ? `<span class="mgc-post-list">$4</span>` : ''}
+              $3
+              `)
 
           popClTemplate += nodeMatch
         }
       }
 
-      node.innerHTML = popClTemplate
+      popCl.innerHTML = popClTemplate
+    }
 
-    })
 
   }
 
 
-
-
-
-  const symbolPostTopBar = {
-    posttime: "keyloltimesort",
-    az: "keylolaZ",
-    za: "keylolzA",
-    onlyposter: "keylolonlyposter",
-    readmode: "keylolreadmode"
-  }
 
   /**
-   * 帖子信息图标
+   * 渲染帖子倒序等图标
+   * @param {Element} post 
    */
-  function renderPostInfoSymbol() {
+  function renderPostInfoSymbol(post) {
+
+    const symbolPostTopBar = {
+      posttime: "keyloltimesort",
+      az: "keylolaZ",
+      za: "keylolzA",
+      onlyposter: "keylolonlyposter",
+      readmode: "keylolreadmode"
+    }
+
 
     const postTopBarRegx = {
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
@@ -1870,13 +1888,11 @@
 
     }
 
-    let postTopBar = $All(`#postlist > [id^="post_"] .authi`)
-
-
-    postTopBar.forEach(node => {
+    let postTopBar = $(`${post.id} .authi`)
+    if (postTopBar !== null) {
 
       let postTopBarTemplate = ``
-      let nodeHTML = node.innerHTML
+      let nodeHTML = postTopBar.innerHTML
 
       for (const key in postTopBarRegx) {
 
@@ -1884,32 +1900,50 @@
 
           postTopBarTemplate += nodeHTML.match(postTopBarRegx[key])[0].replace(postTopBarRegx[key],
             `$1
-          <span>${symbolHTML(symbolPostTopBar[key])}</span>
-          <span>$2</span>
-          $3
-          `
+        <span>${symbolHTML(symbolPostTopBar[key])}</span>
+        <span>$2</span>
+        $3
+        `
           )
         }
       }
-      node.innerHTML = postTopBarTemplate
+      postTopBar.innerHTML = postTopBarTemplate
+    }
 
-    })
 
   }
 
 
 
-  const symbolRatelog = {
-    postaddscore: "keylolpostaddscore"
-  }
-  function renderPostContentRatelog() {
-    let ratelogs = $All(`[id*="ratelog_"] .xw1:nth-child(1) a`) 
-    ratelogs.forEach(node=>{
-      node.innerHTML = `${symbolHTML(symbolRatelog.postaddscore)}<span>${node.innerHTML}</span>`
-    })
+  /**
+   * 加分面板图标
+   * @param {Element} post 
+   */
+  function renderPostContentRatelog(post) {
+    const symbolRatelog = {
+      postaddscore: "keylolpostaddscore"
+    }
+    let ratelogs = $(`${post.id} [id*="ratelog_"] .xw1:nth-child(1) a`)
+    if (ratelogs !== null) {
+      ratelogs.innerHTML = `${symbolHTML(symbolRatelog.postaddscore)}<span>${ratelogs.innerHTML}</span>`
+    }
   }
 
 
+
+  /**
+   * 
+   * @param {Element} post 
+   */
+  function renderPostContext(post) {
+    movePostElement(post)
+    renderSympolSteamBar(post)
+    renderPostBottomBar(post)
+    renderPostInfoSymbol(post)
+    renderPostContentRatelog(post)
+
+  }
+  renderPostContext(post)
 
   /**
    * 帖子渲染函数组合
@@ -1920,7 +1954,7 @@
    */
   function renderPostContent() {
 
-    movePostElement()
+    renderPostContext()
     renderPostInfoSymbol()
     renderPostContentRatelog()
 
@@ -1928,6 +1962,10 @@
     favatarNodes.forEach(node => {
       renderPostFavatar(node)
     })
+
+    let postLists = $All(`#postlist > [id^="post_"]`)
+
+
 
   }
 
