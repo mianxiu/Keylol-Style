@@ -1735,7 +1735,7 @@
 * @param {Element} postBottomBar 帖子底部支持、举报栏
 * @param {Element} sign 个人签名
 */
-    function postTamplate(favatarNode, postTopBarLeftSelector, postTopBarRightSelector, postContentNode, collectBtn, mainSupport, postBottomBar, sign) {
+    function postTamplate(favatarNode, postTopBarLeftSelector, postTopBarRightSelector, postSteamBarSelector, postContentNode, collectBtn, mainSupport, postBottomBar, sign) {
 
 
       return `
@@ -1746,7 +1746,8 @@
                  <div class="post-content-top-left">${postTopBarLeftSelector.innerHTML}</div>
                  <div class="post-content-top-right">${postTopBarRightSelector.innerHTML.replace(postTopBarLeftSelector.innerHTML, '')}</div>
               </div>
-              <div class="post-content-mid">${postContentNode.innerHTML}</div>
+              <div class="steam_connect_user_bar">${postSteamBarSelector.innerHTML}</div>
+              <div class="post-content-mid">${postContentNode.innerHTML.replace(postSteamBarSelector.innerHTML,'')}</div>
               <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
           </div>
       </div>
@@ -1765,17 +1766,35 @@
     let favatarSelector = $(`#${id} div[id*="favatar"]`)
     let postTopBarLeftSelector = $(`#${id} .pti`)
     let postTopBarRightSelector = $(`#${id} .plc>.pi`)
+    let postSteamBarSelector = $(`#${id} .steam_connect_user_bar`)
     let postConentSelector = $(`#${id} .pct`)
     let collectBtn = $(`#${id} #p_btn`)
     let mainSupport = $(`#${id} #recommend_add`)
     let sign = $(`#${id} .sign`)
     let postBottomBar = $(`#${id} .po.hin`)
 
-    post.innerHTML = postTamplate(favatarSelector, postTopBarLeftSelector, postTopBarRightSelector, postConentSelector, collectBtn, mainSupport, postBottomBar, sign)
+    post.innerHTML = postTamplate(
+      favatarSelector,
+      postTopBarLeftSelector,
+      postTopBarRightSelector,
+      postSteamBarSelector,
+      postConentSelector,
+      collectBtn,
+      mainSupport,
+      postBottomBar,
+      sign
+    )
 
 
   }
 
+  /**
+   * 重构帖子目录请求方式
+   * @param {Element} post 
+   */
+  function renderThreadindexListener(post) {
+
+  }
 
 
   /**
