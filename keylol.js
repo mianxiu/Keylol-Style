@@ -1056,7 +1056,7 @@
 
     const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
     const suidRegx = /[s|u]{0,1}uid[\-|\=](\d+)/gm
-    const solveRegx = /(<a href.+?title="只看已.+?>).+?(<\/a>)/gm
+    const solveRegx = /-\s{0,}(<a\s{0,}.+?rewardtype=2".+?>).+?(<\/a>)/gm
     const solveHotRegx = /\[已解决\]/gm
 
     // 判断帖子模式图标---
@@ -1238,6 +1238,8 @@
 
     let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ""
     let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ""
+
+    
     let lock =
       tableHTML.match(lockRegx) !== null
         ? `
@@ -1617,9 +1619,11 @@
 
   /**
    * 渲染用户卡片
-   * @param {Element} favatarNode 
+   * @param {Element} post
    */
-  function renderPostFavatar(favatarNode) {
+  function renderPostFavatar(post) {
+
+    let favatarNode = $(`#${post.id} div[id*="favatar"]`)
 
     const postUserInfoRegx = {
       // 头像用户名等
@@ -1796,10 +1800,6 @@
         steamUserBar.insertBefore(steamName, steamUserBar.childNodes[0])
       }
     }
-
-
-
-
   }
 
 
@@ -1812,7 +1812,7 @@
    */
   function renderPostBottomBar(post) {
 
-    
+
     const symbolPostBottomBar = {
       hide: "keylolhide",
       jubao: "keyloljubao",
@@ -1942,14 +1942,14 @@
    * @param {Element} post 
    */
   function renderPostContext(post) {
+    renderPostFavatar(post)
     movePostElement(post)
     renderSympolSteamBar(post)
     renderPostBottomBar(post)
     renderPostInfoSymbol(post)
     renderPostContentRatelog(post)
-
   }
-  renderPostContext(post)
+
 
   /**
    * 帖子渲染函数组合
@@ -1960,16 +1960,14 @@
    */
   function renderPostContent() {
 
-    renderPostContext()
-    renderPostInfoSymbol()
-    renderPostContentRatelog()
-
-    let favatarNodes = $All(`div[id*="favatar"]`)
-    favatarNodes.forEach(node => {
-      renderPostFavatar(node)
-    })
 
     let postLists = $All(`#postlist > [id^="post_"]`)
+
+    postLists.forEach(postNode => {
+      renderPostContext(postNode)
+    })
+
+
 
 
 
