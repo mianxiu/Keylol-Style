@@ -1885,7 +1885,7 @@
 
 
     const postTopBarRegx = {
-      authNormalIcon:/()(<img.+?OL_M(?!EB).{0,}.+?>)()/gm,
+      authNormalIcon:/()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
       // 图标
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
       postfrom: /(<span.+?xg1">)(.+?)(<\/span>)/gm,
