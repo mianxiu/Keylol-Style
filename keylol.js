@@ -1885,6 +1885,8 @@
 
 
     const postTopBarRegx = {
+      authNormalIcon:/()(<img.+?OL_M(?!EB).{0,}.+?>)()/gm,
+      // 图标
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
       postfrom: /(<span.+?xg1">)(.+?)(<\/span>)/gm,
       onlyposter: /(<a.+?authorid.+?>)(.+?)(<\/a>)/gm,
@@ -1894,7 +1896,8 @@
 
     }
 
-    let postTopBar = $(`${post.id} .authi`)
+    let postTopBar = $(`#${post.id} .authi`)
+
     if (postTopBar !== null) {
 
       let postTopBarTemplate = ``
@@ -1905,8 +1908,10 @@
         if (postTopBarRegx[key].test(nodeHTML) == true) {
 
           postTopBarTemplate += nodeHTML.match(postTopBarRegx[key])[0].replace(postTopBarRegx[key],
-            `$1
-        <span>${symbolHTML(symbolPostTopBar[key])}</span>
+        `$1
+        <span>
+        ${key !== 'authNormalIcon' ? symbolHTML(symbolPostTopBar[key]) : ''}
+        </span>
         <span>$2</span>
         $3
         `

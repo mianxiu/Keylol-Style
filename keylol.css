@@ -3088,6 +3088,11 @@ td[id*="postmessage"] {
   color: var(--help-green);
 }
 
+/**/
+.authi [id*="authicon"]{
+	border-radius:2px 6px 0 6px;
+}
+
 .authi,
 .authi em,
 .authi a,
