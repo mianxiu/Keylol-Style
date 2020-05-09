@@ -2863,23 +2863,24 @@ div[id*="rt_rt_"] input {
 /*-------------帖子内容-----------------------------------*/
 
 /*全局*/
-#postlist > [id^="post_"]{
-	display:flex;
-	flex-direction:column-reverse;
-	margin-bottom:18px;
-	align-items:flex-end;
-	--post-right-width:1012px;
-	
+#postlist>[id^="post_"] {
+  display: flex;
+  flex-direction: column-reverse;
+  margin-bottom: 18px;
+  align-items: flex-end;
+  --post-right-width: 1012px;
+
 }
 
 
 /*表情全局*/
-#postlist > [id^="post_"] img[src*="smiley"]{
-	width:60px;
+#postlist>[id^="post_"] img[src*="smiley"] {
+  width: 60px;
 }
+
 /*大猫*/
-#postlist > [id^="post_"] img[src*="smiley/steamcn_8"]{
-	width:80px;
+#postlist>[id^="post_"] img[src*="smiley/steamcn_8"] {
+  width: 80px;
 }
 
 
@@ -2888,36 +2889,39 @@ div[id*="rt_rt_"] input {
 .steam-name .icon,
 .post-bottom .icon,
 .favatar-info-title .icon {
-	width:1.4em;
-	height:1.4em;
-	margin-right:4px;
-	color:var(--icon-line);
+  width: 1.4em;
+  height: 1.4em;
+  margin-right: 4px;
+  color: var(--icon-line);
 }
-.favatar-info-title .icon{
-	margin-right: 10px;
+
+.favatar-info-title .icon {
+  margin-right: 10px;
 }
-.fastre .icon{
-	color:var(--icon-fill);
+
+.fastre .icon {
+  color: var(--icon-fill);
 }
 
 
-.post-user-card{
-	position:sticky;
-	top:10px;
-	align-self:flex-start;
-	margin-right:8px;
+.post-user-card {
+  position: sticky;
+  top: 10px;
+  align-self: flex-start;
+  margin-right: 8px;
 }
 
-.post-top{
-	display:flex;
+.post-top {
+  display: flex;
 }
-.post-content{
-	width:var(--post-right-width);
-	background-color:var(--element-background);
-	border-radius:var(--border-radius-10);
-	box-shadow:var(--shadow-outline);
-	overflow:hidden;
-	padding-bottom:60px;
+
+.post-content {
+  width: var(--post-right-width);
+  background-color: var(--element-background);
+  border-radius: var(--border-radius-10);
+  box-shadow: var(--shadow-outline);
+  overflow: hidden;
+  padding-bottom: 60px;
 }
 
 /*hide 前端太渣*/
@@ -2929,24 +2933,26 @@ div[id*="rt_rt_"] input {
 table[id*="pid"],
 table[id*="pid"] tr,
 table[id*="pid"] td,
-table[id*="pid"] > tbody{
+table[id*="pid"]>tbody {
   display: flex;
   position: sticky;
-	justify-content:space-between;
-	max-width:var(--body-width);
+  justify-content: space-between;
+  max-width: var(--body-width);
 }
+
 /*回帖奖励信息*/
-#pl_top{
-	display:flex;
-	background-color:var(--element-background);
-	height:var(--element-height-34);
-	align-items:center;
-	padding:var(--element-padding-0-10);
-	border-radius:var(--border-radius-10);
-	box-shadow:var(--shadow-outline);
-	margin-bottom:18px;
-		
+#pl_top {
+  display: flex;
+  background-color: var(--element-background);
+  height: var(--element-height-34);
+  align-items: center;
+  padding: var(--element-padding-0-10);
+  border-radius: var(--border-radius-10);
+  box-shadow: var(--shadow-outline);
+  margin-bottom: 18px;
+
 }
+
 #mn-content-title a {
   padding: 8px 0;
   font-size: 18px;
@@ -2991,6 +2997,11 @@ div[id*="favatar"] {
   justify-content: center;
 }
 
+/*勋章*/
+.darkmode-css .favatar-bottom {
+  opacity: .85;
+}
+
 .favatar-name,
 .favatar-status {
   padding: 4px 20px;
@@ -3024,145 +3035,164 @@ div[id*="favatar"] {
 
 /*-----内容-----*/
 
-.pcb{
-	display:inline-block;
-	flex-direction:column;
-	padding:0 30px;
+.pcb {
+  display: inline-block;
+  flex-direction: column;
+  padding: 0 30px;
 }
-td[id*="postmessage"]{
-	display:flex;
-	flex-direction:column;
+
+td[id*="postmessage"] {
+  display: flex;
+  flex-direction: column;
 }
+
 /*顶部栏*/
-.pi{
-	display:flex;
-	align-items:center;
-	justify-content:space-between;
-	flex-direction:row-reverse;
-	
+.pi {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+
 }
-.repcn_bad{
-	color:var(--help-red-key);
+
+.repcn_bad {
+  color: var(--help-red-key);
 }
-.repcn_good{
-	color:var(--help-green-key)
+
+.repcn_good {
+  color: var(--help-green-key)
 }
-.darkmode-css .repcn_bad{
-	color:var(--help-red);
+
+.darkmode-css .repcn_bad {
+  color: var(--help-red);
 }
-.darkmode-css .repcn_good{
-	color:var(--help-green);
+
+.darkmode-css .repcn_good {
+  color: var(--help-green);
 }
 
 .authi,
 .authi em,
-.authi a{
-	transition:.2s all;
-	font-style:normal;
-	color:var(--font-nomal);
-	display:flex;
-	align-items:center;
-	padding:8px 10px;
-	border-radius:var(--border-radius-10);
+.authi a {
+  transition: .2s all;
+  font-style: normal;
+  color: var(--font-nomal);
+  display: flex;
+  align-items: center;
+  padding: 8px 10px;
+  border-radius: var(--border-radius-10);
 }
-.authi a:hover{
-	background-color:var(--body-background);
+
+.authi a:hover {
+  background-color: var(--body-background);
 }
 
 /*电梯*/
-#fj input{
-	display:flex;
+#fj input {
+  display: flex;
 }
+
 /*steam信息*/
-.steam_connect_user_bar{
-	margin-bottom:18px;
+.steam_connect_user_bar {
+  margin-bottom: 18px;
 }
+
 .steam_connect_user_bar,
-.steam-name{
-	font-size:var(--font-size-12);
-	display:inline-flex;
-	height:var(--element-height-34);
-	color:var(--font-nomal);	
-	border-radius:var(--border-radius-10);
-	overflow:hidden;
-	align-items:center;
+.steam-name {
+  font-size: var(--font-size-12);
+  display: inline-flex;
+  height: var(--element-height-34);
+  color: var(--font-nomal);
+  border-radius: var(--border-radius-10);
+  overflow: hidden;
+  align-items: center;
 }
+
 .steam_connect_user_bar a,
-.steam-name{
-	transition:.2s all;
-	padding:10px;
-	background-color:var(--body-background);
+.steam-name {
+  transition: .2s all;
+  padding: 10px;
+  background-color: var(--body-background);
 }
 
 .steam_connect_user_bar a:hover,
-.steam-name:hover{
-	background-color:var(--input-background);
+.steam-name:hover {
+  background-color: var(--input-background);
 }
+
 /*个性签名*/
-.post-content-sign{
-	display:flex;
-	padding:8px;
-	
+.post-content-sign {
+  display: flex;
+  padding: 8px;
+
 }
 
 /*回复支持道具*/
-.post-bottom i img{
-	display:none;
-}
-.post-bottom .icon{
-	margin-right: 4px;
-}
-.post-bottom i{
-	font-style:normal;
-	
-}
-.post-bottom{
-	padding:8px;
-	width: var(--post-right-width);
-	display:flex;
-	justify-content:flex-end;
-	align-items:center;
-	position:absolute;
+.post-bottom i img {
+  display: none;
 }
 
-.post-bottom > a{
-	transition:.2s all;
-	display:flex;
-	align-items:center;
-	height:var(--element-height-34);
-	padding:var(--element-padding-0-10);
-	background-color:var(--element-background);
-	border-radius:var(--border-radius-10);
-	
+.post-bottom .icon {
+  margin-right: 4px;
 }
-.post-bottom a:hover{
-	background-color:var(--background-color);
+
+.post-bottom i {
+  font-style: normal;
+
 }
+
+.post-bottom {
+  padding: 8px;
+  width: var(--post-right-width);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  position: absolute;
+}
+
+.post-bottom>a {
+  transition: .2s all;
+  display: flex;
+  align-items: center;
+  height: var(--element-height-34);
+  padding: var(--element-padding-0-10);
+  background-color: var(--element-background);
+  border-radius: var(--border-radius-10);
+
+}
+
+.post-bottom a:hover {
+  background-color: var(--background-color);
+}
+
 /*道具列表*/
-.post-bottom ul[id*="mgc_post_"]{
-    display: flex;
-    left: 0px!important;
-    top: 0!important; 
-	margin-left:890px;
-	margin-top:20px;
-	 box-shadow:var(--shadow-hot);
-	flex-direction:column;
-	border-radius:var(--border-radius-10);
-	overflow:hidden;
+.post-bottom ul[id*="mgc_post_"] {
+  display: flex;
+  left: 0px !important;
+  top: 0 !important;
+  margin-left: 890px;
+  margin-top: 20px;
+  box-shadow: var(--shadow-hot);
+  flex-direction: column;
+  border-radius: var(--border-radius-10);
+  overflow: hidden;
 }
-.post-bottom ul[id*="mgc_post_"] a[id^="a_"]{
-	display:flex;
-	align-items:center;
-	color:var(--font-nomal);
-	height:var(--element-height-34);
-	background-color:var(--background-color);
-	padding:var(--element-padding-0-10);
-	
-	
+
+.post-bottom ul[id*="mgc_post_"] a[id^="a_"] {
+  display: flex;
+  align-items: center;
+  color: var(--font-nomal);
+  height: var(--element-height-34);
+  background-color: var(--background-color);
+  padding: var(--element-padding-0-10);
+
+
 }
-.darkmode-css .post-bottom ul[id*="mgc_post_"] a[id^="a_"]{
-	background-color:var(--body-background);
+
+.darkmode-css .post-bottom ul[id*="mgc_post_"] a[id^="a_"] {
+  background-color: var(--body-background);
 }
-.post-bottom ul[id*="mgc_post_"] a[id^="a_"]:hover{
-	background-color:var(--input-background);
+
+.post-bottom ul[id*="mgc_post_"] a[id^="a_"]:hover {
+  background-color: var(--input-background);
 }
