@@ -2989,6 +2989,10 @@ div[id*="favatar"] {
   margin-block-end: 0px;
 }
 /*勋章提示*/
+#ct > [id^="md_"]{
+	margin-top:-10px;
+	margin-left:10px;
+}
 #ct > [id^="md_"] .tip_c{
 	color:var(--help-yellow-key);
 	background-color:var(--context-yellow);
@@ -2997,6 +3001,7 @@ div[id*="favatar"] {
 	padding:0 18px;
 	border-radius:var(--border-radius-10);
 	align-items:center;
+	
 }
 #ct > [id^="md_"] .tip_c h4{
 	margin-right:8px;
