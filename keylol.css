@@ -3215,6 +3215,7 @@ td[id*="postmessage"] {
 	box-shadow:var(--shadow-hot);
 	margin-left:1000px!important;
 	height:240px;
+	margin-top:-65px;
 }
 
 [id^="postmessage_"]{
