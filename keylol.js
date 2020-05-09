@@ -1929,9 +1929,10 @@
     const symbolRatelog = {
       postaddscore: "keylolpostaddscore"
     }
-    let ratelogs = $(`${post.id} [id*="ratelog_"] .xw1:nth-child(1) a`)
-    if (ratelogs !== null) {
-      ratelogs.innerHTML = `${symbolHTML(symbolRatelog.postaddscore)}<span>${ratelogs.innerHTML}</span>`
+    let ratelog = $(`#${post.id} [id*="ratelog_"] .xw1:nth-child(1) a`)
+    if (ratelog !== null) {
+  
+      ratelog.innerHTML = `${symbolHTML(symbolRatelog.postaddscore)}<span>${ratelog.innerHTML}</span>`
     }
   }
 
