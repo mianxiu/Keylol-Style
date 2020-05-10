@@ -1939,7 +1939,7 @@
     // 对象顺序是按钮排序
     const postTopBarRegx = {
       //authNormalIcon: /()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
-      authNormalIcon: /()(<img.+_(?!MEB).{0,}>)()/gm,
+      authNormalIcon: /()(<img.+_(?!MEB).{0,}png">)()/gm,
       // 图标
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
       postfrom: /(<span.+?xg1">)(.+?)(<\/span>)/gm,
