@@ -1821,18 +1821,20 @@
   }
 
   /**
-   * 重构帖子目录内容请求方式
+   * 重构帖子目录和目录内容请求方式
+   * 
    * @param {Element} post 
    */
   function renderThreadindexListener(post) {
+
     let indexLi = $All(`#${post.id} #threadindex li`)
     let postmessage = $(`#${post.id} [id^="postmessage_"]`)
 
     /**
-     * fetch 目录内容
+     * 请求目录内容
      */
     let indexLiCallback = () => {
-      
+
       let url = event.target.getAttribute(`contentUrl`)
 
       fetch(url)
@@ -1856,8 +1858,8 @@
 
       const liUrlRegx = /.*'(forum.+?)'.+?'(post.+?)'.*/gm
       let liUrl = li.getAttribute('onclick').replace(liUrlRegx, `$1&inajax=1&ajaxtarget=$2`)
-
       li.setAttribute('contentUrl', liUrl)
+      // 清除原来的监听
       li.removeAttribute('onclick')
 
       li.addEventListener('click', indexLiCallback)
