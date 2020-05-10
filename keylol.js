@@ -1839,7 +1839,7 @@
     blockCode.forEach(el => {
       let elTemplate = el.innerHTML
       for (const key in blockCodeRegx) {
-        console.log(blockCodeRegx[key])
+ 
         elTemplate = elTemplate.replace(blockCodeRegx[key], blockCodeReplace[key])
       }
       el.innerHTML = elTemplate
@@ -1876,7 +1876,10 @@
 
       fetch(url)
         .then(res => {
-          return res.text()
+          if (res.ok) {
+            console.log(`fetch is done`)
+            return res.text()
+          }
         })
         .then(html => {
           let domparser = new DOMParser()
@@ -1888,8 +1891,10 @@
           // 密码帖是.lock
           let pmNode = postmessageDOM.querySelector(`[id^="postmessage_"]`)
           let contentHTML = pmNode !== null ? pmNode.innerHTML : `<div class="locked">${postmessageDOM.querySelector(`.locked`).innerHTML}</div>`
-
           postmessage.innerHTML = contentHTML
+        })
+        .catch(error=>{
+          console.log(`something war wrong...`)
         })
     }
 
