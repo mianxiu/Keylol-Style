@@ -3794,3 +3794,63 @@ blockquote {}
 	border-radius:var(--border-radius-10);
 	color:var(--font-point);
 }
+
+/*----登录------*/
+.duceapp_cv_ricon,
+.cv_wechat_title,
+.cv_wechat_tip{
+	padding:18px;
+}
+.pwLogintype{
+display:flex;
+	
+}
+.duceapp_cv_wrap,
+.duceapp_cv_wrap iframe{
+	display:flex;
+	justify-content:center;
+	align-items:center;
+	height:100%;
+}
+
+	
+
+.cv_wechat_qrcode{
+	transform:none!important;
+	
+}
+.duceapp_cv_wrap iframe{
+	padding:18px;
+	background-color:#fff;
+	border:none;
+	border-radius:var(--border-radius-10);
+	
+}
+.duceapp_cv_wrap input{
+}
+.cv_login_pwContent{
+	padding:18px;
+	margin-top:0px!important;
+	background-color:var(--element-background);
+	display:flex;
+	flex-direction:column;
+	width:600px;
+	height:400px;
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+}
+.login_input{
+
+}
+.cv_login_pwContent input{
+	padding:0 18px;
+		height:var(--element-height-34);
+		 background-color: var(--input-background);
+    height:var(--element-height-34);
+	border-radius:var(--border-radius-10);
+}
+.login_checkbox,
+.login_checkbox span{
+	display:flex;
+	align-items:center;
+}
