@@ -3295,11 +3295,17 @@ img[id*="aimg_"]{
 
 .quote{
 	margin:8px 0;
-  padding:18px 0;
+  padding:10px;
  background-color:var(--quote);
 	border-radius: var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 		
+}
+.quote:before{
+	content:'“';
+	font-size:48px;
+	position:absolute;
+	margin:0px 0 0 -20px;
 }
 blockquote{
 }
@@ -3463,3 +3469,43 @@ blockquote{
 	background-color:#f4f4f4;
 	box-shadow:var(--shadow-outline);
 }
+
+/*点评*/
+[id^="comment_"]{
+	background-color:var(--background-color);
+	box-shadow:var(--shadow-outline);
+	padding:8px 0;
+	margin:34px 0;
+	border-radius:var(--border-radius-10);
+}
+[id^="comment_"]:before{
+	position:absolute;
+	content:'';
+	width:0px;
+	height:0px;
+	border:20px solid var(--background-color);
+	border-right-color: #0000 ;
+	border-top-color: #0000 ;
+	border-left-color: #0000 ;
+	border-radius:10px;
+	margin-top:-43px;
+	margin-left:20px;
+}
+[id^="comment_"] .pstl.xs1.cl{
+	padding:10px;;
+}
+[id^="comment_"] .psth.xs1{
+	margin-bottom:10px!important;
+}
+[id^="comment_"] .psta.vm{
+	display:flex;
+	align-items:center;
+	margin-bottom:8px;
+}
+[id^="comment_"] .psta.vm a img{
+	width:28px;
+	height:28px;
+	border-radius:var(--border-radius-200);	
+	margin-right:8px;
+}
+

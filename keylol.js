@@ -1741,6 +1741,7 @@
       postTopBarRight,
       postSteamBar,
       pstatus,
+      comment,
       postContent,
       collectBtn,
       mainSupport,
@@ -1755,6 +1756,8 @@
       postSteamBar !== null ? postSteamBar.remove() : null
       pstatus !== null ? pstatus.remove() : null
 
+      // 删除无内容的点评
+      comment.children.length === 0 ? comment.remove() : null
 
 
       return `
@@ -1790,6 +1793,7 @@
     let postTopBarRightNode = $(`#${id} .plc>.pi`)
     let postSteamBarNode = $(`#${id} .steam_connect_user_bar`)
     let pstatusNode = $(`#${id} .pstatus`)
+    let commentNode = $(`#${id} [id^="comment_"] `)
     let postConentNode = $(`#${id} .pct`)
     let collectBtn = $(`#${id} #p_btn`)
     let mainSupport = $(`#${id} #recommend_add`)
@@ -1802,6 +1806,7 @@
       postTopBarRightNode,
       postSteamBarNode,
       pstatusNode,
+      commentNode,
       postConentNode,
       collectBtn,
       mainSupport,
