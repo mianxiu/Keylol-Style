@@ -316,7 +316,8 @@
    * footer
    */
   function footer() {
-    $(`.subforunm_foot_text`).innerText = $(`.subforunm_foot_text`).innerText.replace(/\s+/gm, "")
+    let footerNode = $(`.subforunm_foot_text`)
+    footerNode !== null ? footerNode.innerText = footerNode.innerText.replace(/\s+/gm, "") : null
   }
 
   /**
@@ -428,11 +429,13 @@
     } else {
 
       // 未登录只插入搜索
-      navNodes.searchNode.insertBefore(symbolHTMLNode(symbolNav[0]), navNodes.searchNode.children[0])
+      navNodes.searchNode !== null ?
+        navNodes.searchNode.insertBefore(symbolHTMLNode(symbolNav[0]), navNodes.searchNode.children[0])
+        : null
     }
 
     // 设置logo
-    $("#nav-logo").innerHTML += symbolHTML(symbolNav[3])
+    $("#nav-logo") !== null ? $("#nav-logo").innerHTML += symbolHTML(symbolNav[3]) : null
   }
 
   // steam平台工具
@@ -1839,7 +1842,7 @@
     blockCode.forEach(el => {
       let elTemplate = el.innerHTML
       for (const key in blockCodeRegx) {
- 
+
         elTemplate = elTemplate.replace(blockCodeRegx[key], blockCodeReplace[key])
       }
       el.innerHTML = elTemplate
@@ -1873,12 +1876,12 @@
     let indexLiCallback = () => {
 
       // 添加active
-      event.target.parentNode.childNodes.forEach(li=>{
+      event.target.parentNode.childNodes.forEach(li => {
         li.className = ''
       })
 
       event.target.className = 'post-index-active'
-      
+
       let url = event.target.getAttribute(`contentUrl`)
 
       fetch(url)
@@ -1900,7 +1903,7 @@
           let contentHTML = pmNode !== null ? pmNode.innerHTML : `<div class="locked">${postmessageDOM.querySelector(`.locked`).innerHTML}</div>`
           postmessage.innerHTML = contentHTML
         })
-        .catch(error=>{
+        .catch(error => {
           console.log(`something war wrong...`)
         })
     }
@@ -2166,6 +2169,15 @@
     // 帖子
     let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=viewthread.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
+    let isLogin = /login|register/gm.test(currentHref)
+
+
+
+    if (isLogin == true) {
+      console.log(`i am login`)
+    }
+
+
     if (isHome == true) {
       console.log(`i am home`)
       home()
@@ -2204,9 +2216,8 @@
 
       renderPostContent()
       renderControlPanel()
-
-
     }
+
   }
 
   // DOM加载后
