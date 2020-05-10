@@ -1832,6 +1832,7 @@ div.subforum_subject_detail_text_down>div:first-child a {
 }
 
 .subforum-info-tip {
+  z-index: 15;
   position: absolute;
   padding: var(--element-padding);
   background-color: var(--tip-background);
@@ -3672,8 +3673,18 @@ blockquote {}
   color: var(--code-copy-sb);
 }
 
-
-
+/*表格*/
+.t_table{
+	margin:18px;
+	
+}
+.t_table td{
+	padding:8px;
+	box-shadow:0 0 1px #2d2d2d;
+}
+.t_table tr:nth-child(2n){
+	background-color:#eee;
+}
 /*关闭*/
 #warn_closed {
   padding: 18px;
