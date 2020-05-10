@@ -3429,27 +3429,24 @@ blockquote {}
 	align-self: flex-start;
 	top: 10px;
 	height: 600px;
-	overflow-x: hidden;
+	overflow: hidden;
 	margin-left: 8px;
-	margin-right: -224px;
-	background-color: var(--element-background);
-	box-shadow: var(--shadow-outline);
-	border-radius: var(--border-radius-10);
-	padding: 0 18px 18px 18px;
+	margin-right: -188px;
 	width: 180px;
-	font-size: var(--font-size-12);
+	border-radius: var(--border-radius-10);
 }
 
-.tindex h3:before {
-	margin-top: 1.8em;
-	position: absolute;
-	content: '';
-	width: 18px;
-	height: 4px;
-	background-color: var(--font-nomal);
-	margin-right: 18px;
-	border-radius: var(--border-radius-2);
+#threadindex .tindex{
+	background-color: var(--element-background);
+	box-shadow: var(--shadow-outline);
+	padding: 0 26px 10px 10px;
+	font-size: var(--font-size-12);
+	width: 180px;
+	height: 600px;
+	overflow-x:hidden;
+	overflow-y:auto;
 }
+
 .tindex ul {
 
 	display: inline-flex;
@@ -3460,7 +3457,7 @@ blockquote {}
 	color: var(--font-nomal);
 	border-radius: var(--border-radius-10);
 	display: inline-flex;
-	padding: 4px 2px;
+	padding:8px;
 	align-items: center;
 	cursor: pointer;
 }

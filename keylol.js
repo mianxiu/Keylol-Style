@@ -1831,6 +1831,7 @@
     let indexLi = $All(`#${post.id} #threadindex li`)
     let postmessage = $(`#${post.id} [id^="postmessage_"]`)
 
+    // 移动目录节点
     let threadIndexNode = $(`#${post.id} #threadindex`)
     if (threadIndexNode !== null) {
       $(`#${post.id} .post-top`).insertBefore($(`#${post.id} #threadindex`), null)
