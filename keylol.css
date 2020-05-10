@@ -3130,6 +3130,7 @@ td[id*="postmessage"] {
 /*steam信息*/
 .steam_connect_user_bar {
 	margin-left:30px;
+	margin-right:30px;
   margin-bottom: 18px;
 }
 
@@ -3304,9 +3305,25 @@ h3.psth,xs1{
 	padding:6px 10px;;	
 	font-size:var(--font-size-12);
 }
+
 img[id*="aimg_"]{
 	margin:8px 0;
   border-radius: var(--border-radius-2);
+}
+/*图片提示*/
+.aimg_tip div.xs0{
+	  color: var(--help-blue);
+    background-color:var(--point);
+    display: flex;
+    box-shadow: var(--shadow-hot);
+    padding:8px;
+    border-radius: var(--border-radius-10);
+    align-items: center;
+	 margin-bottom:8px;
+}
+.aimg_tip div.xs0 a{
+	color:var(--font-color-light);
+	padding: 0 8px;
 }
 .mbn.savephotop img{
 	margin-top:3px;
