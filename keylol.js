@@ -1826,19 +1826,21 @@
     let blockCode = $All(`#${post.id} [id^="code_"]`)
 
     const blockCodeRegx = {
-      lsb: /(\[)/gm
+      lsb: /(\[)/gms,
+      rsb: /(\])/gms
       //link: /.+?\/\/.+?/gm
     }
 
     const blockCodeReplace = {
       lsb: `<span class="post-code-sb">$1</span>`,
-      rsb: `<span class="post-code-sb">$1</span>`,
+      rsb: `<span class="post-code-sb">$1</span>`
     }
 
     blockCode.forEach(el => {
-      let elTemplate = ``
+      let elTemplate = el.innerHTML
       for (const key in blockCodeRegx) {
-        elTemplate = el.innerHTML.replace(blockCodeRegx[key], blockCodeReplace[key])
+        console.log(blockCodeRegx[key])
+        elTemplate =  elTemplate.replace(blockCodeRegx[key], blockCodeReplace[key])
       }
       el.innerHTML = elTemplate
     })
