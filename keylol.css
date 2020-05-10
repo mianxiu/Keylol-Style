@@ -106,6 +106,8 @@
   --code-copy-background:#5b616d;
   --code-copy-font:#e4ebfb;
   --code-copy-sb:#55c9ff;
+  --table-line:#2d2d2d;
+  --table-tr-2n:#eee;
 
 
 
@@ -184,7 +186,8 @@
   --code-copy-background:#1b3e6b;
   --code-copy-font:#aebfd4;
   --code-copy-sb:#ffffff;
-  
+  --table-line:#fff;
+  --table-tr-2n:#05111f;
 
 
 
@@ -3292,7 +3295,7 @@ xs1 {
 #copyright a {
   color: var(--font-visit);
 }
-
+/*密码*/
 .locked {
   margin: 10px 0;
   color: var(--help-yellow-key);
@@ -3300,7 +3303,18 @@ xs1 {
   border: 2px dashed var(--help-yellow-key);
   padding: 8px;
 }
-
+.locked input,
+.locked button{
+	border-radius:var(--border-radius-2);
+	height:var(--element-height-34);
+	margin:0 8px;
+	background-color:var(--help-yellow-key);
+	color:var(--help-yellow);
+	padding:0 8px;
+}
+.locked button{
+	cursor:pointer;
+}
 .showhide {
   margin: 10px 0;
   color: var(--help-yellow-key);
@@ -3527,6 +3541,7 @@ blockquote {}
   background: var(--context-reward);
   margin: 0px 0px 18px 0px;
   border-radius: 0 var(--border-radius-10) var(--border-radius-10) 0;
+	color:var(--help-yellow-key);
 }
 
 /*最后编辑*/
@@ -3680,10 +3695,10 @@ blockquote {}
 }
 .t_table td{
 	padding:8px;
-	box-shadow:0 0 1px #2d2d2d;
+	box-shadow:0 0 1px var(--table-line);
 }
 .t_table tr:nth-child(2n){
-	background-color:#eee;
+	background-color:var(--table-tr-2n);
 }
 /*关闭*/
 #warn_closed {

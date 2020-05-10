@@ -1840,7 +1840,7 @@
       let elTemplate = el.innerHTML
       for (const key in blockCodeRegx) {
         console.log(blockCodeRegx[key])
-        elTemplate =  elTemplate.replace(blockCodeRegx[key], blockCodeReplace[key])
+        elTemplate = elTemplate.replace(blockCodeRegx[key], blockCodeReplace[key])
       }
       el.innerHTML = elTemplate
     })
@@ -1887,8 +1887,8 @@
           pstatus !== null ? pstatus.remove() : null
           // 密码帖是.lock
           let pmNode = postmessageDOM.querySelector(`[id^="postmessage_"]`)
-          let contentHTML = pmNode !== null ? pmNode.innerHTML : postmessageDOM.querySelector(`.locked`).innerHTML
-          renderPostCode(pmNode)
+          let contentHTML = pmNode !== null ? pmNode.innerHTML : `<div class="locked">${postmessageDOM.querySelector(`.locked`).innerHTML}</div>`
+
           postmessage.innerHTML = contentHTML
         })
     }
