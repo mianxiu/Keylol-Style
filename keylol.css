@@ -102,6 +102,11 @@
   --quote: #F4F4F4;
   --context-yellow: #F8F0DF;
   --context-reward: #ffca37;
+  --code-background:#282c34;
+  --code-copy-background:#5b616d;
+  --code-copy-font:#e4ebfb;
+  --code-copy-sb:#55c9ff;
+
 
 
   /* font */
@@ -175,6 +180,12 @@
   --quote: #081423;
   --context-yellow: #B7AC95;
   --context-reward: #d49c3c;
+  --code-background:#282c34;
+  --code-copy-background:#5b616d;
+  --code-copy-font:#e4ebfb;
+  --code-copy-sb:#55c9ff;
+  
+
 
 
   /* font */
@@ -3638,7 +3649,7 @@ blockquote {}
   margin-top: 18px;
   padding: 18px;
   border-radius: 10px 10px 10px 0;
-  background-color: #282c34;
+  background-color: var(--code-background);
 }
 
 .blockcode [id^="code_"]+em {
@@ -3646,24 +3657,22 @@ blockquote {}
   font-size: var(--font-size-12);
   display: inline-flex;
   border-radius: 0px 0px 10px 10px;
-  background-color: #5b616d;
+  background-color: var(--code-copy-background);
   padding: 8px;
-  color: #e4ebfb;
+  color: var(--code-copy-font);
   margin-bottom: 18px;
   cursor: pointer;
 }
 
 .blockcode li {
-  color: #e4ebfb
+  color: var(--code-copy-font)
 }
 
 .blockcode .post-code-sb {
-  color: #55c9ff;
+  color: var(--code-copy-sb);
 }
 
-.blockcode .post-code-http {
-  color: #6bc87a;
-}
+
 
 /*关闭*/
 #warn_closed {
