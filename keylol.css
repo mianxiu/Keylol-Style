@@ -102,12 +102,12 @@
   --quote: #F4F4F4;
   --context-yellow: #F8F0DF;
   --context-reward: #ffca37;
-  --code-background:#282c34;
-  --code-copy-background:#5b616d;
-  --code-copy-font:#e4ebfb;
-  --code-copy-sb:#55c9ff;
-  --table-line:#2d2d2d;
-  --table-tr-2n:#eee;
+  --code-background: #282c34;
+  --code-copy-background: #5b616d;
+  --code-copy-font: #e4ebfb;
+  --code-copy-sb: #55c9ff;
+  --table-line: #2d2d2d;
+  --table-tr-2n: #eee;
 
 
 
@@ -182,12 +182,12 @@
   --quote: #081423;
   --context-yellow: #B7AC95;
   --context-reward: #d49c3c;
-  --code-background:#184a88;
-  --code-copy-background:#1b3e6b;
-  --code-copy-font:#aebfd4;
-  --code-copy-sb:#ffffff;
-  --table-line:#fff;
-  --table-tr-2n:#05111f;
+  --code-background: #184a88;
+  --code-copy-background: #1b3e6b;
+  --code-copy-font: #aebfd4;
+  --code-copy-sb: #ffffff;
+  --table-line: #fff;
+  --table-tr-2n: #05111f;
 
 
 
@@ -3295,6 +3295,7 @@ xs1 {
 #copyright a {
   color: var(--font-visit);
 }
+
 /*密码*/
 .locked {
   margin: 10px 0;
@@ -3303,18 +3304,21 @@ xs1 {
   border: 2px dashed var(--help-yellow-key);
   padding: 8px;
 }
+
 .locked input,
-.locked button{
-	border-radius:var(--border-radius-2);
-	height:var(--element-height-34);
-	margin:0 8px;
-	background-color:var(--help-yellow-key);
-	color:var(--help-yellow);
-	padding:0 8px;
+.locked button {
+  border-radius: var(--border-radius-2);
+  height: var(--element-height-34);
+  margin: 0 8px;
+  background-color: var(--help-yellow-key);
+  color: var(--help-yellow);
+  padding: 0 8px;
 }
-.locked button{
-	cursor:pointer;
+
+.locked button {
+  cursor: pointer;
 }
+
 .showhide {
   margin: 10px 0;
   color: var(--help-yellow-key);
@@ -3541,7 +3545,7 @@ blockquote {}
   background: var(--context-reward);
   margin: 0px 0px 18px 0px;
   border-radius: 0 var(--border-radius-10) var(--border-radius-10) 0;
-	color:var(--help-yellow-key);
+  color: var(--help-yellow-key);
 }
 
 /*最后编辑*/
@@ -3689,17 +3693,20 @@ blockquote {}
 }
 
 /*表格*/
-.t_table{
-	margin:18px;
-	
+.t_table {
+  margin: 18px;
+
 }
-.t_table td{
-	padding:8px;
-	box-shadow:0 0 1px var(--table-line);
+
+.t_table td {
+  padding: 8px;
+  box-shadow: 0 0 1px var(--table-line);
 }
-.t_table tr:nth-child(2n){
-	background-color:var(--table-tr-2n);
+
+.t_table tr:nth-child(2n) {
+  background-color: var(--table-tr-2n);
 }
+
 /*关闭*/
 #warn_closed {
   padding: 18px;
@@ -3723,4 +3730,32 @@ blockquote {}
 
 .darkmode-css .rwdbst a {
   color: var(--help-yellow-key)
+}
+
+/*tag*/
+.ptg.mbm.mtn {
+  margin-top: 18px;
+  color: #0000;
+  display: flex;
+
+}
+
+.ptg.mbm.mtn a {
+  display: inline-flex;
+  align-items: center;
+  color: var(--font-point);
+  height: var(--element-height-34);
+  background-color: var(--point);
+  padding: 0 8px;
+  border-radius: var(--border-radius-10);
+}
+
+.ptg.mbm.mtn a:before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: var(--border-radius-200);
+  background-color: var(--font-point);
+  margin-right: 2px;
+
 }
