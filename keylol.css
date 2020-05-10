@@ -421,7 +421,9 @@ body {
   border: none;
   color: var(--font-nomal);
 }
-
+.search-box:focus{
+	outline: none;
+}
 .search-box::placeholder {
   color: var(--font-second-aphal);
 }
