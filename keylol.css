@@ -2481,8 +2481,11 @@ div[class*="card_gender"] a:hover .user-card-tip {
 	margin-top: -205px;
 	width: 80px;
 }
-#fastpostform > table > tbody > tr > td.plc > div:nth-child(11) {
+#fastpostform > table > tbody > tr > td.plc > div:nth-child(11),
+label[for*="fastpostrefresh"]
+{
 	display: block;
+	color:var(--font-nomal);
 }
 #fastpostform > table > tbody > tr > td.plc > div:nth-child(11) a {
 	color: var(--font-visit);
@@ -3254,7 +3257,8 @@ td[id*="postmessage"] {
 .post-bottom a:hover {
 	background-color: var(--background-color);
 }
-.pgbtn + .pgs.mtm.mbm.cl {
+.pgbtn + .pgs.mtm.mbm.cl,
+#modactions + .pgs.mtm.mbm.cl{
 	display: none;
 }
 
@@ -3817,7 +3821,6 @@ display:flex;
 
 .cv_wechat_qrcode{
 	transform:none!important;
-	
 }
 .duceapp_cv_wrap iframe{
 	padding:18px;
@@ -3834,8 +3837,9 @@ display:flex;
 	background-color:var(--element-background);
 	display:flex;
 	flex-direction:column;
-	width:600px;
+	width:300px;
 	height:400px;
+	
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 }
@@ -3853,4 +3857,28 @@ display:flex;
 .login_checkbox span{
 	display:flex;
 	align-items:center;
+}
+.login_checkbox a,
+.login_checkbox span,
+.login_method a{
+	padding:18px;
+}
+.login_method{
+	display:flex;
+	align-items:center;
+}
+.login_button{
+	transition:.2s all;
+	cursor:pointer;
+height:var(--element-height-34);
+	background-color:var(--point);
+	border-radius:var(--border-radius-10);
+	color:var(--font-point);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	
+}
+.login_button:hover{
+	box-shadow:var(--shadow-hot);
 }
