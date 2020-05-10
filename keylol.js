@@ -1821,11 +1821,44 @@
   }
 
   /**
-   * 重构帖子目录请求方式
+   * 重构帖子目录内容请求方式
    * @param {Element} post 
    */
   function renderThreadindexListener(post) {
+    let indexLi = $All(`#${post.id} #threadindex li`)
+    let postmessage = $(`#${post.id} [id^="postmessage_"]`)
 
+    /**
+     * fetch 目录内容
+     */
+    let indexLiCallback = () => {
+
+      let url = event.target.getAttribute(`contentUrl`)
+
+      fetch(url)
+        .then(res => {
+          return res.text()
+        })
+        .then(html => {
+          let domparser = new DOMParser()
+          let postmessageDOM = domparser.parseFromString(html, 'text/html')
+
+          postmessage.innerHTML = postmessageDOM.querySelector(`[id^="postmessage_"]`).innerHTML
+        })
+    }
+
+
+
+    indexLi.forEach(li => {
+
+      const liUrlRegx = /.*'(forum.+?)'.+?'(post.+?)'.*/gm
+      let liUrl = li.getAttribute('onclick').replace(liUrlRegx, `$1&inajax=1&ajaxtarget=$2`)
+
+      li.setAttribute('contentUrl', liUrl)
+      li.removeAttribute('onclick')
+
+      li.addEventListener('click', indexLiCallback)
+    })
   }
 
 
@@ -2007,6 +2040,7 @@
     renderPostBottomBar(post)
     renderPostInfoSymbol(post)
     renderPostContentRatelog(post)
+    renderThreadindexListener(post)
   }
 
 
@@ -2025,20 +2059,6 @@
       renderPostContext(postNode)
     })
 
-
-    function listenPostTindex(post) {
-      let tindexUl = $(`#${post.id} #threadindex ul`)
-
-      let indexLiCallback = () => {
-        renderPostContext(post)
-      }
-
-      if (tindexUl != null) {
-        tindexUl.childNodes.forEach(li => {
-          li.addEventListener('click', indexLiCallback)
-        })
-      }
-    }
 
 
 
@@ -2117,7 +2137,7 @@
       console.log(`i am post`)
 
       postPanel()
-      
+
       postContentNav()
       renderNewBtn()
       renderPostInfo()
@@ -2126,7 +2146,7 @@
       renderPostContent()
       renderControlPanel()
 
-     
+
     }
   }
 
