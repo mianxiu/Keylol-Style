@@ -1489,8 +1489,8 @@
     let pthmNode = $(`.pt.hm`)
     let postForm = $(`#fastpostform`)
     postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
-    $(`.forumrowdata`).remove()
-    $(`#f_pst>.bm_h`).remove()
+    $(`.forumrowdata`) !== null ? $(`.forumrowdata`).remove() : null
+    $(`#f_pst>.bm_h`) !== null ? $(`#f_pst>.bm_h`).remove() : null
   }
 
   /**
