@@ -3428,7 +3428,7 @@ blockquote {}
 	position: sticky;
 	align-self: flex-start;
 	top: 10px;
-	height: 600px;
+	max-height: 600px;
 	overflow: hidden;
 	margin-left: 8px;
 	margin-right: -188px;
@@ -3442,7 +3442,7 @@ blockquote {}
 	padding: 0 26px 10px 10px;
 	font-size: var(--font-size-12);
 	width: 180px;
-	height: 600px;
+	max-height: 600px;
 	overflow-x:hidden;
 	overflow-y:auto;
 }
@@ -3543,12 +3543,12 @@ blockquote {}
 	color: var(--help-yellow-key);
 	margin-bottom: 10px!important;
 }
-[id^="comment_"] .psta.vm {
+.psta.vm {
 	display: flex;
 	align-items: center;
 	margin-bottom: 8px;
 }
-[id^="comment_"] .psta.vm a img {
+.psta.vm a img {
 	width: 28px;
 	height: 28px;
 	border-radius: var(--border-radius-200);
@@ -3574,4 +3574,35 @@ blockquote {}
 }
 .attnm a {
 	color: var(--font-visit);
+}
+/**/
+.blockcode [id^="code_"]{
+	padding:18px;
+	background-color:#d7d7d7;
+}
+.blockcode ol{
+	
+}
+
+/*关闭*/
+#warn_closed{
+	padding:18px;
+	border-radius:var(--border-radius-10);
+	margin-bottom:18px!important;
+}
+.darkmode-css #warn_closed{
+opacity:.8;
+}
+/*最佳答案*/
+.rwdbst{
+	margin: 18px 0;
+	color:var(--help-yellow-key);
+	padding:18px;
+	display:inline-flex;
+	background-color:var(--help-yellow);
+	border-radius:var(--border-radius-10);
+	border:1px solid var(--help-yellow-key);
+}
+.darkmode-css .rwdbst a{
+color:var(--help-yellow-key)
 }

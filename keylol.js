@@ -1823,7 +1823,29 @@
    * @param {Element}} post 
    */
   function renderPostCode(post) {
-        let blockcode = $All(`#${post.id} [id^="code_"]`)
+    let blockCode = $All(`#${post.id} [id^="code_"]`)
+
+    const blockCodeRegx = {
+      lsb: /(\[)/gm,
+      rsb: /(\])/gm
+      //link: /.+?\/\/.+?/gm
+    }
+
+    const blockCodeReplace = {
+      lsb: `<span class="post-code-sb">$1</span>`,
+      rsb: `<span class="post-code-sb">$1</span>`,
+    }
+
+    blockCode.forEach(el => {
+      let elTemplate = ``
+      for (const key in blockCodeRegx) {
+        elTemplate = el.innerHTML.replace(blockCodeRegx[key], blockCodeReplace[key])
+      }
+      el.innerHTML = elTemplate
+    })
+
+
+
   }
 
   /**
@@ -2063,6 +2085,7 @@
     renderPostInfoSymbol(post)
     renderPostContentRatelog(post)
     renderThreadindexListener(post)
+    renderPostCode(post)
   }
 
 
