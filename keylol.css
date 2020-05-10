@@ -3287,10 +3287,30 @@ h3.psth,xs1{
 .darkmode-css .showhide p{
 	color:var(--font-nomal)
 }
-
+/*附件图片*/
+.mbn{
+	display:inline-block;
+	
+	
+}
+.mbn a{
+	border-radius: var(--border-radius-2);
+	background-color:var(--point);
+	color:var(--font-point);
+}
+.mbn a,
+.mbn em{
+	font-style:normal;
+	padding:6px 10px;;	
+	font-size:var(--font-size-12);
+}
 img[id*="aimg_"]{
 	margin:8px 0;
   border-radius: var(--border-radius-2);
+}
+.mbn.savephotop img{
+	margin-top:3px;
+	border-radius:0 0 2px 2px;
 }
 
 .quote{
@@ -3503,6 +3523,7 @@ blockquote{
 	padding:10px;;
 }
 [id^="comment_"] .psth.xs1{
+	color:var(--help-yellow-key);
 	margin-bottom:10px!important;
 }
 [id^="comment_"] .psta.vm{
@@ -3516,4 +3537,6 @@ blockquote{
 	border-radius:var(--border-radius-200);	
 	margin-right:8px;
 }
-
+[id^="comment_"] .psti{
+	color:var(--font-nomal);
+}
