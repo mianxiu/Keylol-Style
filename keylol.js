@@ -1853,7 +1853,10 @@
           let domparser = new DOMParser()
           let postmessageDOM = domparser.parseFromString(html, 'text/html')
 
-          //密码帖是.lock
+          // 移除多余编辑记录
+          let pstatus = postmessageDOM.querySelector(`.pstatus`)
+          pstatus !== null ? pstatus.remove() : null
+          // 密码帖是.lock
           let pmNode = postmessageDOM.querySelector(`[id^="postmessage_"]`)
           let contentHTML = pmNode !== null ? pmNode.innerHTML : postmessageDOM.querySelector(`.locked`).innerHTML
           postmessage.innerHTML = contentHTML

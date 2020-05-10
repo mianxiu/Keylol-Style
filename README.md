@@ -67,3 +67,9 @@ let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNod
 ## flexbox 和 positon:sticky 混用修复
 为使用sticky的元素添加`align-self:flex-start`
 [my-position-sticky-element-isnt-sticky-when-using-flexbox](https://stackoverflow.com/questions/44446671/my-position-sticky-element-isnt-sticky-when-using-flexbox)
+
+## 兼容
+无法兼容firefox
+
+`chrome` `edge beta` 测试通过
+edge beta tampermonkey[https://microsoftedge.microsoft.com/addons/search/Tampermonkey?hl=zh-CN]
