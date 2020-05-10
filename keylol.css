@@ -3741,6 +3741,7 @@ blockquote {}
 }
 
 .ptg.mbm.mtn a {
+	font-size:var(--font-size-12);
   display: inline-flex;
   align-items: center;
   color: var(--font-point);
