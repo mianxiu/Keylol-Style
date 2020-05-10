@@ -1826,8 +1826,7 @@
     let blockCode = $All(`#${post.id} [id^="code_"]`)
 
     const blockCodeRegx = {
-      lsb: /(\[)/gm,
-      rsb: /(\])/gm
+      lsb: /(\[)/gm
       //link: /.+?\/\/.+?/gm
     }
 

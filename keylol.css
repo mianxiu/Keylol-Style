@@ -3601,7 +3601,6 @@ opacity:.8;
 	display:inline-flex;
 	background-color:var(--help-yellow);
 	border-radius:var(--border-radius-10);
-	border:1px solid var(--help-yellow-key);
 }
 .darkmode-css .rwdbst a{
 color:var(--help-yellow-key)
