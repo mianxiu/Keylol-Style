@@ -1828,12 +1828,12 @@
     const blockCodeRegx = {
       lsb: /(\[)/gms,
       rsb: /(\])/gms
-      //link: /.+?\/\/.+?/gm
     }
 
     const blockCodeReplace = {
       lsb: `<span class="post-code-sb">$1</span>`,
-      rsb: `<span class="post-code-sb">$1</span>`
+      rsb: `<span class="post-code-sb">$1</span>`,
+      http: `<span class="post-code-http">$1</span>`
     }
 
     blockCode.forEach(el => {
@@ -1888,6 +1888,7 @@
           // 密码帖是.lock
           let pmNode = postmessageDOM.querySelector(`[id^="postmessage_"]`)
           let contentHTML = pmNode !== null ? pmNode.innerHTML : postmessageDOM.querySelector(`.locked`).innerHTML
+          renderPostCode(pmNode)
           postmessage.innerHTML = contentHTML
         })
     }
