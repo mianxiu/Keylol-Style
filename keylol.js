@@ -1749,8 +1749,8 @@
     ) {
 
 
-      let postSteamBarHTML = postSteamBar !== null ? postSteamBar.innerHTML : ''
-      let pstatusHTML = pstatus !== null ? pstatus.innerHTML : ''
+      let postSteamBarHTML = postSteamBar !== null ? `<div class="steam_connect_user_bar">${postSteamBar.innerHTML}</div>` : ''
+      let pstatusHTML = pstatus !== null ? ` <div class="pstatus">${pstatus.innerHTML}</div>` : ''
 
       postSteamBar !== null ? postSteamBar.remove() : null
       pstatus !== null ? pstatus.remove() : null
@@ -1765,8 +1765,8 @@
                  <div class="post-content-top-left">${postTopBarLeft.innerHTML}</div>
                  <div class="post-content-top-right">${postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')}</div>
               </div>
-              <div class="steam_connect_user_bar">${postSteamBar !== null ? postSteamBar.innerHTML : ''}</div>
-              <div class="pstatus">${pstatusHTML}</div>
+              ${postSteamBarHTML}
+              ${pstatusHTML}
               <div class="post-content-mid">
               ${postContent.innerHTML.replace(postSteamBarHTML.innerHTML, '')}
               </div>
