@@ -1832,7 +1832,7 @@
      * fetch 目录内容
      */
     let indexLiCallback = () => {
-
+      
       let url = event.target.getAttribute(`contentUrl`)
 
       fetch(url)
