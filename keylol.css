@@ -3311,7 +3311,6 @@ img[id*="aimg_"]{
   border-radius: var(--border-radius-2);
 }
 /*图片提示*/
-.aimg_tip div.xs0,
 .tip_4{
 	font-size:var(--font-size-12);
 	  color: var(--help-blue);
@@ -3323,8 +3322,7 @@ img[id*="aimg_"]{
     align-items: center;
 	 margin-bottom:8px;
 }
-.aimg_tip div.xs0 a
-tip_4 a{
+.tip_4 a{
 	color:var(--font-color-light);
 	padding: 0 8px;
 }
@@ -3574,6 +3572,9 @@ blockquote{
 }
 .tattl p{
 	color:var(--font-nomal);
+}
+.tip_4 p{
+	color:var(--font-color-light);
 }
 .attnm a{
 	color:var(--font-visit);

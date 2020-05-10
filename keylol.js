@@ -1938,7 +1938,7 @@
 
     // 对象顺序是按钮排序
     const postTopBarRegx = {
-      //authNormalIcon: /()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
+      //楼层管理员、楼主等
       authNormalIcon: /()(<img.+_(?!MEB).{0,}png">)()/gm,
       // 图标
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
@@ -2115,6 +2115,9 @@
 
     if (isPost == true) {
       console.log(`i am post`)
+
+      postPanel()
+      
       postContentNav()
       renderNewBtn()
       renderPostInfo()
@@ -2122,6 +2125,8 @@
 
       renderPostContent()
       renderControlPanel()
+
+     
     }
   }
 
