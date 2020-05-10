@@ -1757,7 +1757,10 @@
       pstatus !== null ? pstatus.remove() : null
 
       // 删除无内容的点评
-      comment.children.length === 0 ? comment.remove() : null
+      if (comment !== null && comment.children.length === 0) {
+        comment.remove()
+      }
+
 
 
       return `

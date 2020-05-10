@@ -3294,12 +3294,20 @@ img[id*="aimg_"]{
 }
 
 .quote{
+	transition:.2s all;
 	margin:8px 0;
-  padding:10px;
- background-color:var(--quote);
+   padding:10px;
+   background-color:var(--quote);
 	border-radius: var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 		
+}
+.quote:hover{
+	box-shadow:var(--shadow-hot);
+}
+.darkmode-css .quote:hover{
+	box-shadow:var(--shadow-outline);
+	background-color:var(--input-background);
 }
 .quote:before{
 	content:'“';
