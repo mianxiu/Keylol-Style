@@ -1761,8 +1761,6 @@
         comment.remove()
       }
 
-
-
       return `
       <div class="post-top">
           <div class="post-user-card"><div id="${favatar.id}">${favatar.innerHTML}</div></div>
@@ -1817,7 +1815,15 @@
       sign
     )
 
+  }
 
+
+  /**
+   * 渲染论坛代码
+   * @param {Element}} post 
+   */
+  function renderPostCode(post) {
+        let blockcode = $All(`#${post.id} [id^="code_"]`)
   }
 
   /**
