@@ -3545,7 +3545,7 @@ blockquote {}
 }
 
 .tindex ul {
-
+	padding-right:18px;
 	display: inline-flex;
 	flex-direction: column;
 }
