@@ -3311,7 +3311,8 @@ img[id*="aimg_"]{
   border-radius: var(--border-radius-2);
 }
 /*图片提示*/
-.aimg_tip div.xs0{
+.aimg_tip div.xs0,
+.tip_4{
 	font-size:var(--font-size-12);
 	  color: var(--help-blue);
     background-color:var(--point);
@@ -3322,7 +3323,8 @@ img[id*="aimg_"]{
     align-items: center;
 	 margin-bottom:8px;
 }
-.aimg_tip div.xs0 a{
+.aimg_tip div.xs0 a
+tip_4 a{
 	color:var(--font-color-light);
 	padding: 0 8px;
 }
@@ -3500,6 +3502,9 @@ blockquote{
 	margin-left:-30px;
 	padding:8px 8px 8px 30px;
 }
+.darkmode-css .psth.xs1.ple{
+	opacity:.8;
+}
 .darkmode-css .psth.xs1.ple a{
 	color:var(--point)
 }
@@ -3557,4 +3562,19 @@ blockquote{
 }
 [id^="comment_"] .psti{
 	color:var(--font-nomal);
+}
+/*附件*/
+.tattl{
+	display:inline-flex;
+	align-items:center;
+
+	padding:18px;
+	border-radius:var(--border-radius-10);
+	border:2px dashed var(--background-color);
+}
+.tattl p{
+	color:var(--font-nomal);
+}
+.attnm a{
+	color:var(--font-visit);
 }
