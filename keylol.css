@@ -2820,10 +2820,12 @@ div[id*="rt_rt_"] input {
 /*全局*/
 #postlist>[id^="post_"] {
   display: flex;
-  flex-direction: column-reverse;
+  flex-direction: column;
   margin-bottom: 18px;
-  align-items: flex-end;
+  align-items: center;
+	justify-content:flex-end;
   --post-right-width: 1012px;
+	width:var(--body-width);
 }
 
 
@@ -3431,6 +3433,19 @@ blockquote{
 	align-items:center;
 }
 /*目录*/
+#threadindex{
+	position:sticky;
+	align-self:flex-start;
+	top:10px;
+	height:600px;
+	overflow-x:hidden;
+	margin-left:8px;
+	background-color:var(--element-background);
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-10);
+	padding:0 18px 18px 18px;
+}
+
 .tindex h3:before{
 	margin-top:1.8em;
 	position:absolute;
@@ -3451,10 +3466,9 @@ blockquote{
 .tindex li{
 	transition:.2s all;
 	color:var(--font-nomal);
-	height:var(--element-height-34);
 	border-radius:var(--border-radius-10);
 	display:inline-flex;
-	padding:0 8px;
+	padding:4px 2px;
 	align-items:center;
 	cursor:pointer;
 }
@@ -3515,6 +3529,7 @@ blockquote{
 }
 
 /*有目录的内容*/
+
 #threadindex + script + table{
 	background-color:#f4f4f4;
 	box-shadow:var(--shadow-outline);

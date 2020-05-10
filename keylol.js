@@ -1827,8 +1827,15 @@
    */
   function renderThreadindexListener(post) {
 
+
     let indexLi = $All(`#${post.id} #threadindex li`)
     let postmessage = $(`#${post.id} [id^="postmessage_"]`)
+
+    let threadIndexNode = $(`#${post.id} #threadindex`)
+    if (threadIndexNode !== null) {
+      $(`#${post.id} .post-top`).insertBefore($(`#${post.id} #threadindex`), null)
+    }
+
 
     /**
      * 请求目录内容
