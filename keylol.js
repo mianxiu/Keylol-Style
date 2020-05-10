@@ -1729,25 +1729,47 @@
   function movePostElement(post) {
     /**
 * 
-* @param {Element} favatarNode 用户卡片
-* @param {Element} postContentNode 帖子内容
+* @param {Element} favatar 用户卡片
+* @param {Element} postContent 帖子内容
 * @param {Element} collectBtn 收藏按钮
 * @param {Element} postBottomBar 帖子底部支持、举报栏
 * @param {Element} sign 个人签名
 */
-    function postTamplate(favatarNode, postTopBarLeftSelector, postTopBarRightSelector, postSteamBarSelector, postContentNode, collectBtn, mainSupport, postBottomBar, sign) {
+    function postTamplate(
+      favatar,
+      postTopBarLeft,
+      postTopBarRight,
+      postSteamBar,
+      pstatus,
+      postContent,
+      collectBtn,
+      mainSupport,
+      postBottomBar,
+      sign
+    ) {
+
+
+      let postSteamBarHTML = postSteamBar !== null ? postSteamBar.innerHTML : ''
+      let pstatusHTML = pstatus !== null ? pstatus.innerHTML : ''
+
+      postSteamBar !== null ? postSteamBar.remove() : null
+      pstatus !== null ? pstatus.remove() : null
+
 
 
       return `
       <div class="post-top">
-          <div class="post-user-card"><div id="${favatarNode.id}">${favatarNode.innerHTML}</div></div>
+          <div class="post-user-card"><div id="${favatar.id}">${favatar.innerHTML}</div></div>
           <div class="post-content">
               <div class="post-content-top">
-                 <div class="post-content-top-left">${postTopBarLeftSelector.innerHTML}</div>
-                 <div class="post-content-top-right">${postTopBarRightSelector.innerHTML.replace(postTopBarLeftSelector.innerHTML, '')}</div>
+                 <div class="post-content-top-left">${postTopBarLeft.innerHTML}</div>
+                 <div class="post-content-top-right">${postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')}</div>
               </div>
-              <div class="steam_connect_user_bar">${postSteamBarSelector.innerHTML}</div>
-              <div class="post-content-mid">${postContentNode.innerHTML.replace(postSteamBarSelector.innerHTML,'')}</div>
+              <div class="steam_connect_user_bar">${postSteamBar !== null ? postSteamBar.innerHTML : ''}</div>
+              <div class="pstatus">${pstatusHTML}</div>
+              <div class="post-content-mid">
+              ${postContent.innerHTML.replace(postSteamBarHTML.innerHTML, '')}
+              </div>
               <div class="post-content-sign">${sign !== null ? sign.innerHTML : ''}</div>
           </div>
       </div>
@@ -1763,22 +1785,24 @@
 
     // 移动帖子布局
     let id = post.id
-    let favatarSelector = $(`#${id} div[id*="favatar"]`)
-    let postTopBarLeftSelector = $(`#${id} .pti`)
-    let postTopBarRightSelector = $(`#${id} .plc>.pi`)
-    let postSteamBarSelector = $(`#${id} .steam_connect_user_bar`)
-    let postConentSelector = $(`#${id} .pct`)
+    let favatarNode = $(`#${id} div[id*="favatar"]`)
+    let postTopBarLeftNode = $(`#${id} .pti`)
+    let postTopBarRightNode = $(`#${id} .plc>.pi`)
+    let postSteamBarNode = $(`#${id} .steam_connect_user_bar`)
+    let pstatusNode = $(`#${id} .pstatus`)
+    let postConentNode = $(`#${id} .pct`)
     let collectBtn = $(`#${id} #p_btn`)
     let mainSupport = $(`#${id} #recommend_add`)
     let sign = $(`#${id} .sign`)
     let postBottomBar = $(`#${id} .po.hin`)
 
     post.innerHTML = postTamplate(
-      favatarSelector,
-      postTopBarLeftSelector,
-      postTopBarRightSelector,
-      postSteamBarSelector,
-      postConentSelector,
+      favatarNode,
+      postTopBarLeftNode,
+      postTopBarRightNode,
+      postSteamBarNode,
+      pstatusNode,
+      postConentNode,
       collectBtn,
       mainSupport,
       postBottomBar,
@@ -1811,7 +1835,7 @@
     let steamUserBar = $(`#${post.id} .steam_connect_user_bar`)
 
     if (steamUserBar !== null) {
-      if (steamUserBar.firstChild.nodeName === '#text') {
+      if (steamUserBar.firstChild !== null) {
         let steamName = document.createElement(`span`)
         steamName.className = `steam-name`
         steamName.innerHTML = `<span>${symbolHTML(symbolSteamBar.Steam_icon_logo_post)}</span><span>${steamUserBar.firstChild.textContent}</span>`
@@ -1906,7 +1930,8 @@
 
     // 对象顺序是按钮排序
     const postTopBarRegx = {
-      authNormalIcon: /()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
+      //authNormalIcon: /()(<img.+?OL_(?!MEB).{0,}.+?>)()/gm,
+      authNormalIcon: /()(<img.+_(?!MEB).{0,}>)()/gm,
       // 图标
       posttime: /(<em\s{0,}id="authorposto.+?>)(.+?)(<\/em>)/gm,
       postfrom: /(<span.+?xg1">)(.+?)(<\/span>)/gm,
