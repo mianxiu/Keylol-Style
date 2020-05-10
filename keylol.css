@@ -3551,6 +3551,7 @@ blockquote {}
 }
 
 .tindex li {
+	width:fit-content;
 	transition: .2s all;
 	color: var(--font-nomal);
 	border-radius: var(--border-radius-10);
@@ -3563,7 +3564,10 @@ blockquote {}
 .tindex li:hover {
 	background-color: var(--background-color);
 }
-
+.tindex li.post-index-active{
+	background-color:var(--point);
+	color:var(--font-point);
+}
 .cm h3 {
 	display: inline-flex;
 	font-size: var(--font-size-12);
@@ -3781,4 +3785,12 @@ blockquote {}
 	border-radius: var(--border-radius-200);
 	background-color: var(--font-point);
 	margin-right: 2px;
+}
+/*复制提示*/
+.ntcwin{
+	background-color:var(--point);
+	box-shadow:var(--shadow-hot);
+	padding:18px;
+	border-radius:var(--border-radius-10);
+	color:var(--font-point);
 }

@@ -1872,6 +1872,13 @@
      */
     let indexLiCallback = () => {
 
+      // 添加active
+      event.target.parentNode.childNodes.forEach(li=>{
+        li.className = ''
+      })
+
+      event.target.className = 'post-index-active'
+      
       let url = event.target.getAttribute(`contentUrl`)
 
       fetch(url)
