@@ -3773,6 +3773,8 @@ blockquote {}
 	margin-top: 18px;
 	color: #0000;
 	display: flex;
+	flex-wrap:wrap;
+	
 }
 
 .ptg.mbm.mtn a {
@@ -3784,6 +3786,7 @@ blockquote {}
 	background-color: var(--point);
 	padding: 0 8px;
 	border-radius: var(--border-radius-10);
+	margin-bottom:4px;
 }
 
 .ptg.mbm.mtn a:before {
