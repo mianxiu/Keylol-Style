@@ -3953,3 +3953,21 @@ height:var(--element-height-34);
 .photo-avatar span{
 	margin-left:18px;
 }
+.photo-info{
+	margin-left:18px;
+}
+.photo-info,
+.photo-info div{
+	display:flex;
+	align-items:center;
+	color:var(--font-nomal);
+	
+}
+.photo-info div{
+	margin-left:8px;
+}
+.photo-info .icon{
+	color:var(--icon-fill);
+	width:1.4em;
+	height:1.4em;
+}

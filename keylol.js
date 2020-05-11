@@ -2159,32 +2159,44 @@
    * 渲染自拍版块
    */
   function renderPhotoForumLi(liNode) {
+
+    const symbolPhoto = {
+      comments: "keylolcomments",
+      like: "keylolqinggan"
+    }
+
     liNode.removeAttribute(`style`)
 
-    let link = /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
-    let title = /atarget.+?title=.+?">(.+?)</gm
-    let user = /(<a\s{0,}href=.+?id.+?(\d+)">)(.+?)(<\/a>)/gm
-    let like = /喜欢:.+?(\d+)/gm
-    let reply = /回复">(\d+)/gm
+    let linkRegx = /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
+    let titleRegx = /atarget.+?title=.+?">(.+?)</gm
+    let userRegx = /(<a\s{0,}href=.+?id.+?(\d+)">)(.+?)(<\/a>)/gm
+    let likeRegx = /喜欢:.+?(\d+)/gm
+    let replyRegx = /回复">(\d+)/gm
 
 
     let liNodeHTML = liNode.innerHTML
     console.log()
     //  <a href="suid-${userHTML.replace(user, '$2')}">${userHTML.replace(user, `$3`)}</a>
 
-    let userHTML = liNodeHTML.match(user)[0]
-    let titlHTML = liNodeHTML.match(title)[0]
+    let userHTML = liNodeHTML.match(userRegx)[0]
+    let titlHTML = liNodeHTML.match(titleRegx)[0]
 
-    let liTemplate = liNodeHTML.match(link)[0].replace(link,
+    let likeHTML = liNodeHTML.match(likeRegx)[0]
+    let replyHTML = liNodeHTML.match(replyRegx)[0]
+
+    let liTemplate = liNodeHTML.match(linkRegx)[0].replace(linkRegx,
       `$1
         <div class="photo-mask">
-            <div class="photo-title">${titlHTML.replace(title, `$1`)}</div>
+            <div class="photo-title">${titlHTML.replace(titleRegx, `$1`)}</div>
             <div class="photo-user-tip">
                 <div class="photo-avatar">
-                      <img src=" ${avatarImgUrl(userHTML.replace(user, '$2'), 'middle')}">
-                      <span>${userHTML.replace(user, '$3')}</span>
+                      <img src=" ${avatarImgUrl(userHTML.replace(userRegx, '$2'), 'middle')}">
+                      <span>${userHTML.replace(userRegx, '$3')}</span>
                 </div>
-                <div class="photo-info"></div>
+                <div class="photo-info">
+                    <div>${symbolHTML(symbolPhoto.like)}<span>${likeHTML.replace(likeRegx, `$1`)}</span></div>
+                    <div>${symbolHTML(symbolPhoto.comments)}<span>${replyHTML.replace(replyRegx, `$1`)}</span></div> 
+                </div>
              </div>
        </div>
     $3
