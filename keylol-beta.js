@@ -2130,17 +2130,17 @@
         })
         .then(bodyText => {
 
+
           let idJson = bodyText.match(idJsonRegx) !== null
             ? JSON.parse(bodyText.match(idJsonRegx)[0].replace(idJsonRegx, '$1'))
             : null
 
           let otherImg = bodyText.match(otherImgRegx) !== null
-            ? bodyText.match(otherImgRegx)[0].replace(otherImgRegx,`$1`)
+            ? bodyText.match(otherImgRegx)[0].replace(otherImgRegx, `$1`)
             : null
 
 
-          
-           let imgUrl = idJson !== null && idJson.images[0] !== undefined ? idJson.images[0] : otherImg
+          let imgUrl = idJson !== null && idJson.images[0] !== undefined ? idJson.images[0] : otherImg
 
           aNode.innerHTML += imgUrl !== null
             ? `<div class="post-photo-img" style=" width:100%;height:100%; background-image:url(${imgUrl})"></div>`
@@ -2215,7 +2215,6 @@
    */
   function renderPhotoScrollLoad() {
 
-    let maxloadNum = 2
 
     let waterFallNode = $(`#water-fall`)
 
@@ -2250,16 +2249,11 @@
 
       let photoNextBtn = $(`#photo-next`)
 
-
       if (photoNextBtn !== null) {
 
         let domin = photoNext.getAttribute(`domin`)
         let page = photoNext.getAttribute(`page`)
-        let nextpage = Number(photoNextBtn.getAttribute(`nextpage`))
 
-        if (nextpage === maxloadNum ) {
-          window.location.href = domin + page
-        }
 
         fetch(domin + page)
           .then(res => {
@@ -2278,8 +2272,12 @@
             let currentPage = Number(photoNextBtn.getAttribute(`page`))
             photoNextBtn.setAttribute(`page`, currentPage + 1)
 
-            // 自动加载3页后跳转
-            photoNextBtn.setAttribute(`nextpage`, Number(photoNextBtn.getAttribute(`nextpage`)) + 1)
+
+            // 改变地址栏
+            let state = {
+              page: page,
+            };
+            window.history.replaceState(state, "fetch photo", domin + page);
 
             // 重渲染列表
             $(`#water-fall`).childNodes.forEach(li => {
