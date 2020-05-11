@@ -3882,3 +3882,19 @@ height:var(--element-height-34);
 .login_button:hover{
 	box-shadow:var(--shadow-hot);
 }
+/*图片墙*/
+#water-fall{
+	width:var(--body-width)!important;
+	column-count:4;
+}
+#water-fall .z{
+	display:flex;
+}
+#water-fall li{
+	
+}
+.post-photo-img{
+	border-radius:var(--border-radius-10);
+   width:100%;
+	box-shadow:var(--shadow-outline);
+}

@@ -2152,7 +2152,7 @@
             : null
 
           let imgUrl = idJson !== null ? idJson.images[0] : null
-          urlNode.innerHTML = imgUrl !== null ? `<img class="post-photo-img" src=${imgUrl}>` : null
+          urlNode.innerHTML = imgUrl !== undefined ? `<img class="post-photo-img" src=${imgUrl}>` : `is loced`
         })
     }
   }
