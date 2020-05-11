@@ -3885,21 +3885,27 @@ height:var(--element-height-34);
 /*-------图片墙------*/
 #water-fall{
 	width:var(--body-width)!important;
-	column-count:3;
-	--photo-minheight:160px;
+   display:flex;
+	flex-wrap:wrap;
+	--photo-minheight:180px;
+	justify-content:space-between;
 }
 
 #water-fall li{
+	
 	margin-bottom:18px;
 }
 .photo-link{
+	width:290px;
+	height:400px;
+	
 	display:inline-flex;
 	position:relative;
 	border-radius:var(--border-radius-10);
 	overflow:hidden;
 	min-height: var(--photo-minheight);
-   min-width: 300px;
 	background-color:var(--input-background);
+	box-shadow:var(--shadow-outline);
 }
 .photo-mask{
 	transition:.2s all;
@@ -3926,8 +3932,8 @@ height:var(--element-height-34);
 	line-height:24px;
 }
 .post-photo-img{
-	
-   width:100%;
+	background-position:center;
+	background-size:cover;
 	box-shadow:var(--shadow-outline);
 	cursor:zoom-in;
 	min-height: var(--photo-minheight);
@@ -3949,15 +3955,14 @@ height:var(--element-height-34);
 }
 .photo-avatar img{
 	border-radius:var(--border-radius-200);
-	width:48px;
-	height:48px;
+	width:40px;
+	height:40px;
 }
-.photo-avatar span{
-	margin-left:18px;
-}
+.photo-avatar span,
 .photo-info{
-	margin-left:18px;
+	margin-left:8px;
 }
+
 .photo-info,
 .photo-info div{
 	display:flex;
