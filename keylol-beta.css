@@ -3998,9 +3998,13 @@ height:var(--element-height-34);
     justify-content: center;
 }
 
-/*高级发帖*/
+/*---------------高级编辑器----------------*/
+#e_body .icon{
+	width:1.8em;
+	height:1.8em;
+}
 #postform{
-	height:500px
+	height:1200px;
 }
 #e_body{
 	display:flex!important;
@@ -4030,6 +4034,7 @@ height:var(--element-height-34);
 	width:800px;
 	border:2px solid;
 }
+
 #editorheader+body{
 	background:red;
 }

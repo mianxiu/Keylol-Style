@@ -1389,7 +1389,7 @@
   }
 
   /**
-   * 发帖模块
+   * 渲染发帖图标
    */
   function renderPostPanelPermission() {
     const symbolEditorRegex = {
