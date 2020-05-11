@@ -2107,7 +2107,7 @@
 
 
   /**
-   * 帖子渲染函数组合
+   * 帖子渲染函数组合----------------------
    * 
    * renderPostFavatar 用户面板
    * 
@@ -2121,8 +2121,56 @@
       renderPostContext(postNode)
     })
 
+  }
+
+  /**---------------------------------------------- */
+  /**
+   * 请求有链接的节点的首张图片
+   * @param {Element} urlNode 
+   */
+  function fetchPhoto(urlNode) {
 
 
+
+    let idJsonRegx = /<script type="application\/ld\+json">(.+?)<\/script>/s
+
+    urlNode !== null ? urlNode.className = `photo-link` : null
+
+    let url = urlNode.href !== undefined ? urlNode.href : null
+
+    if (url !== null) {
+
+      fetch(url)
+        .then(res => {
+          return res.text()
+        })
+        .then(bodyText => {
+
+      
+          let idJson = bodyText.match(idJsonRegx) !== null
+            ? JSON.parse(bodyText.match(idJsonRegx)[0].replace(idJsonRegx, '$1'))
+            : null
+
+          let imgUrl = idJson !== null ? idJson.images[0] : null
+          urlNode.innerHTML = imgUrl !== null ? `<img class="post-photo-img" src=${imgUrl}>` : null
+        })
+    }
+  }
+
+  /**
+   * 渲染自拍版块
+   */
+  function renderPhotoForum() {
+    $(`#waterfall`).id = `water-fall`
+
+    let photoLi = $All(`#water-fall li`)
+
+    photoLi.forEach(li => {
+      li.removeAttribute(`style`)
+      let a = li.firstElementChild.firstElementChild
+
+      fetchPhoto(a)
+    })
 
   }
 
@@ -2171,26 +2219,30 @@
 
     let isLogin = /login|register/gm.test(currentHref)
 
+    // 自拍区
+    let isPhoto = /f(id=){0,1}273/gm.test(currentHref)
+
+
 
 
     if (isLogin == true) {
-      console.log(`i am login`)
+      console.log(`login`)
     }
 
 
     if (isHome == true) {
-      console.log(`i am home`)
+      console.log(`home`)
       home()
     }
 
     if (isHotPost == true) {
-      console.log(`i am hot post`)
+      console.log(`hot post`)
       hotPost()
       userCard()
     }
 
     if (isSubject == true) {
-      console.log(`i am subject`)
+      console.log(`subject`)
 
       postPanel()
 
@@ -2202,10 +2254,17 @@
       renderPostLists()
       userCard()
       autopbn()
+
+
+      if (isPhoto == true) {
+        renderPhotoForum()
+        console.log(`photo`)
+
+      }
     }
 
     if (isPost == true) {
-      console.log(`i am post`)
+      console.log(`post`)
 
       postPanel()
 
@@ -2216,6 +2275,8 @@
 
       renderPostContent()
       renderControlPanel()
+
+
     }
 
   }
