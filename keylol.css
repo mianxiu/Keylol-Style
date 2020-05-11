@@ -3896,25 +3896,35 @@ height:var(--element-height-34);
 .photo-link{
 	display:inline-flex;
 	position:relative;
-	
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
 }
 .photo-mask{
+	transition:.2s all;
 	position:absolute;
 	display:flex;
 	flex-direction:column;
 	justify-content:space-between;
 	width:100%;
 	height:100%;
-	background-color:#0000002b;
+	background-color:#00000057;
+	opacity:1;
 
 }
+.photo-link:hover .photo-mask{
+	background-color:#0000;
+	opacity:0;
+}
+
 .photo-title{
+	color:#f4f4f4;
 	font-size:18px;
 	padding:18px;
 	font-weight:bold;
+	line-height:24px;
 }
 .post-photo-img{
-	border-radius:var(--border-radius-10);
+	
    width:100%;
 	box-shadow:var(--shadow-outline);
 	cursor:zoom-in;
@@ -3924,7 +3934,7 @@ height:var(--element-height-34);
 .photo-user-tip{
 	margin:18px;
 	background-color:var(--element-background);
-	padding:8px;
+	padding:8px 18px;
 	display:inline-flex;
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-hot);
@@ -3939,4 +3949,7 @@ height:var(--element-height-34);
 	border-radius:var(--border-radius-200);
 	width:48px;
 	height:48px;
+}
+.photo-avatar span{
+	margin-left:18px;
 }
