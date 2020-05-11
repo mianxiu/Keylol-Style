@@ -3993,12 +3993,24 @@ height:var(--element-height-34);
 }
 
 /*高级发帖*/
+#postform{
+	height:500px
+}
 #e_body{
 	display:block!important;
 }
 #e_controls{
-	background-color:red;
-	height:500px;
+	background-color:#d7cccc;
+	height:300px;
+}
+#e_button{
+	display:flex;
+	background-color:#c7c7d5;
+}
+#e_iframe{
+	height:800px;
+	width:800px;
+	border:2px solid;
 }
 .edt,.bar{
 	  padding: 4px;
