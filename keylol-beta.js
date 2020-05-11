@@ -2373,12 +2373,14 @@
     // 版块
     let isSubject = new RegExp(`(${keylolDomin}\/forum.php\\?mod=forumdisplay.*)|${keylolDomin}\/f\\d{3}.*`).test(currentHref)
     // 帖子
-    let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=viewthread.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
+    let isPostMin = new RegExp(`(${keylolDomin}\/forum.php\\?mod=viewthread.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
     let isLogin = /login|register/gm.test(currentHref)
 
     // 自拍区
     let isPhoto = /f(id=){0,1}273/gm.test(currentHref)
+
+    let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
 
 
@@ -2421,8 +2423,8 @@
       }
     }
 
-    if (isPost == true) {
-      console.log(`post`)
+    if (isPostMin == true) {
+      console.log(`post min panel`)
 
       postPanel()
 
@@ -2433,6 +2435,14 @@
 
       renderPostContent()
       renderControlPanel()
+
+    }
+
+    
+    if (isPost == true) {
+      console.log(`post`)
+
+      postPanel()
 
 
     }
