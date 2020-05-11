@@ -3882,14 +3882,13 @@ height:var(--element-height-34);
 .login_button:hover{
 	box-shadow:var(--shadow-hot);
 }
-/*图片墙*/
+/*-------图片墙------*/
 #water-fall{
 	width:var(--body-width)!important;
 	column-count:3;
+	--photo-minheight:160px;
 }
-#water-fall .z{
-	display:flex;
-}
+
 #water-fall li{
 	margin-bottom:18px;
 }
@@ -3898,6 +3897,9 @@ height:var(--element-height-34);
 	position:relative;
 	border-radius:var(--border-radius-10);
 	overflow:hidden;
+	min-height: var(--photo-minheight);
+   min-width: 300px;
+	background-color:var(--input-background);
 }
 .photo-mask{
 	transition:.2s all;
@@ -3928,7 +3930,7 @@ height:var(--element-height-34);
    width:100%;
 	box-shadow:var(--shadow-outline);
 	cursor:zoom-in;
-	min-height:100px;
+	min-height: var(--photo-minheight);
 	background-color:var(--element-background);
 }
 .photo-user-tip{
@@ -3970,4 +3972,11 @@ height:var(--element-height-34);
 	color:var(--icon-fill);
 	width:1.4em;
 	height:1.4em;
+}
+.photo-lock{
+	 display: flex;
+    width: 100%;
+    min-height: var(--photo-minheight);
+    align-items: center;
+    justify-content: center;
 }

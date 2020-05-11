@@ -2126,16 +2126,17 @@
   /**---------------------------------------------- */
   /**
    * 请求有链接的节点的首张图片
-   * @param {Element} urlNode 
+   * @param {Element} aNode 
    */
-  function fetchPhoto(urlNode) {
+  function fetchPhoto(aNode) {
 
+    const symbolLock = `keylolclosepost`
 
     let idJsonRegx = /<script type="application\/ld\+json">(.+?)<\/script>/s
 
-    urlNode !== null ? urlNode.className = `photo-link` : null
+    aNode !== null ? aNode.className = `photo-link` : null
 
-    let url = urlNode !== null ? urlNode.href : null
+    let url = aNode !== null ? aNode.href : null
 
     if (url !== null) {
 
@@ -2150,7 +2151,9 @@
             : null
 
           let imgUrl = idJson !== null ? idJson.images[0] : null
-          urlNode.innerHTML += imgUrl !== undefined ? `<img class="post-photo-img" src=${imgUrl}>` : `is loced`
+          aNode.innerHTML += imgUrl !== undefined 
+          ? `<img class="post-photo-img" src=${imgUrl}>` 
+          : `<span class="photo-lock">${symbolHTML(symbolLock)}</span>`
         })
     }
   }
@@ -2168,7 +2171,7 @@
     liNode.removeAttribute(`style`)
     liNode.className = "photo-list"
     // /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
-//(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)
+    //(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)
     let linkRegx = /(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
     let titleRegx = /atarget.+?title=.+?">(.+?)</gm
     let userRegx = /(<a\s{0,}href=.+?id.+?(\d+)">)(.+?)(<\/a>)/gm
@@ -2177,7 +2180,7 @@
 
 
     let liNodeHTML = liNode.innerHTML
- 
+
     let linkHTML = liNodeHTML.match(linkRegx)
     let userHTML = liNodeHTML.match(userRegx)[0]
     let titlHTML = liNodeHTML.match(titleRegx)[0]
@@ -2203,21 +2206,43 @@
     $3
     `
     )
-    : ''
+      : ''
 
     liNode.innerHTML = liTemplate
 
     let a = liNode.firstElementChild
-
     fetchPhoto(a)
   }
 
 
+  function renderPhotoScrollLoad() {
+    document.querySelector(`script[reload*="1"]`).remove()
+
+
+    // 去除默认下拉更新
+    let defultPgbtn = $(`.pgbtn`)
+
+    let nextUrl = defultPgbtn !== null ? defultPgbtn.firstChild.href : ''
+
+    defultPgbtn !== null ? defultPgbtn.remove() : ''
+
+    let pageRegx = /(.*page=)(\d+)/gm
+    let pageDomin = nextUrl.replace(pageRegx, '$1')
+    let page = Number(nextUrl.replace(pageRegx, '$2'))
+
+    console.log(pageDomin)
+    console.log(page)
+
+
+
+  }
 
   /**
    * 自拍版块
    */
   function renderPhotoForum() {
+
+
     $(`#waterfall`).id = `water-fall`
 
     let photoLi = $All(`#water-fall li`)
@@ -2227,6 +2252,8 @@
       renderPhotoForumLi(li)
 
     })
+
+    renderPhotoScrollLoad()
 
   }
 
