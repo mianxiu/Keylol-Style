@@ -2708,6 +2708,7 @@ span[id*="checkseccodeverify"] {
 #fastposteditor > div > div.bar > span > a span.editor-tip,
 .webuploader-pick span.editor-tip,
 .fpd a > span.editor-tip,
+#e_body .editor-tip,
 #fastpostform > div.pbt.cl > span {
 	z-index: 11;
 	position: absolute;
@@ -2730,7 +2731,8 @@ span[id*="checkseccodeverify"] {
 
 #fastposteditor > div > div.bar > span > a:hover span.editor-tip,
 #spanButtonPlaceholder:hover span.editor-tip,
-.fpd a:hover > span.editor-tip {
+.fpd a:hover > span.editor-tip,
+#e_controls a[id^="e_"]:hover > span.editor-tip{
 	display: flex;
 	cursor: pointer;
 }
@@ -4003,9 +4005,13 @@ height:var(--element-height-34);
 	width:1.8em;
 	height:1.8em;
 }
+#e_body .editor-tip{
+
+}
 #postform{
 	height:1200px;
 }
+
 #e_body{
 	display:flex!important;
 	flex-direction:column;
@@ -4033,6 +4039,7 @@ height:var(--element-height-34);
 	height:800px;
 	width:800px;
 	border:2px solid;
+	opacity:.3;
 }
 
 #editorheader+body{
@@ -4040,4 +4047,9 @@ height:var(--element-height-34);
 }
 #post_extra{
 	height:400px;
+}
+#e_controls a[id^="e_"]{
+	display:flex;
+	align-items:center;
+	justify-content:center;
 }
