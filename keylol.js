@@ -2115,6 +2115,8 @@
     const symbolLock = `keylolclosepost`
 
     let idJsonRegx = /<script type="application\/ld\+json">(.+?)<\/script>/s
+    // /<img.+?file="(.+?)".+?>/
+    let otherImgRegx = /<img.+?file="(.+?\.(?!gif)...)".+?>/gm
 
     aNode !== null ? aNode.className = `photo-link` : null
 
@@ -2132,8 +2134,17 @@
             ? JSON.parse(bodyText.match(idJsonRegx)[0].replace(idJsonRegx, '$1'))
             : null
 
-          let imgUrl = idJson !== null ? idJson.images[0] : null
-          aNode.innerHTML += imgUrl !== undefined
+          let otherImg = bodyText.match(otherImgRegx) !== null
+            ? bodyText.match(otherImgRegx)[0].replace(otherImgRegx,`$1`)
+            : null
+
+            console.log(otherImg)
+
+            let imgUrl
+          
+          imgUrl = idJson !== null && idJson.images[0] !== undefined ? idJson.images[0] : otherImg
+
+          aNode.innerHTML += imgUrl !== null
             ? `<img class="post-photo-img" src=${imgUrl}>`
             : `<span class="photo-lock">${symbolHTML(symbolLock)}</span>`
         })
