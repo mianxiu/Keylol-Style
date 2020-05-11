@@ -396,46 +396,28 @@
 
   // 搜索栏 消息 提醒 logo
   // 搜索栏和导航栏
-  const symbolNav = [
-    "kelolmenu_iconsearch",
-    "kelolmenu_icon_mail",
-    "kelolmenu_icon_post_reply",
-    "kelolkeylol_logo"
-  ]
+  const symbolNav = {
+    search: "kelolmenu_iconsearch",
+    mail: "kelolmenu_icon_mail",
+    postreply: "kelolmenu_icon_post_reply",
+    logo: "kelolkeylol_logo"
+  }
   /**
    * 导航symbol
    */
   function setNavIcons() {
-    let navNodes = {
-      searchNode: $(`.search-bar-form > .dropdown `),
-      actionNode: $(`#nav-user-action-bar > ul > li > a[href*="do=pm"]`),
-      highLightNode: $(`#nav-user-action-bar > ul > li > a[href*="view=mypost"]`),
-    }
 
+    let searchNode = $(`.search-bar-form > .dropdown `)
+    let mail = $(`#nav-user-action-bar  a[href*="do=pm"]`)
+    let notic = $(`#nav-user-action-bar  a[href*="do=notic"]`)
+    let highLightNode = $(`#nav-user-action-bar  a[href*="view=mypost"]`)
+    let logo = $("#nav-logo")
 
-    // 登录状态
-    if (navNodes.highLightNode !== null) {
-
-      let i = 0
-      for (const key in navNodes) {
-        let node = navNodes[key]
-
-        if (node.firstChild != null) {
-          node.firstChild.nodeValue = ``
-        }
-        navNodes[key].insertBefore(symbolHTMLNode(symbolNav[i]), node.children[0])
-        i++
-      }
-    } else {
-
-      // 未登录只插入搜索
-      navNodes.searchNode !== null ?
-        navNodes.searchNode.insertBefore(symbolHTMLNode(symbolNav[0]), navNodes.searchNode.children[0])
-        : null
-    }
-
+    searchNode !== null ? searchNode.innerHTML = symbolHTML(symbolNav.search) : null
+    mail !== null ? mail.innerHTML = symbolHTML(symbolNav.mail) : null
+    notic !== null ? notic.innerHTML = symbolHTML(symbolNav.postreply) : null
     // 设置logo
-    $("#nav-logo") !== null ? $("#nav-logo").innerHTML += symbolHTML(symbolNav[3]) : null
+    logo !== null ? logo.innerHTML += symbolHTML(symbolNav.logo) : null
   }
 
   // steam平台工具
@@ -2151,9 +2133,9 @@
             : null
 
           let imgUrl = idJson !== null ? idJson.images[0] : null
-          aNode.innerHTML += imgUrl !== undefined 
-          ? `<img class="post-photo-img" src=${imgUrl}>` 
-          : `<span class="photo-lock">${symbolHTML(symbolLock)}</span>`
+          aNode.innerHTML += imgUrl !== undefined
+            ? `<img class="post-photo-img" src=${imgUrl}>`
+            : `<span class="photo-lock">${symbolHTML(symbolLock)}</span>`
         })
     }
   }
@@ -2216,15 +2198,17 @@
 
 
   function renderPhotoScrollLoad() {
-    document.querySelector(`script[reload*="1"]`).remove()
 
-
-    // 去除默认下拉更新
     let defultPgbtn = $(`.pgbtn`)
-
     let nextUrl = defultPgbtn !== null ? defultPgbtn.firstChild.href : ''
 
+    // 去除默认下拉更新
+    document.querySelector(`script[reload*="1"]`).remove()
     defultPgbtn !== null ? defultPgbtn.remove() : ''
+
+    let moderate = $(`#moderate`)
+
+
 
     let pageRegx = /(.*page=)(\d+)/gm
     let pageDomin = nextUrl.replace(pageRegx, '$1')
@@ -2232,8 +2216,6 @@
 
     console.log(pageDomin)
     console.log(page)
-
-
 
   }
 
