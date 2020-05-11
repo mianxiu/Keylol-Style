@@ -2135,7 +2135,7 @@
 
     urlNode !== null ? urlNode.className = `photo-link` : null
 
-    let url = urlNode.href !== undefined ? urlNode.href : null
+    let url = urlNode !== null ? urlNode.href : null
 
     if (url !== null) {
 
@@ -2156,7 +2156,7 @@
   }
 
   /**
-   * 渲染自拍版块
+   * 渲染自拍条目
    */
   function renderPhotoForumLi(liNode) {
 
@@ -2166,8 +2166,10 @@
     }
 
     liNode.removeAttribute(`style`)
-
-    let linkRegx = /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
+    liNode.className = "photo-list"
+    // /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
+//(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)
+    let linkRegx = /(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
     let titleRegx = /atarget.+?title=.+?">(.+?)</gm
     let userRegx = /(<a\s{0,}href=.+?id.+?(\d+)">)(.+?)(<\/a>)/gm
     let likeRegx = /喜欢:.+?(\d+)/gm
@@ -2175,16 +2177,15 @@
 
 
     let liNodeHTML = liNode.innerHTML
-    console.log()
-    //  <a href="suid-${userHTML.replace(user, '$2')}">${userHTML.replace(user, `$3`)}</a>
-
+ 
+    let linkHTML = liNodeHTML.match(linkRegx)
     let userHTML = liNodeHTML.match(userRegx)[0]
     let titlHTML = liNodeHTML.match(titleRegx)[0]
 
     let likeHTML = liNodeHTML.match(likeRegx)[0]
     let replyHTML = liNodeHTML.match(replyRegx)[0]
 
-    let liTemplate = liNodeHTML.match(linkRegx)[0].replace(linkRegx,
+    let liTemplate = linkHTML !== null ? linkHTML[0].replace(linkRegx,
       `$1
         <div class="photo-mask">
             <div class="photo-title">${titlHTML.replace(titleRegx, `$1`)}</div>
@@ -2202,6 +2203,7 @@
     $3
     `
     )
+    : ''
 
     liNode.innerHTML = liTemplate
 
@@ -2212,6 +2214,9 @@
 
 
 
+  /**
+   * 自拍版块
+   */
   function renderPhotoForum() {
     $(`#waterfall`).id = `water-fall`
 
