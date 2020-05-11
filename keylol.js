@@ -1000,11 +1000,11 @@
 
 
   /**
-   *
+   * 用户头像
    * @param {string} suid
    * @param {string} size small middle
    */
-  function avatar(suid, size) {
+  function avatarImgUrl(suid, size) {
     let suidCache = []
 
     for (let i = suid.length - 1; i > -1; i -= 2) {
@@ -1165,7 +1165,7 @@
 
     let suid = tableHTML.match(suidRegx) != null ? tableHTML.match(suidRegx)[0].replace(suidRegx, "$1") : ""
 
-    let avatarUrl = avatar(suid, `small`)
+    let avatarUrl = avatarImgUrl(suid, `small`)
 
     // 用户头像$名称
     // example <a href="suid-562667" c="1" mid="card_3928">yuyym</a>
@@ -2131,7 +2131,6 @@
   function fetchPhoto(urlNode) {
 
 
-
     let idJsonRegx = /<script type="application\/ld\+json">(.+?)<\/script>/s
 
     urlNode !== null ? urlNode.className = `photo-link` : null
@@ -2146,13 +2145,12 @@
         })
         .then(bodyText => {
 
-      
           let idJson = bodyText.match(idJsonRegx) !== null
             ? JSON.parse(bodyText.match(idJsonRegx)[0].replace(idJsonRegx, '$1'))
             : null
 
           let imgUrl = idJson !== null ? idJson.images[0] : null
-          urlNode.innerHTML = imgUrl !== undefined ? `<img class="post-photo-img" src=${imgUrl}>` : `is loced`
+          urlNode.innerHTML += imgUrl !== undefined ? `<img class="post-photo-img" src=${imgUrl}>` : `is loced`
         })
     }
   }
@@ -2160,16 +2158,53 @@
   /**
    * 渲染自拍版块
    */
+  function renderPhotoForumLi(liNode) {
+    liNode.removeAttribute(`style`)
+
+    let link = /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
+    let title = /atarget.+?title=.+?">(.+?)</gm
+    let user =/(<a\s{0,}href=.+?id.+?(\d+)">)(.+?)(<\/a>)/gm
+    let like = /喜欢:.+?(\d+)/gm
+    let reply = /回复">(\d+)/gm
+
+    
+    let liNodeHTML = liNode.innerHTML
+    console.log()
+
+    let userHTML = liNodeHTML.match(user)[0]
+
+    let liTemplate = liNodeHTML.match(link)[0].replace(link,
+    `$1
+    <div class="photo-mask">
+        <div class="photo-user-tip">
+            <div class="photo-avatar">
+             <img src=" ${avatarImgUrl(userHTML.replace(user,'$2'),'middle')}">
+            </div>
+        </div>
+
+    </div>
+    $3
+    `
+    )
+
+    liNode.innerHTML = liTemplate
+
+    let a = liNode.firstElementChild
+
+    //fetchPhoto(a)
+  }
+
+
+
   function renderPhotoForum() {
     $(`#waterfall`).id = `water-fall`
 
     let photoLi = $All(`#water-fall li`)
 
     photoLi.forEach(li => {
-      li.removeAttribute(`style`)
-      let a = li.firstElementChild.firstElementChild
+      
+      renderPhotoForumLi(li)
 
-      fetchPhoto(a)
     })
 
   }
