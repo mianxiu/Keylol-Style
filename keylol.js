@@ -2150,7 +2150,8 @@
       like: "keylolqinggan"
     }
 
-    liNode.removeAttribute(`style`)
+
+    liNode.style = ''
     liNode.className = "photo-list"
     // /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
     //(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)
@@ -2193,11 +2194,17 @@
     liNode.innerHTML = liTemplate
 
     let a = liNode.firstElementChild
+
     fetchPhoto(a)
   }
 
 
+  /**
+   * 自动加载3页后，需要下页按钮
+   */
   function renderPhotoScrollLoad() {
+
+    let waterFallNode = $(`#water-fall`)
 
     let defultPgbtn = $(`.pgbtn`)
     let nextUrl = defultPgbtn !== null ? defultPgbtn.firstChild.href : ''
@@ -2209,10 +2216,85 @@
     let moderate = $(`#moderate`)
 
 
-
     let pageRegx = /(.*page=)(\d+)/gm
     let pageDomin = nextUrl.replace(pageRegx, '$1')
     let page = Number(nextUrl.replace(pageRegx, '$2'))
+
+    // 添加加载按钮
+    let photoNext = document.createElement('a')
+    photoNext.id = `photo-next`
+    photoNext.setAttribute(`domin`, pageDomin)
+    photoNext.setAttribute(`page`, page)
+    photoNext.setAttribute(`nextpage`, `0`)
+    photoNext.innerText = `加载更多`
+
+    moderate.insertBefore(photoNext, null)
+
+    let photoNextNode = $(`#photo-next`)
+
+    // 加载页面
+    let fetchNextPhotoList = () => {
+
+      let photoNextBtn = $(`#photo-next`)
+
+
+      if (photoNextBtn !== null) {
+
+        let domin = photoNext.getAttribute(`domin`)
+        let page = photoNext.getAttribute(`page`)
+        let nextpage = Number(photoNextBtn.getAttribute(`nextpage`))
+
+        if (nextpage === 3) {
+          window.location.href = domin + page
+        }
+
+        fetch(domin + page)
+          .then(res => {
+            return res.text()
+          })
+          .then(bodyText => {
+
+            let domparser = new DOMParser();
+            let photoDOM = domparser.parseFromString(bodyText, `text/html`)
+
+            let waterfall = photoDOM.querySelector(`#waterfall`)
+
+            waterFallNode.innerHTML += waterfall.innerHTML
+
+            // 增加页数
+            let currentPage = Number(photoNextBtn.getAttribute(`page`))
+            photoNextBtn.setAttribute(`page`, currentPage + 1)
+
+            // 自动加载3页后跳转
+            photoNextBtn.setAttribute(`nextpage`, Number(photoNextBtn.getAttribute(`nextpage`)) + 1)
+
+            // 重渲染列表
+            $(`#water-fall`).childNodes.forEach(li => {
+              if (li.nodeName !== '#text' && li.className === '') {
+                console.log(li)
+                renderPhotoForumLi(li)
+              }
+
+            })
+
+
+          }).catch(err => {
+
+          })
+      }
+
+
+
+
+    }
+
+    photoNextNode.addEventListener('click', fetchNextPhotoList)
+
+
+
+    window.addEventListener(`scroll`, () => {
+
+    })
 
     console.log(pageDomin)
     console.log(page)
