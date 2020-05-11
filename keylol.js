@@ -2138,14 +2138,12 @@
             ? bodyText.match(otherImgRegx)[0].replace(otherImgRegx,`$1`)
             : null
 
-            console.log(otherImg)
 
-            let imgUrl
           
-          imgUrl = idJson !== null && idJson.images[0] !== undefined ? idJson.images[0] : otherImg
+           let imgUrl = idJson !== null && idJson.images[0] !== undefined ? idJson.images[0] : otherImg
 
           aNode.innerHTML += imgUrl !== null
-            ? `<img class="post-photo-img" src=${imgUrl}>`
+            ? `<div class="post-photo-img" style=" width:100%;height:100%; background-image:url(${imgUrl})"></div>`
             : `<span class="photo-lock">${symbolHTML(symbolLock)}</span>`
         })
     }
@@ -2212,8 +2210,12 @@
 
   /**
    * 自动加载3页后，需要下页按钮
+   * maxloadNum为0取消ajax加载
+   * 
    */
   function renderPhotoScrollLoad() {
+
+    let maxloadNum = 2
 
     let waterFallNode = $(`#water-fall`)
 
@@ -2255,7 +2257,7 @@
         let page = photoNext.getAttribute(`page`)
         let nextpage = Number(photoNextBtn.getAttribute(`nextpage`))
 
-        if (nextpage === 3) {
+        if (nextpage === maxloadNum ) {
           window.location.href = domin + page
         }
 
@@ -2282,7 +2284,7 @@
             // 重渲染列表
             $(`#water-fall`).childNodes.forEach(li => {
               if (li.nodeName !== '#text' && li.className === '') {
-                console.log(li)
+                console.log(li.offsetWidth)
                 renderPhotoForumLi(li)
               }
 
