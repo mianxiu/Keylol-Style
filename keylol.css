@@ -1500,6 +1500,8 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 .backToTop {
     width: 40px !important;
     height: 40px !important;
+    bottom: 200px !important;
+    right: 250px !important;
     border-radius: var(--border-radius-200);
     background-color: var(--point) !important;
     box-shadow: var(--shadow-hot);
