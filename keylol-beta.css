@@ -4003,27 +4003,36 @@ height:var(--element-height-34);
 	height:500px
 }
 #e_body{
-	display:block!important;
+	display:flex!important;
+	flex-direction:column;
 }
 #e_controls{
+	display:flex;
+	
 	background-color:#d7cccc;
-	height:300px;
+	height:80px;
 }
 #e_button{
 	display:flex;
 	background-color:#c7c7d5;
 }
-#e_iframe{
-	height:800px;
-	width:800px;
-	border:2px solid;
-}
-.edt,.bar{
+
+.edt.bar{
 	  padding: 4px;
     height: 44px;
     border-bottom: 1px solid #ddd;
     background: #fcfcfc;
 }
+/*文本框*/
+#e_iframe{
+	position:absolute;
+	height:800px;
+	width:800px;
+	border:2px solid;
+}
 #editorheader+body{
 	background:red;
+}
+#post_extra{
+	height:400px;
 }

@@ -1391,7 +1391,7 @@
   /**
    * 发帖模块
    */
-  function postPanelPermission() {
+  function renderPostPanelPermission() {
     const symbolEditorRegex = {
       attchment: /attachn/,
       atuser: /fastpostat|at/,
@@ -1440,22 +1440,38 @@
     }
 
     let postNode = $(`#f_pst`)
-    let postIconNode = $(`.fpd`)
-    let postFullEditor = $(`#e_body`)
+    let postIconNode = $All(`.fpd a`)
+    let postFullEditor = $All(`#e_button a`)
     // 替换迷你编辑器图标
-    if (postIconNode != null) {
+    if (postIconNode != null || postFullEditor !== null) {
       // 高级模式
-      $(`#fastposteditor > div > div.bar > span > a`).innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
+      let toFullNode = $(`#fastposteditor > div > div.bar > span > a`)
+      let minB = $(`.fpd > a:first-child`)
+      let minAttl = $(`.webuploader-pick`)
+      toFullNode !== null ?
+        toFullNode.innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
+        : null
       // 加粗
-      $(`.fpd > a:first-child`).innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">${$(`.fpd > a:first-child`).title}</span>`
+      minB !== null ?
+        minB.innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">${$(`.fpd > a:first-child`).title}</span>`
+        : null
       // 附件
-      $(`.webuploader-pick`).innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
+      minAttl !== null ?
+        minAttl.innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
+        : null
 
       // a节点
-      postIconNode.childNodes.forEach((a) => {
+      let contorBarNode = postIconNode !== null ? postIconNode : postFullEditor
+
+      contorBarNode.forEach((a) => {
+        console.log(`1`)
+        console.log(a)
         if (a.tagName === "A") {
+          console.log(`2`)
           for (const key in symbolEditorRegex) {
+            console.log(`3`)
             if (symbolEditorRegex[key].test(a.id) == true) {
+              console.log(`4`)
               a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.title !== "" ? a.title : a.innerText}</span>`
             }
           }
@@ -2349,9 +2365,13 @@
    * 判断发帖权限
    */
   function postPanel() {
-    // 无权发帖
+
     if ($(`.pt.hm`) == null) {
-      postPanelPermission()
+      console.log(`min post`)
+      renderPostPanelPermission()
+    } else if ($(`#e_iframe`) !== null) {
+      console.log(`post`)
+      renderPostPanelPermission()
     } else {
       console.log(`无权发帖`)
       postPanelNoPermission()
@@ -2438,7 +2458,7 @@
 
     }
 
-    
+
     if (isPost == true) {
       console.log(`post`)
 
