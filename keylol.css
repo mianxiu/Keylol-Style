@@ -3885,16 +3885,58 @@ height:var(--element-height-34);
 /*图片墙*/
 #water-fall{
 	width:var(--body-width)!important;
-	column-count:4;
+	column-count:3;
 }
 #water-fall .z{
 	display:flex;
 }
 #water-fall li{
+	margin-bottom:18px;
+}
+.photo-link{
+	display:inline-flex;
+	position:relative;
 	
+}
+.photo-mask{
+	position:absolute;
+	display:flex;
+	flex-direction:column;
+	justify-content:space-between;
+	width:100%;
+	height:100%;
+	background-color:#0000002b;
+
+}
+.photo-title{
+	font-size:18px;
+	padding:18px;
+	font-weight:bold;
 }
 .post-photo-img{
 	border-radius:var(--border-radius-10);
    width:100%;
 	box-shadow:var(--shadow-outline);
+	cursor:zoom-in;
+	min-height:100px;
+	background-color:var(--element-background);
+}
+.photo-user-tip{
+	margin:18px;
+	background-color:var(--element-background);
+	padding:8px;
+	display:inline-flex;
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	width:fit-content;
+}
+.photo-avatar{
+	display:flex;
+	align-items:center;
+	
+}
+.photo-avatar img{
+	border-radius:var(--border-radius-200);
+	width:48px;
+	height:48px;
 }
