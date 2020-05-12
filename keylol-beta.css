@@ -4064,8 +4064,31 @@ display:flex;
 }
 /*分类*/
 .tb.cl.mbw{
+	display:inline-flex;
 	flex-direction:row;
 	justify-content:end;
+	background-color:var(--element-background);
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+	margin-bottom:18px;
+}
+.tb.cl.mbw li{
+	display:flex;
+}
+.tb.cl.mbw li a{
+	height:var(--element-height-34);
+	color:var(--font-nomal);
+	transition: .2s all;
+    line-height: var(--element-height-34);
+    padding: var(--element-padding-0-10);
+}
+.tb.cl.mbw li:hover a{
+	background-color:var(--background-color)
+}
+.tb.cl.mbw li.a{
+	 color: var(--font-color-light);
+    background-color: var(--point);
 }
 /*主题分类*/
 .ftid{
