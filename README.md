@@ -72,4 +72,3 @@ let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNod
 无法兼容firefox
 
 `chrome` `edge beta` 测试通过
-edge beta tampermonkey[https://microsoftedge.microsoft.com/addons/search/Tampermonkey?hl=zh-CN]

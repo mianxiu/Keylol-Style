@@ -4229,8 +4229,9 @@ blockquote {}
 #e_iframe {
     height: 800px;
     width: var(--body-width);
-    border: 2px solid;
+    border: 2px solid #d5d5d5;
     opacity: .8;
+	
 }
 
 #editorheader+body {
@@ -4354,7 +4355,10 @@ blockquote {}
     padding: 8px;
 }
 
-#e_switcher {}
+#e_switcher {
+	display:flex;
+	justify-content:center;
+}
 
 #e_switchercheck {}
 
