@@ -2628,7 +2628,8 @@ span[id*="checkseccodeverify"] {
 }
 
 /*表情弹窗*/
-#fastpostsml_menu {
+#fastpostsml_menu,
+#e_sml_menu{
 	display: flex;
 	padding: var(--element-margin-bottom-18);
 	background-color: var(--element-background);
@@ -2637,56 +2638,66 @@ span[id*="checkseccodeverify"] {
 	width: auto;
 }
 
-#fastpostsmiliesdiv_tb {
+#fastpostsmiliesdiv_tb,
+#smiliesdiv_tb{
 	flex-wrap: wrap;
 	display: flex;
 }
 
-#fastpostsmiliesdiv_tb ul {
+#fastpostsmiliesdiv_tb ul,
+#smiliesdiv_tb ul{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
-#fastpostsmiliesdiv_tb ul li {
+#fastpostsmiliesdiv_tb ul li,
+#smiliesdiv_tb ul li{
 	padding: 8px;
 	display: flex;
 	flex-wrap: nowrap;
 	border-radius: var(--border-radius-10);
 }
 
-#fastpostsmiliesdiv_tb ul li:hover {
+#fastpostsmiliesdiv_tb ul li:hover,
+#smiliesdiv_tb ul li:hover{
 	background-color: var(--background-color);
 }
 
-#fastpostsmiliesdiv_page {
+#fastpostsmiliesdiv_page,
+#smiliesdiv_page{
 	display: flex;
 	align-items: center;
 }
 
-#fastpostsmiliesdiv_data {
+#fastpostsmiliesdiv_data,
+#smiliesdiv_data{
 	padding: 10px;
 }
 
-#fastpostsmiliesdiv_table td {
+#fastpostsmiliesdiv_table td,
+#smiliesdiv_data td{
 	padding: 2px;
 	border-radius: var(--border-radius-10);
 }
 
 
-#fastpostsmiliesdiv_page .z {
+#fastpostsmiliesdiv_page .z,
+#smiliesdiv_page .z{
 	display: flex;
 	position: absolute;
 	margin-left: 40px;
 }
 
-#fastpostsmiliesdiv_page .z a {
+#fastpostsmiliesdiv_page .z a,
+#smiliesdiv_page .z a{
 	padding: 10px;
 	border-radius: var(--border-radius-10);
 }
 
 #fastpostsmiliesdiv_page .z a:hover,
-#fastpostsmiliesdiv_table td:hover {
+#fastpostsmiliesdiv_table td:hover,
+#smiliesdiv_data td:hover{
 	background-color: var(--background-color);
 }
 
@@ -4019,12 +4030,14 @@ height:var(--element-height-34);
 	flex-direction:row!important;
 	align-items:center;
 }
-
+/*纯文本*/
 #e_textarea{
 width:calc(var(--body-width) - 16px);
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 	padding:8px;
+	min-height:var(--element-height-34);
+	min-width:340px;
 }
 
 #e_body .icon{
