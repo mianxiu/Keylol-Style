@@ -1760,17 +1760,26 @@
 
   /**
    * 重构帖子内容布局
+   * 包括主帖特殊按钮
    * @param {Element} post
    */
   function movePostElement(post) {
-    /**
-* 
-* @param {Element} favatar 用户卡片
-* @param {Element} postContent 帖子内容
-* @param {Element} collectBtn 收藏按钮
-* @param {Element} postBottomBar 帖子底部支持、举报栏
-* @param {Element} sign 个人签名
-*/
+/**
+ * 
+ * @param {Element} favatar 用户卡片
+ * @param {Element} postTopBarLeft 只看作者等菜单栏
+ * @param {Element} postTopBarRight 楼层电梯
+ * @param {Element} postSteamBar steam info
+ * @param {Element} pstatus 最后编辑提醒
+ * @param {Element} comment 回复按钮
+ * @param {Element} postContent 
+ * @param {Element} collectBtn 收藏按钮
+ * @param {Element} mainSupport 主贴支持按钮
+ * @param {Element} postBottomBar 道具按钮等parent
+ * @param {Element} sign 签名
+ * @param {Element} kfn_entrance 向回帖者发送提醒
+ * @param {Element} ptn 收藏、支持等parent
+ */
     function postTamplate(
       favatar,
       postTopBarLeft,
@@ -1782,7 +1791,9 @@
       collectBtn,
       mainSupport,
       postBottomBar,
-      sign
+      sign, 
+      kfn_entrance,   
+      ptn
     ) {
 
 
@@ -1796,6 +1807,8 @@
       if (comment !== null && comment.children.length === 0) {
         comment.remove()
       }
+
+      
 
       return `
       <div class="post-top">
@@ -1814,8 +1827,10 @@
           </div>
       </div>
       <div class="post-bottom">
+      ${kfn_entrance !== null ? kfn_entrance.innerHTML : ''}
       ${collectBtn !== null ? collectBtn.innerHTML : ''}
       ${mainSupport !== null ? mainSupport.innerHTML : ''}
+      ${ptn !== null ? ptn.innerHTML : ''}
       ${postBottomBar.innerHTML}
       </div> 
       `
@@ -1832,12 +1847,18 @@
     let pstatusNode = $(`#${id} .pstatus`)
     let commentNode = $(`#${id} [id^="comment_"] `)
     let postConentNode = $(`#${id} .pct`)
-    let collectBtn = $(`#${id} #p_btn`)
+    // P_btn栏和收藏同级别的所有图标
+    let collectBtn = $(`#${id} #k_favorite`)
     let mainSupport = $(`#${id} #recommend_add`)
-    let sign = $(`#${id} .sign`)
-    let postBottomBar = $(`#${id} .po.hin`)
-    let editBtn = $(`#${id} .editp`)
+    let kfn_entrance = $(`#${id} #kfn_entrance`)
 
+    //
+    let ptn = $(`#${id} #p_btn`)
+    let postBottomBar = $(`#${id} .po.hin`)
+
+    // 签名
+    let sign = $(`#${id} .sign`)
+ 
     post.innerHTML = postTamplate(
       favatarNode,
       postTopBarLeftNode,
@@ -1849,7 +1870,9 @@
       collectBtn,
       mainSupport,
       postBottomBar,
-      sign
+      sign,
+      kfn_entrance,
+      ptn
     )
 
   }
@@ -2014,10 +2037,10 @@
       addcoin:/(<a.+?action=rate.+?>)(.+?)(<\/a>)/gm,
       manage:/(<label.+?manage.+?autocomplete.+?>)(.+?)(<\/label>)/gms, 
       shoucang: /(<a.+?ac=favorite.+?>)(.+?)(<\/a>)/gm,
-      //tiezidaoju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>)/gm,
+   
       tiezidaoju: /p>\s{0,}(<a.+?mgc_post.+?>)(.+?)(<\/a>).+?(<ul.+?\/li.+?ul>)/gms,
       //hide: "keylolhide",   
-      //postaddscore: "keylolpostaddscore",   
+
       zhichi: /(<a\s{0,}class="replyadd.+?>)(.+?)(<\/a>)/gm,
       mainzhichi: /(<a.+?recommend_add.+?>)(.+?)(<\/a>)/gm,
       jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm
@@ -2025,7 +2048,7 @@
       
     }
     /**
-     * 渲染内容
+     * 渲染内容图标
      */
 
     let popCl = $(`#${post.id} .post-bottom`)
