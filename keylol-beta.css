@@ -4117,6 +4117,10 @@ display:flex;
 	flex-wrap:wrap;
 	align-items:center;
 }
+#e_adv_s1{
+flex-wrap:wrap;
+	width:150px;
+}
 /*表格*/
 #e_adv_2{
 	justify-content:center!important;
@@ -4138,7 +4142,6 @@ display:flex;
 	display:flex;
 }
 #e_button > div{
-	justify-content:space-between;
 	padding:0 8px;
 	display:flex;
 	border-radius:var(--border-radius-10);
@@ -4190,13 +4193,8 @@ display:flex;
 	align-items:center;
 	background-color:var(--background-color);
 }
-/*文字大小*/
-#e_fontsize_menu {
-	
-}
-#e_fontsize_menu ul{
-	
-}
+
+
 #e_fontsize_menu ul > li > a {
 	display:flex;
 }
