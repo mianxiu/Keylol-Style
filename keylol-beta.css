@@ -4079,11 +4079,13 @@ height:var(--element-height-34);
 	display:none;
 }
 #e_adv_s2{
+	max-width:280px;
+	flex-wrap:wrap;
 	align-items:center;
 }
 /*表格*/
 #e_adv_2{
-	justify-content:center;
+	justify-content:center!important;
 	align-items:center;
 	flex-direction:column;
 }
@@ -4102,6 +4104,8 @@ height:var(--element-height-34);
 	display:flex;
 }
 #e_button > div{
+	justify-content:space-between;
+	padding:0 8px;
 	display:flex;
 	border-radius:var(--border-radius-10);
 }
