@@ -4115,7 +4115,8 @@ display:flex;
     background: #fcfcfc;
 }
 /*分类*/
-.tb.cl.mbw{
+.tb.cl.mbw,
+#post_extra_tb{
 	display:inline-flex;
 	flex-direction:row;
 	justify-content:end;
@@ -4125,20 +4126,24 @@ display:flex;
 	overflow:hidden;
 	margin-bottom:18px;
 }
-.tb.cl.mbw li{
+.tb.cl.mbw li,
+#post_extra_tb label{
 	display:flex;
 }
-.tb.cl.mbw li a{
+.tb.cl.mbw li a,
+#post_extra_tb label{
 	height:var(--element-height-34);
 	color:var(--font-nomal);
 	transition: .2s all;
     line-height: var(--element-height-34);
     padding: var(--element-padding-0-10);
 }
-.tb.cl.mbw li:hover a{
+.tb.cl.mbw li:hover a,
+#post_extra_tb label:hover{
 	background-color:var(--background-color)
 }
-.tb.cl.mbw li.a a{
+.tb.cl.mbw li.a a,
+#post_extra_tb label.a{
 	  color: var(--font-color-light);
     background-color: var(--point);
 }
@@ -4297,7 +4302,7 @@ display:flex;
 	font-size:0;
 	background-color:var(--point);
 	padding:4px;
-	
+	margin-bottom:18px;
 }
 #e_bbar a{
 	padding-left:8px;
