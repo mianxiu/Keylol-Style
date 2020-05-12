@@ -4018,13 +4018,15 @@ height:var(--element-height-34);
 }
 #e_controls{
 	display:flex;
-	
-	background-color:#d7cccc;
+	flex-direction:row-reverse;
+	/*background-color:#d7cccc;*/
 	height:80px;
+
 }
 #e_button{
 	display:flex;
-	background-color:#c7c7d5;
+	/*background-color:#c7c7d5;*/
+	background-color:var(--element-background);
 }
 
 .edt.bar{
@@ -4048,19 +4050,29 @@ height:var(--element-height-34);
 #post_extra{
 	height:400px;
 }
+/*按钮*/
 #e_controls a[id^="e_"]{
-	padding:4px;
+	transition:.2s all;
 	display:inline-flex;
 	align-items:center;
 	justify-content:center;
+	border-radius:var(--border-radius-2);
+	margin-right:4px;
 }
 #e_controls a[id^="e_"]:hover{
-	background-color:var(--background-color);
+	background-color:var(--input-background);
 }
 /*----工具栏按钮-------*/
+#e_body_loading{
+	display:none;
+}
 #e_adv_s2,
 #e_adv_2{
 	align-items:center;
+}
+#e_adv_s2{
+
+	padding-left:8px;
 }
 .b2r,
 .b1r{
@@ -4069,6 +4081,69 @@ height:var(--element-height-34);
 .b1r a{
 	height:fit-content;
 }
+#e_adv_2+.b2r{
+	flex-direction:column;
+	justify-content:center;
+}
+#e_adv_2+.b2r > p{
+	display:flex;
+}
 #e_button > div{
 	display:flex;
+}
+/*字体*/
+#e_fontname,
+#e_fontsize{
+	padding:4px 8px!important;
+	background-color:var(--input-background);
+	box-shadow:var(--shadow-outline);
+	border-radius:var(--border-radius-2);
+	white-space:nowrap
+}
+#e_fontname{
+	min-width:80px
+}
+#e_fontsize{
+	margin:0 4px;
+}
+#e_adv_2{
+}
+
+#e_fontname_menu,
+#e_fontsize_menu{
+	display:flex;
+	background-color:var(--background-color);
+	box-shadow:var(--shadow-hot);
+	border-radius:var(--border-radius-10);
+	min-width:50px;
+}
+#e_fontname_menu ul > li > a {
+	display:flex;
+	padding:8px;
+	align-items:center;
+}
+#e_fontsize_menu ul > li > a {
+	display:flex;
+	height:50px;
+	
+
+}
+#e_fontsize_menu ul > li > a > font{
+		padding:8px;
+	display:flex;
+	width:100%;
+	align-items:center;
+}
+#e_fontname_menu ul > li > a:hover,
+#e_fontsize_menu ul > li > a:hover > font{
+	background-color:var(--menu-hover-background);
+}
+/*帖子bg*/
+#e_postbg_menu{
+	display:flex;
+}
+#e_postbg_menu input{
+	width:30px;
+	height:30px;
+	cursor:pointer;
 }
