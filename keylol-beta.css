@@ -4149,7 +4149,6 @@ display:flex;
 }
 /*文本框*/
 #e_iframe{
-	position:absolute;
 	height:800px;
 	width:var(--body-width);
 	border:2px solid;
