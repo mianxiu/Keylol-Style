@@ -4021,7 +4021,7 @@ height:var(--element-height-34);
 	flex-direction:row-reverse;
 	/*background-color:#d7cccc;*/
 	margin-bottom:8px;
-	padding:0 8px;
+	justify-content:space-between;
 }
 #e_button{
 	display:flex;
