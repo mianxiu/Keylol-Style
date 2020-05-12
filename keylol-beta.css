@@ -2798,7 +2798,8 @@ div[id*="rt_rt_"] input {
 }
 
 #typeid_fast_ctrl,
-#typeid_ctrl{
+#typeid_ctrl,
+.pn{
 	display: flex;
 	width: auto !important;
 	padding: var(--element-padding-0-10);
@@ -4366,14 +4367,13 @@ margin-bottom:34px;
 }
 
 .pg_post dd{
-	margin-left:8px;
 	margin-right:18px;
+	margin-bottom:18px;
 }
 .exfm,
 .exfm .z dl,
-.exfm .z dt,
-.spmf label{
-	display:flex;
+.exfm .z dt
+{
 	flex-wrap:wrap;
 }
 
@@ -4382,4 +4382,11 @@ margin-bottom:34px;
 }
 .exfm .z{
 	flex-direction:row!important;
+}
+.xl2.cl,
+.xl2.cl li label,
+.spmf label{
+	display:flex;
+	align-items:center;
+	margin-right:18px;
 }
