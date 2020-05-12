@@ -4515,8 +4515,12 @@ blockquote {}
     align-items: center;
     margin-right: 18px;
 }
-
-
+.pnpost{
+	color:var(--font-nomal);
+}
+.pnpost a{
+	color:var(--font-visit);
+}
 /*-----------------重要 帖子操作-----------------------*/
 
 .post-select{
