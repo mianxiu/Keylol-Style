@@ -1493,7 +1493,7 @@
 
 
             if (symbolEditorRegex[key].test(a.id) == true) {
-console.log(key)
+
               a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.title !== "" ? a.title : a.innerText}</span>`
             }
           }
