@@ -4049,9 +4049,25 @@ height:var(--element-height-34);
 	height:400px;
 }
 #e_controls a[id^="e_"]{
-	display:flex;
+	padding:4px;
+	display:inline-flex;
 	align-items:center;
 	justify-content:center;
+}
+#e_controls a[id^="e_"]:hover{
+	background-color:var(--background-color);
+}
+/*----工具栏按钮-------*/
+#e_adv_s2,
+#e_adv_2{
+	align-items:center;
+}
+.b2r,
+.b1r{
+	align-items:center;
+}
+.b1r a{
+	height:fit-content;
 }
 #e_button > div{
 	display:flex;
