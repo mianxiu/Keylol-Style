@@ -4291,5 +4291,39 @@ display:flex;
 }
 /*字数检查等*/
 #e_bbar{
-	position:relative;
+	display:inline-flex;
+	justify-content:flex-end;
+	align-items:center;
+	font-size:0;
+	background-color:var(--point);
+	padding:4px;
+	
+}
+#e_bbar a{
+	padding-left:8px;
+	color:var(--font-point);
+}
+#e_tip{
+	font-size:var(--font-size-14);
+	color:var(--font-point);
+}
+#e_resize img{
+	cursor:row-resize;
+}
+
+.pg_post #pt{
+margin-bottom:34px;
+}
+.pg_post #pt > .z,
+.pg_post #pt > .z>a,
+.pg_post #pt > .z span,
+#navtext a{
+	align-items:center;
+	flex-direction:row;
+	display:flex;
+	font-size:18px;
+	padding-right:8px;
+}
+#navtext em{
+	display:none;
 }
