@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1797873_5zvydspan3i.js
+// @require      https://at.alicdn.com/t/font_1797873_mznukcet7g.js
 // @require      https://at.alicdn.com/t/font_1804200_n3wgmivi7c9.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
