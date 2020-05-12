@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_riqtis11l6p.js
-// @require      https://at.alicdn.com/t/font_1804200_9ln3ou0ui6e.js
+// @require      https://at.alicdn.com/t/font_1804200_8bhv89r7hhc.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1797,6 +1797,11 @@
     ) {
 
 
+      const symbolSelect = {
+        selectnomalsvg: "keylolselectnomalsvg"
+      }
+
+
       let postSteamBarHTML = postSteamBar !== null ? `<div class="steam_connect_user_bar">${postSteamBar.innerHTML}</div>` : ''
       let pstatusHTML = pstatus !== null ? ` <div class="pstatus">${pstatus.innerHTML}</div>` : ''
 
@@ -1808,7 +1813,6 @@
         comment.remove()
       }
 
-      console.log(` ${manageBtn !== null ? manageBtn.innerHTML : ''}`)
 
       return `
       <div class="post-top">
@@ -1817,7 +1821,13 @@
               <div class="post-content-top">
                  <div class="post-content-top-left">${postTopBarLeft.innerHTML}</div>
                  <div class="post-content-top-right">
+                 <div class="post-select"> 
                  ${manageBtn !== null ? manageBtn.innerHTML : ''}
+                      ${manageBtn !== null ?
+          `<label title="" for="${manageBtn.getAttribute(`for`)}" class="post-select-label">${symbolHTML(symbolSelect.selectnomalsvg)}</label>`
+          : ''}
+                      
+                 </div>
                  ${postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')}
                  </div>
               </div>

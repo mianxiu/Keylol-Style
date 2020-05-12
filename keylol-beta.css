@@ -3144,6 +3144,7 @@ td[id*="postmessage"] {
 
 .post-content-top-right {
     flex-direction: row-reverse;
+	align-items:center;
 }
 
 /*楼层*/
@@ -4515,7 +4516,38 @@ blockquote {}
     margin-right: 18px;
 }
 
+
 /*-----------------重要 帖子操作-----------------------*/
+
+.post-select{
+	
+	display:flex;
+	font-size:0px;
+}
+.post-select input{
+	opacity:0;
+	position:absolute;
+}
+.post-select-label .icon{
+	font-size:var(--font-size-14);
+	width:1.8em;
+	height:1.8em;
+}
+.post-select-label{
+	display:flex;
+	width:24px;
+	height:24px;
+	border-radius:var(--border-radius-200);
+	background-color:var(--background-color);
+	align-items:center;
+	justify-content:center;
+	box-shadow:var(--shadow-outline);
+	
+}
+input[id^="manage"]:checked + .post-select-label{
+		background-color:var(--help-yellow);
+	
+}
 #mdly {
     position: absolute;
 }
