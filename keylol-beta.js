@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1797873_gp2i2yzhb75.js
+// @require      https://at.alicdn.com/t/font_1797873_xiw8c9mpeu.js
 // @require      https://at.alicdn.com/t/font_1804200_n3wgmivi7c9.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
@@ -1386,12 +1386,17 @@
     texthidden: "keyloltexthidden",
     unlink: "keylolunlink",
     wallpaper: "keylolwallpaper",
+    paging:"keylolpaging",
+    free:"keylolfree",
+    hidecontent:"keylolhidecontent",
+    indexlist:"keylolindexlist"
+
   }
 
   /**
-   * 渲染发帖图标
+   * 渲染编辑器图标
    */
-  function renderPostPanelPermission() {
+  function renderEditorPermission() {
     const symbolEditorRegex = {
       attchment: /attachn/,
       atuser: /fastpostat|at/,
@@ -1437,6 +1442,10 @@
       texthidden: /cst1_spoiler/,
       unlink: /unlink/,
       wallpaper: /postbg/,
+      paging:/page/,
+      free:/free/,
+      hidecontent:/hide/,
+      indexlist:/index/
     }
 
     let postNode = $(`#f_pst`)
@@ -1495,7 +1504,7 @@
   /**
    * 无权发帖
    */
-  function postPanelNoPermission() {
+  function editorNoPermission() {
     let pthmNode = $(`.pt.hm`)
     let postForm = $(`#fastpostform`)
     postForm.innerHTML = `<span class="premission-tip">${pthmNode.innerHTML}</span>`
@@ -2377,14 +2386,14 @@
 
     if ($(`#e_controls`) !== null) {
       console.log(`editor`)
-      renderPostPanelPermission()
+      renderEditorPermission()
 
     } else if ($(`.pt.hm`) == null) {
       console.log(`min post`)
-      renderPostPanelPermission()
+      renderEditorPermission()
     } else {
       console.log(`无权发帖`)
-      postPanelNoPermission()
+      editorNoPermission()
     }
   }
 
