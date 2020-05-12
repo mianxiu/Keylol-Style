@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1797873_xiw8c9mpeu.js
+// @require      https://at.alicdn.com/t/font_1797873_5zvydspan3i.js
 // @require      https://at.alicdn.com/t/font_1804200_n3wgmivi7c9.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
@@ -1389,7 +1389,9 @@
     paging:"keylolpaging",
     free:"keylolfree",
     hidecontent:"keylolhidecontent",
-    indexlist:"keylolindexlist"
+    indexlist:"keylolindexlist",
+    redo:"keylolredo",
+    undo:"keylolundo"
 
   }
 
@@ -1445,12 +1447,14 @@
       paging:/page/,
       free:/free/,
       hidecontent:/hide/,
-      indexlist:/index/
+      indexlist:/index/,
+      redo:/redo/,
+      undo:/undo/
     }
 
     let postNode = $(`#f_pst`)
     let postIconNode = $All(`.fpd a`)
-    let postFullEditor = $All(`#e_button a`)
+    let postFullEditor = $All(`#e_controls a`)
 
 
     // 替换迷你编辑器图标
