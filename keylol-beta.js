@@ -1400,8 +1400,8 @@
    */
   function renderEditorPermission() {
     const symbolEditorRegex = {
-      attchment: /attachn/,
-      atuser: /fastpostat|at/,
+      attchment: /e_attach/,
+      atuser: /e_at$|fastpostat/,
       autolayout: /autotypeset/,
       blod: /B|bold/gms,
       centerlayout: /justifycenter/,
@@ -1486,14 +1486,14 @@
 
 
       contorBarNode.forEach((a) => {
-        console.log(`1`)
-        console.log(a)
+
         if (a.tagName === "A") {
-          console.log(`2`)
+ 
           for (const key in symbolEditorRegex) {
-            console.log(`3`)
+
+
             if (symbolEditorRegex[key].test(a.id) == true) {
-              console.log(`4`)
+console.log(key)
               a.innerHTML = `<span>${symbolHTML(symbolEditor[key])}</span><span class="editor-tip">${a.title !== "" ? a.title : a.innerText}</span>`
             }
           }
