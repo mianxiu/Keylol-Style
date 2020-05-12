@@ -6,7 +6,7 @@
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @require      https://at.alicdn.com/t/font_1797873_mznukcet7g.js
+// @require      https://at.alicdn.com/t/font_1797873_riqtis11l6p.js
 // @require      https://at.alicdn.com/t/font_1804200_n3wgmivi7c9.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
@@ -1341,6 +1341,7 @@
     })
   }
 
+
   const symbolEditor = {
     attchment: "keylolattchment",
     atuser: "keylolatuser",
@@ -1391,7 +1392,8 @@
     hidecontent:"keylolhidecontent",
     indexlist:"keylolindexlist",
     redo:"keylolredo",
-    undo:"keylolundo"
+    undo:"keylolundo",
+    tuya:"keyloltuya"
 
   }
 
@@ -1399,7 +1401,11 @@
    * 渲染编辑器图标
    */
   function renderEditorPermission() {
+    /**
+     * 元素id匹配
+     */
     const symbolEditorRegex = {
+      tuya:/e_tuya/,
       attchment: /e_attach/,
       atuser: /e_at$|fastpostat/,
       autolayout: /autotypeset/,
@@ -1465,8 +1471,11 @@
       let toFullNode = $(`#fastposteditor > div > div.bar > span > a`)
       let minB = $(`.fpd > a:first-child`)
       let minAttl = $(`.webuploader-pick`)
+      let paint = $(`#e_tuya`)
 
-      
+     /**
+      * 无法匹配的特殊元素
+      */
       toFullNode !== null ?
         toFullNode.innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
         : null
@@ -1481,16 +1490,20 @@
         minAttl.innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
         : null
 
+      // 涂鸦
+      paint !== null ? 
+      paint.innerHTML = `<span>${symbolHTML(symbolEditor.tuya)}</span><span class="editor-tip">${paint.innerText}</span>` 
+      : null
+
+      console.log(paint)
       // a节点
       let contorBarNode = postIconNode !== null && postIconNode.length > 0 ? postIconNode : postFullEditor
-
 
       contorBarNode.forEach((a) => {
 
         if (a.tagName === "A") {
  
           for (const key in symbolEditorRegex) {
-
 
             if (symbolEditorRegex[key].test(a.id) == true) {
 
