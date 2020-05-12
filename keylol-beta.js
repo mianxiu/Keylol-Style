@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_riqtis11l6p.js
-// @require      https://at.alicdn.com/t/font_1804200_sgiu6k45cu.js
+// @require      https://at.alicdn.com/t/font_1804200_9ln3ou0ui6e.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1387,13 +1387,13 @@
     texthidden: "keyloltexthidden",
     unlink: "keylolunlink",
     wallpaper: "keylolwallpaper",
-    paging:"keylolpaging",
-    free:"keylolfree",
-    hidecontent:"keylolhidecontent",
-    indexlist:"keylolindexlist",
-    redo:"keylolredo",
-    undo:"keylolundo",
-    tuya:"keyloltuya"
+    paging: "keylolpaging",
+    free: "keylolfree",
+    hidecontent: "keylolhidecontent",
+    indexlist: "keylolindexlist",
+    redo: "keylolredo",
+    undo: "keylolundo",
+    tuya: "keyloltuya"
 
   }
 
@@ -1405,7 +1405,7 @@
      * 元素id匹配
      */
     const symbolEditorRegex = {
-      tuya:/e_tuya/,
+      tuya: /e_tuya/,
       attchment: /e_attach/,
       atuser: /e_at$|fastpostat/,
       autolayout: /autotypeset/,
@@ -1450,12 +1450,12 @@
       texthidden: /cst1_spoiler/,
       unlink: /unlink/,
       wallpaper: /postbg/,
-      paging:/page/,
-      free:/free/,
-      hidecontent:/hide/,
-      indexlist:/index/,
-      redo:/redo/,
-      undo:/undo/
+      paging: /page/,
+      free: /free/,
+      hidecontent: /hide/,
+      indexlist: /index/,
+      redo: /redo/,
+      undo: /undo/
     }
 
     let postNode = $(`#f_pst`)
@@ -1466,16 +1466,16 @@
     // 替换迷你编辑器图标
     if (postFullEditor !== null || postIconNode != null) {
 
-  
+
       // 高级模式
       let toFullNode = $(`#fastposteditor > div > div.bar > span > a`)
       let minB = $(`.fpd > a:first-child`)
       let minAttl = $(`.webuploader-pick`)
       let paint = $(`#e_tuya`)
 
-     /**
-      * 无法匹配的特殊元素
-      */
+      /**
+       * 无法匹配的特殊元素
+       */
       toFullNode !== null ?
         toFullNode.innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
         : null
@@ -1491,9 +1491,9 @@
         : null
 
       // 涂鸦
-      paint !== null ? 
-      paint.innerHTML = `<span>${symbolHTML(symbolEditor.tuya)}</span><span class="editor-tip">${paint.innerText}</span>` 
-      : null
+      paint !== null ?
+        paint.innerHTML = `<span>${symbolHTML(symbolEditor.tuya)}</span><span class="editor-tip">${paint.innerText}</span>`
+        : null
 
       console.log(paint)
       // a节点
@@ -1502,7 +1502,7 @@
       contorBarNode.forEach((a) => {
 
         if (a.tagName === "A") {
- 
+
           for (const key in symbolEditorRegex) {
 
             if (symbolEditorRegex[key].test(a.id) == true) {
@@ -1764,22 +1764,21 @@
    * @param {Element} post
    */
   function movePostElement(post) {
-/**
- * 
- * @param {Element} favatar 用户卡片
- * @param {Element} postTopBarLeft 只看作者等菜单栏
- * @param {Element} postTopBarRight 楼层电梯
- * @param {Element} postSteamBar steam info
- * @param {Element} pstatus 最后编辑提醒
- * @param {Element} comment 回复按钮
- * @param {Element} postContent 帖子主要内容
- * @param {Element} collectBtn 收藏按钮
- * @param {Element} mainSupport 主贴支持按钮
- * @param {Element} postBottomBar 道具按钮等parent
- * @param {Element} sign 签名
- * @param {Element} kfn_entrance 向回帖者发送提醒
- * @param {Element} ptn 收藏、支持等parent
- */
+    /**
+     * 如果不先移动需要的按钮，后面渲染图标时无法匹配会丢弃
+     * @param {Element} favatar 用户卡片
+     * @param {Element} postTopBarLeft 只看作者等菜单栏
+     * @param {Element} postTopBarRight 楼层电梯
+     * @param {Element} postSteamBar steam info
+     * @param {Element} pstatus 最后编辑提醒
+     * @param {Element} comment 回复按钮
+     * @param {Element} postContent 帖子主要内容
+     * @param {Element} collectBtn 收藏按钮
+     * @param {Element} mainSupport 主贴支持按钮
+     * @param {Element} postBottomBar 道具按钮等parent
+     * @param {Element} sign 签名
+     * @param {Element} ptn 收藏、支持等parent
+     */
     function postTamplate(
       favatar,
       postTopBarLeft,
@@ -1790,10 +1789,11 @@
       postContent,
       collectBtn,
       mainSupport,
+      manageBtn,
       postBottomBar,
-      sign, 
-      kfn_entrance,   
+      sign,
       ptn
+
     ) {
 
 
@@ -1808,7 +1808,7 @@
         comment.remove()
       }
 
-      
+      console.log(` ${manageBtn !== null ? manageBtn.innerHTML : ''}`)
 
       return `
       <div class="post-top">
@@ -1816,7 +1816,10 @@
           <div class="post-content">
               <div class="post-content-top">
                  <div class="post-content-top-left">${postTopBarLeft.innerHTML}</div>
-                 <div class="post-content-top-right">${postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')}</div>
+                 <div class="post-content-top-right">
+                 ${manageBtn !== null ? manageBtn.innerHTML : ''}
+                 ${postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')}
+                 </div>
               </div>
               ${postSteamBarHTML}
               ${pstatusHTML}
@@ -1827,7 +1830,6 @@
           </div>
       </div>
       <div class="post-bottom">
-      ${kfn_entrance !== null ? kfn_entrance.innerHTML : ''}
       ${collectBtn !== null ? collectBtn.innerHTML : ''}
       ${mainSupport !== null ? mainSupport.innerHTML : ''}
       ${ptn !== null ? ptn.innerHTML : ''}
@@ -1850,7 +1852,9 @@
     // P_btn栏和收藏同级别的所有图标
     let collectBtn = $(`#${id} #k_favorite`)
     let mainSupport = $(`#${id} #recommend_add`)
-    let kfn_entrance = $(`#${id} #kfn_entrance`)
+
+    let manageBtn = $(`#${id} label[for^="manage"]`)
+
 
     //
     let ptn = $(`#${id} #p_btn`)
@@ -1858,7 +1862,7 @@
 
     // 签名
     let sign = $(`#${id} .sign`)
- 
+
     post.innerHTML = postTamplate(
       favatarNode,
       postTopBarLeftNode,
@@ -1869,10 +1873,10 @@
       postConentNode,
       collectBtn,
       mainSupport,
+      manageBtn,
       postBottomBar,
       sign,
-      kfn_entrance,
-      ptn
+      ptn,
     )
 
   }
@@ -2009,13 +2013,12 @@
 
 
   /**
-   * 重构帖子内容支持收藏举报等按钮栏
-   * 通过正则来替换icon
-   * .po hin
+   * 重构帖子内容支持收藏举报等
+   * 通过正则匹配.post-bottom-bar替换icon,无法匹配的会丢弃
+   * 
    * @param {Element} post 
    */
   function renderPostBottomBar(post) {
-
 
     const symbolPostBottomBar = {
       hide: "keylolhide",
@@ -2025,27 +2028,28 @@
       zhichi: "keylolzhichi",
       mainzhichi: "keylolzhichi",
       reply: "keylolcomments",
-      manage:"keylolpost_manage",
-      editor:"keylolposteditor",
-      addcoin:"keylolcoin"
+      editor: "keylolposteditor",
+      addcoin: "keylolcoin",
+      favoriteNotic: "keylolfavoritenotic"
     }
 
     // 规则顺序是图标排列顺序
     const symbolPostBottomRegx = {
-      editor:/(<a.+?action=edit.+?>)(.+?)(<\/a>)/gm,
+      editor: /(<a.+?action=edit.+?>)(.+?)(<\/a>)/gm,
       reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gm,
-      addcoin:/(<a.+?action=rate.+?>)(.+?)(<\/a>)/gm,
-      manage:/(<label.+?manage.+?autocomplete.+?>)(.+?)(<\/label>)/gms, 
+      addcoin: /(<a.+?action=rate.+?>)(.+?)(<\/a>)/gm,
+      //manage: /(<label.+?manage.+?autocomplete.+?>)(.+?)(<\/label>)/gms,
       shoucang: /(<a.+?ac=favorite.+?>)(.+?)(<\/a>)/gm,
-   
+
       tiezidaoju: /p>\s{0,}(<a.+?mgc_post.+?>)(.+?)(<\/a>).+?(<ul.+?\/li.+?ul>)/gms,
       //hide: "keylolhide",   
 
+      favoriteNotic: /(<a.+?favorite_notification.+?>)(.+?)(<\/a>)/gm,
       zhichi: /(<a\s{0,}class="replyadd.+?>)(.+?)(<\/a>)/gm,
       mainzhichi: /(<a.+?recommend_add.+?>)(.+?)(<\/a>)/gm,
       jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm
-       
-      
+
+
     }
     /**
      * 渲染内容图标
