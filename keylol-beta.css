@@ -1499,7 +1499,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	width: 40px !important;
 	height: 40px !important;
 	bottom:200px!important;
-	right:250px!important;
+	right:10vw!important;
 	border-radius: var(--border-radius-200);
 	background-color: var(--point) !important;
 	box-shadow: var(--shadow-hot);
@@ -4052,4 +4052,7 @@ height:var(--element-height-34);
 	display:flex;
 	align-items:center;
 	justify-content:center;
+}
+#e_button > div{
+	display:flex;
 }
