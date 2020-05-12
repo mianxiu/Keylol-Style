@@ -4090,6 +4090,8 @@ width:calc(var(--body-width) - 16px);
 	white-space:nowrap;
 }
 #e_switcher{
+	display:flex;
+	align-items:center;
 	white-space:nowrap;
 }
 #subjectchk{
@@ -4212,8 +4214,27 @@ display:flex;
 	flex-wrap:wrap;
 	align-items:center;
 }
-#e_adv_s1{
-
+/*颜色弹窗-背景等*/
+#e_forecolor_menu,
+#e_backcolor_menu,
+#e_postbg_menu{
+	padding:8px;
+	border-radius:var(--border-radius-10);
+	background-color:var(--element-background);
+	box-shadow:var(--shadow-hot);
+}
+#e_forecolor_menu input,
+#e_backcolor_menu input,
+#e_postbg_menu input{
+	transition:.2s all;
+	width:20px;
+	height:20px;
+}
+#e_forecolor_menu input:hover,
+#e_backcolor_menu input:hover,
+#e_postbg_menu input:hover{
+	width:30px;
+	box-shadow:var(--shadow-hot);
 }
 /*表格*/
 #e_adv_2{
@@ -4311,15 +4332,7 @@ display:flex;
 #e_fontsize_menu ul > li > a:hover > font{
 	background-color:var(--menu-hover-background);
 }
-/*帖子bg*/
-#e_postbg_menu{
-	display:flex;
-}
-#e_postbg_menu input{
-	width:30px;
-	height:30px;
-	cursor:pointer;
-}
+
 /*字数检查等*/
 #e_bbar{
 	display:inline-flex;
@@ -4392,8 +4405,9 @@ margin-bottom:34px;
 	display:inline-flex;
 	color:var(--font-nomal);
 	flex-wrap:wrap;
+	
 }
-
+.exfm 
 .spmf label,
 .xw0{
 	align-items:center;
