@@ -4014,6 +4014,7 @@ height:var(--element-height-34);
 #e_body .icon{
 	width:1.8em;
 	height:1.8em;
+	color:var(--icon-line);
 }
 #e_body .editor-tip{
 
@@ -4086,8 +4087,8 @@ display:flex;
 .tb.cl.mbw li:hover a{
 	background-color:var(--background-color)
 }
-.tb.cl.mbw li.a{
-	 color: var(--font-color-light);
+.tb.cl.mbw li.a a{
+	  color: var(--font-color-light);
     background-color: var(--point);
 }
 /*主题分类*/
