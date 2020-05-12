@@ -2794,8 +2794,12 @@ div[id*="rt_rt_"] input {
 	margin-left: 18px;
 	;
 }
+#typeid_ctrl{
+	margin:0;
+}
 
-#typeid_fast_ctrl_menu {
+#typeid_fast_ctrl_menu,
+#typeid_ctrl_menu{
 	background-color: var(--point);
 	border-radius: var(--border-radius-10);
 	box-shadow: var(--shadow-hot);
@@ -2804,14 +2808,17 @@ div[id*="rt_rt_"] input {
 	padding-top: 10px;
 }
 
-#typeid_fast_ctrl_menu > ul > li {
+#typeid_fast_ctrl_menu > ul > li,
+#typeid_ctrl_menu > ul > li{
 	display: flex;
 	padding: var(--element-padding-0-10);
 	height: var(--element-height-34);
 	color: var(--font-second-light-aphal);
+	cursor:pointer;
 }
 
-#typeid_fast_ctrl_menu > ul > li:hover {
+#typeid_fast_ctrl_menu > ul > li:hover,
+#typeid_ctrl_menu > ul > li:hover{
 	color: var(--font-color-light);
 }
 
