@@ -4112,27 +4112,35 @@ height:var(--element-height-34);
 #e_fontname_menu,
 #e_fontsize_menu{
 	display:flex;
-	background-color:var(--background-color);
 	box-shadow:var(--shadow-hot);
 	border-radius:var(--border-radius-10);
+	overflow:hidden;
 	min-width:50px;
 }
 #e_fontname_menu ul > li > a {
 	display:flex;
 	padding:8px;
 	align-items:center;
+	background-color:var(--background-color);
+}
+/*文字大小*/
+#e_fontsize_menu {
+	
+}
+#e_fontsize_menu ul{
+	
 }
 #e_fontsize_menu ul > li > a {
 	display:flex;
-	height:50px;
-	
-
 }
 #e_fontsize_menu ul > li > a > font{
-		padding:8px;
+	padding:8px;
+	font-size:var(--font-size-14);
 	display:flex;
-	width:100%;
+	width:50px;
 	align-items:center;
+	background-color:var(--background-color);
+	
 }
 #e_fontname_menu ul > li > a:hover,
 #e_fontsize_menu ul > li > a:hover > font{
