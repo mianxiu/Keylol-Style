@@ -7,7 +7,7 @@
 // @match        keylol.com/*
 // @grant        none
 // @require      https://at.alicdn.com/t/font_1797873_riqtis11l6p.js
-// @require      https://at.alicdn.com/t/font_1804200_n3wgmivi7c9.js
+// @require      https://at.alicdn.com/t/font_1804200_sgiu6k45cu.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
@@ -1836,6 +1836,7 @@
     let mainSupport = $(`#${id} #recommend_add`)
     let sign = $(`#${id} .sign`)
     let postBottomBar = $(`#${id} .po.hin`)
+    let editBtn = $(`#${id} .editp`)
 
     post.innerHTML = postTamplate(
       favatarNode,
@@ -1985,7 +1986,9 @@
 
 
   /**
-   * 重构帖子支持收藏举报等按钮栏
+   * 重构帖子内容支持收藏举报等按钮栏
+   * 通过正则来替换icon
+   * .po hin
    * @param {Element} post 
    */
   function renderPostBottomBar(post) {
@@ -1998,20 +2001,28 @@
       tiezidaoju: "keyloltiezidaoju",
       zhichi: "keylolzhichi",
       mainzhichi: "keylolzhichi",
-      reply: "keylolcomments"
+      reply: "keylolcomments",
+      manage:"keylolpost_manage",
+      editor:"keylolposteditor",
+      addcoin:"keylolcoin"
     }
 
-    // 
+    // 规则顺序是图标排列顺序
     const symbolPostBottomRegx = {
+      editor:/(<a.+?action=edit.+?>)(.+?)(<\/a>)/gm,
       reply: /(<a.+?action=reply.+?>)(.+?)(<\/a>)/gm,
+      addcoin:/(<a.+?action=rate.+?>)(.+?)(<\/a>)/gm,
+      manage:/(<label.+?manage.+?autocomplete.+?>)(.+?)(<\/label>)/gms, 
       shoucang: /(<a.+?ac=favorite.+?>)(.+?)(<\/a>)/gm,
       //tiezidaoju: /(<a.+?id="mgc_post.+?>)(.+?)(<\/a>)/gm,
       tiezidaoju: /p>\s{0,}(<a.+?mgc_post.+?>)(.+?)(<\/a>).+?(<ul.+?\/li.+?ul>)/gms,
       //hide: "keylolhide",   
       //postaddscore: "keylolpostaddscore",   
-      zhichi: /(<a.+?replyadd.+?>)(.+?)(<\/a>)/gm,
+      zhichi: /(<a\s{0,}class="replyadd.+?>)(.+?)(<\/a>)/gm,
       mainzhichi: /(<a.+?recommend_add.+?>)(.+?)(<\/a>)/gm,
       jubao: /(<a.+?mod=report.+?>)(.+?)(<\/a>)/gm
+       
+      
     }
     /**
      * 渲染内容
