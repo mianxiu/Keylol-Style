@@ -1772,7 +1772,7 @@
  * @param {Element} postSteamBar steam info
  * @param {Element} pstatus 最后编辑提醒
  * @param {Element} comment 回复按钮
- * @param {Element} postContent 
+ * @param {Element} postContent 帖子主要内容
  * @param {Element} collectBtn 收藏按钮
  * @param {Element} mainSupport 主贴支持按钮
  * @param {Element} postBottomBar 道具按钮等parent
