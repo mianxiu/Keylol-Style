@@ -1442,26 +1442,35 @@
     let postNode = $(`#f_pst`)
     let postIconNode = $All(`.fpd a`)
     let postFullEditor = $All(`#e_button a`)
+
+
     // 替换迷你编辑器图标
-    if (postIconNode != null || postFullEditor !== null) {
+    if (postFullEditor !== null || postIconNode != null) {
+
+  
       // 高级模式
       let toFullNode = $(`#fastposteditor > div > div.bar > span > a`)
       let minB = $(`.fpd > a:first-child`)
       let minAttl = $(`.webuploader-pick`)
+
+      
       toFullNode !== null ?
         toFullNode.innerHTML = `<span>${symbolHTML(symbolEditor.gaojimoshi)}</span><span class="editor-tip">切换高级模式</span>`
         : null
+
       // 加粗
       minB !== null ?
         minB.innerHTML = `<span>${symbolHTML(symbolEditor.blod)}</span><span class="editor-tip">${$(`.fpd > a:first-child`).title}</span>`
         : null
+
       // 附件
       minAttl !== null ?
         minAttl.innerHTML = `<span>${symbolHTML(symbolEditor.attchment)}</span><span class="editor-tip">上传附件</span>`
         : null
 
       // a节点
-      let contorBarNode = postIconNode !== null ? postIconNode : postFullEditor
+      let contorBarNode = postIconNode !== null && postIconNode.length > 0 ? postIconNode : postFullEditor
+
 
       contorBarNode.forEach((a) => {
         console.log(`1`)
@@ -2366,11 +2375,12 @@
    */
   function postPanel() {
 
-    if ($(`.pt.hm`) == null) {
-      console.log(`min post`)
+    if ($(`#e_controls`) !== null) {
+      console.log(`editor`)
       renderPostPanelPermission()
-    } else if ($(`#e_iframe`) !== null) {
-      console.log(`post`)
+
+    } else if ($(`.pt.hm`) == null) {
+      console.log(`min post`)
       renderPostPanelPermission()
     } else {
       console.log(`无权发帖`)
