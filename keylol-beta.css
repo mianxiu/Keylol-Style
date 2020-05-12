@@ -2372,6 +2372,7 @@ tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3) {
 /*------会员卡片------*/
 .p_opt div {
 	display: flex;
+	flex-wrap:wrap;
 }
 
 .p_opt {
@@ -2552,7 +2553,10 @@ _pst .cl {
 
 /*主题选择*/
 #subject,
-#fastpostmessage {
+#fastpostmessage,
+#pollm_c_1 input,
+.sadd input,
+#postbox input{
 	overflow: hidden;
 	background-color: var(--input-post-background);
 	border-radius: var(--border-radius-10);
@@ -2570,7 +2574,8 @@ _pst .cl {
 	flex-direction: column;
 }
 
-#subject {
+#subject,
+#postbox input{
 	height: var(--element-height-34);
 	padding: var(--element-padding-0-10);
 }
@@ -4049,7 +4054,7 @@ width:calc(var(--body-width) - 16px);
 
 }
 #postform{
-	height:1200px;
+	/*post main*/
 }
 
 #e_body,
@@ -4066,7 +4071,6 @@ width:calc(var(--body-width) - 16px);
 }
 #postbox .z .mbn{
 	display:flex;
-	flex-direction:column;
 	
 }
 #postbox .z .mbn a{
@@ -4166,7 +4170,7 @@ display:flex;
 	/*background:red;*/
 }
 #post_extra{
-	height:400px;
+	
 }
 /*数据提示*/
 #rstnotice{
@@ -4253,6 +4257,16 @@ display:flex;
 #e_switchercheck{
 	
 }
+/*提示*/
+.m_c{
+	background-color:var(--background-color);
+	box-shadow:var(--shadow-hot);
+	border-radius:var(--border-radius-10);
+	padding:10px;
+}
+.m_c a{
+	color:var(--font-visit);
+}
 #e_fontname_menu,
 #e_fontsize_menu{
 	display:flex;
@@ -4329,6 +4343,43 @@ margin-bottom:34px;
 	font-size:18px;
 	padding-right:8px;
 }
+#navtext {
+	color:var(--font-visit);
+}
 #navtext em{
 	display:none;
+}
+/*帖子类型*/
+#pollm_c_1 input,
+.sadd input{
+	height:var(--element-height-34);
+	background-color:red;
+}
+.pg_post .mbn,
+.sadd p{
+	align-items:center;
+}
+.sadd{
+	display:flex;
+	flex-direction:row;
+	align-items:center;
+}
+
+.pg_post dd{
+	margin-left:8px;
+	margin-right:18px;
+}
+.exfm,
+.exfm .z dl,
+.exfm .z dt,
+.spmf label{
+	display:flex;
+	flex-wrap:wrap;
+}
+
+.spmf label{
+	align-items:center;
+}
+.exfm .z{
+	flex-direction:row!important;
 }
