@@ -4011,6 +4011,22 @@ height:var(--element-height-34);
 }
 
 /*---------------高级编辑器----------------*/
+/*回复标题*/
+#subjecthide{
+	font-size:18px;
+	white-space:nowrap;
+	display:flex;
+	flex-direction:row!important;
+	align-items:center;
+}
+
+#e_textarea{
+width:calc(var(--body-width) - 16px);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+	padding:8px;
+}
+
 #e_body .icon{
 	width:1.8em;
 	height:1.8em;
@@ -4058,6 +4074,10 @@ display:flex;
 	/*background-color:#d7cccc;*/
 	margin-bottom:8px;
 	justify-content:space-between;
+	
+}
+#e_controls[style*="position" ]{
+	background-color:var(--element-background);
 }
 #e_button{
 	display:flex;
