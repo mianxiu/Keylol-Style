@@ -1444,13 +1444,13 @@
     <div class="uhd-top">
        <div class="uhd-info">
             <div class="uhd-avatar">${uhdAvt.innerHTML}</div>
-            <div class="uhd-link">${uhdLink.innerHTML.replace(uhdAvt.innerHTML,'')}</div>
+            <div class="uhd-link">${uhdLink.innerHTML.replace(uhdAvt.innerHTML, '')}</div>
        </div>
        <div class="uhd-mn">${uhdMn.innerHTML}</div>
     </div>
     <div class="uhd-bottom">
     ${uhdSwitch !== null ? uhdSwitch.innerHTML : ''}
-    ${uhdUl.innerHTML}
+    ${uhdSwitch !== null ? uhdUl.innerHTML.replace(uhdSwitch.innerHTML, '') : uhdUl.innerHTML}
     </div>
     `
 
@@ -2621,7 +2621,7 @@
     let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
     // 访客视角
-    let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?view=me.+?from=space.*`).test(currentHref)
+    let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?from=space.*`).test(currentHref)
 
 
 

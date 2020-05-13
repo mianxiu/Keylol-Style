@@ -1640,19 +1640,27 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 #ct > div > div.bm.bw0 > div > div.tl {
 	margin-bottom: 18px;
 }
+
+#uhd div{
+	display:flex;
+
+}
 #uhd {
 	display: flex;
-	flex-direction: row-reverse;
-	justify-content: flex-end;
+	flex-direction: column;	
 }
-#uhd ul.tb.cl {
-	padding-left: 0!important;
+.uhd-avatar img{
+	border-radius:var(--border-radius-200);
 }
-#uhd .h.cl {
-	display: flex;
+.uhd-link{
+	flex-direction:column;
 }
-#uhd .mt {
-	margin: 0;
+.uhd-link .mt{
+	margin:0;
+}
+.uhd-top{
+	display:flex;
+	flex-direction:row;
 }
 /* 分类和分页 */
 #thread_types,
@@ -3775,7 +3783,7 @@ blockquote {}
 .steam-info-wrapper iframe {
 	box-shadow: var(--shadow-hot);
 	border-radius: var(--border-radius-10);
-	overflow: hidden;
+	height:100%;
 }
 
 /*有目录的内容*/
