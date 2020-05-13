@@ -1641,35 +1641,38 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	margin-bottom: 18px;
 }
 
-#uhd div{
-	display:flex;
-
+#uhd div {
+	display: flex;
 }
 #uhd {
 	display: flex;
-	flex-direction: column;	
+	flex-direction: column;
 }
-.uhd-avatar img{
-	border-radius:var(--border-radius-200);
+.uhd-avatar img {
+	border-radius: var(--border-radius-200);
 }
-.uhd-link{
-	flex-direction:column;
-	margin-left:24px;
+.uhd-bottom {
+	width: fit-content;
+	margin:18px 0;
 }
-.uhd-link .mt{
-	margin:0;
+.uhd-link {
+	flex-direction: column;
+	margin-left: 24px;
 }
-.uhd-top{
-	display:flex;
-	flex-direction:row;
-	justify-content:space-between;
+.uhd-link .mt {
+	margin: 0;
+}
+.uhd-top {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
 }
 /* 分类和分页 */
 #thread_types,
 .mn-nav-right > .pg,
 .pg,
 .mn-search-bar-switch,
-.tbmu{
+.uhd-bottom {
 	height: var(--element-height-34);
 	display: inline-flex;
 	transition: var(--motion-2);
@@ -1683,7 +1686,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .pg > a,
 .pgb > a,
 .mn-search-bar-switch > a,
-.tbmu a{
+.uhd-bottom a {
 	transition: var(--motion-2);
 	display: flex;
 	align-items: center;
@@ -1715,7 +1718,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .pgb > a:hover,
 .pg > a:hover,
 .mn-search-bar-switch > a:hover,
-.tbmu a:hover{
+.uhd-bottom a:hover {
 	background-color: var(--menu-hover-background);
 }
 
@@ -1729,12 +1732,12 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	color: var(--font-color-light);
 }
 
-.tbmu{
-	font-size:0;
-	margin-bottom:var(--element-margin-bottom-18);
+.tbmu {
+	font-size: 0;
+	margin-bottom: var(--element-margin-bottom-18);
 }
-.tbmu .pipe{
-	display:none;
+.tbmu .pipe {
+	display: none;
 }
 /* 输入 */
 .mn-nav-right > .pg > label > input {
@@ -2232,7 +2235,7 @@ tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3) {
 }
 
 .darkmode-css .bm_c tbody[id^="normalthread"]:hover .post-list,
-.darkmode-css  #delform .post-tr:hover .post-list{
+.darkmode-css #delform .post-tr:hover .post-list {
 	transition: var(--motion-2);
 	box-shadow: var(--shadow-hot);
 	background-color: var(--menu-hover-background);
@@ -3782,10 +3785,16 @@ blockquote {}
 }
 
 /*steam info*/
-.steam-info-wrapper iframe {
+.steam-info-wrapper {
+	position: absolute;
 	box-shadow: var(--shadow-hot);
 	border-radius: var(--border-radius-10);
-	height:100%;
+}
+
+.steam-info-wrapper iframe {
+
+	height: 100%;
+	width: 100%;
 }
 
 /*有目录的内容*/
