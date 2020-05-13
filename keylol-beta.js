@@ -1373,7 +1373,6 @@
         )
         : ""
 
-    console.log(tableHTML)
     let trTemplate = `
                 ${icn(tableHTML.match(icnRegx)[0])}
                 ${subTag(tableHTML)}
@@ -1416,6 +1415,9 @@
     trNode.innerHTML = trTemplate
   }
 
+
+
+
   /**
    * 渲染id为tbody[id*="thread"]>tr的列表
    */
@@ -1426,11 +1428,42 @@
     })
   }
 
+
+  /**
+   * 个人空间头像导航
+   */
+  function renderDelformNav() {
+    let uhd = $(`#uhd`)
+    let uhdLink = $(`#uhd .h.cl`)
+    let uhdMn = $(`#uhd .mn`)
+    let uhdAvt = $(`#uhd .avt`)
+    let uhdUl = $(`#uhd ul.tb.cl`)
+    let uhdSwitch = $(`.tbmu`)
+
+    let uhdTemplate = `
+    <div class="uhd-top">
+       <div class="uhd-info">
+            <div class="uhd-avatar">${uhdAvt.innerHTML}</div>
+            <div class="uhd-link">${uhdLink.innerHTML.replace(uhdAvt.innerHTML,'')}</div>
+       </div>
+       <div class="uhd-mn">${uhdMn.innerHTML}</div>
+    </div>
+    <div class="uhd-bottom">
+    ${uhdSwitch !== null ? uhdSwitch.innerHTML : ''}
+    ${uhdUl.innerHTML}
+    </div>
+    `
+
+    if (uhd !== null) {
+      uhd.innerHTML = uhdTemplate
+    }
+  }
+
+
   /**
    * 访客视角的列表
    */
   function renderDelformLists() {
-
     let postListNodes = $All(`#delform tbody >tr`)
 
     postListNodes.forEach((trNode) => {
@@ -2590,7 +2623,6 @@
     // 访客视角
     let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?view=me.+?from=space.*`).test(currentHref)
 
-    console.log(isVisit)
 
 
     if (isLogin == true) {
@@ -2656,12 +2688,13 @@
       console.log(`visit`)
 
 
-      renderPostListNav()
-      renderNewBtn()
-      renderPostInfo()
-      renderPagePanel()
-      renderControlPanel()
+      // renderPostListNav()
+      // renderNewBtn()
+      // renderPostInfo()
+      // renderPagePanel()
+      // renderControlPanel()
 
+      renderDelformNav()
       renderDelformLists()
 
       userTipCard()
