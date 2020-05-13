@@ -1655,6 +1655,9 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	width: fit-content;
 	margin:18px 0;
 }
+.uhd-bottom .pipe{
+	display:none;
+}
 .uhd-link {
 	flex-direction: column;
 	margin-left: 24px;
