@@ -1373,6 +1373,7 @@
         )
         : ""
 
+    console.log(tableHTML)
     let trTemplate = `
                 ${icn(tableHTML.match(icnRegx)[0])}
                 ${subTag(tableHTML)}
@@ -1433,7 +1434,10 @@
     let postListNodes = $All(`#delform tbody >tr`)
 
     postListNodes.forEach((trNode) => {
-      postListTrRender(trNode)
+      if (trNode.className !== '') {
+        postListTrRender(trNode)
+      }
+
     })
 
   }
