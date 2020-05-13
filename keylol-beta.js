@@ -1164,31 +1164,58 @@
       return ""
     }
 
-    // 回复---
+    /**
+     * 先匹配replyByParentHTML，然后进一步匹配replyNodeRegx/replyDelForumNodeRegx 
+     */
     function replyNum(html) {
       // 回复数
+
       const replyNodeRegx = /num">(<a.+?>)(\d+?)(<\/a>)(<em>)(\d+?)(<\/em>)/gm
-      const replyByNodeRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
-      const replyNode = html.match(replyNodeRegx)
-      const replyByNode = html.match(replyByNodeRegx)
+      const replyDelForumNodeRegx = /num">.+?(<a.+?>)(\d{0,})(<\/a>).*(<em>)(\d{0,})(<\/em>)/gms
+      // 父节点
+      const replyByParentRegx = /by">(?!<a).+?cite.+?(<a.*?href=".+?)(<\/a>).+?(<a\s+.+?>.+?)(<\/a>)/gms
 
-      if (replyNode !== null && replyByNodeRegx !== null) {
-        // 最新回复人和时间
-        let replyByTemplate =
-          replyByNode.length > 1
-            ? replyByNode[1].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
-            : replyByNode[0].replace(replyByNodeRegx, `<span>最后发表</span>$1$2$3$4`)
+      const replyHTML = html.match(replyNodeRegx)
+      const replyDelForumHTML = html.match(replyDelForumNodeRegx)
 
-        let replyTemplate = replyNode[0].replace(
-          replyNodeRegx,
-          `
+      const replyByParentHTML = html.match(replyByParentRegx)
 
-        <div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div><span class="post-reply-tip">${replyByTemplate}</span>`
-        )
-        return replyTemplate
+      // 最后发表的tip
+      let lastReplyTemplate = ``
+      if (replyHTML !== null && replyByParentRegx !== null) {
+
+        lastReplyTemplate =
+          replyByParentHTML.length > 1
+            ? replyByParentHTML[1].replace(replyByParentRegx, `<span>最后发表</span>$1$2$3$4`)
+            : replyByParentHTML[0].replace(replyByParentRegx, `<span>最后发表</span>$1$2$3$4`)
+
+      } else if (replyDelForumHTML !== null && replyByParentRegx !== null) {
+        // 访客视角
+        lastReplyTemplate = replyByParentHTML[0].replace(replyByParentRegx, `<span>最后发表</span>$1$2$3$4`)
       }
 
-      return ""
+      /**
+       * 匹配详细的回复数
+       * @param {*} ndoe 
+       * @param {*} regx 
+       * @param {*} tipTempelate 
+       */
+      let postReplyTemplate = (ndoe, regx, tipTempelate) => {
+        return ndoe[0].replace(regx,
+          `<div>${symbolHTML(symbolHotPostInfo.reply)}<span>$2</span></div>
+            <span class="post-reply-tip">${tipTempelate}</span>`
+        )
+      }
+
+      let postReply = () => {
+        if (replyHTML !== null) {
+          return postReplyTemplate(replyHTML, replyNodeRegx, lastReplyTemplate)
+        } else if (replyDelForumHTML !== null) {
+          return postReplyTemplate(replyDelForumHTML, replyDelForumNodeRegx, lastReplyTemplate)
+        }
+      }
+
+      return postReply()
     }
 
     // 渲染 -------------
@@ -1243,7 +1270,7 @@
       } else if (tableHTML.match(commonTdRegx) !== null) {
         //console.log(tableHTML.match(commonTdRegx)[0])
         return tableHTML.match(commonTdRegx)[0].match(commonTdAtag)[0].replace(commonTdAtag, "$3")
-      }else{
+      } else {
         let th = tableHTML.match(commonThRegx)
         return th !== null ? tableHTML.match(commonThRegx)[0].replace(commonThRegx, "$1") : ''
       }
