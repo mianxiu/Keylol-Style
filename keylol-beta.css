@@ -229,16 +229,17 @@ a {
     outline: none;
 }
 
-select{
-	 height: var(--element-height-34);
+select {
+    height: var(--element-height-34);
     background-color: var(--input-background);
     border: 0;
     border-radius: var(--border-radius-10);
     padding: 0 10px;
     color: var(--font-nomal);
 }
-select:focus{
-	outline:none;
+
+select:focus {
+    outline: none;
 }
 
 .symbol-icons {
@@ -1546,14 +1547,14 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 #mn-nav-parent,
 #mn-nav-parent>div,
 #thread_types,
-#mn-search-bar{
+#mn-search-bar {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
 /* 发帖按钮 */
-.mn-nav-left>a{
+.mn-nav-left>a {
     height: var(--element-height-34);
     font-size: var(--font-size-12);
     display: flex;
@@ -1564,19 +1565,22 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
     border-radius: var(--border-radius-10);
     box-shadow: var(--shadow-outline);
 }
-#searchmypost{
-	height:var(--element-height-34);
-	border-radius:var(--border-radius-10);
-	background-color:var(--input-background);
-	color:var(--font-nomal);
-	padding:0 10px;
+
+#searchmypost {
+    height: var(--element-height-34);
+    border-radius: var(--border-radius-10);
+    background-color: var(--input-background);
+    color: var(--font-nomal);
+    padding: 0 10px;
 }
+
 .mn-nav-left>a .icon {
     width: 1.3em;
     height: 1.3em;
     margin-right: 2px;
 }
-/*帖子筛选*/
+
+/*--我的帖子筛选---*/
 .mn-nav-left>a>span:nth-child(2) {
     color: var(--font-color-light)
 }
@@ -1584,24 +1588,28 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 .mn-nav-left>a:hover {
     box-shadow: var(--shadow-hot);
 }
-#mn-search-bar{
-	margin-bottom:22px;
+
+#mn-search-bar {
+    margin-bottom: 22px;
 }
-#mn-search-bar > form{
-	color:var(--font-nomal);
+
+#mn-search-bar>form {
+    color: var(--font-nomal);
 }
 
 /*点评*/
-td.xg1{
-	background-color:var(--element-background);
-	height:var(--element-height-34);
-	display:inline-flex;
-	align-items:center;
-	padding:0 10px;
-	border-radius:var(--border-radius-10);
-	box-shadow:var(--shadow-outline);
+td.xg1,
+.tl_reply a {
+    background-color: var(--element-background);
+    height: var(--element-height-34);
+    display: inline-flex;
+    align-items: center;
+    padding: 0 10px;
+    border-radius: var(--border-radius-10);
+    box-shadow: var(--shadow-outline);
 }
-td.xg1:after{
+
+td.xg1:after {
     position: absolute;
     content: '';
     width: 0px;
@@ -1614,11 +1622,16 @@ td.xg1:after{
 
 }
 
+/*隐藏空白tr*/
+.bw0_all+tbody {
+    display: none;
+}
+
 /* 分类和分页 */
 #thread_types,
 .mn-nav-right>.pg,
 .pg,
-.mn-search-bar-switch{
+.mn-search-bar-switch {
     height: var(--element-height-34);
     display: inline-flex;
     transition: var(--motion-2);
@@ -1630,7 +1643,7 @@ td.xg1:after{
 #thread_types>li>a,
 .mn-nav-right>.pg>a,
 .pg>a,
-.mn-search-bar-switch > a{
+.mn-search-bar-switch>a {
     transition: var(--motion-2);
     display: flex;
     align-items: center;
@@ -3194,7 +3207,7 @@ td[id*="postmessage"] {
 
 .post-content-top-right {
     flex-direction: row-reverse;
-	align-items:center;
+    align-items: center;
 }
 
 /*楼层*/
@@ -4281,7 +4294,7 @@ blockquote {}
     width: var(--body-width);
     border: 2px solid #d5d5d5;
     opacity: .8;
-	
+
 }
 
 #editorheader+body {
@@ -4406,8 +4419,8 @@ blockquote {}
 }
 
 #e_switcher {
-	display:flex;
-	justify-content:center;
+    display: flex;
+    justify-content: center;
 }
 
 #e_switchercheck {}
@@ -4569,43 +4582,51 @@ blockquote {}
     align-items: center;
     margin-right: 18px;
 }
-.pnpost{
-	color:var(--font-nomal);
+
+.pnpost {
+    color: var(--font-nomal);
 }
-.pnpost a{
-	color:var(--font-visit);
+
+.pnpost a {
+    color: var(--font-visit);
 }
+
 /*-----------------重要 帖子操作-----------------------*/
 
-.post-select{
-	
-	display:flex;
-	font-size:0px;
+.post-select {
+
+    display: flex;
+    font-size: 0px;
 }
-.post-select input{
-	opacity:0;
-	position:absolute;
+
+.post-select input {
+    opacity: 0;
+    position: absolute;
 }
-.post-select-label .icon{
-	font-size:var(--font-size-14);
-	width:1.8em;
-	height:1.8em;
+
+.post-select-label .icon {
+    font-size: var(--font-size-14);
+    width: 1.8em;
+    height: 1.8em;
 }
-.post-select-label{
-	display:flex;
-	width:24px;
-	height:24px;
-	border-radius:var(--border-radius-200);
-	background-color:var(--background-color);
-	align-items:center;
-	justify-content:center;
-	box-shadow:var(--shadow-outline);
-	
+
+.post-select-label {
+    display: flex;
+    width: 24px;
+    height: 24px;
+    border-radius: var(--border-radius-200);
+    background-color: var(--background-color);
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-outline);
+
 }
-input[id^="manage"]:checked + .post-select-label{
-		background-color:var(--help-yellow);
-	
+
+input[id^="manage"]:checked+.post-select-label {
+    background-color: var(--help-yellow);
+
 }
+
 #mdly {
     position: absolute;
 }
