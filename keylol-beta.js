@@ -827,8 +827,11 @@
     }
     else {
       // 发帖按钮
-      newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span>发贴</span>`
-      mnNavLeft.insertBefore(newPostNode, mnNavLeft.childNodes[0])
+      if (newPostNode !== null) {
+        newPostNode.innerHTML = `${symbolHTML(symbolPostBotton.createnewpost)}<span>发贴</span>`
+        mnNavLeft.insertBefore(newPostNode, mnNavLeft.childNodes[0])
+      }
+
     }
 
 
@@ -873,8 +876,11 @@
       mnNavLeft.insertBefore($(`#thread_types`), null)
     } else {
       // 子版信息
-      $(`.subforum_right_title`).insertBefore($(`.subforum_left_title_left_down>div`), $(`.subforum_right_title`).children[0])
-      mnNavLeft.insertBefore($(`.subforum`), null)
+      let subForumRightTitle = $(`.subforum_right_title`)
+      if (subForumRightTitle !== null) {
+        subForumRightTitle.insertBefore($(`.subforum_left_title_left_down>div`), $(`.subforum_right_title`).children[0])
+        mnNavLeft.insertBefore($(`.subforum`), null)
+      }
 
 
       // 子版信息symbol
@@ -1048,7 +1054,7 @@
   /**
    * 列表渲染
    */
-  function postListRender(trNode) {
+  function postListTrRender(trNode) {
 
 
     const tdRegx = /tr|td|th/gms
@@ -1059,6 +1065,7 @@
     const commonRegx = /<th.+?"(common|lock|new).+?<\/th>/gms
     const commonTdAtag = /(fn">)(|\/em).+?(<a\s{0,}href="t.+xst.+?a>)/gms
     const commonTdRegx = /td><td.+?xst.+?td>/gms
+    const commonThRegx = /<th.+?(<a.+?<\/a>).+?<\/th>/gms
 
     const lastCommont = /td>\s*(<td.+?by.+?username.+?<\/td>)/gms
 
@@ -1070,7 +1077,7 @@
     const postTimeRegx = /em>(<span.+?\d\d\d\d-\d.+?<\/span>).+?<\/em>/gms
     const postTimeEmRegx = /cite>\s{0,}<em>(\d{4}.+?表)<\/em>/gms
 
-    const attacImgRegx = /<img.+?attach_img.+?>/gm
+    const attachImgRegx = /<img.+?(attach_img|.+?image_s).+?>/gm
     const agreeRegx = /<img.+?agree.+?>/gm
     const lockRegx = /\[阅读权限.+?(\d+)<\/span>\]/gm
     const joinRegx = /<span class="xi1">(\d+?)人参与<\/span>/gm
@@ -1081,7 +1088,7 @@
     const rewardRegx = /<span class="xi1">\[悬赏 <span class="xw1">(\d+?)<\/span> 克蒸汽\]<\/span>/gm
     const replyReWardRegx = /<span class="xi1">\[回帖奖励 <strong> (\d+?)<\/strong> ]<\/span>/gm
 
-    const attachmentRegx = /<img.+?attachment.+?>/gms
+    const attachmentRegx = /<img.+?(attachment|.+?filetype\/common.gif).+?>/gms
     const digestRegx = /<img.+?digest.+?>/gms
 
     const newPostRegx = /(<a href=.+?class="xi1">)(New)(<\/a>)/gm
@@ -1223,7 +1230,8 @@
     }
 
     /**
-     * 匹配帖子
+     * 匹配帖子标题（内容）
+     * 有三种不同的格式
      */
     function common() {
 
@@ -1232,9 +1240,12 @@
 
         return tableHTML.match(commonRegx)[0].match(commonAtag)[0].replace(commonAtag, "$1")
 
-      } else {
-        console.log(tableHTML.match(commonTdRegx)[0])
+      } else if (tableHTML.match(commonTdRegx) !== null) {
+        //console.log(tableHTML.match(commonTdRegx)[0])
         return tableHTML.match(commonTdRegx)[0].match(commonTdAtag)[0].replace(commonTdAtag, "$3")
+      }else{
+        let th = tableHTML.match(commonThRegx)
+        return th !== null ? tableHTML.match(commonThRegx)[0].replace(commonThRegx, "$1") : ''
       }
 
 
@@ -1266,7 +1277,7 @@
       }
     }
 
-    let attachImg = tableHTML.match(attacImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ""
+    let attachImg = tableHTML.match(attachImgRegx) !== null ? symbolHTML(symbolHotPostInfo.attach_img) : ""
     let agree = tableHTML.match(agreeRegx) !== null ? symbolHTML(symbolHotPostInfo.agree) : ""
 
 
@@ -1373,20 +1384,32 @@
                      </div>
                  </div>
            `
-      //${tableHTML.match(lastCommont)[0]}
+    //${tableHTML.match(lastCommont)[0]}
     trNode.innerHTML = trTemplate
   }
 
   /**
-   * 渲染列表
+   * 渲染id为tbody[id*="thread"]>tr的列表
    */
-  function renderPostLists() {
+  function renderThreadLists() {
     let postListNodes = $All(`tbody[id*="thread"]>tr`)
     postListNodes.forEach((trNode) => {
-      postListRender(trNode)
+      postListTrRender(trNode)
     })
   }
 
+  /**
+   * 访客视角的列表
+   */
+  function renderDelformLists() {
+
+    let postListNodes = $All(`#delform tbody >tr`)
+
+    postListNodes.forEach((trNode) => {
+      postListTrRender(trNode)
+    })
+
+  }
 
   const symbolEditor = {
     attchment: "keylolattchment",
@@ -1593,7 +1616,7 @@
         normalThreadTr.forEach(tr => {
 
           if (tr.className !== 'post-tr') {
-            postListRender(tr)
+            postListTrRender(tr)
           }
 
         })
@@ -1620,7 +1643,7 @@
   /**
    * 替换用户卡片弹窗
    */
-  function userCard() {
+  function userTipCard() {
     let appendParentNode = $(`#append_parent`)
     var config = {
       childList: true,
@@ -2488,7 +2511,7 @@
     renderPagePanel()
     renderControlPanel()
     renderMyPostBar()
-    renderPostLists()
+    renderThreadLists()
   }
 
   /**
@@ -2533,7 +2556,10 @@
 
     let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
+    // 访客视角
+    let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?view=me.+?from=space.*`).test(currentHref)
 
+    console.log(isVisit)
 
 
     if (isLogin == true) {
@@ -2549,7 +2575,7 @@
     if (isHotPost == true) {
       console.log(`hot post`)
       hotPostAll()
-      userCard()
+      userTipCard()
     }
 
     if (isSubject == true) {
@@ -2562,15 +2588,14 @@
       renderPostInfo()
       renderPagePanel()
       renderControlPanel()
-      renderPostLists()
-      userCard()
+      renderThreadLists()
+      userTipCard()
       autopbn()
 
 
       if (isPhoto == true) {
         renderPhotoForum()
         console.log(`photo`)
-
       }
     }
 
@@ -2594,7 +2619,22 @@
       console.log(`post`)
 
       postPanel()
+    }
 
+    if (isVisit == true) {
+      console.log(`visit`)
+
+
+      renderPostListNav()
+      renderNewBtn()
+      renderPostInfo()
+      renderPagePanel()
+      renderControlPanel()
+
+      renderDelformLists()
+
+      userTipCard()
+      autopbn()
 
     }
 
