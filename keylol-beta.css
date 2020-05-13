@@ -106,7 +106,7 @@
 	--code-copy-background: #5b616d;
 	--code-copy-font: #e4ebfb;
 	--code-copy-sb: #55c9ff;
-	--table-line: #2d2d2d;
+	--table-line: #d4d4d4;
 	--table-tr-2n: #eee;
 
 
@@ -1658,7 +1658,8 @@ height:var(--element-height-34);
 #profilelist tr td{
 	margin-right:8px;
 }
-.px{
+
+.bw0 .px{
 	padding:0 8px;
 	height:var(--element-height-34);
 	border-radius:var(--border-radius-10);
@@ -4047,6 +4048,9 @@ blockquote {}
 .tdats table{
 	color:var(--font-nomal);
 	margin: 18px;
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+	border:1px solid var(--table-line);
 }
 
 .t_table td ,
