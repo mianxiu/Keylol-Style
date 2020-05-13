@@ -928,6 +928,49 @@
   }
 
 
+  /**
+   * 我的帖子列表
+   */
+  function renderMyPostBar() {
+    let mn = $(`.mn`)
+    let searchbody = $(`#searchbody`)
+    let th = $(`#threadlist > .th`)
+
+    let createMnSearchBar = () => {
+
+      let mnSearchBar = document.createElement(`div`)
+      mnSearchBar.id = `mn-search-bar`
+
+      const searchRegx = {
+        switch: /<a.+?>(.+?)<\/a>/gm,
+        searchbody: /<tbody\s{0,}class="bw0_all"\s{0,}id="searchbody.+?\/tbody>/gms
+      }
+
+      let mnSearchSwitchTemplate = ``
+
+      th.innerHTML.match(searchRegx.switch).forEach(a => {
+        mnSearchSwitchTemplate += a
+      })
+
+
+      let mnSearchBodyTemplate = th.innerHTML.match(searchRegx.searchbody)[0]
+
+
+      mnSearchBar.innerHTML = `${mnSearchSwitchTemplate}${mnSearchBodyTemplate}`
+
+      mn.insertBefore(mnSearchBar, mn.childNodes[2])
+
+    }
+
+    if (searchbody !== null) {
+      console.log(`我的帖子列表`)
+      createMnSearchBar()
+    }
+
+
+
+  }
+
 
 
   // 控制面板
@@ -2172,10 +2215,10 @@
   }
 
   /**
-   * 
+   * 帖子内容相关函数组合
    * @param {Element} post 
    */
-  function renderPostContext(post) {
+  function renderPostContextAll(post) {
     renderPostFavatar(post)
     movePostElement(post)
     renderSympolSteamBar(post)
@@ -2199,7 +2242,7 @@
     let postLists = $All(`#postlist > [id^="post_"]`)
 
     postLists.forEach(postNode => {
-      renderPostContext(postNode)
+      renderPostContextAll(postNode)
     })
 
   }
@@ -2433,14 +2476,15 @@
 
   /**---------------------------------------------- */
   /**
-   * 列表函数组合
+   * 列表相关函数组合
    */
-  function hotPost() {
+  function hotPostAll() {
     renderPostListNav()
     renderNewBtn()
     renderPostInfo()
     renderPagePanel()
     renderControlPanel()
+    renderMyPostBar()
     renderPostLists()
   }
 
@@ -2501,7 +2545,7 @@
 
     if (isHotPost == true) {
       console.log(`hot post`)
-      hotPost()
+      hotPostAll()
       userCard()
     }
 
