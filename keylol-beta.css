@@ -1628,10 +1628,12 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 display:flex
 }
 .tdats h4,
-.tdats th.c0,
-.tdats > div > table > tbody:nth-child(1) > tr:nth-child(1) > th > span{
+.tdats th.c0{
 	margin:0;
 	height:var(--element-height-34);
+}
+.tdats > div > table > tbody:nth-child(1) > tr:nth-child(1) > th > span{
+	height:calc(var(--element-height-34) * 2);
 }
 .tdats span.notice{
 	display:flex;
@@ -1639,6 +1641,18 @@ display:flex
 }
 .tdats .alt{
 height:var(--element-height-34);
+}
+.tdats #c2{
+	position:absolute;
+}
+.tdats table{
+	max-width:300px;
+	display:flex!important;
+	
+}
+
+.tdats table td:last-child{
+	white-space:normal;
 }
 /*隐藏空白tr*/
 .bw0_all + tbody {
