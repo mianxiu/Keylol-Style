@@ -1660,8 +1660,11 @@ height:var(--element-height-34);
 .exfm > table{
 	
 }
+#steam_connect_spacecp{
+	color:var(--font-nomal);
+}
 /*----------消息列表---------*/
-
+.nts dl,
 dl[id^="pmlist_"],
 .tbms.mtm.mbm a{
 	display:flex;
@@ -1672,7 +1675,8 @@ dl[id^="pmlist_"],
 	box-shadow:var(--shadow-outline);
 	color:var(--font-nomal);
 }
-dl[id^="pmlist_"] a{
+dl[id^="pmlist_"] a,
+.nts dl a{
 	color:var(--font-visit);
 }
 .tbms.mtm.mbm a{
@@ -4414,6 +4418,23 @@ blockquote {}
 }
 
 /*---------------高级编辑器----------------*/
+/*草稿箱*/
+#draftlist_menu {
+	color:var(--font-nomal);
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-hot);
+	overflow:hidden;
+}
+#draftlist_menu li{ 
+	background-color:var(--element-background);
+	padding:8px;
+}
+#draftlist_menu li:hover{
+	background-color:var(--body-background);
+}
+#draftlist_menu li a{
+	color:var(--font-visit);
+}
 /*回复标题*/
 #subjecthide {
 	font-size: 18px;
