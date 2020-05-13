@@ -1675,6 +1675,9 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .u_profile{
 	display:block!important;
 }
+.u_profile{
+	color:var(--font-nomal);
+}
 /*信息*/
 .pf_l{
 	display:flex;
@@ -1701,7 +1704,10 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
 }
-
+/*个人签名*/
+.bw0 table{
+	display:block!important;
+}
 /**/
 .bw0 > ul{
 	margin-bottom:18px;
