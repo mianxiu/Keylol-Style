@@ -2618,7 +2618,7 @@
     let isLogin = /login|register/gm.test(currentHref)
 
     // 自拍区
-    let isPhoto = /f(id=){0,1}273/gm.test(currentHref)
+    let isPhoto = /f(id=){0,1}(273|259)/gm.test(currentHref)
 
     let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
