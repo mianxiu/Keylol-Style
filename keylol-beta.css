@@ -1625,6 +1625,15 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .bw0_all + tbody {
 	display: none;
 }
+/*--------------设置------------*/
+.ct2_a{
+	display:flex;
+	flex-direction:row-reverse;
+	justify-content:flex-end;
+}
+.appl{
+	
+}
 /*访客*/
 #delform .th.post-tr {
 	display: none;
@@ -1716,6 +1725,9 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	display:flex;
 	justify-content:left;
 }
+.bw0 h1{
+	margin-top:0;
+}
 /* 分类和分页 */
 #thread_types,
 .mn-nav-right > .pg,
@@ -1730,14 +1742,27 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	overflow: hidden;
 	box-shadow: var(--shadow-outline);
 }
-
+/*个人设置左侧*/
+.appl ul{
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+	margin-right:34px;
+}
+.appl ul li{
+	box-shadow:var(--shadow-outline);
+	
+}
+.appl h2{
+	margin-top:0;
+}
 #thread_types > li > a,
 .mn-nav-right > .pg > a,
 .pg > a,
 .pgb > a,
 .mn-search-bar-switch > a,
 .uhd-bottom a,
-.bw0 > ul a{
+.bw0 > ul a,
+.appl ul a{
 	transition: var(--motion-2);
 	display: flex;
 	align-items: center;
@@ -1770,19 +1795,22 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .pg > a:hover,
 .mn-search-bar-switch > a:hover,
 .uhd-bottom a:hover,
-.bw0 > ul a:hover{
+.bw0 > ul a:hover,
+.appl ul a:hover{
 	background-color: var(--menu-hover-background);
 }
 
 #thread_types > li.xw1.a > a,
 .mn-nav-right > .pg > strong,
-.bw0 > ul li.a > a{
+.bw0 > ul li.a > a,
+.appl ul li.a>a{
 	background-color: var(--point);
 }
 
 #thread_types > li.xw1.a > a,
 .mn-nav-right > .pg > strong ,
-.bw0 > ul li.a > a{
+.bw0 > ul li.a > a,
+.appl ul li.a>a{
 	color: var(--font-color-light);
 }
 
@@ -3427,7 +3455,6 @@ td[id*="postmessage"] {
 
 /*个性签名*/
 .post-content-sign {
-
 	margin: 18px 30px 0px 30px;
 	max-height: 200px;
 	border-radius: var(--border-radius-2);
