@@ -1693,7 +1693,18 @@ height:var(--element-height-34);
 }
 /*头像*/
 #avatarform{
+	color:var(--font-nomal);
 white-space:nowrap;
+}
+/*编辑器*/
+.tedt .fpd .icon{
+	width:1.6em;
+}
+.tedt .fpd{
+	display:flex;
+}
+.tedt .bar{
+height:var(--element-height-34);
 }
 /*访客*/
 #delform .th.post-tr {
@@ -4558,7 +4569,8 @@ blockquote {}
 /*颜色弹窗-背景等*/
 #e_forecolor_menu,
 #e_backcolor_menu,
-#e_postbg_menu {
+#e_postbg_menu,
+#sendforecolor_menu{
 	padding: 8px;
 	border-radius: var(--border-radius-10);
 	background-color: var(--element-background);
@@ -4567,7 +4579,8 @@ blockquote {}
 
 #e_forecolor_menu input,
 #e_backcolor_menu input,
-#e_postbg_menu input {
+#e_postbg_menu input,
+#sendforecolor_menu input{
 	transition: .2s all;
 	width: 20px;
 	height: 20px;
@@ -4575,7 +4588,8 @@ blockquote {}
 
 #e_forecolor_menu input:hover,
 #e_backcolor_menu input:hover,
-#e_postbg_menu input:hover {
+#e_postbg_menu input:hover,
+#sendforecolor_menu input:hover{
 	width: 30px;
 	box-shadow: var(--shadow-hot);
 }
