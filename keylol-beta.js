@@ -1533,6 +1533,7 @@
 
   /**
    * 渲染编辑器图标
+   * 包含快速发帖，高级编辑器，设置编辑器
    */
   function renderEditorPermission() {
     /**
@@ -1597,8 +1598,9 @@
     let postFullEditor = $All(`#e_controls a`)
 
 
+
     // 替换迷你编辑器图标
-    if (postFullEditor !== null || postIconNode != null) {
+    if (postFullEditor !== null || postIconNode != null || signHtml !== null) {
 
 
       // 高级模式
@@ -1629,7 +1631,6 @@
         paint.innerHTML = `<span>${symbolHTML(symbolEditor.tuya)}</span><span class="editor-tip">${paint.innerText}</span>`
         : null
 
-      console.log(paint)
       // a节点
       let contorBarNode = postIconNode !== null && postIconNode.length > 0 ? postIconNode : postFullEditor
 
@@ -2625,7 +2626,7 @@
     let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?from=space.*`).test(currentHref)
     let isMy = new RegExp(`${keylolDomin}\/suid-\d{0,}`).test(currentHref)
 
-
+    let isSetting = new RegExp(`${keylolDomin}.+?(op=info|ac=pm)$`).test(currentHref)
 
     if (isLogin == true) {
       console.log(`login`)
@@ -2690,18 +2691,16 @@
       console.log(`visit`)
 
 
-      // renderPostListNav()
-      // renderNewBtn()
-      // renderPostInfo()
-      // renderPagePanel()
-      // renderControlPanel()
-
       renderDelformNav()
       renderDelformLists()
 
-      userTipCard()
-      autopbn()
+    }
 
+    if (isSetting == true) {
+      console.log(`setting`)
+
+
+      postPanel()
     }
 
   }
