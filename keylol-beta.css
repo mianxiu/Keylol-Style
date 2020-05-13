@@ -1654,6 +1654,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 }
 .uhd-link{
 	flex-direction:column;
+	margin-left:24px;
 }
 .uhd-link .mt{
 	margin:0;
@@ -1661,6 +1662,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .uhd-top{
 	display:flex;
 	flex-direction:row;
+	justify-content:space-between;
 }
 /* 分类和分页 */
 #thread_types,

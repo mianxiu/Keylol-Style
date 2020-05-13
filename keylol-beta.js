@@ -1450,12 +1450,13 @@
     </div>
     <div class="uhd-bottom">
     ${uhdSwitch !== null ? uhdSwitch.innerHTML : ''}
-    ${uhdSwitch !== null ? uhdUl.innerHTML.replace(uhdSwitch.innerHTML, '') : uhdUl.innerHTML}
+    ${uhdUl.innerHTML}
     </div>
     `
 
     if (uhd !== null) {
       uhd.innerHTML = uhdTemplate
+      uhdSwitch !== null ? uhdSwitch.remove() : null
     }
   }
 
