@@ -1660,7 +1660,37 @@ height:var(--element-height-34);
 .exfm > table{
 	
 }
+/*----------消息列表---------*/
+
+dl[id^="pmlist_"],
+.tbms.mtm.mbm a{
+	display:flex;
+	background-color:var(--element-background);
+	width:fit-content;
+	padding:8px;
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+	color:var(--font-nomal);
+}
+dl[id^="pmlist_"] a{
+	color:var(--font-visit);
+}
+.tbms.mtm.mbm a{
+	background-color:var(--help-yellow);
+	color:var(--help-yellow-key);
+}
 /*--------------设置------------*/
+.un_selector + #showSelectBox{
+	height:var(--element-height-34);
+	display:flex;
+	align-items:center;
+	justify-content:center;
+	width:fit-content;
+	padding: 0 8px;
+	background-color:var(--point);
+	border-radius:var(--border-radius-10);
+	color:var(--font-point);
+}
 #profilelist tr,
 .tfm tr{
 	color:var(--font-nomal);
