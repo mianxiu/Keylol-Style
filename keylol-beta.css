@@ -1598,7 +1598,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 }
 
 /*点评*/
-.bw0_all + tr td.xg1,
+#delform tr td.xg1,
 .tl_reply a {
 	background-color: var(--element-background);
 	height: var(--element-height-34);
@@ -1629,7 +1629,8 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 #delform .th.post-tr {
 	display: none;
 }
-#delform .post-tr {
+#delform .post-tr,
+#delform tr {
 	margin-bottom: var(--marign-padding-18);
 }
 #delform .post-tr:hover .post-list {
