@@ -1648,7 +1648,6 @@ height:var(--element-height-34);
 .tdats table{
 	max-width:300px;
 	display:flex!important;
-	
 }
 
 .tdats table td:last-child{
@@ -1662,7 +1661,8 @@ height:var(--element-height-34);
 	
 }
 /*--------------设置------------*/
-#profilelist tr{
+#profilelist tr,
+.tfm tr{
 	color:var(--font-nomal);
 	margin:8px 0;
 	display:flex;
@@ -1690,6 +1690,10 @@ height:var(--element-height-34);
 /*积分*/
 .creditl+ table{
 	display:flex;
+}
+/*头像*/
+#avatarform{
+white-space:nowrap;
 }
 /*访客*/
 #delform .th.post-tr {
@@ -4043,23 +4047,29 @@ blockquote {}
 }
 
 /*表格*/
+.creditl + table > caption{
+	width:calc(var(--body-width) - 166px);
+}
 .creditl + table td,
 .exfm + table td,
 .bw0 + table td,
-.tdats table td{
+.tdats table td,
+#ct > div.mn > div > table td{
 	white-space:nowrap;
 }
 .creditl + table tr:nth-child(2n),
 .exfm + table tr:nth-child(2n),
 .bw0 + table tr:nth-child(2n),
-.tdats table tr:nth-child(2n){
+.tdats table tr:nth-child(2n),
+#ct > div.mn > div > table tr:nth-child(2n){
 	background-color: var(--element-background);
 }
 .t_table,
 .creditl + table,
 .exfm + table,
 .bw0 + table,
-.tdats table{
+.tdats table,
+#ct > div.mn > div > table{
 	color:var(--font-nomal);
 	margin: 18px;
 	border-radius:var(--border-radius-10);
@@ -4071,7 +4081,8 @@ blockquote {}
 .creditl + table td,
 .exfm + table td,
 .bw0 + table td,
-.tdats table td{
+.tdats table td,
+#ct > div.mn > div > table table td{
 	padding: 8px;
 	box-shadow: 0 0 1px var(--table-line);
 }
