@@ -1697,16 +1697,26 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	background-color:var(--element-background);
 	display:flex;
 	width:fit-content;
-	margin:8px;
+	margin:8px 8px 8px 0px;
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
+}
+
+/**/
+.bw0 > ul{
+	margin-bottom:18px;
+}
+.bw0 > ul{
+	display:flex;
+	justify-content:left;
 }
 /* 分类和分页 */
 #thread_types,
 .mn-nav-right > .pg,
 .pg,
 .mn-search-bar-switch,
-.uhd-bottom > div {
+.uhd-bottom > div,
+.bw0 > ul{
 	height: var(--element-height-34);
 	display: inline-flex;
 	transition: var(--motion-2);
@@ -1720,7 +1730,8 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .pg > a,
 .pgb > a,
 .mn-search-bar-switch > a,
-.uhd-bottom a {
+.uhd-bottom a,
+.bw0 > ul a{
 	transition: var(--motion-2);
 	display: flex;
 	align-items: center;
@@ -1736,7 +1747,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .mn-nav-right > .pg > strong,
 .mn-nav-right > .pg > label,
 .pg > strong,
-.pg > label {
+.pg > label{
 	display: flex;
 	align-items: center;
 	padding: var(--element-padding-0-10);
@@ -1752,17 +1763,20 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .pgb > a:hover,
 .pg > a:hover,
 .mn-search-bar-switch > a:hover,
-.uhd-bottom a:hover {
+.uhd-bottom a:hover,
+.bw0 > ul a:hover{
 	background-color: var(--menu-hover-background);
 }
 
 #thread_types > li.xw1.a > a,
-.mn-nav-right > .pg > strong {
+.mn-nav-right > .pg > strong,
+.bw0 > ul li.a > a{
 	background-color: var(--point);
 }
 
 #thread_types > li.xw1.a > a,
-.mn-nav-right > .pg > strong {
+.mn-nav-right > .pg > strong ,
+.bw0 > ul li.a > a{
 	color: var(--font-color-light);
 }
 
