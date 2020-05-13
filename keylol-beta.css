@@ -1626,7 +1626,14 @@ td.xg1:after {
 .bw0_all+tbody {
     display: none;
 }
-
+/*访客*/
+#delform .post-tr{
+	margin-bottom: var(--marign-padding-18);
+}
+#delform .post-tr:hover .post-list{
+	 transition: var(--motion-2);
+    box-shadow: var(--shadow-hot);
+}
 /* 分类和分页 */
 #thread_types,
 .mn-nav-right>.pg,
@@ -2176,7 +2183,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
     margin-bottom: var(--marign-padding-18);
 }
 
-.bm_c tbody:hover .post-list {
+.bm_c tbody[id^="normalthread"]:hover .post-list {
     transition: var(--motion-2);
     box-shadow: var(--shadow-hot);
 }
