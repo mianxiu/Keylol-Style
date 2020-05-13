@@ -1449,8 +1449,8 @@
        <div class="uhd-mn">${uhdMn.innerHTML}</div>
     </div>
     <div class="uhd-bottom">
-    ${uhdSwitch !== null ? uhdSwitch.innerHTML : ''}
-    ${uhdUl.innerHTML}
+    <div class="uhd-list-tab">${uhdSwitch !== null ? uhdSwitch.innerHTML : ''}</div>
+    <div class="uhd-tab">${uhdUl.innerHTML}</div>
     </div>
     `
 

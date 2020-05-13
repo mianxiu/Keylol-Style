@@ -1652,7 +1652,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	border-radius: var(--border-radius-200);
 }
 .uhd-bottom {
-	width: fit-content;
+   justify-content:space-between;
 	margin:18px 0;
 }
 .uhd-bottom .pipe{
@@ -1675,7 +1675,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .mn-nav-right > .pg,
 .pg,
 .mn-search-bar-switch,
-.uhd-bottom {
+.uhd-bottom > div {
 	height: var(--element-height-34);
 	display: inline-flex;
 	transition: var(--motion-2);
