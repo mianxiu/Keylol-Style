@@ -1623,6 +1623,9 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .bw0_all tr{
 	width:var(--body-width);
 }
+.bw0_all .post-list{
+	width:100%;
+}
 /*用户组*/
 .tdats{
 display:flex
@@ -1742,6 +1745,9 @@ white-space:nowrap;
 height:var(--element-height-34);
 }
 /*访客*/
+#delform .post-tr{
+	width:var(--body-width);
+}
 #delform .th.post-tr {
 	display: none;
 }
