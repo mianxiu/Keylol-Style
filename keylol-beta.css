@@ -229,6 +229,18 @@ a {
     outline: none;
 }
 
+select{
+	 height: var(--element-height-34);
+    background-color: var(--input-background);
+    border: 0;
+    border-radius: var(--border-radius-10);
+    padding: 0 10px;
+    color: var(--font-nomal);
+}
+select:focus{
+	outline:none;
+}
+
 .symbol-icons {
     display: flex;
 }
@@ -1533,7 +1545,8 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 
 #mn-nav-parent,
 #mn-nav-parent>div,
-#thread_types {
+#thread_types,
+#mn-search-bar{
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -1565,13 +1578,16 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 .mn-nav-left>a:hover {
     box-shadow: var(--shadow-hot);
 }
-
+#mn-search-bar{
+	margin-bottom:22px;
+}
 /* 分类和分页 */
 #thread_types,
 .mn-nav-right>.pg,
-.pg {
+.pg,
+.mn-search-bar-switch{
     height: var(--element-height-34);
-    display: flex;
+    display: inline-flex;
     transition: var(--motion-2);
     border-radius: var(--border-radius-10);
     overflow: hidden;
@@ -1580,7 +1596,8 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 
 #thread_types>li>a,
 .mn-nav-right>.pg>a,
-.pg>a {
+.pg>a,
+.mn-search-bar-switch > a{
     transition: var(--motion-2);
     display: flex;
     align-items: center;

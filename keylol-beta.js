@@ -956,7 +956,9 @@
       let mnSearchBodyTemplate = th.innerHTML.match(searchRegx.searchbody)[0]
 
 
-      mnSearchBar.innerHTML = `${mnSearchSwitchTemplate}${mnSearchBodyTemplate}`
+      mnSearchBar.innerHTML = `
+      <div class="mn-search-bar-switch">${mnSearchSwitchTemplate}</div>
+      ${mnSearchBodyTemplate}`
 
       mn.insertBefore(mnSearchBar, mn.childNodes[2])
 
@@ -1365,12 +1367,13 @@
                              <div class="post-list-time">${postTime}</div>
                          </div>
                          <div class="post-list-right-r">
-                         <!--时间${tableHTML.match(lastCommont)[0]}-->
+                         <!--时间-->
                              <div class="post-list-last-comment"></div>
                          </div>
                      </div>
                  </div>
            `
+      //${tableHTML.match(lastCommont)[0]}
     trNode.innerHTML = trTemplate
   }
 
