@@ -1640,6 +1640,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	margin-right:8px;
 }
 #profilelist input{
+	padding:0 8px;
 	height:var(--element-height-34);
 	border-radius:var(--border-radius-10);
 	background-color:var(--input-post-background);
@@ -1651,6 +1652,10 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 }
 .appl{
 	
+}
+/*积分*/
+.creditl+ table{
+	display:flex;
 }
 /*访客*/
 #delform .th.post-tr {
@@ -4003,11 +4008,24 @@ blockquote {}
 }
 
 /*表格*/
-.t_table {
+.creditl + table td,
+.exfm + table td{
+	white-space:nowrap;
+}
+.creditl + table tr:nth-child(2n),
+.exfm + table tr:nth-child(2n){
+	background-color: var(--element-background);
+}
+.t_table,
+.creditl + table,
+.exfm + table{
+	color:var(--font-nomal);
 	margin: 18px;
 }
 
-.t_table td {
+.t_table td ,
+.creditl + table td,
+.exfm + table td{
 	padding: 8px;
 	box-shadow: 0 0 1px var(--table-line);
 }
