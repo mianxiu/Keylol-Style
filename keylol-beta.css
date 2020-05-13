@@ -1620,6 +1620,9 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	border-left-color: #0000;
 	margin-top: -26px;
 }
+.bw0_all tr{
+	width:var(--body-width);
+}
 
 /*隐藏空白tr*/
 .bw0_all + tbody {
