@@ -1673,7 +1673,8 @@ height:var(--element-height-34);
 	margin-right:8px;
 }
 
-.bw0 .px{
+.bw0 .px,
+.un_selector input {
 	padding:0 8px;
 	height:var(--element-height-34);
 	border-radius:var(--border-radius-10);
