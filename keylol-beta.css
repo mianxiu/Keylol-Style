@@ -1623,10 +1623,29 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .bw0_all tr{
 	width:var(--body-width);
 }
-
+/*用户组*/
+.tdats{
+display:flex
+}
+.tdats h4,
+.tdats th.c0,
+.tdats > div > table > tbody:nth-child(1) > tr:nth-child(1) > th > span{
+	margin:0;
+	height:var(--element-height-34);
+}
+.tdats span.notice{
+	display:flex;
+	height:var(--element-height-34);
+}
+.tdats .alt{
+height:var(--element-height-34);
+}
 /*隐藏空白tr*/
 .bw0_all + tbody {
 	display: none;
+}
+.exfm > table{
+	
 }
 /*--------------设置------------*/
 #profilelist tr{
@@ -1639,7 +1658,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 #profilelist tr td{
 	margin-right:8px;
 }
-#profilelist input{
+.px{
 	padding:0 8px;
 	height:var(--element-height-34);
 	border-radius:var(--border-radius-10);
@@ -1770,6 +1789,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	border-radius:var(--border-radius-10);
 	overflow:hidden;
 	margin-right:34px;
+	white-space:nowrap;
 }
 .appl ul li{
 	box-shadow:var(--shadow-outline);
@@ -4009,23 +4029,31 @@ blockquote {}
 
 /*表格*/
 .creditl + table td,
-.exfm + table td{
+.exfm + table td,
+.bw0 + table td,
+.tdats table td{
 	white-space:nowrap;
 }
 .creditl + table tr:nth-child(2n),
-.exfm + table tr:nth-child(2n){
+.exfm + table tr:nth-child(2n),
+.bw0 + table tr:nth-child(2n),
+.tdats table tr:nth-child(2n){
 	background-color: var(--element-background);
 }
 .t_table,
 .creditl + table,
-.exfm + table{
+.exfm + table,
+.bw0 + table,
+.tdats table{
 	color:var(--font-nomal);
 	margin: 18px;
 }
 
 .t_table td ,
 .creditl + table td,
-.exfm + table td{
+.exfm + table td,
+.bw0 + table td,
+.tdats table td{
 	padding: 8px;
 	box-shadow: 0 0 1px var(--table-line);
 }
