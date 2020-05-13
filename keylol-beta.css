@@ -1521,7 +1521,7 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 }
 
 /* --------------------------------hot post------------------------------------- */
-.z,
+#pt .z,
 .bm_h > h1,
 .subforum_left_title,
 .mn-nav-left > a > img,
@@ -2911,7 +2911,8 @@ span[id*="checkseccodeverify"] {
 
 /*表情弹窗*/
 #fastpostsml_menu,
-#e_sml_menu {
+#e_sml_menu ,
+#sendsml_menu{
 	display: flex;
 	padding: var(--element-margin-bottom-18);
 	background-color: var(--element-background);
@@ -2921,20 +2922,23 @@ span[id*="checkseccodeverify"] {
 }
 
 #fastpostsmiliesdiv_tb,
-#smiliesdiv_tb {
+#smiliesdiv_tb,
+#sendsmiliesdiv_tb{
 	flex-wrap: wrap;
 	display: flex;
 }
 
 #fastpostsmiliesdiv_tb ul,
-#smiliesdiv_tb ul {
+#smiliesdiv_tb ul,
+#sendsmiliesdiv_tb ul{
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 
 #fastpostsmiliesdiv_tb ul li,
-#smiliesdiv_tb ul li {
+#smiliesdiv_tb ul li,
+#sendsmiliesdiv_tb ul li{
 	padding: 8px;
 	display: flex;
 	flex-wrap: nowrap;
@@ -2942,44 +2946,51 @@ span[id*="checkseccodeverify"] {
 }
 
 #fastpostsmiliesdiv_tb ul li:hover,
-#smiliesdiv_tb ul li:hover {
+#smiliesdiv_tb ul li:hover,
+#sendsmiliesdiv_tb ul li:hover{
 	background-color: var(--background-color);
 }
 
 #fastpostsmiliesdiv_page,
-#smiliesdiv_page {
+#smiliesdiv_page,
+#sendsmiliesdiv_page{
 	display: flex;
 	align-items: center;
 }
 
 #fastpostsmiliesdiv_data,
-#smiliesdiv_data {
+#smiliesdiv_data,
+#sendsmiliesdiv_data{
 	padding: 10px;
 }
 
 #fastpostsmiliesdiv_table td,
-#smiliesdiv_data td {
+#smiliesdiv_data td ,
+#sendsmiliesdiv_data td{
 	padding: 2px;
 	border-radius: var(--border-radius-10);
 }
 
 
 #fastpostsmiliesdiv_page .z,
-#smiliesdiv_page .z {
+#smiliesdiv_page .z,
+#sendsmiliesdiv_page .z{
 	display: flex;
 	position: absolute;
 	margin-left: 40px;
 }
 
 #fastpostsmiliesdiv_page .z a,
-#smiliesdiv_page .z a {
+#smiliesdiv_page .z a ,
+#sendsmiliesdiv_page .z a{
 	padding: 10px;
 	border-radius: var(--border-radius-10);
 }
 
 #fastpostsmiliesdiv_page .z a:hover,
 #fastpostsmiliesdiv_table td:hover,
-#smiliesdiv_data td:hover {
+#smiliesdiv_data td:hover,
+#sendsmiliesdiv_table td:hover{
 	background-color: var(--background-color);
 }
 

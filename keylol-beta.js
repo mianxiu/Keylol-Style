@@ -2626,7 +2626,7 @@
     let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?from=space.*`).test(currentHref)
     let isMy = new RegExp(`${keylolDomin}\/suid-\d{0,}`).test(currentHref)
 
-    let isSetting = new RegExp(`${keylolDomin}.+?(op=info|ac=pm)$`).test(currentHref)
+    let isSetting = new RegExp(`${keylolDomin}.+?(op=info|ac=pm)`).test(currentHref)
 
     if (isLogin == true) {
       console.log(`login`)
