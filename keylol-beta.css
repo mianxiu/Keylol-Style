@@ -1658,7 +1658,8 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 #thread_types,
 .mn-nav-right > .pg,
 .pg,
-.mn-search-bar-switch {
+.mn-search-bar-switch,
+.tbmu{
 	height: var(--element-height-34);
 	display: inline-flex;
 	transition: var(--motion-2);
@@ -1671,7 +1672,8 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .mn-nav-right > .pg > a,
 .pg > a,
 .pgb > a,
-.mn-search-bar-switch > a {
+.mn-search-bar-switch > a,
+.tbmu a{
 	transition: var(--motion-2);
 	display: flex;
 	align-items: center;
@@ -1702,7 +1704,8 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 .mn-nav-right > .pg > a:hover,
 .pgb > a:hover,
 .pg > a:hover,
-.mn-search-bar-switch > a:hover {
+.mn-search-bar-switch > a:hover,
+.tbmu a:hover{
 	background-color: var(--menu-hover-background);
 }
 
@@ -1716,6 +1719,13 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	color: var(--font-color-light);
 }
 
+.tbmu{
+	font-size:0;
+	margin-bottom:var(--element-margin-bottom-18);
+}
+.tbmu .pipe{
+	display:none;
+}
 /* 输入 */
 .mn-nav-right > .pg > label > input {
 	width: 20px;
@@ -2211,7 +2221,8 @@ tr > div.post-list > div.post-list-left > div > div.lock > a:nth-child(3) {
 	box-shadow: var(--shadow-hot);
 }
 
-.darkmode-css .bm_c tbody:hover .post-list {
+.darkmode-css .bm_c tbody[id^="normalthread"]:hover .post-list,
+.darkmode-css  #delform .post-tr:hover .post-list{
 	transition: var(--motion-2);
 	box-shadow: var(--shadow-hot);
 	background-color: var(--menu-hover-background);

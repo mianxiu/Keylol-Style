@@ -1434,7 +1434,7 @@
     let postListNodes = $All(`#delform tbody >tr`)
 
     postListNodes.forEach((trNode) => {
-      if (trNode.className !== '') {
+      if (trNode.childNodes.length > 3) {
         postListTrRender(trNode)
       }
 
