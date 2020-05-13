@@ -1446,7 +1446,7 @@
             <div class="uhd-avatar">${uhdAvt.innerHTML}</div>
             <div class="uhd-link">${uhdLink.innerHTML.replace(uhdAvt.innerHTML, '')}</div>
        </div>
-       <div class="uhd-mn">${uhdMn.innerHTML}</div>
+       <div class="uhd-mn">${uhdMn !== null ? uhdMn.innerHTML : ''}</div>
     </div>
     <div class="uhd-bottom">
     <div class="uhd-list-tab">${uhdSwitch !== null ? uhdSwitch.innerHTML : ''}</div>
@@ -2623,6 +2623,7 @@
 
     // 访客视角
     let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?from=space.*`).test(currentHref)
+    let isMy = new RegExp(`${keylolDomin}\/suid-\d{0,}`).test(currentHref)
 
 
 
@@ -2685,7 +2686,7 @@
       postPanel()
     }
 
-    if (isVisit == true) {
+    if (isVisit == true || isMy == true) {
       console.log(`visit`)
 
 
