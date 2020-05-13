@@ -1629,6 +1629,21 @@ div.middle_subject_detail > div.middle_subject_detail_pic,
 	display: none;
 }
 /*--------------设置------------*/
+#profilelist tr{
+	color:var(--font-nomal);
+	margin:8px 0;
+	display:flex;
+	align-items:center;
+}
+#profilelist tr th,
+#profilelist tr td{
+	margin-right:8px;
+}
+#profilelist input{
+	height:var(--element-height-34);
+	border-radius:var(--border-radius-10);
+	background-color:var(--input-post-background);
+}
 .ct2_a{
 	display:flex;
 	flex-direction:row-reverse;
