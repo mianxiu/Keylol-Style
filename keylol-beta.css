@@ -1576,7 +1576,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
     height: 1.3em;
     margin-right: 2px;
 }
-
+/*帖子筛选*/
 .mn-nav-left>a>span:nth-child(2) {
     color: var(--font-color-light)
 }
@@ -1589,6 +1589,29 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 #mn-search-bar > form{
 	color:var(--font-nomal);
+}
+
+/*点评*/
+td.xg1{
+	background-color:var(--element-background);
+	height:var(--element-height-34);
+	display:inline-flex;
+	align-items:center;
+	padding:0 10px;
+	border-radius:var(--border-radius-10);
+	box-shadow:var(--shadow-outline);
+}
+td.xg1:after{
+    position: absolute;
+    content: '';
+    width: 0px;
+    height: 0px;
+    border: 10px solid var(--element-background);
+    border-right-color: #0000;
+    border-top-color: #0000;
+    border-left-color: #0000;
+    margin-top: -26px;
+
 }
 
 /* 分类和分页 */

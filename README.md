@@ -11,7 +11,8 @@ https://www.tampermonkey.net/documentation.php#_resource
 ## symbol引用
 
 iconfont
-
+## 帖子点评的bug
+论坛自带
 ## SEO
 ```json
 <script type="application/ld+json">
