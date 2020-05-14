@@ -2596,10 +2596,19 @@
   /**
    * 渲染登录图标
    */
-   function renderLoginSymbol(){
-     let duceapp_cv_body = $(`.duceapp_cv_body`)
+  function renderLoginSymbol() {
+    const symbolDuceapp = {
+      wechat: 'kelolwechat',
+      qq: 'kelolTencent_QQ-Logowine1'
+    }
+    let duceapp_cv_body = $(`.duceapp_cv_body`)
+    let wechaTip = $(`.wxlogin_tip`)
+    let qqTip = $(`.duceapp_qqlogin`)
 
-   }
+    wechaTip !== null ? wechaTip.firstChild.innerHTML = symbolHTML(symbolDuceapp.wechat) : null
+    qqTip !== null ? qqTip.firstChild.innerHTML = symbolHTML(symbolDuceapp.qq) : null
+
+  }
 
   /**---------------------------------------------- */
   /**
@@ -2665,6 +2674,7 @@
 
     if (isLogin == true) {
       console.log(`login`)
+      renderLoginSymbol()
     }
 
 
