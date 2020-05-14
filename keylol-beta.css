@@ -1730,8 +1730,13 @@ dl[id^="pmlist_"] a,
 	color: var(--font-nomal);
 	white-space: nowrap;
 }
-/*编辑器*/
-.select2-selection__placeholder{
+/*-编辑器--*/
+/*赠楼*/
+#ga_type,#ga_id{
+	display:none;
+}
+#select2-ga_id-container,
+#select2-ga_type-container{
 	background-color:var(--element-background);
 	height:var(--element-height-34);
 	display:inline-flex;
@@ -1739,17 +1744,20 @@ dl[id^="pmlist_"] a,
 	padding:0 8px;
 	border-radius:var(--border-radius-10)
 }
-.select2-results__options{
+.select2-results__options,
+.select2-selection__rendered{
 	max-height:600px;
 	overflow:auto;
 }
-.select2-results__options li{
+.select2-results__options li,
+.select2-selection__rendered li{
 	box-shadow:var(--shadow-outline);
 	display:flex;
 	padding:8px;
 	background-color:var(--element-background);
 }
-.select2-results__options li:hover{
+.select2-results__options li:hover,
+.select2-selection__rendered{
 	background-color:var(--background-color);
 }
 .tedt .fpd .icon {
