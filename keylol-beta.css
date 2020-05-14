@@ -427,7 +427,7 @@ body {
 	height: var(--search-bar-height);
 }
 
-.search-box{
+.search-box {
 	background-color: var(--input-background);
 	padding: 0;
 	margin: 0;
@@ -1732,33 +1732,34 @@ dl[id^="pmlist_"] a,
 }
 /*-编辑器--*/
 /*赠楼*/
-#ga_type,#ga_id{
-	display:none;
+#ga_type,
+#ga_id {
+	display: none;
 }
 #select2-ga_id-container,
-#select2-ga_type-container{
-	background-color:var(--element-background);
-	height:var(--element-height-34);
-	display:inline-flex;
-	align-items:center;
-	padding:0 8px;
-	border-radius:var(--border-radius-10)
+#select2-ga_type-container {
+	background-color: var(--element-background);
+	height: var(--element-height-34);
+	display: inline-flex;
+	align-items: center;
+	padding: 0 8px;
+	border-radius: var(--border-radius-10)
 }
 .select2-results__options,
-.select2-selection__rendered{
-	max-height:600px;
-	overflow:auto;
+.select2-selection__rendered {
+	max-height: 600px;
+	overflow: auto;
 }
 .select2-results__options li,
-.select2-selection__rendered li{
-	box-shadow:var(--shadow-outline);
-	display:flex;
-	padding:8px;
-	background-color:var(--element-background);
+.select2-selection__rendered li {
+	box-shadow: var(--shadow-outline);
+	display: flex;
+	padding: 8px;
+	background-color: var(--element-background);
 }
 .select2-results__options li:hover,
-.select2-selection__rendered{
-	background-color:var(--background-color);
+.select2-selection__rendered {
+	background-color: var(--background-color);
 }
 .tedt .fpd .icon {
 	width: 1.6em;
@@ -4913,77 +4914,101 @@ blockquote {}
 	color: var(--font-visit);
 }
 /*---------赠楼-------*/
-#d_gw_jr_marketprice{
-	font-size:18px;
-	color:var(--help-yellow-key);
+#d_gw_special_firstln {
+	display: flex;
+	flex-direction: column;
+	font-size: 18px;
 }
-.d_gw_nearest_giveaway_bottom_ln2{
-color:var(--font-second-aphal);
+.d_gw_special_text {
+	padding: 8px;
+	background-color: var(--element-background);
+	border-radius: var(--border-radius-10);
+	margin: 8px;
 }
-.d_gw_nearest_giveaway_bottom_ln2{
-font-size:14px;
-}
-#d_gw_detail{
+.p_gw_status_line_full {
+	height:50px;
+	font-size: 18px;
+	background-color: var(--help-yellow);
 	display:flex;
+	padding:0 18px;
+	align-items:center;
+	border-radius: var(--border-radius-10);
 }
-#d_gw_bigimg{
-	height:300px;
-	width:921px;
-	background-repeat:no-repeat;
+#gw_time_countdown span {
+	color: var(--help-yellow-key);
+}
+#d_gw_jr_marketprice {
+	font-size: 18px;
+	color: var(--help-yellow-key);
+}
+.d_gw_nearest_giveaway_bottom_ln2 {
+	color: var(--font-second-aphal);
+}
+.d_gw_nearest_giveaway_bottom_ln2 {
+	font-size: 14px;
+}
+#d_gw_detail {
+	display: flex;
+	flex-wrap: wrap;
+}
+#d_gw_bigimg {
+	height: 300px;
+	width: 921px;
+	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center;
-	margin-bottom:18px;
-	border-radius:var(--border-radius-10);
-	overflow:hidden;
+	margin-bottom: 18px;
+	border-radius: var(--border-radius-10);
+	overflow: hidden;
 }
-#d_gw_joininfo{
-	display:flex;
-	position:absolute;
-	background-color:var(--element-background);
-	padding:8px;
-	border-radius:var(--border-radius-10);
-	margin:200px 0 0 18px;
+#d_gw_joininfo {
+	display: flex;
+	position: absolute;
+	background-color: var(--element-background);
+	padding: 8px;
+	border-radius: var(--border-radius-10);
+	margin: 200px 0 0 18px;
 }
-#d_gw_joininfo a{
-	font-size:18px;
-	font-weight:bold;
+#d_gw_joininfo a {
+	font-size: 18px;
+	font-weight: bold;
 }
-#search_name{
-	margin:18px 0;
+#search_name {
+	margin: 18px 0;
 }
-#textbox_searchgw{
-height:var(--element-height-34);
-	padding:0 8px;
-	background-color:var(--input-background);
-	border-radius:var(--border-radius-10);
+#textbox_searchgw {
+	height: var(--element-height-34);
+	padding: 0 8px;
+	background-color: var(--input-background);
+	border-radius: var(--border-radius-10);
 }
 .pg_steamcn_gift #ct {
 	display: flex;
 }
 
 .d_gw_nearest_giveaway {
-	
+
 	display: flex;
 }
 .d_gw_nearest_giveaway:hover,
 #p_gw_newest_giveaway:hover,
 .d_gw_easiest_giveaway:hover,
-.d_gw_newlist_item:hover{
-	box-shadow:var(--shadow-hot);
+.d_gw_newlist_item:hover {
+	box-shadow: var(--shadow-hot);
 }
-#d_gw_content{
-	width:100%;
+#d_gw_content {
+	width: 100%;
 }
 #d_gw_myinfo {
 	display: flex;
-	justify-content:space-between;
+	justify-content: space-between;
 }
 #d_gw_myaccount_info {
 	display: flex;
 	align-items: center;
 }
 #d_gw_myaccount_info > a > img,
-.img_gw_search_result_right_top_avatar{
+.img_gw_search_result_right_top_avatar {
 	border-radius: var(--border-radius-200);
 }
 #d_gw_nav_squrebtns a {
@@ -4996,19 +5021,18 @@ height:var(--element-height-34);
 }
 
 .green_outer,
-.d_gw_lb_selection_outer{
-	display:flex;
-	margin-bottom:8px;
-	padding:8px;
-	border-radius:var(--border-radius-2);
-	width:fit-content;
+.d_gw_lb_selection_outer {
+	display: flex;
+	margin-bottom: 8px;
+	padding: 8px;
+	border-radius: var(--border-radius-2);
+	width: fit-content;
 }
-.d_gw_lb_selection_outer{
-	background-color:blue;
-	
+.d_gw_lb_selection_outer {
+	background-color: blue;
 }
-.green_outer{
-	background-color:#00cc00;
+.green_outer {
+	background-color: #00cc00;
 }
 #d_gw_nav_newgw:before {
 	content: '创建新赠楼';
@@ -5020,56 +5044,54 @@ height:var(--element-height-34);
 }
 /*赠楼列表*/
 .d_gw_nearest_giveaway_top_right,
-.d_gw_easiest_giveaway_top_right{
-	padding:0 18px;
+.d_gw_easiest_giveaway_top_right {
+	padding: 0 18px;
 }
 .a_gw_no_underline p,
-.d_gw_nearest_giveaway_top_right p{
-	font-size:18px;
-	font-weight:bold;
-	margin-bottom:8px;
+.d_gw_nearest_giveaway_top_right p {
+	font-size: 18px;
+	font-weight: bold;
+	margin-bottom: 8px;
 }
 .p_new_giveaway_img span,
-.a_gw_no_underline span{
-	display:none;
+.a_gw_no_underline span {
+	display: none;
 }
 .d_gw_nearest_giveaway,
 #p_gw_newest_giveaway,
 .d_gw_easiest_giveaway,
-.d_gw_search_result{
-	transition:.2s all;
-  margin-bottom:18px;
-	padding:18px;
-	background-color:var(--element-background);
-	border-radius:var(--border-radius-10);
-	box-shadow:var(--shadow-outline);
-	display:flex;
+.d_gw_search_result {
+	transition: .2s all;
+	margin-bottom: 18px;
+	padding: 18px;
+	background-color: var(--element-background);
+	border-radius: var(--border-radius-10);
+	box-shadow: var(--shadow-outline);
+	display: flex;
 }
 .d_gw_nearest_giveaway_top_left img,
 #p_gw_newest_giveaway img,
 .d_gw_easiest_giveaway_top_left img,
-.d_gw_search_result_left img{
-	width:300px;
-	border-radius:var(--border-radius-10);
+.d_gw_search_result_left img {
+	width: 300px;
+	border-radius: var(--border-radius-10);
 }
 /**/
-#d_gw_newlist{
-	display:flex;
-	flex-direction:row;
-	flex-wrap:wrap;
-	
+#d_gw_newlist {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
 }
-.d_gw_newlist_item{
-	transition:.2s all;
-padding:8px;
-	background-color:var(--element-background);
-	margin:0 8px 8px 0;
-	border-radius:var(--border-radius-10);
+.d_gw_newlist_item {
+	transition: .2s all;
+	padding: 8px;
+	background-color: var(--element-background);
+	margin: 0 8px 8px 0;
+	border-radius: var(--border-radius-10);
 }
-.d_gw_newlist_item img{
-	height:120px;
-	border-radius:var(--border-radius-10);
-	
+.d_gw_newlist_item img {
+	height: 120px;
+	border-radius: var(--border-radius-10);
 }
 
 
