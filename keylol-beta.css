@@ -4914,6 +4914,42 @@ blockquote {}
 	color: var(--font-visit);
 }
 /*---------赠楼-------*/
+#d_gw_myaccount_info_ln1 > span,
+#d_gw_myaccount_info_ln2 > span{
+	margin:0 8px
+}
+#d_gw_myaccount_info_ln1 > span:before,
+#d_gw_myaccount_info_ln2 > span:before{
+	margin-top:20px;
+	position:absolute;
+	font-size:16px;
+}
+#d_gw_myaccount_info_ln1 > span:nth-child(1):before{
+	content:'赠楼';
+}
+#d_gw_myaccount_info_ln1 > span:nth-child(2):before{
+	content:'参赠';
+}
+#d_gw_myaccount_info_ln1 > span:nth-child(3):before{
+	content:'获赠';
+}
+#d_gw_myaccount_info_ln1 > span:nth-child(4):before{
+	content:'蒸气';
+}
+#d_gw_myaccount_info_ln2 > span:nth-child(1):before{
+	content:'赠楼';
+}
+#d_gw_myaccount_info_ln2 > span:nth-child(2):before{
+	content:'参赠';
+}
+#d_gw_myaccount_info_ln2 > span:nth-child(3):before{
+	content:'获赠';
+}
+#d_gw_myaccount_info_ln2 > span:nth-child(4):before{
+	content:'蒸气';
+}
+
+
 .d_gw_search_result_right_top{
 	display:flex;
 }
@@ -5007,16 +5043,21 @@ blockquote {}
 	display: flex;
 	justify-content: space-between;
 }
+#d_gw_myinfo>div:last-child{
+	display:none;
+}
 #d_gw_myaccount_info {
 	display: flex;
 	align-items: center;
 	background-color:var(--element-background);
-	padding: 0 8px;
+	padding:8px;
 	border-radius:var(--border-radius-10);
+	
 }
 #d_gw_myaccount_info > a > img,
 .img_gw_search_result_right_top_avatar {
 	border-radius: var(--border-radius-200);
+	width:64px
 }
 #d_gw_nav_squrebtns a {
 	background-color: red;
