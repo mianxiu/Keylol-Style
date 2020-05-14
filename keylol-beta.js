@@ -82,7 +82,7 @@
 
     var cssString = `
     body{
-    background:green;
+    background:#ebebeb;
     } 
     `
 
