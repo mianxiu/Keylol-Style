@@ -6,8 +6,10 @@
 ### keylol-beta.js
 ### keylol-beta.css
 
-
-
+![](https://github.com/mianxiu/Keylol-Style/blob/master/sortcut/Snipaste_2020-05-12_23-57-47.png)
+![](https://github.com/mianxiu/Keylol-Style/blob/master/sortcut/Snipaste_2020-05-12_23-57-23.png)
+![](https://github.com/mianxiu/Keylol-Style/blob/master/sortcut/Snipaste_2020-05-12_16-07-34.png)
+![](https://github.com/mianxiu/Keylol-Style/blob/master/sortcut/Snipaste_2020-05-12_16-07-02.png)
 
 ## symbol引用
 iconfont
