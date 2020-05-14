@@ -1,11 +1,12 @@
 // ==UserScript==
 // @name         keylol css
 // @namespace    http://tampermonkey.net/
-// @version      0.11.2
+// @version      0.11.3
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
+// @run-at       document-body
 // @require      https://at.alicdn.com/t/font_1797873_riqtis11l6p.js
 // @require      https://at.alicdn.com/t/font_1804200_8bhv89r7hhc.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
