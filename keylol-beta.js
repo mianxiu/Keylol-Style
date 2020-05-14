@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.4
+// @version      0.11.5
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -2454,7 +2454,7 @@
     // /(<a\s{0,}href="t.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
     //(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)
     let linkRegx = /(<a\s{0,}.+?onclick.+?title.+?>)(.+?)(<\/a>)/gm
-    let titleRegx = /atarget.+?title=.+?">(.+?)</gm
+    let titleRegx = /atarget.+?title="(.+?)"(.+?)</gm
     let userRegx = /(<a\s{0,}href=.+?id.+?(\d+)">)(.+?)(<\/a>)/gm
     let likeRegx = /喜欢:.+?(\d+)/gm
     let replyRegx = /回复">(\d+)/gm
@@ -2465,6 +2465,8 @@
     let linkHTML = liNodeHTML.match(linkRegx)
     let userHTML = liNodeHTML.match(userRegx)[0]
     let titlHTML = liNodeHTML.match(titleRegx)[0]
+
+    console.log(titlHTML)
 
     let likeHTML = liNodeHTML.match(likeRegx)[0]
     let replyHTML = liNodeHTML.match(replyRegx)[0]
