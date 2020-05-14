@@ -1731,6 +1731,27 @@ dl[id^="pmlist_"] a,
 	white-space: nowrap;
 }
 /*编辑器*/
+.select2-selection__placeholder{
+	background-color:var(--element-background);
+	height:var(--element-height-34);
+	display:inline-flex;
+	align-items:center;
+	padding:0 8px;
+	border-radius:var(--border-radius-10)
+}
+.select2-results__options{
+	max-height:600px;
+	overflow:auto;
+}
+.select2-results__options li{
+	box-shadow:var(--shadow-outline);
+	display:flex;
+	padding:8px;
+	background-color:var(--element-background);
+}
+.select2-results__options li:hover{
+	background-color:var(--background-color);
+}
 .tedt .fpd .icon {
 	width: 1.6em;
 }
@@ -4884,6 +4905,16 @@ blockquote {}
 	color: var(--font-visit);
 }
 /*---------赠楼-------*/
+#d_gw_jr_marketprice{
+	font-size:18px;
+	color:var(--help-yellow-key);
+}
+.d_gw_nearest_giveaway_bottom_ln2{
+color:var(--font-second-aphal);
+}
+.d_gw_nearest_giveaway_bottom_ln2{
+font-size:14px;
+}
 #d_gw_detail{
 	display:flex;
 }
@@ -4903,6 +4934,7 @@ blockquote {}
 	background-color:var(--element-background);
 	padding:8px;
 	border-radius:var(--border-radius-10);
+	margin:200px 0 0 18px;
 }
 #d_gw_joininfo a{
 	font-size:18px;
@@ -4979,6 +5011,16 @@ height:var(--element-height-34);
 	font-size: 18px;
 }
 /*赠楼列表*/
+.d_gw_nearest_giveaway_top_right,
+.d_gw_easiest_giveaway_top_right{
+	padding:0 18px;
+}
+.a_gw_no_underline p,
+.d_gw_nearest_giveaway_top_right p{
+	font-size:18px;
+	font-weight:bold;
+	margin-bottom:8px;
+}
 .p_new_giveaway_img span,
 .a_gw_no_underline span{
 	display:none;
@@ -4993,12 +5035,13 @@ height:var(--element-height-34);
 	background-color:var(--element-background);
 	border-radius:var(--border-radius-10);
 	box-shadow:var(--shadow-outline);
+	display:flex;
 }
 .d_gw_nearest_giveaway_top_left img,
 #p_gw_newest_giveaway img,
 .d_gw_easiest_giveaway_top_left img,
 .d_gw_search_result_left img{
-	width:400px;
+	width:300px;
 	border-radius:var(--border-radius-10);
 }
 /**/
