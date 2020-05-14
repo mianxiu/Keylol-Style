@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         keylol css
 // @namespace    http://tampermonkey.net/
-// @version      0.11.1
+// @version      0.11.2
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
