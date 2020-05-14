@@ -141,39 +141,54 @@
   // DOM加载完全后
   // 首页---------------------------------------------------------------------------------------
   let i = 1
-  /**
+  /**  
    * fetch热门主题图片
    */
-  function fetchHotImg() {
-    let imgRegx = /\"(https:\/\/blob\.keylol\.com\/forum.+?)\"/s
+  function fetchHotImg(aNode) {
 
-    let hotImgPostUrls = $All(`.slideshow>li>a`)
+    const symbolLock = `keylolclosepost`
 
-    hotImgPostUrls.forEach((postUrl) => {
-      //console.log(postUrl.href)
+    let idJsonRegx = /<script type="application\/ld\+json">(.+?)<\/script>/s
+    // /<img.+?file="(.+?)".+?>/
+    let otherImgRegx = /<img.+?file="(.+?\.(?!gif).{3,4})".+?>/gm
 
-      fetch(postUrl.href)
-        .then(function (res) {
+    // aNode !== null ? aNode.className = `photo-link` : null
+
+    let url = aNode !== null ? aNode.href : null
+
+    if (url !== null) {
+
+      fetch(url)
+        .then(res => {
           return res.text()
         })
-        .then((bodyText) => {
-          let imgUrls = bodyText.match(imgRegx)
+        .then(bodyText => {
 
-          if (imgUrls.length > 1) {
-            let imgNode = postUrl.children[0]
-            postUrl.insertBefore(document.createElement(`div`), imgNode)
+          let idJson = bodyText.match(idJsonRegx) !== null
+            ? JSON.parse(bodyText.match(idJsonRegx)[0].replace(idJsonRegx, '$1'))
+            : null
 
-            // 去除默认尺寸
-            imgNode.removeAttribute("height")
-            imgNode.removeAttribute("width")
-            imgNode.src = bodyText.match(imgRegx)[0].replace(/"/g, ``)
+          let otherImg = bodyText.match(otherImgRegx) !== null
+            ? bodyText.match(otherImgRegx)[0].replace(otherImgRegx, `$1`)
+            : null
 
-            // 去除slidebar序号
-            $(`.slidebar > ul >li:nth-child(${i})`).innerText = ``
-            i++
-          }
+            
+          let imgUrl = idJson !== null && idJson.images[0] !== undefined ? idJson.images[0] : otherImg
+
+
+          let imgNode = aNode.children[0]
+          aNode.insertBefore(document.createElement(`div`), imgNode)
+
+          // 去除默认尺寸
+          imgNode.removeAttribute("height")
+          imgNode.removeAttribute("width")
+          imgNode.src = imgUrl
+
+          // 去除slidebar序号
+          $(`.slidebar > ul >li:nth-child(${i})`).innerText = ``
+
         })
-    })
+    }
   }
 
   /**
@@ -613,7 +628,11 @@
    */
   function home() {
     console.log(`fetch hot img`)
-    fetchHotImg()
+    let hotImgPostUrls = $All(`.slideshow>li>a`)
+    hotImgPostUrls.forEach(a => {
+      fetchHotImg(a)
+    })
+
 
     console.log(`add tabPAHn0P_content show more button`)
     hotPostShowMore()
