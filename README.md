@@ -2,7 +2,7 @@
 >编辑脚本->设置->运行时期选`document-body&位置 1`
 
 也可以使用stylus分开安装
-- card-for-keylol.js 包含css和js
+- card-for-keylol.user.js 包含css和js
 - keylol-beta.js
 - keylol-beta.css
 
