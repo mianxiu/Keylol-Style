@@ -65,7 +65,8 @@ let replyByTemplate = replyByNode.length > 1 ? replyByNode[1].replace(replyByNod
 [MutationObserverInit](https://developer.mozilla.org/zh-CN/docs/Web/API/MutationObserverInit)的属性添加`attributeFilter:[]`时，可以屏蔽所有属性变动，只监听节点生成
 
 ## tip
-[DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
+- [DOMContentLoaded](https://developer.mozilla.org/zh-CN/docs/Web/Events/DOMContentLoaded)
+- 脚本命名为XXX.user.js可以自动安装
 
 ## flexbox 和 positon:sticky 混用修复
 为使用sticky的元素添加`align-self:flex-start`
