@@ -11,6 +11,7 @@
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_gw437i8ws1.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
+// @run-at      document-body
 
 // ==/UserScript==
 
