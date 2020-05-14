@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         keylol css
 // @namespace    http://tampermonkey.net/
-// @version      0.11
+// @version      0.11.1
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -172,7 +172,7 @@
             ? bodyText.match(otherImgRegx)[0].replace(otherImgRegx, `$1`)
             : null
 
-            
+
           let imgUrl = idJson !== null && idJson.images[0] !== undefined ? idJson.images[0] : otherImg
 
 

@@ -883,6 +883,7 @@ body {
 }
 
 .slidebar>ul>li {
+    font-size: 0;
     height: var(--slidebar-size);
     width: var(--slidebar-size);
     border-radius: var(--border-radius-200);
