@@ -1873,7 +1873,9 @@ dl[id^="pmlist_"] a,
 .pg,
 .mn-search-bar-switch,
 .uhd-bottom > div,
-.bw0 > ul {
+.bw0 > ul,
+.duceapp_cv_ricon ,
+.pwLogintype{
 	height: var(--element-height-34);
 	display: inline-flex;
 	transition: var(--motion-2);
@@ -1901,7 +1903,9 @@ dl[id^="pmlist_"] a,
 .mn-search-bar-switch > a,
 .uhd-bottom a,
 .bw0 > ul a,
-.appl ul a {
+.appl ul a ,
+.duceapp_cv_ricon > span,
+.pwLogintype li{
 	transition: var(--motion-2);
 	display: flex;
 	align-items: center;
@@ -1935,7 +1939,9 @@ dl[id^="pmlist_"] a,
 .mn-search-bar-switch > a:hover,
 .uhd-bottom a:hover,
 .bw0 > ul a:hover,
-.appl ul a:hover {
+.appl ul a:hover,
+.duceapp_cv_ricon > span:hover,
+.pwLogintype li:hover{
 	background-color: var(--menu-hover-background);
 }
 
@@ -4242,10 +4248,17 @@ blockquote {}
 }
 
 /*----登录------*/
-.duceapp_cv_ricon,
 .cv_wechat_title,
 .cv_wechat_tip {
 	padding: 18px;
+}
+.duceapp_cv_ricon{
+	display:inline-flex;
+	margin-bottom:18px;
+	
+}
+.duceapp_cv_ricon span{
+	cursor:pointer;
 }
 .duceapp_cv_logo a,
 .duceapp_cv_logo{
