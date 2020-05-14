@@ -11,7 +11,6 @@
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
 // @require      https://at.alicdn.com/t/font_1791164_gw437i8ws1.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
-// @run-at      document-body
 
 // ==/UserScript==
 
@@ -441,11 +440,19 @@
     let highLightNode = $(`#nav-user-action-bar  a[href*="view=mypost"]`)
     let logo = $("#nav-logo")
 
+    // 提醒数量
+    let mailBadge = mail !== null && mail.children.length > 0 ? `<span class="badge">${mail.textContent.replace(/.*(\d+)/, '$1')}</span>` : ''
+    let noticBadge = notic !== null && notic.children.length > 0 ? `<span class="badge">${notic.textContent.replace(/.*(\d+)/, '$1')}</span>` : ''
+
     searchNode !== null ? searchNode.innerHTML = symbolHTML(symbolNav.search) : null
-    mail !== null ? mail.innerHTML = symbolHTML(symbolNav.mail) : null
-    notic !== null ? notic.innerHTML = symbolHTML(symbolNav.postreply) : null
+
+    mail !== null ? mail.innerHTML = `${symbolHTML(symbolNav.mail)}${mailBadge}` : null
+
+    notic !== null ? notic.innerHTML = `${symbolHTML(symbolNav.postreply)}${noticBadge}` : null
+
     // 设置logo
     logo !== null ? logo.innerHTML += symbolHTML(symbolNav.logo) : null
+
   }
 
   // steam平台工具
