@@ -9,7 +9,7 @@
 // @require      https://at.alicdn.com/t/font_1797873_riqtis11l6p.js
 // @require      https://at.alicdn.com/t/font_1804200_8bhv89r7hhc.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
-// @require      https://at.alicdn.com/t/font_1791164_o28nhplbhdk.js
+// @require      https://at.alicdn.com/t/font_1791164_gw437i8ws1.js
 // @require      https://at.alicdn.com/t/font_1794025_bnx1ww55gzq.js
 
 // ==/UserScript==
@@ -2578,7 +2578,6 @@
    */
   function renderPhotoForum() {
 
-
     $(`#waterfall`).id = `water-fall`
 
     let photoLi = $All(`#water-fall li`)
@@ -2590,8 +2589,17 @@
     })
 
     renderPhotoScrollLoad()
-
   }
+
+
+
+  /**
+   * 渲染登录图标
+   */
+   function renderLoginSymbol(){
+     let duceapp_cv_body = $(`.duceapp_cv_body`)
+
+   }
 
   /**---------------------------------------------- */
   /**
