@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.5
+// @version      0.11.6
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -2361,8 +2361,10 @@
     }
   }
 
+
   /**
    * 帖子内容相关函数组合
+   * 渲染一个帖子内的单个楼层
    * @param {Element} post 
    */
   function renderPostContextAll(post) {
@@ -2378,6 +2380,36 @@
 
 
   /**
+   * 为帖子添加监听器
+   */
+  function renderPostAjaxListener() {
+    console.log(123131)
+
+    let postLists = $(`#postlist`)
+
+    let postAjaxCallback = () => {
+
+      let currentPostLists = $All(`#postlist > [id^="post_"]`)
+
+      currentPostLists.forEach(postlist => {    
+        if (postList.className !== `post-content-list`) {
+          renderPostContextAll(postlist)
+        }
+      })
+
+    }
+
+    let postAjaxConfig = {
+      childList: true,
+
+    }
+
+    let postAjaxObserver = new MutationObserver(postAjaxCallback)
+    postAjaxObserver.observe(postLists, postAjaxConfig)
+
+  }
+
+  /**
    * 帖子渲染函数组合----------------------
    * 
    * renderPostFavatar 用户面板
@@ -2389,6 +2421,7 @@
     let postLists = $All(`#postlist > [id^="post_"]`)
 
     postLists.forEach(postNode => {
+      postNode.className = `post-content-list`
       renderPostContextAll(postNode)
     })
 
@@ -2419,6 +2452,7 @@
         })
         .then(bodyText => {
 
+          console.log(bodyText)
 
           let idJson = bodyText.match(idJsonRegx) !== null
             ? JSON.parse(bodyText.match(idJsonRegx)[0].replace(idJsonRegx, '$1'))
@@ -2466,7 +2500,7 @@
     let userHTML = liNodeHTML.match(userRegx)[0]
     let titlHTML = liNodeHTML.match(titleRegx)[0]
 
-    console.log(titlHTML)
+
 
     let likeHTML = liNodeHTML.match(likeRegx)[0]
     let replyHTML = liNodeHTML.match(replyRegx)[0]
@@ -2752,6 +2786,8 @@
 
       renderPostContent()
       renderControlPanel()
+
+      renderPostAjaxListener()
 
     }
 
