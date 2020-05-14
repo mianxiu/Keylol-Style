@@ -4884,6 +4884,30 @@ blockquote {}
 	color: var(--font-visit);
 }
 /*---------赠楼-------*/
+#d_gw_detail{
+	display:flex;
+}
+#d_gw_bigimg{
+	height:300px;
+	width:921px;
+	background-repeat:no-repeat;
+	background-size: cover;
+	background-position: center;
+	margin-bottom:18px;
+	border-radius:var(--border-radius-10);
+	overflow:hidden;
+}
+#d_gw_joininfo{
+	display:flex;
+	position:absolute;
+	background-color:var(--element-background);
+	padding:8px;
+	border-radius:var(--border-radius-10);
+}
+#d_gw_joininfo a{
+	font-size:18px;
+	font-weight:bold;
+}
 #search_name{
 	margin:18px 0;
 }
