@@ -5056,6 +5056,9 @@ display:flex;
 	content: '创建新赠楼';
 	font-size: 18px;
 }
+#d_gw_myaccount_info_lines{
+	display:flex;
+}
 #d_gw_myaccount_info_lines span {
 	padding: 8px;
 	font-size: 18px;
