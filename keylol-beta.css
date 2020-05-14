@@ -4914,12 +4914,16 @@ blockquote {}
 	color: var(--font-visit);
 }
 /*---------赠楼-------*/
+.d_gw_search_result_right_top{
+	display:flex;
+}
 #d_gw_special_firstln {
 	display: flex;
 	flex-direction: column;
 	font-size: 18px;
 }
 .d_gw_special_text {
+	color:var(--font-nomal);
 	padding: 8px;
 	background-color: var(--element-background);
 	border-radius: var(--border-radius-10);
@@ -5006,6 +5010,9 @@ blockquote {}
 #d_gw_myaccount_info {
 	display: flex;
 	align-items: center;
+	background-color:var(--element-background);
+	padding: 0 8px;
+	border-radius:var(--border-radius-10);
 }
 #d_gw_myaccount_info > a > img,
 .img_gw_search_result_right_top_avatar {
@@ -5016,7 +5023,7 @@ blockquote {}
 }
 #d_gw_nav_squrebtns a img,
 #d_gw_nav_newgw {
-	background-color: blue;
+	background-color: #5bf;
 	padding: 8px;
 }
 
@@ -5029,10 +5036,21 @@ blockquote {}
 	width: fit-content;
 }
 .d_gw_lb_selection_outer {
-	background-color: blue;
+	background-color: #5bf;
 }
 .green_outer {
 	background-color: #00cc00;
+}
+#d_gw_myaccount_bottom{
+	color:var(--font-nomal);
+display:flex;
+	background-color:var(--element-background);
+	height:var(--element-height-34);
+	align-items:center;
+	padding:0 8px;
+	margin:8px 0;
+	border-radius:var(--border-radius-10);
+	justify-content:space-between;
 }
 #d_gw_nav_newgw:before {
 	content: '创建新赠楼';
@@ -5041,6 +5059,8 @@ blockquote {}
 #d_gw_myaccount_info_lines span {
 	padding: 8px;
 	font-size: 18px;
+	font-weight:bold;
+	color:var(--font-nomal);
 }
 /*赠楼列表*/
 .d_gw_nearest_giveaway_top_right,
