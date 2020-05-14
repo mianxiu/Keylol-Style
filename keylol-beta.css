@@ -4930,10 +4930,11 @@ height:var(--element-height-34);
 	margin-bottom:8px;
 	padding:8px;
 	border-radius:var(--border-radius-2);
-	
+	width:fit-content;
 }
 .d_gw_lb_selection_outer{
 	background-color:blue;
+	
 }
 .green_outer{
 	background-color:#00cc00;
