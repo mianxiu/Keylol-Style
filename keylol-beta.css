@@ -4920,9 +4920,16 @@ height:var(--element-height-34);
 .pg_steamcn_gift #ct {
 	display: flex;
 }
-#d_gw_sidebar_left_full {}
+
 .d_gw_nearest_giveaway {
+	
 	display: flex;
+}
+.d_gw_nearest_giveaway:hover,
+#p_gw_newest_giveaway:hover,
+.d_gw_easiest_giveaway:hover,
+.d_gw_newlist_item:hover{
+	box-shadow:var(--shadow-hot);
 }
 #d_gw_content{
 	width:100%;
@@ -4980,7 +4987,8 @@ height:var(--element-height-34);
 #p_gw_newest_giveaway,
 .d_gw_easiest_giveaway,
 .d_gw_search_result{
-margin-bottom:18px;
+	transition:.2s all;
+  margin-bottom:18px;
 	padding:18px;
 	background-color:var(--element-background);
 	border-radius:var(--border-radius-10);
@@ -5001,6 +5009,7 @@ margin-bottom:18px;
 	
 }
 .d_gw_newlist_item{
+	transition:.2s all;
 padding:8px;
 	background-color:var(--element-background);
 	margin:0 8px 8px 0;
