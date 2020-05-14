@@ -1,5 +1,5 @@
 // ==UserScript==
-// @name         keylol css
+// @name         card for keylol
 // @namespace    http://tampermonkey.net/
 // @version      0.1
 // @description  a style for keylol.com
