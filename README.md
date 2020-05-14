@@ -1,10 +1,10 @@
 # ! 重要 Tampermonkey或其他扩展
-编辑脚本->设置->运行时期选`document-body`
-位置 1
+>编辑脚本->设置->运行时期选`document-body&位置 1`
 
-### card-for-keylol.js 包含css和js
-### keylol-beta.js
-### keylol-beta.css
+也可以使用stylus分开安装
+- card-for-keylol.js 包含css和js
+- keylol-beta.js
+- keylol-beta.css
 
 ![](https://github.com/mianxiu/Keylol-Style/blob/master/sortcut/Snipaste_2020-05-12_23-57-47.png)
 ![](https://github.com/mianxiu/Keylol-Style/blob/master/sortcut/Snipaste_2020-05-12_23-57-23.png)
