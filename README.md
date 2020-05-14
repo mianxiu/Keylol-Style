@@ -2,14 +2,14 @@
 编辑脚本->设置->运行时期选`document-body`
 位置 1
 
+### card-for-keylol.js 包含css和js
+### keylol-beta.js
+### keylol-beta.css
 
 
-## 资源请求
 
-https://www.tampermonkey.net/documentation.php#_resource
 
 ## symbol引用
-
 iconfont
 ## 帖子点评的bug
 论坛自带
