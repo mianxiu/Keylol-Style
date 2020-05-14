@@ -2385,7 +2385,7 @@
 
     let idJsonRegx = /<script type="application\/ld\+json">(.+?)<\/script>/s
     // /<img.+?file="(.+?)".+?>/
-    let otherImgRegx = /<img.+?file="(.+?\.(?!gif)...)".+?>/gm
+    let otherImgRegx = /<img.+?file="(.+?\.(?!gif).{3,4})".+?>/gm
 
     aNode !== null ? aNode.className = `photo-link` : null
 
