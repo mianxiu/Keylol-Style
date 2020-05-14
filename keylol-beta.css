@@ -4260,6 +4260,15 @@ blockquote {}
 .duceapp_cv_ricon span{
 	cursor:pointer;
 }
+.sms_button{
+   height:var(--element-height-34);
+	background-color:var(--help-yellow);
+	align-items:center;
+	justify-content:center;
+	display:flex;
+	margin:18px 0;
+	border-radius:var(--border-radius-10);
+}
 .duceapp_cv_logo a,
 .duceapp_cv_logo{
 	width:256px;
