@@ -74,6 +74,32 @@
 
   createElement()
 
+
+  /**
+   * 加载CSS
+   */
+  function createCss() {
+
+    var cssString = `
+    body{
+    background:green;
+    } 
+    `
+
+    if ($(`#card-for-keylol`) == null) {
+      console.log(`add card-for-keylol`)
+      // 添加css
+      var cssNode = document.createElement("style")
+      cssNode.id = `card-for-keylol`
+      cssNode.type = "text/css"
+      cssNode.appendChild(document.createTextNode(cssString))
+      var html = $("html")
+      document.documentElement.appendChild(cssNode)
+    }
+
+
+  }
+
   // 移动节点
   var moveElement = function () {
     let logo = $("body>.tb-container>#nav-logo")
@@ -104,6 +130,7 @@
 
 
   var listenElement = function () {
+    createCss()
     moveElement()
     darkModeInit()
   }
@@ -2712,20 +2739,6 @@
     pageDecide()
   })
 
-  var css = `
-body{
-background:green;
-}
-
-
-
-`
-  // 添加css
-  var node = document.createElement("style")
-  node.type = "text/css"
-  node.appendChild(document.createTextNode(css))
-  var html = $("html")
-  document.documentElement.appendChild(node)
 
   // Your code here...
   // 取消observer
