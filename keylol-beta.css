@@ -770,6 +770,10 @@ body {
     width: 356px !important;
 }
 
+.slideshow {
+    opacity: 1 !important;
+}
+
 .slideshow>li {
     overflow: hidden;
 }

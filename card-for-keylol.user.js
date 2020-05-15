@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0001
+// @version      0.11.41.0002
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -855,6 +855,9 @@
           width: 356px !important;
       }
       
+      .slideshow {
+        opacity: 1 !important;
+      }
       .slideshow>li {
           overflow: hidden;
       }
