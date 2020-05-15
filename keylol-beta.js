@@ -2387,7 +2387,8 @@
 
     let postLists = $(`#postlist`)
 
-    let postAjaxCallback = () => {
+    let postAjaxCallback = (records) => {
+      console.log(records)
 
       let postlistreplys = $All(`#postlist > [id^="post"]`)
 
