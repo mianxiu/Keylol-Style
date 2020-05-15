@@ -2582,6 +2582,13 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
     font-size: 0px;
 }
 
+.post-list-common>a {
+    text-overflow: ellipsis;
+    max-width: 640px;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
 /* -- post tip---*/
 .post-list-tip a {
     color: var(--font-second-light-aphal);
