@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41
+// @version      0.11.41.0001
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -2667,12 +2667,13 @@
           font-size: 0px;
       }
       
-.post-list-common>a {
-    text-overflow: ellipsis;
-    max-width: 640px;
-    white-space: nowrap;
-    overflow: hidden;
-}
+    .post-list-common>a {
+        line-height: var(--element-height-34);
+        text-overflow: ellipsis;
+        max-width: 640px;
+        white-space: nowrap;
+        overflow: hidden;
+    }
       /* -- post tip---*/
       .post-list-tip a {
           color: var(--font-second-light-aphal);

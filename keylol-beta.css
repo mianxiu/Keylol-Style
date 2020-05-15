@@ -2583,6 +2583,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 .post-list-common>a {
+    line-height: var(--element-height-34);
     text-overflow: ellipsis;
     max-width: 640px;
     white-space: nowrap;
