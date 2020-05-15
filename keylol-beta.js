@@ -2389,11 +2389,14 @@
 
     let postAjaxCallback = () => {
 
-      let currentPostLists = $All(`#postlist > [id^="post_"]`)
+      let postlistreplys = $All(`#postlist > [id^="post"]`)
 
-      currentPostLists.forEach(postlist => {    
+      postlistreplys.forEach(postlist => {
+
         if (postList.className !== `post-content-list`) {
+          console.log(postlist)
           renderPostContextAll(postlist)
+          
         }
       })
 
