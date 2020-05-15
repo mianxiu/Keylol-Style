@@ -2394,10 +2394,12 @@
 
       postlistreplys.forEach(postlist => {
 
+        console.log(postlist)
+        
         if (postList.className !== `post-content-list`) {
-          console.log(postlist)
+          console.log(true)
           renderPostContextAll(postlist)
-          
+
         }
       })
 
