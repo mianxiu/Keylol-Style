@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.6.0002
+// @version      0.11.6.0003
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -2444,7 +2444,7 @@
 
     let idJsonRegx = /<script type="application\/ld\+json">(.+?)<\/script>/s
     // /<img.+?file="(.+?)".+?>/
-    let otherImgRegx = /<img.+?file="(.+?\.(?!gif).{3,4})".+?>/gm
+    let otherImgRegx = /<img.+?file="(http.+?\.(?!gif).{3,4})".+?>/gm
 
     aNode !== null ? aNode.className = `photo-link` : null
 
