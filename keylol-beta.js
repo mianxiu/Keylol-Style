@@ -2388,6 +2388,7 @@
     let postLists = $(`#postlist`)
 
     let postAjaxCallback = (records) => {
+
       console.log(records)
 
       let postlistreplys = $All(`#postlist > [id^="post"]`)
@@ -2396,10 +2397,9 @@
 
         console.log(postlist)
         
-        if (postList.className !== `post-content-list`) {
+        if (postList.className !== `post-content-list` || postlist.firstChild.tagName === `TABLE`) {
           console.log(true)
           renderPostContextAll(postlist)
-
         }
       })
 
@@ -2407,7 +2407,8 @@
 
     let postAjaxConfig = {
       childList: true,
-
+      subtree:true,
+      characterData:true
     }
 
     let postAjaxObserver = new MutationObserver(postAjaxCallback)
@@ -2799,9 +2800,10 @@
 
 
     if (isPost == true) {
-      console.log(`post`)
+      console.log(`post content`)
 
       postPanel()
+      
     }
 
     if (isVisit == true || isMy == true) {
