@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0003
+// @version      0.11.41.0004
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -2601,46 +2601,47 @@
       }
       
       /*子列表布局*/
-      .bm_c tbody {
-          margin-bottom: var(--marign-padding-18);
-      }
-      
-      .bm_c tbody[id^="normalthread"]:hover .post-list {
-          transition: var(--motion-2);
-          box-shadow: var(--shadow-hot);
-      }
-      
-      .darkmode-css .bm_c tbody[id^="normalthread"]:hover .post-list,
-      .darkmode-css #delform .post-tr:hover .post-list {
-          transition: var(--motion-2);
-          box-shadow: var(--shadow-hot);
-          background-color: var(--menu-hover-background);
-      }
-      
-      .bm_c table>tbody>tr>div {
-          background-color: var(--element-background);
-          border-radius: var(--border-radius-10);
-          box-shadow: var(--shadow-outline);
-      }
-      
-      .bm_c table>tbody>tr,
-      .post-list {
-          display: flex;
-          align-items: center;
-          justify-content: space-between;
-          width: 100%;
-          height: var(--element-height-34);
-      }
-      
-      .bm_c table>tbody>tr div {
-          align-items: center;
-          display: flex;
-      }
-      
-      .bm_c table>tbody>tr>div {
-          padding: 0px 16px;
-      }
-      
+      .post-tr {
+        margin-bottom: var(--marign-padding-18);
+    }
+    
+    .post-tr:hover .post-list {
+        transition: var(--motion-2);
+        box-shadow: var(--shadow-hot);
+    }
+    
+    .darkmode-css .post-tr:hover .post-list,
+    .darkmode-css #delform .post-tr:hover .post-list {
+        transition: var(--motion-2);
+        box-shadow: var(--shadow-hot);
+        background-color: var(--menu-hover-background);
+    }
+    
+    .post-tr>div {
+        background-color: var(--element-background);
+        border-radius: var(--border-radius-10);
+        box-shadow: var(--shadow-outline);
+    }
+    
+    .post-tr,
+    .post-list {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
+        height: var(--element-height-34);
+    }
+    
+    .post-tr div {
+        align-items: center;
+        display: flex;
+        
+    }
+    
+    .post-tr > .post-list {
+        padding: 0px 16px;
+    }
+    
       .post-list-by-member>a,
       .post-avatar {
           align-items: center;
@@ -2655,7 +2656,7 @@
           white-space: nowrap;
       }
       
-      .bm_c table .post-list-icn .icon {
+      .post-tr .post-list-icn .icon {
           color: var(--icon-fill);
       }
       
@@ -8097,6 +8098,8 @@
         let isPhoto = /f(id=){0,1}(273|259)/gm.test(currentHref)
 
         let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
+        
+        let isTags = new RegExp(`${keylolDomin}\/misc.php\\?mod=tag.*`).test(currentHref)
 
         // 访客视角
         let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?from=space.*`).test(currentHref)
@@ -8175,9 +8178,19 @@
 
         if (isSetting == true) {
             console.log(`setting`)
-
-
             postPanel()
+        }
+
+
+        if (isTags == true) {
+
+            console.log(`tags`)
+
+            renderControlPanel()
+            renderThreadLists()
+            userTipCard()
+            autopbn()
+
         }
 
     }

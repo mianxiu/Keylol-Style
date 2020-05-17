@@ -2517,29 +2517,29 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 /*子列表布局*/
-.bm_c tbody {
+.post-tr {
     margin-bottom: var(--marign-padding-18);
 }
 
-.bm_c tbody[id^="normalthread"]:hover .post-list {
+.post-tr:hover .post-list {
     transition: var(--motion-2);
     box-shadow: var(--shadow-hot);
 }
 
-.darkmode-css .bm_c tbody[id^="normalthread"]:hover .post-list,
+.darkmode-css .post-tr:hover .post-list,
 .darkmode-css #delform .post-tr:hover .post-list {
     transition: var(--motion-2);
     box-shadow: var(--shadow-hot);
     background-color: var(--menu-hover-background);
 }
 
-.bm_c table>tbody>tr>div {
+.post-tr>div {
     background-color: var(--element-background);
     border-radius: var(--border-radius-10);
     box-shadow: var(--shadow-outline);
 }
 
-.bm_c table>tbody>tr,
+.post-tr,
 .post-list {
     display: flex;
     align-items: center;
@@ -2548,12 +2548,13 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
     height: var(--element-height-34);
 }
 
-.bm_c table>tbody>tr div {
+.post-tr div {
     align-items: center;
     display: flex;
+    
 }
 
-.bm_c table>tbody>tr>div {
+.post-tr > .post-list {
     padding: 0px 16px;
 }
 
@@ -2571,7 +2572,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
     white-space: nowrap;
 }
 
-.bm_c table .post-list-icn .icon {
+.post-tr .post-list-icn .icon {
     color: var(--icon-fill);
 }
 

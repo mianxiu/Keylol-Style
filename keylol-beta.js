@@ -1477,7 +1477,10 @@
    * 渲染id为tbody[id*="thread"]>tr的列表
    */
   function renderThreadLists() {
-    let postListNodes = $All(`tbody[id*="thread"]>tr`)
+
+    let postListNodes = $All(`tbody[id*="thread"]>tr`).length !== 0 ? $All(`tbody[id*="thread"]>tr`) :  $All(`.pg_tag #ct > div > div.bm_c > table > tbody > tr`)
+
+
     postListNodes.forEach((trNode) => {
       postListTrRender(trNode)
     })
@@ -1723,10 +1726,10 @@
    * ajax下一页后，渲染新增的DOM
    */
   function autopbn() {
+
     console.log(`has threadlisttableid`)
 
     let threadList = $(`#threadlisttableid`)
-
 
     if (threadList !== null) {
 
@@ -2396,8 +2399,8 @@
       postlistreplys.forEach(postlist => {
 
         console.log(postlist)
-        
-        if (postList.className !== `post-content-list` || postlist.firstChild.tagName === `TABLE`) {
+
+        if (postlist.firstChild.tagName === `TABLE`) {
           console.log(true)
           renderPostContextAll(postlist)
         }
@@ -2407,8 +2410,8 @@
 
     let postAjaxConfig = {
       childList: true,
-      subtree:true,
-      characterData:true
+      subtree: true,
+      characterData: true
     }
 
     let postAjaxObserver = new MutationObserver(postAjaxCallback)
@@ -2737,6 +2740,8 @@
 
     let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
+    let isTags = new RegExp(`${keylolDomin}\/misc.php\\?mod=tag.*`).test(currentHref)
+
     // 访客视角
     let isVisit = new RegExp(`${keylolDomin}\/home.php\\?mod=space.+?from=space.*`).test(currentHref)
     let isMy = new RegExp(`${keylolDomin}\/suid-\d{0,}`).test(currentHref)
@@ -2803,7 +2808,7 @@
       console.log(`post content`)
 
       postPanel()
-      
+
     }
 
     if (isVisit == true || isMy == true) {
@@ -2818,8 +2823,19 @@
     if (isSetting == true) {
       console.log(`setting`)
 
-
       postPanel()
+    }
+
+
+    if (isTags == true) {
+
+      console.log(`tags`)
+
+      renderControlPanel()
+      renderThreadLists()
+      userTipCard()
+      autopbn()
+
     }
 
   }
