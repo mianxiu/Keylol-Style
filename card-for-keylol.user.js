@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0009
+// @version      0.11.41.0010
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -7440,15 +7440,14 @@
             }
 
 
-
             // 楼层链接
             let floor = postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')
 
-
+            let pid = post.id !== `postlistreply` ? post.id.replace(/post_/gm, `pid`) : ''
 
 
             return `
-        <div class="post-top" id="${post.id.replace(/post_/gm, `pid`)}">
+        <div class="post-top" id="${pid}">
             <div class="post-user-card"><div id="${favatar.id}">${favatar.innerHTML}</div></div>
             <div class="post-content">
                 <div class="post-content-top">
