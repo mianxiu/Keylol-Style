@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0005
+// @version      0.11.41.0006
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -2601,6 +2601,13 @@
         }
         
         /*子列表布局*/
+        .newthread .post-tr .post-list{
+            background-color:var(--help-yellow);
+        }
+        .darkmode-css .newthread .post-tr .post-list{
+            background-color:var(--background-color);
+        }
+        
         .post-tr {
             margin-bottom: var(--marign-padding-18);
         }

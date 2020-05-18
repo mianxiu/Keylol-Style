@@ -2517,6 +2517,13 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 /*子列表布局*/
+.newthread .post-tr .post-list{
+    background-color:var(--help-yellow);
+}
+.darkmode-css .newthread .post-tr .post-list{
+    background-color:var(--background-color);
+}
+
 .post-tr {
     margin-bottom: var(--marign-padding-18);
 }
