@@ -1478,7 +1478,7 @@
    */
   function renderThreadLists() {
 
-    let postListNodes = $All(`tbody[id*="thread"]>tr`).length !== 0 ? $All(`tbody[id*="thread"]>tr`) :  $All(`.pg_tag #ct > div > div.bm_c > table > tbody > tr`)
+    let postListNodes = $All(`tbody[id*="thread"]>tr`).length !== 0 ? $All(`tbody[id*="thread"]>tr`) : $All(`.pg_tag #ct > div > div.bm_c > table > tbody > tr`)
 
 
     postListNodes.forEach((trNode) => {
@@ -2384,9 +2384,10 @@
 
   /**
    * 为帖子添加监听器
+   * 修复回帖&评分
    */
   function renderPostAjaxListener() {
-    console.log(123131)
+    console.log(`添加帖子监听`)
 
     let postLists = $(`#postlist`)
 
@@ -2398,10 +2399,12 @@
 
       postlistreplys.forEach(postlist => {
 
-        console.log(postlist)
+        console.log(postlist.children[0].className)
 
-        if (postlist.firstChild.tagName === `TABLE`) {
+        if (postlist.children[0].className !== `post-top`) {
+
           console.log(true)
+
           renderPostContextAll(postlist)
         }
       })
@@ -2731,14 +2734,14 @@
     // 版块
     let isSubject = new RegExp(`(${keylolDomin}\/forum.php\\?mod=forumdisplay.*)|${keylolDomin}\/f\\d{3}.*`).test(currentHref)
     // 帖子
-    let isPostMin = new RegExp(`(${keylolDomin}\/forum.php\\?mod=viewthread.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
+    let isPostContent = new RegExp(`(${keylolDomin}\/forum.php\\?mod=(viewthread|post).*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
     let isLogin = /login|register/gm.test(currentHref)
 
     // 自拍区
     let isPhoto = /f(id=){0,1}(273|259)/gm.test(currentHref)
 
-    let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
+    //let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
     let isTags = new RegExp(`${keylolDomin}\/misc.php\\?mod=tag.*`).test(currentHref)
 
@@ -2786,7 +2789,7 @@
       }
     }
 
-    if (isPostMin == true) {
+    if (isPostContent == true) {
       console.log(`post min panel`)
 
       postPanel()
@@ -2804,12 +2807,12 @@
     }
 
 
-    if (isPost == true) {
-      console.log(`post content`)
+    // if (isPost == true) {
+    //   console.log(`post content`)
 
-      postPanel()
+    //   postPanel()
 
-    }
+    // }
 
     if (isVisit == true || isMy == true) {
       console.log(`visit`)

@@ -2551,10 +2551,10 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 .post-tr div {
     align-items: center;
     display: flex;
-    
+
 }
 
-.post-tr > .post-list {
+.post-tr>.post-list {
     padding: 0px 16px;
 }
 
@@ -2889,6 +2889,10 @@ div[class*="card_gender"] a:hover .user-card-tip {
 #f_pst {
     width: var(--body-width);
     --pst-width: 920px;
+}
+
+#f_pst .pipe {
+    display: none;
 }
 
 #f_pst div {
@@ -3339,7 +3343,8 @@ div[id*="rt_rt_"] input {
 
 /*-------------帖子内容-----------------------------------*/
 /*全局*/
-#postlist>[id^="post_"] {
+#postlist>[id^="post_"],
+#postlistreply {
     display: flex;
     flex-direction: column;
     margin-bottom: 18px;
@@ -3351,12 +3356,14 @@ div[id*="rt_rt_"] input {
 
 
 /*表情全局*/
-#postlist>[id^="post_"] img[src*="smiley"] {
+#postlist>[id^="post_"] img[src*="smiley"],
+#postlistreply img[src*="smiley"] {
     width: 60px;
 }
 
 /*大猫*/
-#postlist>[id^="post_"] img[src*="smiley/steamcn_8"] {
+#postlist>[id^="post_"] img[src*="smiley/steamcn_8"],
+#postlistreply img[src*="smiley"] {
     width: 80px;
 }
 
@@ -3691,6 +3698,20 @@ td[id*="postmessage"] {
     max-height: 200px;
     border-radius: var(--border-radius-2);
     overflow: hidden;
+}
+
+/*悬赏提示*/
+.rusld {
+    padding: 8px;
+    background-color: var(--point-yellow);
+    margin-bottom: 8px;
+    border-radius: var(--border-radius-10);
+
+}
+
+.rusld cite {
+    font-weight: bold;
+    margin-right: 8px;
 }
 
 .post-content-sign img {
