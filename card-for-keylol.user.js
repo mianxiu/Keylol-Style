@@ -3791,6 +3791,10 @@
             border-radius: var(--border-radius-2);
             overflow: hidden;
         }
+
+        .post-content-sign *{
+            line-height: normal;
+        }
         
         /*悬赏提示*/
         .rusld {
