@@ -530,7 +530,6 @@
         
         /* 搜索切换按钮 */
         .search-bar-form>.dropdown {
-            align-items: center;
             display: var(--display-flex);
         }
         
