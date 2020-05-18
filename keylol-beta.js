@@ -1875,7 +1875,7 @@
 
     }
 
-    let favatarHTML = favatarNode.innerHTML
+    let favatarHTML = favatarNode!==null ? favatarNode.innerHTML : ''
 
 
     function avatar() {
