@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0006
+// @version      0.11.41.0007
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -529,6 +529,7 @@
         
         /* 搜索切换按钮 */
         .search-bar-form>.dropdown {
+            align-items: center;
             display: var(--display-flex);
         }
         
@@ -5884,7 +5885,7 @@
      */
     function setNavIcons() {
 
-        let searchNode = $(`.search-bar-form > .dropdown `)
+        let searchNode = $(`.search-bar-form > .dropdown > .btn-default`)
         let mail = $(`#nav-user-action-bar  a[href*="do=pm"]`)
         let notic = $(`#nav-user-action-bar  a[href*="do=notic"]`)
         let highLightNode = $(`#nav-user-action-bar  a[href*="view=mypost"]`)
@@ -5894,7 +5895,7 @@
         let mailBadge = mail !== null && mail.children.length > 0 ? `<span class="badge">${mail.textContent.replace(/.*(\d+)/, '$1')}</span>` : ''
         let noticBadge = notic !== null && notic.children.length > 0 ? `<span class="badge">${notic.textContent.replace(/.*(\d+)/, '$1')}</span>` : ''
 
-        searchNode !== null ? searchNode.innerHTML = symbolHTML(symbolNav.search) : null
+        searchNode !== null ? searchNode.innerHTML += symbolHTML(symbolNav.search) : null
 
         mail !== null ? mail.innerHTML = `${symbolHTML(symbolNav.mail)}${mailBadge}` : null
 
