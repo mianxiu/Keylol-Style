@@ -79,7 +79,10 @@
   /**
    * 加载CSS
    */
+  let createCssNum = 0
   function createCss() {
+
+    console.log(createCssNum)
 
     var cssString = `
     body{
@@ -97,6 +100,8 @@
       var html = $("html")
       document.documentElement.appendChild(cssNode)
     }
+
+    createCssNum++
 
 
   }
@@ -1875,7 +1880,7 @@
 
     }
 
-    let favatarHTML = favatarNode!==null ? favatarNode.innerHTML : ''
+    let favatarHTML = favatarNode !== null ? favatarNode.innerHTML : ''
 
 
     function avatar() {
@@ -1944,7 +1949,7 @@
      ${medal()}
     </div>
     `
-    favatarNode.innerHTML = favatarTemplate
+    favatarNode !== null ? favatarNode.innerHTML = favatarTemplate : null
 
   }
 
@@ -1998,6 +2003,8 @@
       let postSteamBarHTML = postSteamBar !== null ? `<div class="steam_connect_user_bar">${postSteamBar.innerHTML}</div>` : ''
       let pstatusHTML = pstatus !== null ? ` <div class="pstatus">${pstatus.innerHTML}</div>` : ''
 
+
+
       postSteamBar !== null ? postSteamBar.remove() : null
       pstatus !== null ? pstatus.remove() : null
 
@@ -2006,9 +2013,12 @@
         comment.remove()
       }
 
+      // 楼层链接
+      let floor = postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')
+
 
       return `
-      <div class="post-top">
+      <div class="post-top" id="${post.id.replace(/post_/gm, `pid`)}">
           <div class="post-user-card"><div id="${favatar.id}">${favatar.innerHTML}</div></div>
           <div class="post-content">
               <div class="post-content-top">
@@ -2016,12 +2026,9 @@
                  <div class="post-content-top-right">
                  <div class="post-select"> 
                  ${manageBtn !== null ? manageBtn.innerHTML : ''}
-                      ${manageBtn !== null ?
-          `<label title="" for="${manageBtn.getAttribute(`for`)}" class="post-select-label">${symbolHTML(symbolSelect.selectnomalsvg)}</label>`
-          : ''}
-                      
+                      ${manageBtn !== null ? `<label title="" for="${manageBtn.getAttribute(`for`)}" class="post-select-label">${symbolHTML(symbolSelect.selectnomalsvg)}</label>` : ''}
                  </div>
-                 ${postTopBarRight.innerHTML.replace(postTopBarLeft.innerHTML, '')}
+                 ${floor}
                  </div>
               </div>
               ${postSteamBarHTML}
@@ -2365,6 +2372,12 @@
   }
 
 
+  function renderCopyLinkHref() {
+
+  }
+
+
+
   /**
    * 帖子内容相关函数组合
    * 渲染一个帖子内的单个楼层
@@ -2401,9 +2414,10 @@
 
         console.log(postlist.children[0].className)
 
-        if (postlist.children[0].className !== `post-top`) {
+        if (postlist.children[0].className !== `post-top` && postlist.children[0].children.length !== 0) {
 
           console.log(true)
+
 
           renderPostContextAll(postlist)
         }
@@ -2421,6 +2435,8 @@
     postAjaxObserver.observe(postLists, postAjaxConfig)
 
   }
+
+
 
   /**
    * 帖子渲染函数组合----------------------

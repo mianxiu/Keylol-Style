@@ -113,7 +113,7 @@
 
     /* font */
     --font-color-light: #fafafa;
-    --font-nomal: #2c2c2c;
+    --font-normal: #2c2c2c;
     --font-second-title: #aeaeae;
     --font-second-light-aphal: rgba(255, 255, 255, 0.7);
     --font-second-aphal: rgba(0, 0, 0, 0.3);
@@ -193,7 +193,7 @@
 
     /* font */
     --font-color-light: #B7C8DF;
-    --font-nomal: #B7C8DF;
+    --font-normal: #B7C8DF;
     --font-second-title: #aeaeae;
     --font-second-light-aphal: rgba(255, 255, 255, 0.3);
     --font-second-aphal: rgba(255, 255, 255, 0.3);
@@ -224,7 +224,7 @@ textarea {
 
 a {
     line-height: var(--font-size-14);
-    color: var(--font-nomal);
+    color: var(--font-normal);
     font-size: var(--font-size-14);
     outline: none;
 }
@@ -235,7 +235,7 @@ select {
     border: 0;
     border-radius: var(--border-radius-10);
     padding: 0 10px;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 select:focus {
@@ -433,7 +433,7 @@ body {
     padding: 0;
     margin: 0;
     border: none;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .search-box:focus {
@@ -464,7 +464,7 @@ body {
     display: flex;
     width: 100%;
     min-width: 30px;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .search-bar-form>.dropdown>.dropdown-menu>li,
@@ -712,7 +712,7 @@ body {
     box-shadow: var(--shadow-outline);
     border-radius: var(--border-radius-10);
     cursor: pointer;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 #tabPContentShow:focus {
@@ -1097,7 +1097,7 @@ div.index_subject_game div.subject_row_detail_text_down {
 #manufacturer>div.index_subject_row>div:nth-child(4) div.subject_row_detail_text_up>a,
 #manufacturer>div.index_subject_row>div:nth-child(6) div.subject_row_detail_text_up>a,
 #manufacturer>div.index_subject_row>div:nth-child(11) div.subject_row_detail_text_up>a {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .darkmode-css #manufacturer>div.index_subject_row>div:nth-child(2) div.subject_row_detail_text_up>a,
@@ -1109,7 +1109,7 @@ div.index_subject_game div.subject_row_detail_text_down {
 
 #game>div.index_subject_row>div:nth-child(7)>div.subject_row_detail_text>div.subject_row_detail_text_up>a,
 #game>div.index_subject_row>div:nth-child(9)>div.subject_row_detail_text>div.subject_row_detail_text_up>a {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .darkmode-css #game>div.index_subject_row>div:nth-child(7)>div.subject_row_detail_text>div.subject_row_detail_text_up>a,
@@ -1537,7 +1537,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 
 .bm_h,
 .forumrowdata {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 #mn-nav-parent {
@@ -1576,7 +1576,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
     height: var(--element-height-34);
     border-radius: var(--border-radius-10);
     background-color: var(--input-background);
-    color: var(--font-nomal);
+    color: var(--font-normal);
     padding: 0 10px;
 }
 
@@ -1600,7 +1600,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 }
 
 #mn-search-bar>form {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 /*点评*/
@@ -1680,7 +1680,7 @@ div.middle_subject_detail>div.middle_subject_detail_pic,
 .exfm>table {}
 
 #steam_connect_spacecp {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 /*----------消息列表---------*/
@@ -1693,7 +1693,7 @@ dl[id^="pmlist_"],
     padding: 8px;
     border-radius: var(--border-radius-10);
     box-shadow: var(--shadow-outline);
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 dl[id^="pmlist_"] a,
@@ -1721,7 +1721,7 @@ dl[id^="pmlist_"] a,
 
 #profilelist tr,
 .tfm tr {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     margin: 8px 0;
     display: flex;
     align-items: center;
@@ -1755,7 +1755,7 @@ dl[id^="pmlist_"] a,
 
 /*头像*/
 #avatarform {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     white-space: nowrap;
 }
 
@@ -1873,7 +1873,7 @@ dl[id^="pmlist_"] a,
 }
 
 .u_profile {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 /*信息*/
@@ -1992,7 +1992,7 @@ dl[id^="pmlist_"] a,
 }
 
 .mn-nav-right>.pg>label span {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 #thread_types>li>a:hover,
@@ -2035,7 +2035,7 @@ dl[id^="pmlist_"] a,
 /* 输入 */
 .mn-nav-right>.pg>label>input {
     width: 20px;
-    color: var(--font-nomal);
+    color: var(--font-normal);
     padding: 4px;
     border-radius: var(--border-radius-2);
     background-color: var(--input-background);
@@ -2272,7 +2272,7 @@ div.subforum_subject_detail_text_down>div:first-child a {
 }
 
 #mn-nav-parent .subforum_right_title {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     display: flex;
     align-items: center;
     height: var(--element-height-34);
@@ -2428,7 +2428,7 @@ div[id*="forum_rules"] #current-forum-rule {
     border-radius: 0 var(--border-radius-10) var(--border-radius-10) var(--border-radius-10);
     margin-top: 0px !important;
     box-shadow: var(--shadow-outline);
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 /* ------------------列表------------------------ */
@@ -2499,7 +2499,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 .post-tps {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .bm_c table .post-info .icon {
@@ -2688,13 +2688,13 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 .post-join:hover .post-join-tip {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     background-color: var(--point-green);
     display: flex;
 }
 
 .post-reward:hover .post-reward-tip {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     background-color: var(--point-yellow);
     display: flex;
 }
@@ -2705,7 +2705,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 .post-reply-reward:hover .post-reply-reward-tip {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     background-color: var(--point-orange);
     display: flex;
 }
@@ -2733,7 +2733,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 .post-list-num span {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     flex-direction: row;
 }
 
@@ -2794,7 +2794,7 @@ tr>div.post-list>div.post-list-left>div>div.lock>a:nth-child(3) {
 }
 
 .post-list-time .xi1 {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 /*------会员卡片------*/
@@ -2887,7 +2887,7 @@ div[class*="card_gender"] a:hover .user-card-tip {
 /*-----------------------快速发帖-------------------*/
 /*无权发帖*/
 .premission-tip {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .premission-tip a {
@@ -2921,7 +2921,7 @@ div[class*="card_gender"] a:hover .user-card-tip {
 #fastpostform>table>tbody>tr>td.plc>div:nth-child(11),
 label[for*="fastpostrefresh"] {
     display: block;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 #fastpostform>table>tbody>tr>td.plc>div:nth-child(11) a {
@@ -2997,7 +2997,7 @@ _pst .cl {
     overflow: hidden;
     background-color: var(--input-post-background);
     border-radius: var(--border-radius-10);
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 
@@ -3022,7 +3022,7 @@ _pst .cl {
 #seccheck_fastpost {
     padding: var(--element-margin-bottom-18);
     align-items: center;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 input[id*="seccodeverify"] {
@@ -3032,7 +3032,7 @@ input[id*="seccodeverify"] {
     height: var(--element-height-34);
     padding: var(--element-padding-0-10);
     margin: 0 10px;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 span[id*="checkseccodeverify"] {
@@ -3303,7 +3303,7 @@ div[id*="rt_rt_"] input {
 #fastpostform>div:nth-child(8) {
     display: flex;
     flex-flow: wrap;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 #fastpostform>div:nth-child(8) a {
@@ -3323,7 +3323,7 @@ div[id*="rt_rt_"] input {
 .f_c.altw p {
     font-size: 18px;
     font-weight: bold;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .f_c.altw a {
@@ -3447,7 +3447,7 @@ table[id*="pid"]>tbody {
 #mn-content-title a {
     padding: 8px 0;
     font-size: 18px;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 #mn-content-title a:last-child {
@@ -3477,7 +3477,7 @@ div[id*="favatar"] {
 }
 
 .favatar-status {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .favatar-avatar {
@@ -3499,7 +3499,7 @@ div[id*="favatar"] {
 /*-积分信息-*/
 .favatar-mid {
     padding: 8px 0;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .favatar-mid span,
@@ -3606,13 +3606,13 @@ td[id*="postmessage"] {
 #fj label {
     display: flex;
     margin-right: 8px;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 #fj input {
     display: flex;
     width: 20px;
-    color: var(--font-nomal);
+    color: var(--font-normal);
     padding: 4px;
     border-radius: var(--border-radius-2);
     background-color: var(--input-background);
@@ -3647,7 +3647,7 @@ td[id*="postmessage"] {
     font-size: var(--font-size-12);
     transition: .2s all;
     font-style: normal;
-    color: var(--font-nomal);
+    color: var(--font-normal);
     display: flex;
     align-items: center;
     padding: 8px 10px;
@@ -3681,7 +3681,7 @@ td[id*="postmessage"] {
     font-size: var(--font-size-12);
     display: inline-flex;
     height: var(--element-height-34);
-    color: var(--font-nomal);
+    color: var(--font-normal);
     border-radius: var(--border-radius-10);
     overflow: hidden;
     align-items: center;
@@ -3706,6 +3706,9 @@ td[id*="postmessage"] {
     max-height: 200px;
     border-radius: var(--border-radius-2);
     overflow: hidden;
+}
+.post-content-sign *{
+    line-height: normal;
 }
 
 /*悬赏提示*/
@@ -3789,7 +3792,7 @@ td[id*="postmessage"] {
 .post-bottom ul[id*="mgc_post_"] a[id^="a_"] {
     display: flex;
     align-items: center;
-    color: var(--font-nomal);
+    color: var(--font-normal);
     height: var(--element-height-34);
     background-color: var(--background-color);
     padding: var(--element-padding-0-10);
@@ -3810,7 +3813,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 h3.psth,
@@ -3829,7 +3832,7 @@ xs1 {
 }
 
 [id^="postmessage_"] {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 [id^="postmessage_"] a,
@@ -3872,7 +3875,7 @@ xs1 {
 }
 
 .darkmode-css .showhide p {
-    color: var(--font-nomal)
+    color: var(--font-normal)
 }
 
 /*附件图片*/
@@ -3959,7 +3962,7 @@ blockquote {}
 }
 
 #copyright p {
-    color: var(--font-nomal)
+    color: var(--font-normal)
 }
 
 /*加分*/
@@ -4008,7 +4011,7 @@ blockquote {}
 }
 
 [id*="ratelog_"] span {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .darkmode-css [id*="ratelog_"] span,
@@ -4068,7 +4071,7 @@ blockquote {}
 .tindex li {
     width: fit-content;
     transition: .2s all;
-    color: var(--font-nomal);
+    color: var(--font-normal);
     border-radius: var(--border-radius-10);
     display: inline-flex;
     padding: 8px;
@@ -4192,7 +4195,7 @@ blockquote {}
 }
 
 [id^="comment_"] .psti {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 /*附件*/
@@ -4206,7 +4209,7 @@ blockquote {}
 }
 
 .tattl p {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .attnm+.tip_4 p {
@@ -4272,7 +4275,7 @@ blockquote {}
 .bw0+table,
 .tdats table,
 #ct>div.mn>div>table {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     margin: 18px;
     border-radius: var(--border-radius-10);
     overflow: hidden;
@@ -4347,13 +4350,7 @@ blockquote {}
 }
 
 /*复制提示*/
-.ntcwin {
-    background-color: var(--point);
-    box-shadow: var(--shadow-hot);
-    padding: 18px;
-    border-radius: var(--border-radius-10);
-    color: var(--font-point);
-}
+
 
 /*----登录--注册----*/
 .cv_wechat_title {
@@ -4421,7 +4418,7 @@ a[id^="login_smsbutton_"] {
 
 .duceapp_cv_wrap,
 .duceapp_cv_wrap iframe {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -4611,7 +4608,7 @@ a[id^="login_smsbutton_"] {
 .photo-info div {
     display: flex;
     align-items: center;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .photo-info div {
@@ -4635,7 +4632,7 @@ a[id^="login_smsbutton_"] {
 /*---------------高级编辑器----------------*/
 /*草稿箱*/
 #draftlist_menu {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     border-radius: var(--border-radius-10);
     box-shadow: var(--shadow-hot);
     overflow: hidden;
@@ -4776,7 +4773,7 @@ a[id^="login_smsbutton_"] {
 .tb.cl.mbw li a,
 #post_extra_tb label {
     height: var(--element-height-34);
-    color: var(--font-nomal);
+    color: var(--font-normal);
     transition: .2s all;
     line-height: var(--element-height-34);
     padding: var(--element-padding-0-10);
@@ -5076,7 +5073,7 @@ a[id^="login_smsbutton_"] {
 .exfm .z dt,
 .xw0 {
     display: inline-flex;
-    color: var(--font-nomal);
+    color: var(--font-normal);
     flex-wrap: wrap;
 }
 
@@ -5098,7 +5095,7 @@ a[id^="login_smsbutton_"] {
 }
 
 .pnpost {
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 .pnpost a {
@@ -5166,7 +5163,7 @@ a[id^="login_smsbutton_"] {
 }
 
 .d_gw_special_text {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     padding: 8px;
     background-color: var(--element-background);
     border-radius: var(--border-radius-10);
@@ -5313,7 +5310,7 @@ a[id^="login_smsbutton_"] {
 }
 
 #d_gw_myaccount_bottom {
-    color: var(--font-nomal);
+    color: var(--font-normal);
     display: flex;
     background-color: var(--element-background);
     height: var(--element-height-34);
@@ -5337,7 +5334,7 @@ a[id^="login_smsbutton_"] {
     padding: 8px;
     font-size: 18px;
     font-weight: bold;
-    color: var(--font-nomal);
+    color: var(--font-normal);
 }
 
 /*赠楼列表*/
