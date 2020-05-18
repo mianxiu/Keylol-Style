@@ -7221,7 +7221,7 @@
                 poke.innerHTML = `<span>${symbolHTML(symbolUserCard.hi)}</span></span><span class="user-card-tip">${poke.innerText}</span>`
                 pm.innerHTML = `<span>${symbolHTML(symbolUserCard.iconmail)}</span></span><span class="user-card-tip">${pm.innerText}</span>`
             }
-            setTimeout(callback, 100)
+            setTimeout(callback, 130)
             clearTimeout(callback)
         }
         let userCardObserver = new MutationObserver(symbolUserCardCallback)
