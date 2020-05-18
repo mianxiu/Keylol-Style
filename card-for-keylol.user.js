@@ -506,6 +506,7 @@
         }
         
         .search-bar-form {
+            align-items: center;
             display: var(--display-flex);
             flex-direction: row-reverse;
             height: var(--search-bar-height);
