@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0010
+// @version      0.11.41.0011
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -192,6 +192,8 @@
             --code-copy-sb: #55c9ff;
             --table-line: #d4d4d4;
             --table-tr-2n: #eee;
+            --steam-own:#759305;
+            --steam--wish:#007399;
         
         
         
@@ -3891,6 +3893,15 @@
             background-color: var(--input-background);
         }
         
+        /*论坛自带蓝绿*/
+        .steam-info-link.steam-info-own.steam-info-loaded{
+            background-color: var(--steam-own);
+        }
+
+        .steam-info-link.steam-info-wish{
+            background-color: var(--steam--wish);
+        }
+
         /*----内容渲染---*/
         h1,
         h2,
