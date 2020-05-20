@@ -1825,16 +1825,16 @@
 
     wp.insertBefore(postNavParent, wp.childNodes[0])
 
-    // // 移动节点
+    // 移动帖子标题节点
     let titleNode = $(`#thread_subject`)
-    let tagInfo = $(`.subforum_left_title_left_up a:last-child`)
+    let forumTag = $(`.subforum_left_title_left_up a:last-child`)
     let infoNode = $(`.subforum_right_title`)
 
     let postContentTitle = $(`#mn-content-title`)
     let postNavLeft = $(`.mn-nav-left`)
 
     postContentTitle.insertBefore(titleNode, null)
-    postContentTitle.insertBefore(tagInfo, null)
+    forumTag !== null ? postContentTitle.insertBefore(forumTag, null) : null
     postNavLeft.insertBefore(infoNode, null)
 
   }
