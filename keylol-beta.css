@@ -307,7 +307,7 @@
  
  #nav-logo>span:last-child {}
  
- #nav-menu-parent .icon {
+ #nav-menu .icon {
      color: var(--icon-line);
  }
  

@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0013
+// @version      0.11.41.0014
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -70,10 +70,10 @@
         // nav-menu添加新parent
         let navMenuParent = document.createElement(`nav`)
         navMenuParent.id = `nav-menu-parent`
-        body !== null ? body.insertBefore(navMenuParent, $("#nav-menu")) : null
+        body !== null && $(`#nav-menu-parent`) === null ? body.insertBefore(navMenuParent, $("#nav-menu")) : null
     }
 
-    createElement()
+
 
 
     /**
@@ -391,7 +391,7 @@
         
         #nav-logo>span:last-child {}
         
-        #nav-menu-parent .icon {
+        #nav-menu .icon {
             color: var(--icon-line);
         }
         
@@ -5576,6 +5576,7 @@
 
 
     var listenElement = function () {
+        createElement()
         createCss()
         moveElement()
         darkModeInit()
