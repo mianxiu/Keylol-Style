@@ -1,12 +1,12 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0012
+// @version      0.11.41.0013
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
 // @grant        none
-// @run-at       document-body
+// @run-at       document-start
 // @require      https://at.alicdn.com/t/font_1797873_riqtis11l6p.js
 // @require      https://at.alicdn.com/t/font_1804200_8bhv89r7hhc.js
 // @require      https://at.alicdn.com/t/font_1764890_kx8zk1v655l.js
@@ -70,7 +70,7 @@
         // nav-menu添加新parent
         let navMenuParent = document.createElement(`nav`)
         navMenuParent.id = `nav-menu-parent`
-        $(`body`).insertBefore(navMenuParent, $("#nav-menu"))
+        body !== null ? body.insertBefore(navMenuParent, $("#nav-menu")) : null
     }
 
     createElement()
@@ -5551,12 +5551,13 @@
         let navMenuParent = $("body>#nav-menu-parent")
         let navMenu = $("body>#nav-menu")
         let tbContainer = $("body>.tb-container")
+        let actionBar = $("#nav-additional>#nav-user-action-bar")
 
         // 用户栏&LOGO
-        navMenu !== null ? navMenu.insertBefore(tbContainer, null) : null
-        navMenu !== null ? navMenu.insertBefore($("#nav-additional>#nav-user-action-bar"), null) : null
-        navMenu !== null ? navMenu.insertBefore(logo, navMenu.childNodes[0]) : null
-        navMenu !== null ? navMenuParent.insertBefore(navMenu, null) : null
+        navMenu !== null && tbContainer !== null ? navMenu.insertBefore(tbContainer, null) : null
+        navMenu !== null && actionBar !== null ? navMenu.insertBefore(actionBar, null) : null
+        navMenu !== null && logo !== null ? navMenu.insertBefore(logo, navMenu.childNodes[0]) : null
+        navMenu !== null && navMenuParent !== null ? navMenuParent.insertBefore(navMenu, null) : null
     }
 
 
@@ -5622,7 +5623,7 @@
 
 
                     let imgNode = aNode.children[0]
-                    aNode.insertBefore(document.createElement(`div`), imgNode)
+                    aNode !== null ? aNode.insertBefore(document.createElement(`div`), imgNode) : null
 
                     // 去除默认尺寸
                     imgNode.removeAttribute("height")
@@ -5702,7 +5703,7 @@
         indexSubjectParent.id = `index-subject-parent`
         indexSubjectParent.className = `index_subject_parent`
         indexSubjectParent.innerHTML += indexSubjectTemplate
-        $("body").insertBefore(indexSubjectParent, null)
+        $("body") !== null ? $("body").insertBefore(indexSubjectParent, null) : null
     }
 
     /**
