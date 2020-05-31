@@ -3562,6 +3562,7 @@
  /*帖子*/
  td[id*="postmessage"] {
      display: block;
+     width: calc(var(--post-right-width) - 60px);
      flex-direction: column;
  }
  
@@ -4292,6 +4293,12 @@
      border-radius: var(--border-radius-10);
      overflow: hidden;
      border: 1px solid var(--table-line);
+ }
+ .t_table[style*="width:90%"] {
+     margin: 0px;
+ }
+ .t_table[style*="width:90%"] td{
+     padding: 8px 4px;
  }
  
  .t_table td,

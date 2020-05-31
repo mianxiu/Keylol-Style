@@ -2013,9 +2013,9 @@
 
 
             return `
-      <div class="post-top" id="${pid}">
+      <div class="post-top" >
           <div class="post-user-card"><div id="${favatar.id}">${favatar.innerHTML}</div></div>
-          <div class="post-content">
+          <div class="post-content" id="${pid}">
               <div class="post-content-top">
                  <div class="post-content-top-left">${postTopBarLeft.innerHTML}</div>
                  <div class="post-content-top-right">
