@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0014
+// @version      0.11.41.0015
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -3646,6 +3646,7 @@
         /*帖子*/
         td[id*="postmessage"] {
             display: block;
+            width: calc(var(--post-right-width) - 60px);
             flex-direction: column;
         }
         
@@ -7460,9 +7461,9 @@
 
 
             return `
-        <div class="post-top" id="${pid}">
+        <div class="post-top">
             <div class="post-user-card"><div id="${favatar.id}">${favatar.innerHTML}</div></div>
-            <div class="post-content">
+            <div class="post-content" id="${pid}">
                 <div class="post-content-top">
                    <div class="post-content-top-left">${postTopBarLeft.innerHTML}</div>
                    <div class="post-content-top-right">

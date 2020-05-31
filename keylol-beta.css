@@ -3562,6 +3562,7 @@
  /*帖子*/
  td[id*="postmessage"] {
      display: block;
+     width: calc(var(--post-right-width) - 60px);
      flex-direction: column;
  }
  
