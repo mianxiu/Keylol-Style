@@ -3352,6 +3352,7 @@
  }
  
  /*-------------帖子内容-----------------------------------*/
+
  /*全局*/
  #postlist>[id^="post_"],
  #postlistreply {
@@ -3364,6 +3365,10 @@
      width: var(--body-width);
  }
  
+ /*内容图片*/
+ .zimg_p{
+     position: absolute;
+ }
  
  /*表情全局*/
  #postlist>[id^="post_"] img[src*="smiley"],

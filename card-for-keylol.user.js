@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0016
+// @version      0.11.41.0017
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -3448,6 +3448,10 @@
             width: var(--body-width);
         }
         
+        /*内容图片*/
+        .zimg_p{
+            position: absolute;
+        }
         
         /*表情全局*/
         #postlist>[id^="post_"] img[src*="smiley"],
