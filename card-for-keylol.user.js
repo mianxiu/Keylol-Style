@@ -1,7 +1,7 @@
 // ==UserScript==
 // @name         card for keylol
 // @namespace    http://tampermonkey.net/
-// @version      0.11.41.0017
+// @version      0.11.41.0018
 // @description  a style for keylol.com
 // @author       mianxiu
 // @match        keylol.com/*
@@ -8201,7 +8201,7 @@
         let isLogin = /login|register/gm.test(currentHref)
 
         // 自拍区
-        let isPhoto = /f(id=){0,1}(273|259)/gm.test(currentHref)
+        let isPhoto = /f(id=){0,1}(273|259|330)/gm.test(currentHref)
 
         //let isPost = new RegExp(`(${keylolDomin}\/forum.php\\?mod=post.*)|(${keylolDomin}\/t\\d{3}.*)`).test(currentHref)
 
